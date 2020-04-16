@@ -11,11 +11,12 @@
         <result property='correo' column='nombre'/>
         <result property='nombre' column='nombre'/>
 		<result property='apellido' column='apellido'/>
+		<result property='rol' column='rol'/>
     </resultMap>
 	
 	
 	<insert id="insertarUsuario">
-		INSERT INTO usuarios VALUES (#{usuario}, #{passw}, #{correo},#{nombre},#{apellido});
+		INSERT INTO usuarios VALUES (#{usuario}, #{passw}, #{correo},#{nombre},#{apellido},#{rol});
 	</insert>
   		
 	<select id='consultarUsuario' resultMap='UsuarioResult'>
@@ -24,6 +25,7 @@
 			correo,
 			nombre,
 			apellido,
+			rol,
         FROM USUARIOS 
         WHERE usuario=#{us} and passw=#{pass};
 	</select>
@@ -34,6 +36,7 @@
 			correo,
 			nombre,
 			apellido,
+			rol,
         FROM USUARIOS; 
 	</select>
 

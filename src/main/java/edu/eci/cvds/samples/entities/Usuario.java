@@ -11,19 +11,39 @@ package edu.eci.cvds.samples.entities;
  * @author 
  */
 public class Usuario {
-    protected String correo;
-    protected String nombreUsuario;
-    protected String nombre;
-    protected String apellido;
-    protected Rol rol;
+	private String usuario;
+    private String contra;
+    private String correo;
+    private String nombre;
+    private String apellido;
+    private Rol rol;
     
-    public Usuario(String correo,String nombreUsuario, String nombre,String apellido, Rol rol){
+    public Usuario(String usuario,String contra,String correo,String nombre,String apellido,Rol rol){
+    	this.usuario=usuario;
+    	this.contra=contra;
         this.correo=correo;
-        this.nombreUsuario=nombreUsuario;
         this.nombre=nombre;
         this.apellido=apellido;
         this.rol=rol;
     }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+
+    public String getContra() {
+        return contra;
+    }
+
+    public void setContra(String contraseña) {
+        this.contra = contraseña;
+    }
+
 
     public String getCorreo() {
         return correo;
@@ -32,29 +52,20 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
+    
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public Rol getRol() {
@@ -65,9 +76,6 @@ public class Usuario {
         this.rol = rol;
     }
     
-    @Override
-    public String toString() {
-        return "Usuario{" + "correo"+correo +", nombre Usuario "+nombreUsuario + ", nombre=" + nombre + ", apellido "+apellido +", rol " + rol + '}';
-    }
+
    
 }
