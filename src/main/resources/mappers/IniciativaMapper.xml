@@ -20,7 +20,7 @@
         SELECT
             *
         FROM USUARIOS 
-        WHERE id=#{in};   
+        WHERE id=#{id};   
     </select>
     
     <select  parameterType="map" id="consultarIniciativas" resultMap="IniciativaResult">

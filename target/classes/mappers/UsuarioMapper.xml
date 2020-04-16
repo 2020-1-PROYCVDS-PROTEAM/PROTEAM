@@ -13,11 +13,6 @@
 		<result property='apellido' column='apellido'/>
 		<result property='rol' column='rol'/>
     </resultMap>
-	
-	
-	<insert id="insertarUsuario">
-		INSERT INTO usuarios VALUES (#{usuario}, #{passw}, #{correo},#{nombre},#{apellido},#{rol});
-	</insert>
   		
 	<select id='consultarUsuario' resultMap='UsuarioResult'>
 		SELECT
