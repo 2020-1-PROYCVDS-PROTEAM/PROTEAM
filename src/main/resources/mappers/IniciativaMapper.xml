@@ -1,32 +1,58 @@
-  
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
                      
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.ComentariosMapper">
-
-    
-    <select id='comentarios' parameterType='map' resultMap='ComentarioResult'>
-        select c.id,c.comentario,c.puntaje,c.fecha, s.anyo_nacimiento as sus_anyo_nacimiento, s.nombre as sus_nombre, s.total_suscripciones as sus_total_sucripciones from SUS_COMENTARIOS as c, SUS_SUSCRIPTORES as s where c.CLIENTES_id = s.id and puntaje &gt; #{a} and puntaje &lt;= #{b}
+<mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.IniciativaMapper">
+	    <resultMap type='Iniciativa' id='IniciativaResult'>
+        <id property='id' column='id'/>        
+		<result property='palabraclave' column='palabraclave'/>
+        <result property='votos' column='votos'/>
+        <result property='nombre' column='nombre'/>
+		<result property='estado' column='estado'/>
+        <result property='descripcion' column='descripcion'/>
+		<result property='area' column='area'/>
+		<result property='usuario_i' column='usuario_i'/>
+		<result property='correo_i' column='correo_i'/>
+		<result property='fechar_ini' column='fechar_ini'/>
+    </resultMap>
+	    <select  parameterType="map" id="consultarIniciativa" resultMap="IniciativaResult">
+        SELECT
+            *
+        FROM USUARIOS 
+        WHERE id=#{in};   
     </select>
     
+    <select  parameterType="map" id="consultarIniciativas" resultMap="IniciativaResult">
+        SELECT
+			*
+        FROM USUARIOS; 
+    </select>
+    <insert id="insertarIniciativa" >
+		INSERT INTO iniciativas VALUES (#{id},#{votos},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
+	</insert>
+	
+	<select id="consultarIniciativas" resultMap='IniciativaResult'>
+		SELECT 
+			* 
+		FROM
+			iniciativas;
+	</select>
+
+	<select id="palabraClaveIniciativas" resultMap='IniciativaResult'>
+		SELECT
+			* 
+		FROM 
+			iniciativas 
+		WHERE palabraclave ='#{passw}'
+	</select>
+
+	<update id="cambiarEstado" >
+		UPDATE iniciativas 
+		SET estado=#{estado}
+		WHERE id=#{id};
+	</update>
     
-    <resultMap type='Comentario' id='ComentarioResult'>
-        <id property='id' column='id'/>        
-        <result property='fecha' column='fecha'/>
-        <result property='puntaje' column='puntaje'/>
-        <result property='comentario' column='comentario'/>
-        <association property='suscriptor' resultMap='SuscriptorResult' columnPrefix='sus_'></association>
-    </resultMap>
-    
-    <resultMap type='Suscriptor' id='SuscriptorResult'>
-        <id property='id' column='id'/>
-        <result property='nombre' column='nombre'/>
-        <result property='anoNacimiento' column='anyo_nacimiento'/>        
-    </resultMap>
-  	
-    	
 
   	
 </mapper>
