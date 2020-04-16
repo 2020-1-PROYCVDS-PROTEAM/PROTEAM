@@ -10,5 +10,5 @@ public interface UsuarioMapper {
 
 	public Usuario consultarUsuario(String usuario, String passw)throws PersistenceException;
 	public List<Usuario> consultarUsuarios()throws PersistenceException;
-	public void insertarUsuario(nt usuario,String passw,String correo,String nombre, apellido)throws PersistenceException;
+	public void insertarUsuario(int usuario,String passw,String correo,String nombre,String apellido)throws PersistenceException;
 }

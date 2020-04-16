@@ -26,10 +26,9 @@
 		<scope>provided</scope>
 	</dependency>
   </dependencies>
+
   <build>
-    <finalName>ProTeam</finalName>
-  </build>
-  <build>
+  <finalName>ProTeam</finalName>
    <plugins>
        <plugin>
            <groupId>org.apache.maven.plugins</groupId>

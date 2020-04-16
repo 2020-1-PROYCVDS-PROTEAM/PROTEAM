@@ -10,5 +10,5 @@ public interface UsuarioMapper {
 
 	public Usuario consultarUsuario(@Param("us") String usuario,@Param("pass") String passw);
 	public List<Usuario> consultarUsuarios();
-	public void insertarUsuario(@Param("usuario") int usuario,@Param("passw") String passw,@Param("correo") String correo,@Param("nombre") String nombre,@Param("apellido") apellido);
+	public void insertarUsuario(@Param("usuario") int usuario,@Param("passw") String passw,@Param("correo") String correo,@Param("nombre") String nombre,@Param("apellido") String apellido);
 }
