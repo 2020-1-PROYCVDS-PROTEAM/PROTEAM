@@ -11,4 +11,4 @@ Proyecto final del curso CVDS (Ciclos de Vida y Desarrollo de Software)
 * Jhonatan Camilo Pulido Ramirez
 
 ### Modelo Entidad Relación:
-<img src = "modelo ER.png" />
+<img src = "ModeloERActualizado.png" />
