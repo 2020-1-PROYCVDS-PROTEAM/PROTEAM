@@ -67,7 +67,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	public void cambiarEstado(int id, String estado) throws PersistenceException {
 		try {
             iniciativaMapper.cambiarEstado(id,estado);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (Exception e) {
 
             throw new PersistenceException("Error al cambiar estado iniciativa"+e.getLocalizedMessage(), e);
 

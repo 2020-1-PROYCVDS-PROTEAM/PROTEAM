@@ -1,0 +1,10 @@
+edu\eci\cvds\samples\persistence\IniciativaDAO.class
+edu\eci\cvds\samples\persistence\mybatis\mappers\UsuarioMapper.class
+edu\eci\cvds\samples\entities\Rol.class
+edu\eci\cvds\samples\entities\Usuario.class
+edu\eci\cvds\samples\entities\Iniciativa.class
+edu\eci\cvds\samples\persistence\PersistenceException.class
+edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.class
+edu\eci\cvds\samples\persistence\UsuarioDAO.class
+edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.class
+edu\eci\cvds\samples\persistence\mybatis\MyBatisIniciativaDAO.class

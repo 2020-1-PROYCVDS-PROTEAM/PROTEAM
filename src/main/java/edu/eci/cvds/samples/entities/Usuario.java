@@ -40,8 +40,8 @@ public class Usuario {
         return contra;
     }
 
-    public void setContra(String contraseña) {
-        this.contra = contraseña;
+    public void setContra(String contra) {
+        this.contra = contra;
     }
 
 
