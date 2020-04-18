@@ -25,6 +25,7 @@
 		<scope>provided</scope>
 	</dependency>
 	
+	
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -67,12 +68,20 @@
 	    <version>4.0</version>
 	</dependency>        
 
+
 	<!-- https://mvnrepository.com/artifact/org.apache.ibatis/ibatis-core -->
 	<dependency>
 	    <groupId>org.apache.ibatis</groupId>
 	    <artifactId>ibatis-core</artifactId>
 	    <version>3.0</version>
 	</dependency>
+
+	
+	<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.0</version>
+    </dependency>
 
   </dependencies>
 
