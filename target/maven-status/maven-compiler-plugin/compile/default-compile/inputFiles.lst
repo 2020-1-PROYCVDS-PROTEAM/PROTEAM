@@ -1,23 +1,15 @@
-<<<<<<< HEAD
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\UsuarioDAO.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.java
-C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Rol.java
-C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\UsuarioMapper.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\PersistenceException.java
-C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\IniciativaDAO.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicioProteam.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisIniciativaDAO.java
 C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Iniciativa.java
-=======
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\IniciativaDAO.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisIniciativaDAO.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Iniciativa.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Rol.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\UsuarioMapper.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\UsuarioDAO.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.java
-C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\PersistenceException.java
->>>>>>> 9bfbad199f4500a9ab564bacc744c4de989ba582
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicesException.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicioProteamFactory.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Rol.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\IniciativaDAO.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\Imp\ServicioProteamImp.java
+C:\Users\anesj\OneDrive\Documentos\Escuela\CVDS\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\ShiroBean.java

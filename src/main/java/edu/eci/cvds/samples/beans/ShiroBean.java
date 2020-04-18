@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package edu.eci.cvds.beans;
+package edu.eci.cvds.samples.beans;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
