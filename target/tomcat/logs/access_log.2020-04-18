@@ -1,0 +1,17 @@
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:17:10 -0500] "GET / HTTP/1.1" 200 125 http-bio-8080-exec-1 478
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:17:10 -0500] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-2 6
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:20:44 -0500] "GET / HTTP/1.1" 200 1261 http-bio-8080-exec-1 447
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:20:44 -0500] "GET /login.css HTTP/1.1" 200 176 http-bio-8080-exec-3 2
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:20:44 -0500] "GET /faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 200 24248 http-bio-8080-exec-2 33
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:20:44 -0500] "GET /img1.jpg HTTP/1.1" 200 181752 http-bio-8080-exec-5 2
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET / HTTP/1.1" 200 2740 http-bio-8080-exec-1 458
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /faces/javax.faces.resource/jquery/jquery.js?ln=primefaces&v=6.0 HTTP/1.1" 200 107785 http-bio-8080-exec-3 17
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /login.css HTTP/1.1" 304 - http-bio-8080-exec-7 6
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /faces/javax.faces.resource/core.js?ln=primefaces&v=6.0 HTTP/1.1" 200 30554 http-bio-8080-exec-5 8
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /faces/javax.faces.resource/jquery/jquery-plugins.js?ln=primefaces&v=6.0 HTTP/1.1" 200 245797 http-bio-8080-exec-4 18
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /faces/javax.faces.resource/components.js?ln=primefaces&v=6.0 HTTP/1.1" 200 357791 http-bio-8080-exec-6 19
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /logo.png HTTP/1.1" 200 13758 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /faces/javax.faces.resource/components.css?ln=primefaces&v=6.0 HTTP/1.1" 200 75326 http-bio-8080-exec-2 61
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:21:23 -0500] "GET /img1.jpg HTTP/1.1" 304 - http-bio-8080-exec-6 1
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:34:24 -0500] "GET / HTTP/1.1" 404 1063 http-bio-8080-exec-1 325
+0:0:0:0:0:0:0:1 - - [18/Apr/2020:21:35:08 -0500] "GET / HTTP/1.1" 200 2718 http-bio-8080-exec-1 501

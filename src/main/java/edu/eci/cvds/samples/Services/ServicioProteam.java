@@ -10,7 +10,7 @@ import edu.eci.cvds.samples.entities.Usuario;
 public interface ServicioProteam {
 	
 	
-	public Usuario consultarUsuario(String usuario, String passw)throws ServicesException;
+	public Usuario consultarUsuario(String usuario)throws ServicesException;
 	public List<Usuario> consultarUsuarios()throws ServicesException;
 	public Iniciativa palabraClaveIniciativa(String palabraclave) throws ServicesException;	
 	public Iniciativa consultarIniciativa(int id)throws ServicesException;	

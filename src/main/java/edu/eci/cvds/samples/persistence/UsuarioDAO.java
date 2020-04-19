@@ -6,6 +6,6 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface UsuarioDAO {
 
-	public Usuario consultarUsuario(String usuario, String passw)throws PersistenceException;
+	public Usuario consultarUsuario(String usuario)throws PersistenceException;
 	public List<Usuario> consultarUsuarios()throws PersistenceException;
 }

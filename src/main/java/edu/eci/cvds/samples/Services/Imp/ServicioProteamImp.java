@@ -23,9 +23,9 @@ public class ServicioProteamImp implements ServicioProteam {
 
     
     @Override
-    public Usuario consultarUsuario(String usuario, String passw)throws ServicesException{
+    public Usuario consultarUsuario(String usuario)throws ServicesException{
     	try{
-            return daoUsuario.consultarUsuario(usuario,passw);
+            return daoUsuario.consultarUsuario(usuario);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar el usuario ",ex);
         }
