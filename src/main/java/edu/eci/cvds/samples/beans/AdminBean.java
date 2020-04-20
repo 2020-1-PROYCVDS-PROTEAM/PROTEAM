@@ -23,7 +23,7 @@ public class AdminBean extends BasePageBean {
 
     @Inject
     private ServicioProteam servicioProteam;
-    //private Usuario selectedUsuario;
+    private Usuario selectedUsuario;
 	//private long costo;
 	
     public List<Usuario> consultarClientes(){
@@ -44,6 +44,14 @@ public class AdminBean extends BasePageBean {
         }
         return usuario;
     }
+	
+	public Usuario getSelectedUsuario(){
+		return selectedUsuario;
+	}
+	
+	public void setSelectedUsuario(Usuario usuario){
+		selectedUsuario=usuario;
+	}
     
     /*
     public void registrarCliente(long doc,String nombre,String telefono, String direccion,String mail){

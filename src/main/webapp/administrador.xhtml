@@ -10,6 +10,33 @@
  </h:head>
  <h:body>
 	<p><strong><h2>Hola administrador!</h2></strong></p>
+	<h:form id="consulta_general">
+		<p:dataTable var="usuario" value="#{AdminBean.consultarClientes}"
+			paginator="true" rows="4" selectionMode="single" id="correo" selection="#{AdminBean.selectedUsuario}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowKey="#{usuario.getCorreo()}"
+			
+			<f:facet name="header">
+				Usuarios.
+			</f:facet>
+			
+			<p:column headerText="Correo">
+				<h:outputText value="#{usuario.getCorreo()}"/>
+			</p:column>
+			
+			<p:column headerText="Nombre">
+				<h:outputText value="#{usuario.getNombre()}"/>
+			</p:column>
+			
+			<p:column headerText="Apellido">
+				<h:outputText value="#{usuario.getApellido()}"/>
+			</p:column>
+			
+			<p:column headerText="Rol">
+				<h:outputText value="#{usuario.getRol()}"/>
+			</p:column>
+		</p:dataTable>	
+	</h:form>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
