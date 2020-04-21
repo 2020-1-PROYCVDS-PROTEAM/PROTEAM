@@ -6,11 +6,13 @@
  */
 package edu.eci.cvds.samples.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author 
  */
-public class Usuario {
+public class Usuario implements Serializable {
 	private String usuario;
     private String contra;
     private String correo;
@@ -25,9 +27,11 @@ public class Usuario {
         this.nombre=nombre;
         this.apellido=apellido;
         this.rol=rol;
+		System.out.println("CONSTRUCTOR Usuario");
     }
 
     public String getUsuario() {
+		System.out.println("Usuario.getUsuario()");
         return usuario;
     }
 

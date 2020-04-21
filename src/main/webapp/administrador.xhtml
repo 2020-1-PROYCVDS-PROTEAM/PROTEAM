@@ -9,17 +9,21 @@
  <title>Administrador</title>
  </h:head>
  <h:body>
-	<p><strong><h2>Hola administrador!</h2></strong></p>
-	<h:form id="consulta_general">
-		<p:dataTable var="usuario" value="#{AdminBean.consultarClientes}"
-			paginator="true" rows="4" selectionMode="single" id="correo" selection="#{AdminBean.selectedUsuario}"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowKey="#{usuario.getCorreo()}"
+	<h:form id="consultaGeneral">
+	<p:dataTable var="usuario" value="#{AdministradorBean.consultarUsuarios()}" class="tabla"
+				paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rows="10" selectionMode="single" id="correo" selection="#{AdministradorBean.getUsuario()}"
+				rowKey="#{usuario.correo}">
 			
 			<f:facet name="header">
 				Usuarios.
 			</f:facet>
-			
+
+			<p:column headerText="Usuario" filterBy="#{usuario.getUsuario()}">
+				<h:outputText value="#{usuario.getUsuario()}"/>
+			</p:column>
+
+
 			<p:column headerText="Correo">
 				<h:outputText value="#{usuario.getCorreo()}"/>
 			</p:column>

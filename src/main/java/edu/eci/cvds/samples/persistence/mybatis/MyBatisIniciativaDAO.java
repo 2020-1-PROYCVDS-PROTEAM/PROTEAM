@@ -36,6 +36,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
     @Override
     public List<Iniciativa> consultarIniciativas() throws PersistenceException {
          try{
+			System.out.println("ENTRA EN CONSULTAR INICITAVITA");
             return iniciativaMapper.consultarIniciativas();
         }catch(Exception e){
             throw new PersistenceException("Error al consultar las iniciativas:"+e.getLocalizedMessage(), e);   

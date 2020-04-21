@@ -10,14 +10,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 import java.util.List;
 
 import java.sql.Date;
 
 
-
-@ManagedBean(name="UsersBean")
+@SuppressWarnings("serial")
+@ManagedBean(name = "AdminBean")
 @ApplicationScoped
 public class AdminBean extends BasePageBean {
 
@@ -26,11 +27,14 @@ public class AdminBean extends BasePageBean {
     private Usuario selectedUsuario;
 	//private long costo;
 	
-    public List<Usuario> consultarClientes(){
+    public List<Usuario> consultarUsuarios(){
         List<Usuario> usuarios = null;
         try{
+			System.out.println("Esta enaaaaaaaaaaaaaaaatrando acaaa");
         	usuarios=servicioProteam.consultarUsuarios();
+			System.out.println("PASA POR DEBAJO DE servicioProteam.consultarUsuarios()");
         } catch (ServicesException e) {
+			System.out.println("Entra en exception");
             setErrorMessage(e);
         }
         return usuarios;

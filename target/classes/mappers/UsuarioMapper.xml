@@ -6,33 +6,27 @@
 <mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.UsuarioMapper">
 	    
     <resultMap type='Usuario' id='UsuarioResult'>
-        <id property='usuario' column='usuario'/>        
-        <result property='passw' column='passw'/>
-        <result property='correo' column='nombre'/>
-        <result property='nombre' column='nombre'/>
-		<result property='apellido' column='apellido'/>
-		<result property='rol' column='rol'/>
+        <id property='usuario' column='USUARIO'/>        
+        <result property='passw' column='PASSW'/>
+        <result property='correo' column='CORREO'/>
+        <result property='nombre' column='NOMBRE'/>
+		<result property='apellido' column='APELLIDO'/>
+		<result property='rol' column='ROL'/>
     </resultMap>
   		
-	<select id='consultarUsuario' resultMap='UsuarioResult'>
+	<select parameterType="map" id='consultarUsuario' resultMap='UsuarioResult'>
 		SELECT
             usuario,
 			correo,
 			nombre,
 			apellido,
-			rol,
+			rol
         FROM USUARIOS 
         WHERE usuario=#{us} and passw=#{pass};
 	</select>
 	
-	<select id='consultarUsuarios' resultMap='UsuarioResult'>
-		SELECT
-            usuario,
-			correo,
-			nombre,
-			apellido,
-			rol,
-        FROM USUARIOS; 
+	<select parameterType="map" id='consultarUsuarios' resultMap='UsuarioResult'>
+		SELECT * FROM USUARIOS as us; 
 	</select>
 
 </mapper>

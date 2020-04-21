@@ -35,8 +35,12 @@ public class ServicioProteamFactory {
 	
 	public ServicioProteam getServicioProteam(){
         if (!optInjector.isPresent()) {
+			System.out.println("factoryAAAAAAAAA");
             optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
         }
+		else{
+			System.out.println("factoryAEEEEEEE");			
+		}
 
         return optInjector.get().getInstance(ServicioProteam.class);
     }
