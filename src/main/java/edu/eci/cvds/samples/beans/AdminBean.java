@@ -21,7 +21,7 @@ import java.sql.Date;
 @ManagedBean(name = "AdminBean")
 @ApplicationScoped
 public class AdminBean extends BasePageBean {
-
+	
     @Inject
     private ServicioProteam servicioProteam;
     private Usuario selectedUsuario;

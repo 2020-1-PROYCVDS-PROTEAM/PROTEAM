@@ -19,7 +19,7 @@ public class AdministradorBean extends BasePageBean {
 	private ServicioProteam servicioPT;
 	private Usuario usuario;
 	
-	
+
     public List<Usuario> consultarUsuarios(){
         List<Usuario> usuarios = null;
         try{

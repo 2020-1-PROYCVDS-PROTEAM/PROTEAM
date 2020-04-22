@@ -20,7 +20,7 @@ public class JDBCExample {
             String driver="org.postgresql.Driver";
             String user="adhwljpfstbbdr";
             String pwd="462b417cb85fe7eaf4463b346ef173662a73c0ee98a5c3cc9b98bc3108cdf5c5";
-                        
+                       
             Class.forName(driver);
             Connection con=DriverManager.getConnection(url,user,pwd);
             con.setAutoCommit(false);

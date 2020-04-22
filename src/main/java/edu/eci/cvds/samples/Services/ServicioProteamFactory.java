@@ -33,7 +33,6 @@ public class ServicioProteamFactory {
            }
        });
    }
-
    private ServicioProteamFactory(){
        optInjector = Optional.empty();
    }

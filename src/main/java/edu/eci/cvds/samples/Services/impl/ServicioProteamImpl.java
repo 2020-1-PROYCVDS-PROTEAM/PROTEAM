@@ -27,16 +27,22 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public Usuario consultarUsuario(String usuario)throws ServicesException{
     	try{
-            return daoUsuario.consultarUsuario(usuario);
+            Usuario u = daoUsuario.consultarUsuario(usuario);
+            if(u == null) {
+            	throw new ServicesException("El usuario no existe");
+            }else {
+            	return u;
+            }
+            
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar el usuario ",ex);
         }
     }
-    
+  
     @Override
 	public List<Usuario> consultarUsuarios()throws ServicesException{
     	try{
-			System.out.println("DAOOO CONSULTAR USUARIOS");
+
             return daoUsuario.consultarUsuarios();
         }catch(PersistenceException ex){
             throw new ServicesException("No existen usuarios",ex);
@@ -46,7 +52,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
 	public Iniciativa palabraClaveIniciativa(String palabraclave) throws ServicesException{
 		try{
-            return daoIniciativa.palabraClaveIniciativa(palabraclave);
+			return daoIniciativa.palabraClaveIniciativa(palabraclave);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar la palabra clave",ex);
         }
@@ -78,7 +84,7 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible agregar la nueva iniciativa",ex);
         }
 	}
-    
+   
     @Override
 	public void cambiarEstado(int id,String estado) throws ServicesException{
     	try{
