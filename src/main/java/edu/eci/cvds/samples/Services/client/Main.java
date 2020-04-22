@@ -6,8 +6,8 @@ import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 public class Main {
 
     public static void main(String[] args) throws ServicesException{
-        System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuarios());
-        //System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuario("admin"));
+        //System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuarios());
+        System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuario("cesarg"));
 
         System.exit(0);
     }

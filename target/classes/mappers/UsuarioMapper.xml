@@ -16,11 +16,7 @@
   		
 	<select parameterType="map" id='consultarUsuario' resultMap='UsuarioResult'>
 		SELECT
-            usuario,
-			correo,
-			nombre,
-			apellido,
-			rol
+            *
         FROM USUARIOS 
         WHERE usuario=#{us};
 	</select>
