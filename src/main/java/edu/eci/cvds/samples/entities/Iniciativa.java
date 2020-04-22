@@ -6,10 +6,7 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import java.sql.Date;
 /**
  *
  * @author 
@@ -19,28 +16,26 @@ import java.util.List;
 public class Iniciativa implements Serializable {
     private int id;
     private int votos;
-    private String palabraClave;
+    private String palabraclave;
     private String nombre;
     private String estado;
     private String descripcion;
     private String area;
     private String usuario_i;
     private String correo_i;
-    private Date fecha_ini;
+    private Date fechar_ini;
     
-    public Iniciativa (int id,int votos,String palabraClave,String nombre, String estado, String area,String descripcion,String usuarioProponente,String correoProponente,Date fecha){
+    public Iniciativa (int id,int votos,String palabraclave,String nombre, String estado, String area,String descripcion,String usuarioProponente,String correoProponente,Date fecha){
         this.id=id;
         this.votos=votos;
-        this.palabraClave = palabraClave;
+        this.palabraclave = palabraclave;
         this.nombre= nombre;
         this.estado= estado;
         this.area=area;
         this.descripcion=descripcion;
         this.usuario_i=usuarioProponente;
         this.correo_i=correoProponente;
-        this.fecha_ini=fecha;
-        System.out.println("Esta entrando en CONSUTRCUTOR INICIATIVA");
-        
+        this.fechar_ini=fecha;
             
     }
 
@@ -59,11 +54,11 @@ public class Iniciativa implements Serializable {
         this.votos = voto;
     }
     public String getPalabraClave() {
-        return palabraClave;
+        return palabraclave;
     }
 
-    public void setPalabraClave(String palabraClave) {
-        this.palabraClave = palabraClave;
+    public void setPalabraClave(String palabraclave) {
+        this.palabraclave = palabraclave;
     }
     public String getNombreIniciativa() {
         return nombre;
@@ -113,16 +108,16 @@ public class Iniciativa implements Serializable {
     }
     
     public Date getFecha() {
-        return fecha_ini;
+        return fechar_ini;
     }
 
     public void setFecha(Date fecha) {
-        this.fecha_ini = fecha;
+        this.fechar_ini = fecha;
     }
 
     @Override
     public String toString() {
-        return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraClave=" + palabraClave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fecha_ini=" + fecha_ini + '}';
+        return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraclave=" + palabraclave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fecha_ini=" + fechar_ini + '}';
     }
     
     

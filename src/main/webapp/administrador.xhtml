@@ -56,7 +56,7 @@
 				Iniciativas.
 			</f:facet>
 
-			<p:column headerText="Id" filterBy="#{usuario.getUsuario()}">
+			<p:column headerText="Id" filterBy="#{usuario.consultarUsuario(String usuario))}">
 				<h:outputText value="#{iniciativa.getId()}"/>
 			</p:column>
 

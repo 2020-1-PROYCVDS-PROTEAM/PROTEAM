@@ -9,17 +9,17 @@
 	<resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='id' column='id'/>        
 		<result property='votos' column='votos'/>
-		<result property='palabraClave' column='palabraclave'/>
+		<result property='palabraclave' column='palabraclave'/>
         <result property='nombre' column='nombre'/>
 		<result property='estado' column='estado'/>
         <result property='descripcion' column='descripcion'/>
 		<result property='area' column='area'/>
 		<result property='usuario_i' column='usuario_i'/>
 		<result property='correo_i' column='correo_i'/>
-		<result property='fechar_ini' column='fechar_ini'/>
-		<association property="Usuario" javaType="Usuario" resultMap="edu.eci.cvds.samples.peristence.mybatis.mappers.UsuarioMapper.UsuarioResult"></association>      
+		<result property='fechar_ini' column='fechar_ini'/>   
 
     </resultMap>
+
 	    <select  parameterType="map" id="consultarIniciativa" resultMap='IniciativaResult'>
         SELECT
             *
@@ -33,7 +33,7 @@
 	</insert>
 	
 	<select id="consultarIniciativas" resultMap='IniciativaResult'>
-		SELECT * FROM iniciativas as in;
+		SELECT * FROM iniciativas;
 	</select>
 
 	<select id="palabraClaveIniciativas" resultMap='IniciativaResult'>
