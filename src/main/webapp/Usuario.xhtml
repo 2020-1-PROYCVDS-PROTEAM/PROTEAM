@@ -16,25 +16,25 @@ and open the template in the editor.
     <h:body>
         <p>CONSULTA DEL CLIENTE</p>
         <h:form>
-            <p:dataTable id="DT" var="usuario" value="#{AdminBean.consultarClientes()}">
+            <p:dataTable id="DT" var="usuario" value="#{AdministradorBean.consultarUsuarios()}">
                 <p:column headerText="Usuario">
-                    <h:outputText value="#{Usuario.usuario}" />
+                    <h:outputText value="#{usuario.usuario}" />
                 </p:column>
 
                 <p:column headerText="Correo">
-                    <h:outputText value="#{Usuario.correo}" />
+                    <h:outputText value="#{usuario.correo}" />
                 </p:column>
 
                 <p:column headerText="Nombre">
-                    <h:outputText value="#{Usuario.nombre}" />
+                    <h:outputText value="#{usuario.nombre}" />
                 </p:column>
 
                 <p:column headerText="Apellido">
-                    <h:outputText value="#{Usuario.apellido}" />
+                    <h:outputText value="#{usuario.apellido}" />
                 </p:column>
 
                 <p:column headerText="Rol">
-                    <h:outputText value="#{Usuario.rol}" />
+                    <h:outputText value="#{usuario.rol}" />
                 </p:column>
             </p:dataTable>
 
