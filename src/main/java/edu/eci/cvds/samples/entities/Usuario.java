@@ -14,24 +14,22 @@ import java.io.Serializable;
  */
 public class Usuario implements Serializable {
 	private String usuario;
-    private String contra;
+    private String passw;
     private String correo;
     private String nombre;
     private String apellido;
-    private Rol rol;
+    private String rol;
     
-    public Usuario(String usuario,String contra,String correo,String nombre,String apellido,Rol rol){
+    public Usuario(String usuario,String passw,String correo,String nombre,String apellido,String rol){
     	this.usuario=usuario;
-    	this.contra=contra;
+    	this.passw=passw;
         this.correo=correo;
         this.nombre=nombre;
         this.apellido=apellido;
         this.rol=rol;
-		System.out.println("CONSTRUCTOR Usuario");
     }
 
     public String getUsuario() {
-		System.out.println("Usuario.getUsuario()");
         return usuario;
     }
 
@@ -40,12 +38,12 @@ public class Usuario implements Serializable {
     }
 
 
-    public String getContra() {
-        return contra;
+    public String getpassw() {
+        return passw;
     }
 
-    public void setContra(String contra) {
-        this.contra = contra;
+    public void setpassw(String passw) {
+        this.passw = passw;
     }
 
 
@@ -72,14 +70,17 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public Rol getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
-    
+    @Override
+    public String toString() {
+        return "Usuario {nombre de usuario: " + usuario + ",Contraseña: " + passw+ " ,correo : " + correo + ",nombre: " + nombre + ", apellido: " + apellido + ",rol: " + rol + "}";
+    }
 
    
 }

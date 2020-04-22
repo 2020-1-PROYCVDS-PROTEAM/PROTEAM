@@ -22,7 +22,7 @@
 			apellido,
 			rol
         FROM USUARIOS 
-        WHERE usuario=#{us} and passw=#{pass};
+        WHERE usuario=#{us};
 	</select>
 	
 	<select parameterType="map" id='consultarUsuarios' resultMap='UsuarioResult'>

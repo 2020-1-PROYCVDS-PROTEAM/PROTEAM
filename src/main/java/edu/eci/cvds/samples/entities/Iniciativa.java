@@ -118,6 +118,6 @@ public class Iniciativa implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha_ini = fecha;
     }
-
+    
     
 }
