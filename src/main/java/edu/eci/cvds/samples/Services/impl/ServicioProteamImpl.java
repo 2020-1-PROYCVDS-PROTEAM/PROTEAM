@@ -70,6 +70,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
 	public List<Iniciativa> consultarIniciativas() throws ServicesException{
     	try{
+            System.out.println("ServicioProTeamIMPL INICIATIVA");
             return daoIniciativa.consultarIniciativas();
         }catch(PersistenceException ex){
             throw new ServicesException("No hay iniciativas",ex);
@@ -77,9 +78,9 @@ public class ServicioProteamImpl implements ServicioProteam {
 	}
     
     @Override
-	public void insertIniciativa(int id,int votos,String nombre,String estado, String descripcion,String area,String usuario_i, String correo_i, Date fechar_ini) throws ServicesException{
+	public void insertIniciativa(int id,int votos,String palabraClave,String nombre,String estado, String descripcion,String area,String usuario_i, String correo_i, Date fechar_ini) throws ServicesException{
     	try{
-            daoIniciativa.insertIniciativa(id, votos, nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
+            daoIniciativa.insertIniciativa(id, votos,palabraClave ,nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible agregar la nueva iniciativa",ex);
         }

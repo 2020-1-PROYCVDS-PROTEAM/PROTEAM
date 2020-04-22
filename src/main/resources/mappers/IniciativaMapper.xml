@@ -6,10 +6,10 @@
 <mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.IniciativaMapper">
 
 
-	    <resultMap type='Iniciativa' id='IniciativaResult'>
+	<resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='id' column='id'/>        
 		<result property='votos' column='votos'/>
-		<result property='palabraclave' column='palabraclave'/>
+		<result property='palabraClave' column='palabraclave'/>
         <result property='nombre' column='nombre'/>
 		<result property='estado' column='estado'/>
         <result property='descripcion' column='descripcion'/>
@@ -17,7 +17,7 @@
 		<result property='usuario_i' column='usuario_i'/>
 		<result property='correo_i' column='correo_i'/>
 		<result property='fechar_ini' column='fechar_ini'/>
-		<association property="usuario" javaType="Usuario" resultMap="edu.eci.cvds.samples.peristence.mybatis.mappers.UsuarioMapper.UsuarioResult"></association>      
+		<association property="Usuario" javaType="Usuario" resultMap="edu.eci.cvds.samples.peristence.mybatis.mappers.UsuarioMapper.UsuarioResult"></association>      
 
     </resultMap>
 	    <select  parameterType="map" id="consultarIniciativa" resultMap='IniciativaResult'>
@@ -29,14 +29,11 @@
     
 
     <insert id="insertarIniciativa" >
-		INSERT INTO iniciativas VALUES (#{id},#{votos},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
+		INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
 	</insert>
 	
 	<select id="consultarIniciativas" resultMap='IniciativaResult'>
-		SELECT 
-			* 
-		FROM
-			iniciativas;
+		SELECT * FROM iniciativas as in;
 	</select>
 
 	<select id="palabraClaveIniciativas" resultMap='IniciativaResult'>

@@ -18,7 +18,10 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	@Override
 	public Usuario consultarUsuario(String usuario) throws PersistenceException {
 		try{
-            return usuarioMapper.consultarUsuario(usuario);
+                    System.out.println("A VER CUANDO CONSULTA AL USUARIO EN PERSISTENCE MYBATISDAOUSUARIO");
+                    return usuarioMapper.consultarUsuario(usuario);
+
+            //return usuarioMapper.consultarUsuario(usuario);
         }catch(Exception e){
             throw new PersistenceException("Error al consultar el usuario:"+e.getLocalizedMessage(), e);   
         }

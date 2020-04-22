@@ -19,7 +19,7 @@ import java.util.List;
 public class Iniciativa implements Serializable {
     private int id;
     private int votos;
-    private String palabraclave;
+    private String palabraClave;
     private String nombre;
     private String estado;
     private String descripcion;
@@ -31,7 +31,7 @@ public class Iniciativa implements Serializable {
     public Iniciativa (int id,int votos,String palabraClave,String nombre, String estado, String area,String descripcion,String usuarioProponente,String correoProponente,Date fecha){
         this.id=id;
         this.votos=votos;
-        this.palabraclave = palabraClave;
+        this.palabraClave = palabraClave;
         this.nombre= nombre;
         this.estado= estado;
         this.area=area;
@@ -39,6 +39,7 @@ public class Iniciativa implements Serializable {
         this.usuario_i=usuarioProponente;
         this.correo_i=correoProponente;
         this.fecha_ini=fecha;
+        System.out.println("Esta entrando en CONSUTRCUTOR INICIATIVA");
         
             
     }
@@ -58,11 +59,11 @@ public class Iniciativa implements Serializable {
         this.votos = voto;
     }
     public String getPalabraClave() {
-        return palabraclave;
+        return palabraClave;
     }
 
     public void setPalabraClave(String palabraClave) {
-        this.palabraclave = palabraClave;
+        this.palabraClave = palabraClave;
     }
     public String getNombreIniciativa() {
         return nombre;
@@ -117,6 +118,11 @@ public class Iniciativa implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha_ini = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraClave=" + palabraClave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fecha_ini=" + fecha_ini + '}';
     }
     
     

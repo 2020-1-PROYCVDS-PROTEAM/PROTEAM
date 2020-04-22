@@ -36,9 +36,11 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
     @Override
     public List<Iniciativa> consultarIniciativas() throws PersistenceException {
          try{
-			System.out.println("ENTRA EN CONSULTAR INICITAVITA");
+            System.out.println("ENTRA EN CONSULTAR INICITAVITA EN DAOmYBATISINICIATIVA");
+            System.out.println("iniciativaMapper: "+iniciativaMapper.consultarIniciativas() );
             return iniciativaMapper.consultarIniciativas();
         }catch(Exception e){
+             System.out.println("CAPTURADO EN iniciativaDAOMyBatisCatch");
             throw new PersistenceException("Error al consultar las iniciativas:"+e.getLocalizedMessage(), e);   
         }
       
@@ -54,10 +56,10 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	}
 
 	@Override
-	public void insertIniciativa(int id, int votos, String nombre, String estado, String descripcion, String area,
+	public void insertIniciativa(int id, int votos,String palabraClave, String nombre, String estado, String descripcion, String area,
 			String usuario_i, String correo_i, Date fechar_ini) throws PersistenceException {
 		 try{
-	           iniciativaMapper.insertIniciativa(id, votos, nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
+	           iniciativaMapper.insertIniciativa(id, votos,palabraClave, nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
 	        }catch(Exception e){
 	            throw new PersistenceException("Error al insertar  la iniciativa:"+e.getLocalizedMessage(), e);   
 	        }	
