@@ -20,6 +20,11 @@
         FROM USUARIOS 
         WHERE usuario=#{us};
 	</select>
+	
+	<insert id='registrarUsuario' parameterType="map">
+		INSERT INTO usuarios VALUES (#{usuario},#{passw},#{correo},#{nombre},#{apellido},#{rol});
+    </insert>
+	
 	<!--usuario,
 			correo,
 			nombre,

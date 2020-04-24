@@ -9,7 +9,7 @@
 	<resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='id' column='id'/>        
 		<result property='votos' column='votos'/>
-		<result property='palabraclave' column='palabraclave'/>
+		<result property='palabraClave' column='palabraclave'/>
         <result property='nombre' column='nombre'/>
 		<result property='estado' column='estado'/>
         <result property='descripcion' column='descripcion'/>
@@ -28,9 +28,9 @@
     </select>
     
 
-    <insert id="insertarIniciativa" >
-		INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
-	</insert>
+    <insert id='insertarIniciativa' parameterType="map">
+	INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
+    </insert>
 	
 	<select id="consultarIniciativas" resultMap='IniciativaResult'>
 		SELECT * FROM iniciativas;

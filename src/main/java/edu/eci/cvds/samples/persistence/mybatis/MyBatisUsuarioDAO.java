@@ -36,5 +36,17 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
             throw new PersistenceException("Error al consultar los usuarios:"+e.getLocalizedMessage(), e);   
         }
 	}
+	
+	@Override
+	public void registrarUsuario(String usuario,String passwd,String nombre,String apellido,String correo,String rol) throws PersistenceException{
+		try{
+			System.out.println("registrarUsuarioMyBatisUsuarioDAO");
+			usuarioMapper.registrarUsuario(usuario,passwd,correo,nombre,apellido,rol);
+		}
+	    catch(Exception e){
+            System.out.println("ATRAPADO EN MyBatisUsuarioRegistro");
+	        throw new PersistenceException("Error al registrar el usuario: "+e.getLocalizedMessage(), e);   
+	    }	
+	}
 
 }

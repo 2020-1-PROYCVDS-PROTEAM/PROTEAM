@@ -16,7 +16,7 @@ import java.sql.Date;
 public class Iniciativa implements Serializable {
     private int id;
     private int votos;
-    private String palabraclave;
+    private String palabraClave;
     private String nombre;
     private String estado;
     private String descripcion;
@@ -28,7 +28,7 @@ public class Iniciativa implements Serializable {
     public Iniciativa (int id,int votos,String palabraclave,String nombre, String estado, String area,String descripcion,String usuarioProponente,String correoProponente,Date fecha){
         this.id=id;
         this.votos=votos;
-        this.palabraclave = palabraclave;
+        this.palabraClave = palabraclave;
         this.nombre= nombre;
         this.estado= estado;
         this.area=area;
@@ -54,11 +54,11 @@ public class Iniciativa implements Serializable {
         this.votos = voto;
     }
     public String getPalabraClave() {
-        return palabraclave;
+        return palabraClave;
     }
 
     public void setPalabraClave(String palabraclave) {
-        this.palabraclave = palabraclave;
+        this.palabraClave = palabraclave;
     }
     public String getNombreIniciativa() {
         return nombre;
@@ -117,7 +117,7 @@ public class Iniciativa implements Serializable {
 
     @Override
     public String toString() {
-        return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraclave=" + palabraclave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fecha_ini=" + fechar_ini + '}';
+        return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraclave=" + palabraClave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fecha_ini=" + fechar_ini + '}';
     }
     
     

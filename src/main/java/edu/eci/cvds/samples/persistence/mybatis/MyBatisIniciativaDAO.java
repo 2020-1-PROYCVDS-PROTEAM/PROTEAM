@@ -57,8 +57,10 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	public void insertIniciativa(int id, int votos,String palabraClave, String nombre, String estado, String descripcion, String area,
 			String usuario_i, String correo_i, Date fechar_ini) throws PersistenceException {
 		 try{
-	           iniciativaMapper.insertIniciativa(id, votos,palabraClave, nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
+                System.out.println("Se cuentra en mybatisDaoInsertarIniciativa");
+                iniciativaMapper.insertarIniciativa(id, votos,palabraClave, nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
 	        }catch(Exception e){
+                    System.out.println("ATRAPADO EN MYBATISDAOINICIATIVA");
 	            throw new PersistenceException("Error al insertar  la iniciativa:"+e.getLocalizedMessage(), e);   
 	        }	
 		

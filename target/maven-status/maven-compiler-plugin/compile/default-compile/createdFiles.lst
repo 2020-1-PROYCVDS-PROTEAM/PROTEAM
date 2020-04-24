@@ -14,6 +14,7 @@ edu\eci\cvds\samples\entities\Iniciativa.class
 edu\eci\cvds\samples\Services\client\Main.class
 edu\eci\cvds\samples\guice\GuiceContextListener.class
 edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.class
+edu\eci\cvds\samples\beans\LogueoBean.class
 edu\eci\cvds\samples\persistence\UsuarioDAO.class
 edu\eci\cvds\samples\Services\ServicioProteam.class
 edu\eci\cvds\samples\beans\BasePageBean.class

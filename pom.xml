@@ -23,6 +23,7 @@
   
 
 
+
 	
 	
         <dependency>
@@ -43,7 +44,7 @@
             <version>4.12</version>
         </dependency>
 		
-		 <dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>1.4.2</version>
