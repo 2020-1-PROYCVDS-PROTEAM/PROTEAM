@@ -16,10 +16,10 @@ public class JDBCExample {
     
     public static void main(String args[]){
         try {
-            String url="jdbc:postgresql://ec2-34-202-7-83.compute-1.amazonaws.com:5432/dbukmeid79k7bb?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+            String url="jdbc:postgresql://ec2-18-206-84-251.compute-1.amazonaws.com:5432/dapggva8t6djve?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
             String driver="org.postgresql.Driver";
-            String user="adhwljpfstbbdr";
-            String pwd="462b417cb85fe7eaf4463b346ef173662a73c0ee98a5c3cc9b98bc3108cdf5c5";
+            String user="kkyltodngjngwo";
+            String pwd="98d66fe639c8c890731d7866626683e44e58d5c35d2144120f8ebb59998d228f";
                        
             Class.forName(driver);
             Connection con=DriverManager.getConnection(url,user,pwd);
