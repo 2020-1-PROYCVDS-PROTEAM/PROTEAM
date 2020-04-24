@@ -1,6 +1,8 @@
 package edu.eci.cvds.samples.beans;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+
 //import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -38,6 +40,8 @@ public class LogueoBean implements Serializable{
         
         
         public void doLogin() {
+        System.out.println(getName());
+        System.out.println(getPass());
         Subject currentUser  = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getName(), getPass());
         //UsernamePasswordToken token = new UsernamePasswordToken("lonestarr", "vespa");
@@ -46,7 +50,7 @@ public class LogueoBean implements Serializable{
             System.out.println("INTENTA HACER EL LOGEO");
             currentUser.login(token);
             currentUser.getSession().setAttribute("correo",name);
-            if (currentUser.hasRole("admin")) {
+            if (currentUser.hasRole("Administrador")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/administrador.xhtml");
             }else{
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Usuario.xhtml");
@@ -106,6 +110,16 @@ public class LogueoBean implements Serializable{
     public String action(){
         logueado=true;
         return "Usuario.xhtml?faces-redirect=true";
+    }
+    
+    public void cerrarSesion() {
+
+        SecurityUtils.getSubject().logout();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
