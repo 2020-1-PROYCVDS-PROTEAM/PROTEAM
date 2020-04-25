@@ -5,7 +5,6 @@ edu\eci\cvds\samples\entities\Rol.class
 edu\eci\cvds\samples\entities\Usuario.class
 edu\eci\cvds\samples\persistence\PersistenceException.class
 edu\eci\cvds\samples\guice\GuiceContextListener$1.class
-edu\eci\cvds\samples\beans\AdminBean.class
 edu\eci\cvds\samples\persistence\JDBCExample.class
 edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.class
 edu\eci\cvds\samples\beans\NavigationController.class

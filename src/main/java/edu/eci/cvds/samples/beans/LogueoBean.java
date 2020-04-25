@@ -44,14 +44,16 @@ public class LogueoBean implements Serializable{
         System.out.println(getPass());
         Subject currentUser  = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getName(), getPass());
-        //UsernamePasswordToken token = new UsernamePasswordToken("lonestarr", "vespa");
-
         try {
             System.out.println("INTENTA HACER EL LOGEO");
             currentUser.login(token);
             currentUser.getSession().setAttribute("correo",name);
             if (currentUser.hasRole("Administrador")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/administrador.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/administrador.xhtml");	
+			}else if(currentUser.hasRole("Proponente")){
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/iniciativas.xhtml");
+			}else if(currentUser.hasRole("PMO")){
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/iniciativas.xhtml");	
             }else{
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/Usuario.xhtml");
             }
