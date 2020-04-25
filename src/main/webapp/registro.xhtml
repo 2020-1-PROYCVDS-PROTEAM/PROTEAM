@@ -45,6 +45,13 @@
 					</h:panelGrid>
 				</p:panel>
 				
+				<p:selectOneMenu id="rol" value="#{usuario.getRol()}" style="width:125px">
+					<f:selectItem itemLabel="Publico" itemValue="Publico" />
+					<f:selectItem itemLabel="Proponente" itemValue="Proponente" />
+					<f:selectItem itemLabel="PMO" itemValue="PMO" />
+					<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+				</p:selectOneMenu>
+				
 					<p:commandButton update="registro" class="Button" actionListener="#{AdministradorBean.registrarUsuario(usuario.value,password.value,passwordC.value,nombre.value,apellido.value,correo.value)}" value="Registrar."/>
 				
 			</p:tab>

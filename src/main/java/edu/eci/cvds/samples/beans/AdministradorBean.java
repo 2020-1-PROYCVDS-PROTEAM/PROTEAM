@@ -23,6 +23,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	
 	private boolean skip;
 	
+	
 	@Inject
 	private ServicioProteam servicioPT;
 	private Usuario usuario;
@@ -58,7 +59,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
             if(!passwd.equals(passwdC)){
 				System.out.println("son iguales las claves, validar que lo sean");
 			}
-            servicioPT.registrarUsuario(usuario,passwd,nombre,apellido,correo,"USUARIO");
+            servicioPT.registrarUsuario(usuario,passwd,nombre,apellido,correo,"Publico");
 			System.out.println("Registro de usuario ok, pero falta redireccionar");
 			FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
         } catch (ServicesException e) {
@@ -116,6 +117,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	}
 	
 	public Usuario getUsuario(){
+		System.out.println("AdministradorBean Usuario solicitado: "+usuario);
 		return usuario;
 	}
 	
