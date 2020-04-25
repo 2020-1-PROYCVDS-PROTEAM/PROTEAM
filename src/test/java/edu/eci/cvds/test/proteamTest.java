@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -13,6 +15,7 @@ import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.persistence.PersistenceException;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -51,7 +54,7 @@ public class proteamTest {
     public void lanzaExcepcionNoExisteUsuario() {
     	try {
     		Usuario u = sp.consultarUsuario("noConocido");
-    		assertTrue(false);
+    		fail();
     	}catch(ServicesException ex) {
     		assertTrue(true);
     	}
@@ -67,5 +70,62 @@ public class proteamTest {
     }
 	
 	
- 
+	@Test
+    public void deberiaRegistrarUsuario() {
+		try {
+			sp.registrarUsuario("JoseTest","GM123","Jose","Gutierrez","test@gmail.com","USUARIO");
+			sp.consultarUsuario("JoseTest");
+			
+		}catch(ServicesException ex) {
+			fail();
+		}
+    }
+	
+	
+	@Test
+    public void realizaConsultaDeIniciativas() {
+		try {
+			List<Iniciativa> i = sp.consultarIniciativas();
+		}catch(ServicesException ex) {
+			fail();
+		}
+    }
+	
+	@Test
+	public void consultarIniciativaPorIdentificador() {
+		try {
+			Iniciativa i = sp.consultarIniciativa(1);
+		}catch(ServicesException ex) {
+			fail();
+		}
+	}
+	@Test
+	public void deberiaDarExcepcionNoExisteIniciativa() {
+		try {
+			Iniciativa i = sp.consultarIniciativa(2130184);
+			fail();
+		}catch(ServicesException ex) {
+			
+		}
+	}
+	
+	@Test
+	public void consultaIniciativasPorPalabraClave() {
+		try {
+			Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
+			
+		}catch(ServicesException ex) {
+			fail();
+		}
+	}
+	
+	@Test
+	public void deberíaLanzarExcepcionPalabraClave() {
+		try {
+			Iniciativa i = sp.palabraClaveIniciativa("Esta palabra no existe");
+			fail();
+		}catch(ServicesException ex) {
+			
+		}
+	}
 }

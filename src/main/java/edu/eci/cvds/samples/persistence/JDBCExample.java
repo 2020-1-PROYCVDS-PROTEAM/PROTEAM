@@ -25,7 +25,7 @@ public class JDBCExample {
             Connection con=DriverManager.getConnection(url,user,pwd);
             con.setAutoCommit(false);
                  
-            
+           
             //System.out.println("Valor total pedido 2:"+valorTotalPedido(con, 2));
 			System.out.println("Esta entrando muy bien!!!!!!!!");
             
