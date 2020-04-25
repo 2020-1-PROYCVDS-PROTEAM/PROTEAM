@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
-	
-	
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+
 	
 	
 
@@ -16,20 +17,20 @@
 	 
 	     <p:growl id="growl" sticky="true" showDetail="true"/>
  
-		<p:wizard flowListener="#{userWizard.onFlowProcess}">
+		<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
 			<p:tab id="personal" title="Registro">
 				<p:panel header="Información personal">
 					<p:messages />
-					<h:panelGrid columns="2" columnClasses="String, value">
+					<h:panelGrid columns="2" columnClasses="label, value">
 					
 						<h:outputText value="Nombre usuario: *" />
 						<p:inputText id="usuario" type="String" binding="#{usuario}" required="true"/>
 	 
-						<h:outputText value="Contraseña: *" />
-						<p:inputText id="password" type="String" binding="#{password}" required="true"/>						
+						<h:outputText value="password: *" />
+						<p:inputText id="password" type="password" binding="#{password}" required="true"/>						
 						
-						<h:outputText value="Confirmar contraseña: *" />
-						<p:inputText id="passwordC" type="String" binding="#{passwordC}" required="true"/>
+						<h:outputText value="Confirmar password: *" />
+						<p:inputText id="passwordC" type="password" binding="#{passwordC}" required="true"/>
 	 
 						<h:outputText value="Nombre: *" />
 						<p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
@@ -43,9 +44,9 @@
 
 					</h:panelGrid>
 				</p:panel>
-				<div class="divButton">
+				
 					<p:commandButton update="registro" class="Button" actionListener="#{AdministradorBean.registrarUsuario(usuario.value,password.value,passwordC.value,nombre.value,apellido.value,correo.value)}" value="Registrar."/>
-				</div> 
+				
 			</p:tab>
 
 		</p:wizard>

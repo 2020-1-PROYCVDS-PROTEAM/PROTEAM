@@ -11,13 +11,17 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.Services.*;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import org.primefaces.event.FlowEvent;
 //import java.util.Date;
 
 
 @ManagedBean(name="AdministradorBean")
 @ApplicationScoped
-public class AdministradorBean extends BasePageBean {
+public class AdministradorBean extends BasePageBean implements Serializable{
+	
+	private boolean skip;
 	
 	@Inject
 	private ServicioProteam servicioPT;
@@ -92,6 +96,24 @@ public class AdministradorBean extends BasePageBean {
         System.out.println("usuarios= "+usuarios);
         return usuarios;
     }
+	
+	public String onFlowProcess(FlowEvent event) {
+        if(skip) {
+            skip = false;   //reset in case user goes back
+            return "confirm";
+        }
+        else {
+            return event.getNewStep();
+        }
+    }
+	
+	public boolean getSkip(){
+		return skip;
+	}
+	
+	public void setSkip(boolean skip){
+		this.skip=skip;
+	}
 	
 	public Usuario getUsuario(){
 		return usuario;
