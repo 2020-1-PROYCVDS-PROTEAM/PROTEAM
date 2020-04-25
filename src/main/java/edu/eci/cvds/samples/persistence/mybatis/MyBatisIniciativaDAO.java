@@ -28,7 +28,11 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
     @Override
     public Iniciativa consultarIniciativa(int id) throws PersistenceException  {
          try{
-            return iniciativaMapper.consultarIniciativa(id);
+        	 Iniciativa i = iniciativaMapper.consultarIniciativa(id);
+            if(i == null) {
+            	throw new PersistenceException("No existe el Id iniciativa");
+            }
+            return i;
         }catch(Exception e){
             throw new PersistenceException("Error al consultar la iniciativa:"+e.getLocalizedMessage(), e);   
         }
@@ -47,7 +51,11 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	@Override
 	public Iniciativa palabraClaveIniciativa(String palabraclave) throws PersistenceException {
          try{
-            return  iniciativaMapper.palabraClaveIniciativa(palabraclave);
+        	Iniciativa i = iniciativaMapper.palabraClaveIniciativa(palabraclave);
+        	if(i == null) {
+        		throw new PersistenceException("La palabra clave no esta en la base de datos");
+        	}
+            return  i;
         }catch(Exception e){
             throw new PersistenceException("Error al consultar la iniciativa:"+e.getLocalizedMessage(), e);   
         }	

@@ -19,12 +19,21 @@
 		<result property='fechar_ini' column='fechar_ini'/>   
 
     </resultMap>
+	
+	
+		<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
+		SELECT
+			* 
+		FROM iniciativas 
+		WHERE palabraclave=#{word};
+	</select>
 
-	    <select  parameterType="map" id="consultarIniciativa" resultMap='IniciativaResult'>
+
+	    <select  parameterType="map" id='consultarIniciativa' resultMap='IniciativaResult'>
         SELECT
             *
-        FROM USUARIOS 
-        WHERE id=#{id};   
+        FROM iniciativas 
+        WHERE id=#{identificador};   
     </select>
     
 
@@ -36,14 +45,7 @@
 		SELECT * FROM iniciativas;
 	</select>
 
-	<select id="palabraClaveIniciativas" resultMap='IniciativaResult'>
-		SELECT
-			* 
-		FROM 
-			iniciativas 
-		WHERE palabraclave ='#{passw}'
-	</select>
-
+	
 	<update id="cambiarEstado" >
 		UPDATE iniciativas 
 		SET estado=#{estado}
