@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.List;
 //import java.text.SimpleDateFormat;
 import java.text.ParseException;
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -26,8 +28,6 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	@Inject
 	private ServicioProteam servicioPT;
 	private Usuario usuario;
-	
-
         
     public Usuario consultarUsuario(String usuario){
         try{
