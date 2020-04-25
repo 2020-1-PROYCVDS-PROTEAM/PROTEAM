@@ -22,7 +22,6 @@ import org.primefaces.event.FlowEvent;
 public class AdministradorBean extends BasePageBean implements Serializable{
 	
 	private boolean skip;
-	private 
 	
 	@Inject
 	private ServicioProteam servicioPT;
