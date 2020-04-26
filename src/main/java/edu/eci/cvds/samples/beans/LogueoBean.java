@@ -116,17 +116,13 @@ public class LogueoBean implements Serializable{
     }
     
     public void cerrarSesion() {
-    	int answ = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere cerrar la sesion?");
-    	if(answ == 0) {
-    		SecurityUtils.getSubject().logout();
-            try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    		
-    	}
-        
+
+        SecurityUtils.getSubject().logout();
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void redirect(String dr) {
