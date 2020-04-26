@@ -48,5 +48,19 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	        throw new PersistenceException("Error al registrar el usuario: "+e.getLocalizedMessage(), e);   
 	    }	
 	}
+	
+		@Override
+	public void cambiarRol(String usuario,String rol) throws PersistenceException{
+		try{
+			System.out.println("ModificarRolUsuarioMyBatisDAo");
+			usuarioMapper.cambiarRol(usuario,rol);
+			System.out.println("Modifico bien el rol");
+		}
+	    catch(Exception e){
+            System.out.println("ATRAPADO EN MyBatisModificarRol");
+	        throw new PersistenceException("Error al modificar el rol del usuario: "+e.getLocalizedMessage(), e);   
+	    }	
+	}
+	
 
 }

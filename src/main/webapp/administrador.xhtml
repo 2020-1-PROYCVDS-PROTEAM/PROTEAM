@@ -1,26 +1,71 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<?xml version="1.0" encoding="UTF-8"?>
+        <!--
+        To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates
+        and open the template in the editor.
+        -->
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
  <h:head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-    <link href="login.css" rel="stylesheet" type="text/css"/>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>-->
+    --<link href="administrador.css" rel="stylesheet" type="text/css"/>
     <title>Administrador</title>
  </h:head>
  <h:body>
+ <style type="text/css">
+    .ui-row-editor .ui-row-editor-pencil {
+        margin-left:8px;
+    }
+</style>
+ 	<h:form>     
+    <p:growl id="messages" showDetail="true" />
+ 
+    <p:toolbar>
+        <f:facet name="left">
+ 
+			<p:menuButton value="Iniciativas">
+                <p:menuitem value="Consultar iniciativa" action="/iniciativas.xhtml"/>
+                <p:menuitem value="Registrar iniciativa" action="/registrar_iniciativa.xhtml"/>
+            </p:menuButton>
+			
+
+        </f:facet>
+ 
+        <f:facet name="right">
+			<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
+            <p:menuButton value="Options">
+                <p:menuitem value="Registro" action="/registro.xhtml" />
+                <p:menuitem value="Homepage" action="/login.xhtml" />
+            </p:menuButton>
+        </f:facet>
+ 
+    </p:toolbar>
+</h:form>
+	 
+ 
 	<h:form id="consultaGeneral">
+	<p:growl id="msgs" showDetail="true"/>
 	
-	    <p:messages>
-			<p:autoUpdate />
-		</p:messages>
+	
+	
  
 	<p:dataTable var="usuario" value="#{AdministradorBean.consultarUsuarios()}" class="tabla"
-				paginator="true" paginatorPosition = "top" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="10" selectionMode="single" id="correo" selection="#{AdministradorBean.getUsuario()}"
-				rowKey="#{usuario.correo}">
+				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rows="10" selectionMode="single" id="usuario" 
+				rowKey="#{usuario.usuario}" editable="true"  >
 			
-			<f:facet name="header">
+			<f:facet name="header" style="width:50%">
 				Usuarios.
 			</f:facet>
+			
+			
+			
+			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarRol(usuario.getUsuario(),area.value)}" oncomplete="updateTable()" update="result"/>
+
+
 
 			<p:column headerText="Usuario" filterBy="#{usuario.getUsuario()}">
 				<h:outputText value="#{usuario.getUsuario()}"/>
@@ -39,126 +84,27 @@
 				<h:outputText value="#{usuario.getApellido()}"/>
 			</p:column>
 
-			
-			<p:column headerText="Rol">
-			<p:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-				<p:selectOneMenu id="roles" value="#{usuario.getRol()}" style="width:125px">
-					<f:selectItem itemLabel="Proponente" itemValue="Proponente" />
-					<f:selectItem itemLabel="Publico" itemValue="Publico" />
-					<f:selectItem itemLabel="PMO" itemValue="PMO" />
-					<f:selectItem itemLabel="Administrador" itemValue="Administrador" />
-					<p:ajax event="itemSelect" update="roles"/>
-				</p:selectOneMenu>
-			</p:panelGrid>
-			
-			
- 
+        <p:column headerText="Rol">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText id="result"  var="x" value="#{usuario.rol}" /></f:facet>
+                <f:facet name="input" >
+                    <h:selectOneMenu binding="#{area}" id="area" value="xo" style="width:100%">
+                        <f:selectItems id ="xo" value="#{AdministradorBean.rolez}" var="role" itemLabel="#{role}"  itemValue="#{role}" />
+						
+                    </h:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>
 			</p:column>
 			
-			
+			<p:column style="width:35px">
+				<p:rowEditor />
+			</p:column>
 			
 		</p:dataTable>	
-		
-		
-		
-
-  
             
 	</h:form>
-        
-     <h:form id="ConsultaIniciativa">
-         
-         <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" class="tabla"
-				paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="5" selectionMode="single" id="id" 
-				rowKey="#{iniciativa.id}">
-			
-			<f:facet name="header">
-				Iniciativas.
-			</f:facet>
-
-			<p:column headerText="Id">
-				<h:outputText value="#{iniciativa.getId()}"/>
-			</p:column>
-
-			<p:column headerText="Votos">
-				<h:outputText value="#{iniciativa.getVotos()}"/>
-			</p:column>
-             
-			<p:column headerText="PalabraClave">
-				<h:outputText value="#{iniciativa.getPalabraClave()}"/>
-			</p:column>
-						
-			<p:column headerText="Nombre">
-				<h:outputText value="#{iniciativa.getNombreIniciativa()}"/>
-			</p:column>
-			
-			<p:column headerText="Estado">
-				<h:outputText value="#{iniciativa.getEstado()}"/>
-			</p:column>
-			
-			<p:column headerText="Descripcion">
-				<h:outputText value="#{iniciativa.getDescripcion()}"/>
-			</p:column>
-             
-             		<p:column headerText="Area">
-				<h:outputText value="#{iniciativa.getArea()}"/>
-			</p:column>
-             
-             		<p:column headerText="Usuario">
-				<h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
-			</p:column>
-             
-                         <p:column headerText="CorreoU">
-				<h:outputText value="#{iniciativa.getcorreoProponente()}"/>
-			</p:column> 
-                        
-                         <p:column headerText="Fecha">
-				<h:outputText value="#{iniciativa.getFecha()}"/>
-			</p:column>                        
-             
-		</p:dataTable>	
-         
-         <!--
-            <h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
-            <p:outputLabel for="id" value="Id: " />
-            <p:inputText id="id" type="int" binding="#{id}" />
-            
-            <p:outputLabel for="palabraClave" value="palabraClave: "/>
-            <p:inputText id="palabraClave" type="String" binding="#{palabraClave}"/>
-
-            <p:outputLabel for="nombre" value="Nombre: "/>
-            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
-
-            <p:outputLabel for="estado" value="Estado: " />
-            <p:inputText id="estado" type="String" binding="#{estado}"/>
-
-            <p:outputLabel for="descripcion" value="Descripcion: " />
-            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
-
-            <p:outputLabel for="area" value="Area: " />
-            <p:inputText id="area" type="String" binding="#{area}"/>
-            
-            <p:outputLabel for="usuario_i" value="Usuario: " />
-            <p:inputText id="usuario_i" type="String" binding="#{usuario_i}"/>
-			
-            <p:outputLabel for="correou" value="Correo: " />
-            <p:inputText id="correou" type="String" binding="#{correou}"/>
-
-            <p:outputLabel for="fecha_ini" value="Fecha inicio: " />
-            <p:inputText id="fecha_ini" type="String" binding="#{fecha_ini}"/>
-            
-        </h:panelGrid>
-           --> 
-                 
-	<div class="divButton">
-            <p:commandButton update="ConsultaIniciativa" class="Button" actionListener="#{AdministradorBean.registrarIniciativa(id.value,0,palabraClave.value,nombre.value,estado.value,descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
-        </div> 
-     </h:form>
-     
-     
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		
+ 
+	
 </h:body>
 </html>

@@ -45,13 +45,9 @@
 		SELECT * FROM iniciativas;
 	</select>
 
-	
-	<update id="cambiarEstado" >
-		UPDATE iniciativas 
-		SET estado=#{estado}
-		WHERE id=#{id};
+	<update id='cambiarEstado' parameterType="map">
+		UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};
 	</update>
-    
 
   	
 </mapper>

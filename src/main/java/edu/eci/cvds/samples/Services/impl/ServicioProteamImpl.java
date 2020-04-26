@@ -126,6 +126,15 @@ public class ServicioProteamImpl implements ServicioProteam {
         }
 	}
 	
-    
+    @Override
+	public void cambiarRol(String usuario,String rol) throws ServicesException{
+    	try{
+			System.out.println("ENTRA EN SERVICIOSPT CAMBIARROL");
+            daoUsuario.cambiarRol(usuario, rol);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible modificar el rol",ex);
+        }
+	}
+
 
 }

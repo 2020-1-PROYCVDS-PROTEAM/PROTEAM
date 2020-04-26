@@ -25,11 +25,9 @@
 		INSERT INTO usuarios VALUES (#{usuario},#{passw},#{correo},#{nombre},#{apellido},#{rol});
     </insert>
 	
-	<!--usuario,
-			correo,
-			nombre,
-			apellido,
-			rol-->
+	<update id='cambiarRol' parameterType="map">
+		UPDATE usuarios SET rol=#{rol} WHERE usuario=#{usuario};
+	</update>
 	
 	<select parameterType="map" id='consultarUsuarios' resultMap='UsuarioResult'>
 		SELECT * FROM USUARIOS as us; 

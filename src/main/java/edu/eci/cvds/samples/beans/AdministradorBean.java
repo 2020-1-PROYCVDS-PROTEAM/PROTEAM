@@ -5,6 +5,10 @@ import java.util.List;
 //import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
+
+import java.sql.Date;
+import java.util.List;
+import java.text.ParseException;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
@@ -14,20 +18,52 @@ import javax.inject.Inject;
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.Services.*;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.text.SimpleDateFormat;
 import org.primefaces.event.FlowEvent;
-//import java.util.Date;
+import org.primefaces.event.RowEditEvent;
 
 
 @ManagedBean(name="AdministradorBean")
 @ApplicationScoped
 public class AdministradorBean extends BasePageBean implements Serializable{
 	
+	
 	private boolean skip;
+	private final static String[] rolez;
+	private final static String[] ideas;
+	static{rolez= new String[4]; 
+	rolez[0]="Administrador";
+	rolez[1]="PMO";
+	rolez[2]="Proponente";
+	rolez[3]="Publico";
+	}
+	static{
+		ideas=new String[4];
+		ideas[0]="En espera de revisión";
+		ideas[1]="En revisión";
+		ideas[2]="Proyecto";
+		ideas[3]="Solucionado";
+	}
+	
+	
 	
 	@Inject
 	private ServicioProteam servicioPT;
 	private Usuario usuario;
+	
+	
+		
+	public List<String> getRolez(){
+		System.out.println("ADMINISTRADOR GETROLEZ");
+		return Arrays.asList(rolez);
+	}
+	
+	public List<String> getIdeas(){
+		System.out.println("Administrador getIdeas");
+		return Arrays.asList(ideas);
+	}
+	
         
     public Usuario consultarUsuario(String usuario){
         try{
@@ -93,9 +129,31 @@ public class AdministradorBean extends BasePageBean implements Serializable{
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean");
         }
-        System.out.println("usuarios= "+usuarios);
+        //System.out.println("usuarios= "+usuarios);
         return usuarios;
     }
+	
+		public void cambiarRol(String usuario,String rol){ //Mirar si toca usar los enum de ROL 
+		try{
+			System.out.println("ENTRA EN MODIFICAR ROL|| usuario: "+usuario+" rol: "+rol);
+			System.out.println("Usuario val: "+this.usuario);
+			servicioPT.cambiarRol(usuario,rol);
+		}
+		catch(ServicesException e){
+			System.out.println("Excepcion MODIFICANDO administradorBean");
+		}
+	}
+	
+	public void cambiarEstado(int id, String estado){
+		try{
+			System.out.println("ENTRA EN canmbiar INICIATIVA || id: "+id +"estado: "+estado);
+			servicioPT.cambiarEstado(id,estado);
+		}catch(ServicesException e){
+			System.out.println("Excepcion CAMBIANDO iniciativa administradorBean");
+		}
+	}
+	
+	
 	
 	public String onFlowProcess(FlowEvent event) {
         if(skip) {
