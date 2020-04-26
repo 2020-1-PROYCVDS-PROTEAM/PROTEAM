@@ -1,9 +1,5 @@
 package edu.eci.cvds.samples.beans;
 
-import java.sql.Date;
-import java.util.List;
-//import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 
 import java.sql.Date;
@@ -20,6 +16,7 @@ import edu.eci.cvds.samples.Services.*;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import org.primefaces.event.FlowEvent;
 import org.primefaces.event.RowEditEvent;
 
@@ -30,6 +27,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	
 	
 	private boolean skip;
+	private java.util.Date date6;
 	private final static String[] rolez;
 	private final static String[] ideas;
 	static{rolez= new String[4]; 
@@ -64,6 +62,20 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		return Arrays.asList(ideas);
 	}
 	
+	
+	public String completeText(String query) {
+		try{
+			System.out.println("Entra en completeText || usuario a buscar: "+query);
+			return servicioPT.consultarUsuario(query).getCorreo();
+			
+		}
+		catch(ServicesException e){
+			System.out.println("Entra en excepcion completeText");  
+		}
+        return null;
+    }
+	
+	
         
     public Usuario consultarUsuario(String usuario){
         try{
@@ -74,14 +86,20 @@ public class AdministradorBean extends BasePageBean implements Serializable{
         }
         return null; //esto puede fallar pero vamos a intentar
     }
+	
+	public java.sql.Date convertir(java.util.Date fechaUtilDate){
+		System.out.println("SI ESTA SIENDO LLAMADO");
+		return new java.sql.Date(fechaUtilDate.getTime());
+	}
     
-    
-    public void registrarIniciativa(String id,String votos,String palabraClave, String nombre,String estado,String descripcion, String area, String usuario_i,String correo_i,String fecha_ini){//Aqui debe ir un casteo de atributos a Date int ...
+    public void registrarIniciativa(String votos,String palabraClave, String nombre,String estado,String descripcion, String area, String usuario_i,String correo_i,java.util.Date fecha_ini){//Aqui debe ir un casteo de atributos a Date int ...
         System.out.println("Aparece en pantalla");
         try{
-            int idd = Integer.parseInt(id);
+            //int idd = Integer.parseInt(id);
+			int idd = servicioPT.consultarIniciativas().size()+1;
+			System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
             int voto = Integer.parseInt(votos);
-            Date date=Date.valueOf(fecha_ini);//converting string into sql date
+            Date date=convertir(fecha_ini);
             servicioPT.insertIniciativa(idd,voto,palabraClave,nombre,estado,descripcion,area,usuario_i,correo_i,date);
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean registrarIniciativa");
@@ -181,5 +199,13 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	public void setSelectedUsuario(Usuario usuario){
 		this.usuario=usuario;
 	}
+	
+    public java.util.Date getDate6() {
+        return date6;
+    }
+ 
+    public void setDate6(java.util.Date date6) {
+        this.date6 = date6;
+    }
 	
 }

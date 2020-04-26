@@ -15,6 +15,9 @@
  <title>Registrar</title>
  </h:head>
  <h:body>
+ 
+
+ 
      <h:form id="registro">
 	 
 	     <p:growl id="growl" sticky="true" showDetail="true"/>
@@ -26,13 +29,14 @@
 					<h:panelGrid columns="2" columnClasses="label, value">
 					
 						<h:outputText value="Nombre usuario: *" />
-						<p:inputText id="usuario" type="String" binding="#{usuario}" required="true"/>
+						<p:inputText id="usuario" type="String"   binding="#{usuario}" required="true"/>
 	 
-						<h:outputText value="password: *" />
-						<p:inputText id="password" type="password" binding="#{password}" required="true"/>						
-						
-						<h:outputText value="Confirmar password: *" />
-						<p:inputText id="passwordC" type="password" binding="#{passwordC}" required="true"/>
+						<h:outputLabel for="password" value="Contraseña: *" />
+						<p:password id="password" match="passwordC" label="Password 1" binding="#{password}" required="true" />
+ 
+						<h:outputLabel for="passwordC" value="Confirmar contraseña: *" />
+						<p:password id="passwordC" label="Password 2" binding="#{passwordC}" required="true" />
+
 	 
 						<h:outputText value="Nombre: *" />
 						<p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
@@ -43,6 +47,8 @@
 	 
 						<h:outputText value="Correo: *" />
 						<p:inputText id="correo" type="String" binding="#{correo}" required="true"/>
+	 
+
 
 					</h:panelGrid>
 				</p:panel>

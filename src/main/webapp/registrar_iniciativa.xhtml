@@ -15,43 +15,67 @@
  <title>Registro iniciativa</title>
  </h:head>
  <h:body>
+ 
+  <style type="text/css">
+    .ui-datalist .ui-datalist-content {
+        border:0 none
+    }
+ 
+    .ui-datalist ul {
+        padding: 0px 10px 0 20px;
+        margin: 5px 0;
+    }
+ 
+    .value {
+        font-weight: bold;
+    }
+ 
+    .ui-autocomplete-itemtip {
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+</style>
 		
 	<h:form id="RegistrarIniciativa">              
          
-         
-            <h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
-            <p:outputLabel for="id2" value="Id: " />
-            <p:inputText id="id2" type="int" binding="#{id2}" />
-            
-            <p:outputLabel for="palabraClave" value="palabraClave: "/>
-            <p:inputText id="palabraClave" type="String" binding="#{palabraClave}"/>
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+         	<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
+				<p:tab id="personal" title="Registro">
+					<p:panel header="Información personal">
+					<p:messages />
+					<h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
 
-            <p:outputLabel for="nombre" value="Nombre: "/>
-            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
+						<p:outputLabel for="nombre" value="Nombre: "/>
+						<p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
 
-            <p:outputLabel for="estado" value="Estado: " />
-            <p:inputText id="estado" type="String" binding="#{estado}"/>
+						<p:outputLabel for="descripcion" value="Descripcion: " />
+						<p:inputText id="descripcion" type="String" binding="#{descripcion}" required="true"/>
+						
+						<p:outputLabel for="palabraClave" value="palabraClave: "/>
+						<p:inputText id="palabraClave" type="String" binding="#{palabraClave}" required="true"/>
 
-            <p:outputLabel for="descripcion" value="Descripcion: " />
-            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
+						<p:outputLabel for="area" value="Area: " />
+						<p:inputText id="area" type="String" binding="#{area}" required="true"/>
+						
+						<p:outputLabel for="usuario_i" value="Usuario: " />
+						<p:inputText id="usuario_i" type="String" binding="#{usuario_i}" required="true"/>
+						
+						<p:outputLabel value="Correo: " for="correou" />
+						<p:inputText id="correou" type="String"  binding="#{correou}" required="true"/>
 
-            <p:outputLabel for="area" value="Area: " />
-            <p:inputText id="area" type="String" binding="#{area}"/>
-            
-            <p:outputLabel for="usuario_i" value="Usuario: " />
-            <p:inputText id="usuario_i" type="String" binding="#{usuario_i}"/>
-			
-            <p:outputLabel for="correou" value="Correo: " />
-            <p:inputText id="correou" type="String" binding="#{correou}"/>
+						
+						<p:outputLabel for="fecha_ini" value="Fecha inicio:" />
+						<p:calendar id="fecha_ini" value="#{AdministradorBean.date6}" pattern="yyyy-MM-dd" mindate="2019-12-10" maxdate="2020-04-28" binding="#{fecha_ini}"/>
+						
+					</h:panelGrid>
+					</p:panel>
+			</p:tab>
 
-            <p:outputLabel for="fecha_ini" value="Fecha inicio: " />
-            <p:inputText id="fecha_ini" type="String" binding="#{fecha_ini}"/>
-            
-        </h:panelGrid>
-           
+		</p:wizard>					           
                  
 	<div class="divButton">
-            <p:commandButton  class="Button" actionListener="#{AdministradorBean.registrarIniciativa(id2.value,'0',palabraClave.value,nombre.value,estado.value,descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
+            <p:commandButton  class="Button" actionListener="#{AdministradorBean.registrarIniciativa('0',palabraClave.value,nombre.value,'En espera de revisión',descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
 
         </div> 
      </h:form>

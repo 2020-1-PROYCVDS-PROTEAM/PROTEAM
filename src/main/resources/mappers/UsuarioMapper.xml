@@ -18,7 +18,7 @@
 		SELECT
             *
         FROM USUARIOS 
-        WHERE usuario=#{us};
+        WHERE usuario LIKE #{us};
 	</select>
 	
 	<insert id='registrarUsuario' parameterType="map">
@@ -31,6 +31,10 @@
 	
 	<select parameterType="map" id='consultarUsuarios' resultMap='UsuarioResult'>
 		SELECT * FROM USUARIOS as us; 
+	</select>
+	
+	<select parameterType="map" id='consultarCorreo' resultMap='UsuarioResult'>
+		SELECT correo FROM USUARIOS WHERE usuario=#{us};
 	</select>
 
 </mapper>
