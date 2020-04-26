@@ -29,24 +29,24 @@
 					<h:panelGrid columns="2" columnClasses="label, value">
 					
 						<h:outputText value="Nombre usuario: *" />
-						<p:inputText id="usuario" type="String"   binding="#{usuario}" required="true"/>
+						<p:inputText id="usuario" type="String"   value="#{usuario}" required="true"/>
 	 
 						<h:outputLabel for="password" value="Contraseña: *" />
-						<p:password id="password" match="passwordC" label="Password 1" binding="#{password}" required="true" />
+						<p:password id="password" match="passwordC" label="Password 1" value="#{password}" required="true" />
  
 						<h:outputLabel for="passwordC" value="Confirmar contraseña: *" />
-						<p:password id="passwordC" label="Password 2" binding="#{passwordC}" required="true" />
+						<p:password id="passwordC" label="Password 2" value="#{passwordC}" required="true" />
 
 	 
 						<h:outputText value="Nombre: *" />
-						<p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
+						<p:inputText id="nombre" type="String" value="#{nombre}" required="true"/>
 						
 						
 						<h:outputText value="Apellido: *" />
-						<p:inputText id="apellido" type="String" binding="#{apellido}" required="true"/>
+						<p:inputText id="apellido" type="String" value="#{apellido}" required="true"/>
 	 
 						<h:outputText value="Correo: *" />
-						<p:inputText id="correo" type="String" binding="#{correo}" required="true"/>
+						<p:inputText id="correo" type="String" value="#{correo}" required="true"/>
 	 
 
 
