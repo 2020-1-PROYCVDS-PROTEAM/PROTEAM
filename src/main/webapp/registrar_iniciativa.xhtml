@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!--
+        To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates
+        and open the template in the editor.
+        -->
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+ <h:head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+ <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
+ <title>Registro iniciativa</title>
+ </h:head>
+ <h:body>
+		
+	<h:form id="RegistrarIniciativa">              
+         
+         
+            <h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
+            <p:outputLabel for="id2" value="Id: " />
+            <p:inputText id="id2" type="int" binding="#{id2}" />
+            
+            <p:outputLabel for="palabraClave" value="palabraClave: "/>
+            <p:inputText id="palabraClave" type="String" binding="#{palabraClave}"/>
+
+            <p:outputLabel for="nombre" value="Nombre: "/>
+            <p:inputText id="nombre" type="String" binding="#{nombre}"/>
+
+            <p:outputLabel for="estado" value="Estado: " />
+            <p:inputText id="estado" type="String" binding="#{estado}"/>
+
+            <p:outputLabel for="descripcion" value="Descripcion: " />
+            <p:inputText id="descripcion" type="String" binding="#{descripcion}"/>
+
+            <p:outputLabel for="area" value="Area: " />
+            <p:inputText id="area" type="String" binding="#{area}"/>
+            
+            <p:outputLabel for="usuario_i" value="Usuario: " />
+            <p:inputText id="usuario_i" type="String" binding="#{usuario_i}"/>
+			
+            <p:outputLabel for="correou" value="Correo: " />
+            <p:inputText id="correou" type="String" binding="#{correou}"/>
+
+            <p:outputLabel for="fecha_ini" value="Fecha inicio: " />
+            <p:inputText id="fecha_ini" type="String" binding="#{fecha_ini}"/>
+            
+        </h:panelGrid>
+           
+                 
+	<div class="divButton">
+            <p:commandButton  class="Button" actionListener="#{AdministradorBean.registrarIniciativa(id2.value,'0',palabraClave.value,nombre.value,estado.value,descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
+
+        </div> 
+     </h:form>
+     
+    
+</h:body>
+</html>
