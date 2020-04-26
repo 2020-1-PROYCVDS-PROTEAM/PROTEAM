@@ -19,6 +19,8 @@ import org.slf4j.LoggerFactory;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.swing.JOptionPane;
+
 import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -114,13 +116,25 @@ public class LogueoBean implements Serializable{
     }
     
     public void cerrarSesion() {
-
-        SecurityUtils.getSubject().logout();
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    	int answ = JOptionPane.showConfirmDialog(null, "¿Esta seguro que quiere cerrar la sesion?");
+    	if(answ == 0) {
+    		SecurityUtils.getSubject().logout();
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    		
+    	}
+        
+    }
+    
+    public void redirect(String dr) {
+    	 try {
+             FacesContext.getCurrentInstance().getExternalContext().redirect("dr");
+         } catch (IOException ex) {
+             java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }
     
 }

@@ -14,6 +14,12 @@
     --<link href="administrador.css" rel="stylesheet" type="text/css"/>
     <title>Administrador</title>
  </h:head>
+<script type = "Javascript">
+	function confirmDelete()
+	{
+		return confirm("¿Esta seguro que quiere cerrar la sesion?")	
+	}
+</script>
  <h:body>
  <style type="text/css">
     .ui-row-editor .ui-row-editor-pencil {
@@ -27,8 +33,8 @@
         <f:facet name="left">
  
 			<p:menuButton value="Iniciativas">
-                <p:menuitem value="Consultar iniciativa" action="/iniciativas.xhtml"/>
-                <p:menuitem value="Registrar iniciativa" action="/registrar_iniciativa.xhtml"/>
+                <p:menuitem value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+                <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
             </p:menuButton>
 			
 
@@ -37,8 +43,8 @@
         <f:facet name="right">
 			<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
             <p:menuButton value="Options">
-                <p:menuitem value="Registro" action="/registro.xhtml" />
-                <p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" />
+                <p:menuitem value="Registro" action="#{logeoBean.redirect('/faces/registro.xhtml')}" />
+                <p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}"  />
             </p:menuButton>
         </f:facet>
  
@@ -103,8 +109,6 @@
 		</p:dataTable>	
             
 	</h:form>
-		
- 
 	
 </h:body>
 </html>

@@ -32,7 +32,7 @@
                             <br><p:inputText type="password"  class="form-control" id="passwd" placeholder="password" value="#{logeoBean.pass}"/></br>
                     </div>
                     <p:commandButton value="Login" class="Button" action="#{logeoBean.doLogin()}"/>
-                    <p:commandButton value="Registrarse" class="Button" action="/registro.xhtml"/>
+                    <p:commandButton value="Registrarse" class="Button" action="#{logeoBean.redirect('/faces/registro.xhtml')}"/>
 
             </h:form>
 	

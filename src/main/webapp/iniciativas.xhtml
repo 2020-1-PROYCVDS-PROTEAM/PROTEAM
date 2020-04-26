@@ -40,7 +40,8 @@
 				<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
 				<p:menuButton value="Options">
 					<p:menuitem value="registro" action="/registro.xhtml" update="messages" icon="pi pi-save" />
-					<p:menuitem value="Homepage" action="/login.xhtml" icon="pi pi-home" />
+					<p:menuitem value="Homepage" action="/administrador.xhtml" icon="pi pi-home" />
+					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" icon="pi pi-home" />
 				</p:menuButton>
 			</f:facet>
 	 
