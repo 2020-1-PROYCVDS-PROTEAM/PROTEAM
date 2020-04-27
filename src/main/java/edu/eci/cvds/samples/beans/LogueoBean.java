@@ -126,11 +126,14 @@ public class LogueoBean implements Serializable{
     }
     
     public void redirect(String dr) {
-    	 try {
-             FacesContext.getCurrentInstance().getExternalContext().redirect("dr");
-         } catch (IOException ex) {
-             java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
-         }
+    	Subject s =  SecurityUtils.getSubject();
+    	if(dr == "/faces/administrador.xhml" && s.hasRole("Administrador") || (dr != "/faces/administrador.xhml")) {
+    		try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(dr);
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    	}    	 
     }
     
 }

@@ -14,6 +14,17 @@ and open the template in the editor.
 		--<link href="administrador.css" rel="stylesheet" type="text/css"/>
         <title>Registro de usuarios prueba</title>
     </h:head>
+	<script type = "text/javascript">
+	function confirmDelete()
+	{
+		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
+        	if (opcion == true) {
+            		return true;
+    		} else {
+    	    		return false;
+    		}	
+	}
+</script>
     <h:body>
         <p>CONSULTA DEL CLIENTE</p>
 		<h:form>     
@@ -23,7 +34,7 @@ and open the template in the editor.
 			<f:facet name="right">
 				<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
 				<p:menuButton value="Options">
-					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" />
+					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" />
 				</p:menuButton>
 			</f:facet>
 		
