@@ -67,24 +67,24 @@
          
          <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="8" selectionMode="single" id="id"  
+				rows="8"  id="id" selectionMode="single" selection="#{UserBean.selectedi}"
 				rowKey="#{iniciativa.id}" editable="true" >
 			
 			<f:facet name="header">
 				Iniciativas.
 			</f:facet>
 			
-			
+			<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
-
+			
 			<p:column headerText="Comentarios">
-				<p:button outcome="comentarios" value="Comentar" icon="pi pi-star" onclick="#{UserBean.setIdPag(x)}">
-					<f:param id="x" name="idPag" value="#{UserBean.consultarIniciativa('3').getId()}" />
+				<p:button outcome="comentarios" value="Comentar" icon="pi pi-star" >
+					<f:param id="x" name="idPag" value="#{UserBean.selectedi.id}" />
 				</p:button>
 			</p:column>
 
 
-
+			
 			<p:column headerText="Id">
 				<h:outputText value="#{iniciativa.getId()}"/>
 			</p:column>

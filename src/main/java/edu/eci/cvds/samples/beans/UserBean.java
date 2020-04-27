@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedProperty;
 import javax.inject.Inject;
 import java.util.List;
+import java.io.Serializable;
 
 import java.sql.Date;
 
@@ -22,10 +23,11 @@ import java.sql.Date;
 @SuppressWarnings("serial")
 @ManagedBean(name = "UserBean")
 @ApplicationScoped
-public class UserBean extends BasePageBean {
+public class UserBean extends BasePageBean implements Serializable{
 	
 	private boolean skip;
 	private String idPag;
+	private Iniciativa selectedi;
 	
     @Inject
     private ServicioProteam servicioPT;
@@ -72,6 +74,20 @@ public class UserBean extends BasePageBean {
         return this.comentarios;
     }
 	
+	
+	public List<Comentario> consultarComentariosIniciativa(String idIniciativa){
+        try{
+			int id = Integer.parseInt(idIniciativa);
+            this.comentarios = servicioPT.consultarComentariosIniciativa(id);
+        }
+        catch(ServicesException e){
+        	System.out.println("no consulta comentario iniciativa ");
+
+        }
+        return this.comentarios;
+    }
+	
+	
 	public Iniciativa consultarIniciativa(String id){
 		try{
 			int idd=Integer.parseInt(id);
@@ -81,6 +97,8 @@ public class UserBean extends BasePageBean {
 		}
 		return null;
 	}
+	
+
 	
 
 	public List<Iniciativa> getIniciativas() {
@@ -105,6 +123,13 @@ public class UserBean extends BasePageBean {
         }
     }
 	
+	public void setselectedi(Iniciativa selectIniciativa){
+		selectedi=selectIniciativa;
+	}
+	
+	public Iniciativa getSelectedi(){
+		return selectedi;
+	}
 
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;

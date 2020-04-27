@@ -65,7 +65,7 @@
 	 
 	 <p:growl id="msgss" showDetail="true"/>
          
-         <p:dataTable var="comentario" value="#{UserBean.consultarComentarios()}" class="tabla"
+         <p:dataTable var="comentario" value="#{UserBean.consultarComentariosIniciativa(UserBean.idPag)}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rows="8" selectionMode="single" id="id"  
 				rowKey="#{comentario.id}" editable="true" >
@@ -114,14 +114,13 @@
 				<p:tab id="personal" title="Comentar">
 					<p:panel header="Publica tu comentario">
 					<p:messages />
-									<p>You've been redirected to this bookmarkable page with button.
-				ViewParameter you've passed is <strong>"#{UserBean.idPag}"</strong>
+									<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
 				</p>
 						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="50" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
 						<br />
 						<h:outputText id="display" />
 								<div class="divButton">
-									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario('jotaroj','3',contenido.value,'2020-02-26')}" value="Publicar"/>
+									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario('jotaroj',UserBean.idPag,contenido.value,'2020-03-13')}" value="Publicar"/>
 	
 								</div> 
 					</p:panel>
