@@ -15,6 +15,7 @@ import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,6 +51,7 @@ public class proteamTest {
 		
 	}
 	
+	/*
 	@Test
     public void lanzaExcepcionNoExisteUsuario() {
     	try {
@@ -59,6 +61,7 @@ public class proteamTest {
     		assertTrue(true);
     	}
     }
+	*/
 	
 	@Test
     public void realizaConsultaDeUsuario() {

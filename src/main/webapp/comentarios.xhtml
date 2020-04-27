@@ -12,7 +12,7 @@
  <h:head>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
  <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
- <title>Consultar iniciativas</title>
+ <title>Comentarios</title>
  </h:head>
  <script type = "text/javascript">
 	function confirmDelete()
@@ -61,78 +61,41 @@
 
 
 		
-	<h:form id="ConsultaIniciativa">
+	<h:form id="ConsultaComentarios">
 	 
 	 <p:growl id="msgss" showDetail="true"/>
          
-         <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" class="tabla"
+         <p:dataTable var="comentario" value="#{UserBean.consultarComentarios()}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rows="8" selectionMode="single" id="id"  
-				rowKey="#{iniciativa.id}" editable="true" >
+				rowKey="#{comentario.id}" editable="true" >
 			
 			<f:facet name="header">
-				Iniciativas.
+				Comentarios.
 			</f:facet>
 			
 			
-			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
-
-			<p:column headerText="Comentarios">
-				<p:button outcome="comentarios" value="Comentar" icon="pi pi-star" onclick="#{UserBean.setIdPag(x)}">
-					<f:param id="x" name="idPag" value="#{UserBean.consultarIniciativa('3').getId()}" />
-				</p:button>
-			</p:column>
 
 
 
 			<p:column headerText="Id">
-				<h:outputText value="#{iniciativa.getId()}"/>
+				<h:outputText value="#{comentario.getId()}"/>
 			</p:column>
 
-			<p:column headerText="Votos">
-				<h:outputText value="#{iniciativa.getVotos()}"/>
+			<p:column headerText="Usuario">
+				<h:outputText value="#{comentario.getIdUsuario()}"/>
 			</p:column>
              
-			<p:column headerText="PalabraClave">
-				<h:outputText value="#{iniciativa.getPalabraClave()}"/>
-			</p:column>
 						
-			<p:column headerText="Nombre">
-				<h:outputText value="#{iniciativa.getNombreIniciativa()}"/>
+			<p:column headerText="Comentario">
+				<h:outputText value="#{comentario.getContenido()}"/>
 			</p:column>
 			
 			
-			<p:column headerText="Descripcion">
-				<h:outputText value="#{iniciativa.getDescripcion()}"/>
+			<p:column headerText="Fecha">
+				<h:outputText value="#{comentario.getFecha()}"/>
 			</p:column>
-             
-             		<p:column headerText="Area">
-				<h:outputText value="#{iniciativa.getArea()}"/>
-			</p:column>
-             
-             		<p:column headerText="Usuario">
-				<h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
-			</p:column>
-             
-                         <p:column headerText="CorreoU">
-				<h:outputText value="#{iniciativa.getcorreoProponente()}"/>
-			</p:column> 
-                        
-                         <p:column headerText="Fecha">
-				<h:outputText value="#{iniciativa.getFecha()}"/>
-			</p:column>     
-
-
-			<p:column headerText="Estado">
-            <p:cellEditor>
-                <f:facet name="output"><h:outputText id="resultado"  var="x" value="#{iniciativa.estado}" /></f:facet>
-                <f:facet name="input" >
-                    <h:selectOneMenu binding="#{are}" id="are" value="xa" style="width:100%">
-                        <f:selectItems id="xa" value="#{AdministradorBean.ideas}" var="ide" itemLabel="#{ide}"  itemValue="#{ide}" />			
-                    </h:selectOneMenu>
-                </f:facet>
-            </p:cellEditor>
-			</p:column>
+            
 
 			<p:column style="width:35px">
 				<p:rowEditor />
@@ -142,6 +105,35 @@
 		</p:dataTable>	                 
          
      </h:form>
+	 
+	 
+	<h:form id="RegistrarComentario">              
+         
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+         	<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
+				<p:tab id="personal" title="Comentar">
+					<p:panel header="Publica tu comentario">
+					<p:messages />
+									<p>You've been redirected to this bookmarkable page with button.
+				ViewParameter you've passed is <strong>"#{UserBean.idPag}"</strong>
+				</p>
+						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="50" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
+						<br />
+						<h:outputText id="display" />
+								<div class="divButton">
+									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario('jotaroj','3',contenido.value,'2020-02-26')}" value="Publicar"/>
+	
+								</div> 
+					</p:panel>
+				</p:tab>
+
+
+		</p:wizard>					           
+                 
+				 
+
+     </h:form>
+	 
      
     
 </h:body>

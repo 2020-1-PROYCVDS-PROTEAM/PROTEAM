@@ -11,7 +11,9 @@ import java.text.ParseException;
 
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
+import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
 import edu.eci.cvds.samples.Services.ServicesException;
@@ -25,6 +27,8 @@ public class ServicioProteamImpl implements ServicioProteam {
     private UsuarioDAO daoUsuario;
     @Inject
     private IniciativaDAO daoIniciativa;
+	@Inject
+	private ComentarioDAO daoComentario;
 
     
     @Override
@@ -78,7 +82,38 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No hay iniciativas",ex);
         }
 	}
+	
+	@Override
+	public Comentario consultarComentario(int id, String idUsuario, int idIniciativa)throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPL COMENTARIO");
+            return daoComentario.consultarComentario(id,idUsuario,idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible consultar el comentario.",ex);
+        }
+	}
+	
+	@Override
+	public List<Comentario> consultarComentarios()throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOS");
+            return daoComentario.consultarComentarios();
+        }catch(PersistenceException ex){
+            throw new ServicesException("No hay comentarios",ex);
+        }
+	}
         
+	
+	@Override
+	public List<Comentario> consultarComentariosIniciativa(int idIniciativa)throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOSIniciativa");
+            return daoComentario.consultarComentariosIniciativa(idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No hay comentarios",ex);//en la iniciativa
+        }
+	}
+        	
     
     @Override
 	public void insertIniciativa(int id,int votos,String palabraClave,String nombre,String estado, String descripcion,String area,String usuario_i, String correo_i, Date fechar_ini) throws ServicesException{
@@ -133,6 +168,32 @@ public class ServicioProteamImpl implements ServicioProteam {
             daoUsuario.cambiarRol(usuario, rol);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible modificar el rol",ex);
+        }
+	}
+
+    @Override
+	public void insertarComentario(int id, String idUsuario, int idIniciativa, String contenido, Date fecha) throws ServicesException{
+    	try{
+            System.out.println("insertarComentario en serviciosProTeamImpl");
+            System.out.println("id: "+id);
+            System.out.println("idUsuario: "+idUsuario);
+            System.out.println("idIniciativa: "+idIniciativa);
+            System.out.println("contenido: "+contenido);
+            System.out.println("fecha: "+fecha);
+
+            daoComentario.insertarComentario(id, idUsuario,idIniciativa ,contenido, fecha);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible agregar el nuevo comentario",ex);
+        }
+	}
+
+    @Override
+	public void cambiarComentario(int id, String idUsuario, int idIniciativa, String contenido) throws ServicesException{
+    	try{
+			System.out.println("ENTRA EN SERVICIOSPT CambiarComentario");
+            daoComentario.cambiarComentario(id, idUsuario,idIniciativa,contenido);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible cambiar el comentario",ex);
         }
 	}
 

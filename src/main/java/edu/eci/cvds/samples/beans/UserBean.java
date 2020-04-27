@@ -2,6 +2,7 @@ package edu.eci.cvds.samples.beans;
 
 import edu.eci.cvds.samples.entities.Rol;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.entities.Iniciativa;
@@ -24,10 +25,12 @@ import java.sql.Date;
 public class UserBean extends BasePageBean {
 	
 	private boolean skip;
+	private String idPag;
 	
     @Inject
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
+	private List<Comentario> comentarios;
     
     private void setErrorMessage(Exception e){
         String message = e.getMessage();
@@ -45,7 +48,40 @@ public class UserBean extends BasePageBean {
 
         }
         return this.iniciativas;
+		
     }
+	
+	public void setIdPag(String iniciativaId){
+		System.out.println("Entra en setIdPag User Bean: "+iniciativaId);
+		idPag = iniciativaId;
+	}
+	
+	public String getIdPag(){
+		return idPag;
+	}
+	
+	
+	public List<Comentario> consultarComentarios(){
+        try{
+            this.comentarios = servicioPT.consultarComentarios();
+        }
+        catch(ServicesException e){
+        	System.out.println("no consulta comentarios");
+
+        }
+        return this.comentarios;
+    }
+	
+	public Iniciativa consultarIniciativa(String id){
+		try{
+			int idd=Integer.parseInt(id);
+			return servicioPT.consultarIniciativa(idd);
+		}catch(ServicesException e){
+			System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+		}
+		return null;
+	}
+	
 
 	public List<Iniciativa> getIniciativas() {
 		if (iniciativas == null) {
@@ -54,6 +90,21 @@ public class UserBean extends BasePageBean {
 		}
 		return iniciativas;
 	}
+	
+	public void insertarComentario(String idUsuario, String idIniciativa, String contenido, String fecha){//Aqui debe ir un casteo de atributos a Date int ...
+        System.out.println("Aparece en pantallaUserBean");
+        try{
+            int idIni= Integer.parseInt(idIniciativa);
+			int idd = servicioPT.consultarComentariosIniciativa(idIni).size()+1;
+			System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
+            //int voto = Integer.parseInt(votos);
+            Date date=Date.valueOf(fecha);
+            servicioPT.insertarComentario(idd,idUsuario,idIni,contenido,date);
+        } catch (ServicesException e) {
+            System.out.println("Entra en excepcion bean registrarIniciativa");
+        }
+    }
+	
 
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;

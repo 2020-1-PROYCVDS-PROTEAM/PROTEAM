@@ -5,8 +5,10 @@ import com.google.inject.Injector;
 import edu.eci.cvds.samples.Services.impl.ServicioProteamImpl;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
+import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisIniciativaDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisUsuarioDAO;
+import edu.eci.cvds.samples.persistence.mybatis.MyBatisComentarioDAO;
 
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -29,6 +31,7 @@ public class ServicioProteamFactory {
                setClassPathResource(pathResource);
 				bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
 				bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+				bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
 				bind(ServicioProteam.class).to(ServicioProteamImpl .class);
            }
        });

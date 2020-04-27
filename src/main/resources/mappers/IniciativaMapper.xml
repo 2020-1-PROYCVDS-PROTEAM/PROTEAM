@@ -41,7 +41,7 @@
 	INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
     </insert>
 	
-	<select id="consultarIniciativas" resultMap='IniciativaResult'>
+	<select id='consultarIniciativas' resultMap='IniciativaResult'>
 		SELECT * FROM iniciativas;
 	</select>
 
