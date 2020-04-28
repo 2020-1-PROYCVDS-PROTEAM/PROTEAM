@@ -121,7 +121,7 @@
 						<br />
 						<h:outputText id="display" />
 								<div class="divButton">
-									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario('jotaroj',UserBean.idPag,contenido.value,'2020-03-13')}" value="Publicar"/>
+									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
 	
 								</div> 
 					</p:panel>

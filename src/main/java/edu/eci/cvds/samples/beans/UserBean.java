@@ -18,6 +18,7 @@ import java.util.List;
 import java.io.Serializable;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 
 @SuppressWarnings("serial")
@@ -109,15 +110,17 @@ public class UserBean extends BasePageBean implements Serializable{
 		return iniciativas;
 	}
 	
-	public void insertarComentario(String idUsuario, String idIniciativa, String contenido, String fecha){//Aqui debe ir un casteo de atributos a Date int ...
+	public void insertarComentario(String idUsuario, String idIniciativa, String contenido){//Aqui debe ir un casteo de atributos a Date int ...
         System.out.println("Aparece en pantallaUserBean");
         try{
             int idIni= Integer.parseInt(idIniciativa);
 			int idd = servicioPT.consultarComentariosIniciativa(idIni).size()+1;
+			Date datex = new Date(Calendar.getInstance().getTime().getTime());			
+			System.out.println("FECHA DEL REGISTRO COMENTARIO: "+datex);
 			System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
             //int voto = Integer.parseInt(votos);
-            Date date=Date.valueOf(fecha);
-            servicioPT.insertarComentario(idd,idUsuario,idIni,contenido,date);
+            //Date date=Date.valueOf(fecha);
+            servicioPT.insertarComentario(idd,idUsuario,idIni,contenido,datex);
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean registrarIniciativa");
         }
