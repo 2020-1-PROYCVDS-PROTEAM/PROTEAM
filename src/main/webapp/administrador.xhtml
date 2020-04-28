@@ -46,8 +46,9 @@
         </f:facet>
  
         <f:facet name="right">
-			<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
-            <p:menuButton value="Options">
+			<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+			<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+            <p:menuButton value="Opciones">
                 <p:menuitem value="Registro" action="#{logeoBean.redirect('/faces/registro.xhtml')}" />
                 <p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()"   />
             </p:menuButton>

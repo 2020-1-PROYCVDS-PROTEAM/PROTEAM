@@ -31,19 +31,16 @@ import javax.faces.bean.ManagedBean;
 
 public class LogueoBean implements Serializable{
 	
-        private static final Logger log = LoggerFactory.getLogger(LogueoBean.class);
+     private static final Logger log = LoggerFactory.getLogger(LogueoBean.class);
        
 	private String name;
 	private String pass;
 	public boolean logueado;
 	
-	//public LogueoBean(){
-	//}
-        
         
         public void doLogin() {
         System.out.println("Si esta entrando acaaaaaaaaa");
-        
+        System.out.println("DoLOGIN() === name: "+name+" pass: "+pass);
         Subject currentUser  = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getName(), getPass());
         try {

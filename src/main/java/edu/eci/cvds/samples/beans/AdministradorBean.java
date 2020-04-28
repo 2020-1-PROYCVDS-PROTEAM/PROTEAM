@@ -196,6 +196,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		return usuario;
 	}
 	
+	
 	public void setSelectedUsuario(Usuario usuario){
 		this.usuario=usuario;
 	}

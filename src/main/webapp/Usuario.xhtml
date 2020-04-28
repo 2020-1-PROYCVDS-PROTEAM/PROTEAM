@@ -25,6 +25,8 @@ and open the template in the editor.
     		}	
 	}
 </script>
+
+
     <h:body>
         <p>CONSULTA DEL CLIENTE</p>
 		<h:form>     
@@ -32,9 +34,10 @@ and open the template in the editor.
 		<p:toolbar>
 		
 			<f:facet name="right">
-				<p:commandButton id="out" type="button" title="#{LogeoBean.name}" />
+				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
 				<p:menuButton value="Options">
-					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" />
+				<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" />
 				</p:menuButton>
 			</f:facet>
 		
