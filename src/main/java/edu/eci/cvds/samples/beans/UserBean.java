@@ -3,6 +3,8 @@ package edu.eci.cvds.samples.beans;
 import edu.eci.cvds.samples.entities.Rol;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
+import edu.eci.cvds.samples.entities.Voto;
+
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.entities.Iniciativa;
@@ -34,6 +36,7 @@ public class UserBean extends BasePageBean implements Serializable{
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
 	private List<Comentario> comentarios;
+	private List<Voto> votos;
     
     private void setErrorMessage(Exception e){
         String message = e.getMessage();
@@ -118,12 +121,22 @@ public class UserBean extends BasePageBean implements Serializable{
 	
 	
 	public void registrarVoto(String idUsuario, String idIniciativa){
-		try{
-			System.out.println("Al bean User llega esto: "+idUsuario+" ini: "+idIniciativa);
-            int idd = Integer.parseInt(idIniciativa);
-            servicioPT.registrarVoto(idUsuario, idd);
-		}catch(ServicesException e){
-			System.out.println("Entra en excepcion userBean VotarIniciativa");
+                int idd = Integer.parseInt(idIniciativa);
+				try{
+                    System.out.println("Al bean User llega esto: "+idUsuario+" ini: "+idIniciativa);
+                    //Voto voto = servicioPT.consultarVoto(idUsuario,idd);
+                    servicioPT.registrarVoto(idUsuario, idd);	
+			
+            //servicioPT.registrarVoto(idUsuario, idd);
+				}catch(ServicesException e){
+			/*
+                        try{
+                            servicioPT.borrarVoto(idUsuario,idd);
+                        }
+                        catch(ServicesException ex){
+                            System.out.println("Entra en excepcion 2userbean VotarIniciativa");
+                        }*/
+				System.out.println("Entra en excepcion userBean VotarIniciativa");
 		}
 	}
 	

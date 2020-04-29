@@ -77,7 +77,7 @@ public class proteamTest {
 	@Test
     public void deberiaRegistrarUsuario() {
 		try {
-			sp.registrarUsuario("JoseTest","GM123","Jose","Gutierrez","test@gmail.com","USUARIO");
+			sp.registrarUsuario("JoseTest","GM123","Jose","Gutierrez","test@gmail.com","Publico");
 			sp.consultarUsuario("JoseTest");
 			
 		}catch(ServicesException ex) {
@@ -113,6 +113,7 @@ public class proteamTest {
 		}
 	}
 	
+	
 	@Test
 	public void consultaIniciativasPorPalabraClave() {
 		try {
@@ -122,6 +123,7 @@ public class proteamTest {
 			fail();
 		}
 	}
+	
 	
 	@Test
 	public void deberíaLanzarExcepcionPalabraClave() {

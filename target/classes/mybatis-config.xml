@@ -22,9 +22,9 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver" />
-                <property name="url" value="jdbc:postgresql://ec2-18-206-84-251.compute-1.amazonaws.com:5432/dapggva8t6djve?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
-                <property name="username" value="kkyltodngjngwo" />
-                <property name="password" value="98d66fe639c8c890731d7866626683e44e58d5c35d2144120f8ebb59998d228f" />
+                <property name="url" value="jdbc:postgresql://ec2-54-88-130-244.compute-1.amazonaws.com:5432/d1532vjb97mdq0?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+                <property name="username" value="mibfedlwgkbrxh" />
+                <property name="password" value="b55b0573c52b3d45dab03dc5e0a6d7182fa54ce5e2ad72156f5f6e8a16faaa55" />
 
             </dataSource>
         </environment>
