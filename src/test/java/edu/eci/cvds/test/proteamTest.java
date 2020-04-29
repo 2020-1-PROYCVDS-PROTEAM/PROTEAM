@@ -16,6 +16,7 @@ import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
+import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 
 import org.apache.ibatis.session.SqlSession;

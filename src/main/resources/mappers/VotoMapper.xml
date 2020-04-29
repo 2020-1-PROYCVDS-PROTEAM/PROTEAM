@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.VotoMapper">
+
+
+	<resultMap type='Voto' id='VotoResult'>
+		<id property='idUsuario' column='idUsuario'/>
+		<id property='idIniciativa' column='idIniciativa'/>
+    </resultMap>
+	
+	
+		<select parameterType="map" id='consultarVotos' resultMap='VotoResult'>
+			SELECT
+				* 
+			FROM votoss;
+		</select>
+		
+		<select parameterType="map" id='consultarVoto' resultMap='VotoResult'>
+			SELECT * 
+			FROM votos
+			WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+		</select>
+		
+		<select parameterType="map" id='consultarVotosIniciativa' resultMap='VotoResult'>
+			SELECT * 
+			FROM votos
+			WHERE idIniciativa=#{idIniciativa};
+		</select>
+
+
+		<insert id='registrarVoto' parameterType="map">
+			INSERT INTO votos VALUES (#{idUsuario},#{idIniciativa});
+		</insert>
+	
+
+		<delete id='borrarVoto' parameterType="map">
+			DELETE FROM comentarios WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+		</delete>
+
+  	
+</mapper>

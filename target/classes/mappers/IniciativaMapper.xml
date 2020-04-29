@@ -49,5 +49,8 @@
 		UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};
 	</update>
 
+	<update id='agregueVoto' parameterType="map">
+		UPDATE iniciativas SET votos= votos+1 WHERE id=#{idIniciativa};
+	</update>
   	
 </mapper>

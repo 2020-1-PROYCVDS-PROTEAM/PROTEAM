@@ -11,6 +11,7 @@ and open the template in the editor.
     xmlns:p="http://primefaces.org/ui">
 
     <h:head>
+		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
 		--<link href="administrador.css" rel="stylesheet" type="text/css"/>
         <title>Registro de usuarios prueba</title>
     </h:head>
@@ -43,13 +44,19 @@ and open the template in the editor.
 		
 		</p:toolbar>
 		</h:form>
-         <h:form>
+         <h:form id="iniciativasUsuario">
          <p:dataTable var="iniciativa" value="#{UserBean.iniciativas}"
 				paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
 			
 			<f:facet name="header">
 				Iniciativas.
 			</f:facet>
+			
+			<p:column headerText="Votar">
+				<p:commandButton  update="iniciativasUsuario" onclick="#{UserBean.consultarIniciativas()}" icon="pi pi-star-o" actionListener="#{UserBean.registrarVoto(logeoBean.name,'4')}"/>
+			</p:column>
+
+
 
 			<p:column headerText="Id" sortBy="#{iniciativa.getId()}">
 				<h:outputText value="#{iniciativa.getId()}"/>

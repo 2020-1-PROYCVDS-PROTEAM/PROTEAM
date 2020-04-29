@@ -12,8 +12,10 @@ import java.text.ParseException;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
+import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.ComentarioDAO;
+import edu.eci.cvds.samples.persistence.VotoDAO;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
 import edu.eci.cvds.samples.Services.ServicesException;
@@ -29,7 +31,8 @@ public class ServicioProteamImpl implements ServicioProteam {
     private IniciativaDAO daoIniciativa;
 	@Inject
 	private ComentarioDAO daoComentario;
-
+	@Inject
+	private VotoDAO daoVoto;
     
     @Override
     public Usuario consultarUsuario(String usuario)throws ServicesException{
@@ -196,6 +199,60 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible cambiar el comentario",ex);
         }
 	}
+	
+	
+	@Override
+	public Voto consultarVoto(String idUsuario, int idIniciativa)throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPL VOTO");
+            return daoVoto.consultarVoto(idUsuario,idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible consultar el voto.",ex);
+        }
+	}
+	
+	@Override
+	public List<Voto> consultarVotos()throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPLCONSULTAR VOTOS");
+            return daoVoto.consultarVotos();
+        }catch(PersistenceException ex){
+            throw new ServicesException("No hay votos",ex);
+        }
+	}
+        
+	
+	@Override
+	public List<Voto> consultarVotosIniciativa(int idIniciativa)throws ServicesException{
+    	try{
+            System.out.println("ServicioProTeamIMPLCONSULTAR VOTOSIniciativa");
+            return daoVoto.consultarVotosIniciativa(idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No hay votos",ex);//en la iniciativa
+        }
+	}
+	
+    @Override
+	public void registrarVoto(String idUsuario, int idIniciativa) throws ServicesException{
+    	try{
+            System.out.println("insertarVoto en serviciosProTeamImpl");
+            System.out.println("idUsuario: "+idUsuario);
+            System.out.println("idIniciativa: "+idIniciativa);
 
+            daoVoto.registrarVoto(idUsuario,idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible agregar el nuevo voto",ex);
+        }
+	}
+
+    @Override
+	public void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException{
+    	try{
+			System.out.println("ENTRA EN SERVICIOSPT borrarVOto");
+            daoVoto.borrarVoto(idUsuario,idIniciativa);
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible borrar el voto",ex);
+        }
+	}
 
 }

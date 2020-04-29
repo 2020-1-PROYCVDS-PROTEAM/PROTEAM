@@ -1,6 +1,7 @@
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\ComentarioMapper.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\UsuarioMapper.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Comentario.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Voto.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\PersistenceException.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicioProteamFactory.java
@@ -16,12 +17,15 @@ C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\JDB
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\ToolbarView.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\IniciativaDAO.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\VotoDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\UserBean.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\AdministradorBean.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisVotoDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisComentarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicioProteam.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Iniciativa.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\guice\GuiceContextListener.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\client\Main.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\VotoMapper.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicesException.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\BasePageBean.java

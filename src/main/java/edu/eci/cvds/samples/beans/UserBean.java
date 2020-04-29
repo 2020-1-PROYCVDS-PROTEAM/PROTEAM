@@ -99,16 +99,6 @@ public class UserBean extends BasePageBean implements Serializable{
 		return null;
 	}
 	
-
-	
-
-	public List<Iniciativa> getIniciativas() {
-		if (iniciativas == null) {
-			System.out.println("esnull");
-			consultarIniciativas();
-		}
-		return iniciativas;
-	}
 	
 	public void insertarComentario(String idUsuario, String idIniciativa, String contenido){//Aqui debe ir un casteo de atributos a Date int ...
         System.out.println("Aparece en pantallaUserBean");
@@ -126,6 +116,17 @@ public class UserBean extends BasePageBean implements Serializable{
         }
     }
 	
+	
+	public void registrarVoto(String idUsuario, String idIniciativa){
+		try{
+			System.out.println("Al bean User llega esto: "+idUsuario+" ini: "+idIniciativa);
+            int idd = Integer.parseInt(idIniciativa);
+            servicioPT.registrarVoto(idUsuario, idd);
+		}catch(ServicesException e){
+			System.out.println("Entra en excepcion userBean VotarIniciativa");
+		}
+	}
+	
 	public void setselectedi(Iniciativa selectIniciativa){
 		selectedi=selectIniciativa;
 	}
@@ -137,6 +138,15 @@ public class UserBean extends BasePageBean implements Serializable{
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;
 	}
+	
+	public List<Iniciativa> getIniciativas() {
+		if (iniciativas == null) {
+			System.out.println("esnull");
+			consultarIniciativas();
+		}
+		return iniciativas;
+	}
+
 
 	public ServicioProteam getServicioPT() {
 		return servicioPT;

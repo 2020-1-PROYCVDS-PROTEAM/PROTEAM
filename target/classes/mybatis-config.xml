@@ -13,7 +13,8 @@
         <typeAlias type="edu.eci.cvds.samples.entities.Usuario" alias="Usuario"/>
         <typeAlias type="edu.eci.cvds.samples.entities.Iniciativa" alias="Iniciativa"/>
 		<typeAlias type="edu.eci.cvds.samples.entities.Comentario" alias="Comentario"/>
-
+		<typeAlias type="edu.eci.cvds.samples.entities.Voto" alias="Voto"/>
+		
     </typeAliases>	
 
     <environments default="development">
@@ -33,6 +34,7 @@
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
         <mapper resource="mappers/IniciativaMapper.xml"></mapper>
 		<mapper resource="mappers/ComentarioMapper.xml"></mapper>
+		<mapper resource="mappers/VotoMapper.xml"></mapper>
     </mappers> 
 			
         
