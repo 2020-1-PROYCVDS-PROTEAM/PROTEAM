@@ -46,14 +46,16 @@ and open the template in the editor.
 		</h:form>
          <h:form id="iniciativasUsuario">
          <p:dataTable var="iniciativa" value="#{UserBean.iniciativas}"
-				paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
+				paginator="true" rowIndexVar="rowIndexVar" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
 			
 			<f:facet name="header">
 				Iniciativas.
 			</f:facet>
 			
 			<p:column headerText="Votar">
-				<p:commandButton  update="iniciativasUsuario" onclick="#{UserBean.consultarIniciativas()}" icon="pi pi-star-o" actionListener="#{UserBean.registrarVoto(logeoBean.name,'3')}"/>
+			    <p:selectBooleanButton id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
+					<p:ajax update="iniciativasUsuario" click="#{UserBean.consultarIniciativas()}" listener="#{UserBean.registrarVoto(logeoBean.name,rowIndexVar+1)}" />
+				</p:selectBooleanButton>
 			</p:column>
 
 
