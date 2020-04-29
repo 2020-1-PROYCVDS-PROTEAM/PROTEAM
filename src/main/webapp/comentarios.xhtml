@@ -10,8 +10,10 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
  <h:head>
+ <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
  <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
+ 
  <title>Comentarios</title>
  </h:head>
  <script type = "text/javascript">
@@ -38,7 +40,7 @@
 	 
 		<p:toolbar>
 			<f:facet name="left">
-	 
+	 			<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
 				<p:menuButton value="Opciones">
 					<p:menuitem value="Consultar usuarios" action="/Usuario.xhtml"/>
 					<p:menuitem value="Registrar iniciativa" action="/registrar_iniciativa.xhtml"/>
@@ -50,11 +52,8 @@
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-				<p:menuButton value="Options">
-					<p:menuitem value="registro" action="#{logeoBean.redirect('/faces/registro.xhtml')}" update="messages" icon="pi pi-save" />
-					<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-home" />
-				</p:menuButton>
+				<p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
+				
 			</f:facet>
 	 
 		</p:toolbar>
@@ -117,11 +116,11 @@
 					<p:messages />
 									<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
 				</p>
-						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="50" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
+						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
 						<br />
 						<h:outputText id="display" />
 								<div class="divButton">
-									<p:commandButton  class="Button" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
+									<p:commandButton  class="Button" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
 	
 								</div> 
 					</p:panel>

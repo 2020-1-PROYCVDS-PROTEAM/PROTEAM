@@ -10,6 +10,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
  <h:head>
+ <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
  <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
  <title>Registro iniciativa</title>
@@ -59,10 +60,10 @@
 						<p:inputText id="area" type="String" binding="#{area}" required="true"/>
 						
 						<p:outputLabel for="usuario_i" value="Usuario: " />
-						<p:inputText id="usuario_i" type="String" binding="#{usuario_i}" required="true"/>
+						<h:outputText id="usuario_i" type="String" value="#{logeoBean.name}" binding="#{usuario_i}" required="true"/>
 						
 						<p:outputLabel value="Correo: " for="correou" />
-						<p:inputText id="correou" type="String"  binding="#{correou}" required="true"/>
+						<h:outputText id="correou" type="String" value="#{AdministradorBean.consultarUsuario(logeoBean.name).getCorreo()}" binding="#{correou}" required="true"/>
 
 						
 						<p:outputLabel for="fecha_ini" value="Fecha inicio:" />
@@ -75,7 +76,7 @@
 		</p:wizard>					           
                  
 	<div class="divButton">
-            <p:commandButton  class="Button" actionListener="#{AdministradorBean.registrarIniciativa('0',palabraClave.value,nombre.value,'En espera de revisión',descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
+            <p:commandButton  class="Button" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" actionListener="#{AdministradorBean.registrarIniciativa('0',palabraClave.value,nombre.value,'En espera de revisión',descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
 
         </div> 
      </h:form>

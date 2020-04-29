@@ -41,10 +41,9 @@
 	 
 		<p:toolbar>
 			<f:facet name="left">
-	 
+				<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
 				<p:menuButton value="Opciones">
-					<p:menuitem value="Consultar usuarios" action="/Usuario.xhtml"/>
-					<p:menuitem value="Registrar iniciativa" action="/registrar_iniciativa.xhtml"/>
+					<p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
 				</p:menuButton>
 				
 
@@ -53,11 +52,8 @@
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol})"/>
-				<p:menuButton value="Options">
-					<p:menuitem value="registro" action="#{logeoBean.redirect('/faces/registro.xhtml')}" update="messages" icon="pi pi-save" />
-					<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-					<p:menuitem value="Cerrar sesion" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-home" />
-				</p:menuButton>
+				<p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
+				
 			</f:facet>
 	 
 		</p:toolbar>
