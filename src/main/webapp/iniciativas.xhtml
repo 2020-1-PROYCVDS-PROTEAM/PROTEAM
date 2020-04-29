@@ -30,11 +30,11 @@
 </script>
  <h:body>
  	
-		 <style type="text/css">
+	<style type="text/css">
     .ui-row-editor .ui-row-editor-pencil {
         margin-left:2px;
     }
-</style>
+	</style>
 
 	<h:form>     
 		<p:growl id="messages" showDetail="true" />
@@ -67,7 +67,7 @@
          
          <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="8"  id="id" selectionMode="single" selection="#{UserBean.selectedi}"
+				rows="4"  id="id" selectionMode="single" selection="#{UserBean.selectedi}"
 				rowKey="#{iniciativa.id}" editable="true" >
 			
 			<f:facet name="header">
@@ -105,20 +105,16 @@
 			<p:column headerText="Descripcion">
 				<h:outputText value="#{iniciativa.getDescripcion()}"/>
 			</p:column>
-             
              		<p:column headerText="Area">
 				<h:outputText value="#{iniciativa.getArea()}"/>
 			</p:column>
-             
              		<p:column headerText="Usuario">
 				<h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
 			</p:column>
-             
-                         <p:column headerText="CorreoU">
+                    <p:column headerText="CorreoU">
 				<h:outputText value="#{iniciativa.getcorreoProponente()}"/>
-			</p:column> 
-                        
-                         <p:column headerText="Fecha">
+			</p:column>     
+					<p:column headerText="Fecha">
 				<h:outputText value="#{iniciativa.getFecha()}"/>
 			</p:column>     
 

@@ -87,6 +87,20 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 		
 	}
 
-    
+	@Override
+	public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws PersistenceException {
+		try {
+                    System.out.println("MyBatisDAO agrupando  Iniciativa");
+                    System.out.println("Probando el retorno: "+iniciativaMapper.agrupeIniciativas());
+                    return iniciativaMapper.agrupeIniciativas();
+			
+        } catch (Exception e) { //org.apache.ibatis.exceptions.PersistenceException
+			System.out.println("Este es el error: "+e);
+            throw new PersistenceException("Error al agrupar la iniciativa"+e.getLocalizedMessage(), e);
+
+        }
+		
+	} 
+ 
     
 }

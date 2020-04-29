@@ -1,11 +1,23 @@
 .container{
-	background-color:silver;
+	background-color:black;
 	border-radius:10px;
 	padding:25px;
-	margin-top:125px;
+	margin-top:205px;
 	margin-left:100px;
 }
 
 body{
 	background-color:#941E1E;
+}
+
+.ui-datatable table, .ui-datatable-resizable table { 
+    table-layout: auto !important; 
+} 
+
+.ui-datatable-scrollable table { 
+    table-layout: fixed !important; 
+} 
+
+::-webkit-scrollbar {
+  width: 10px;
 }

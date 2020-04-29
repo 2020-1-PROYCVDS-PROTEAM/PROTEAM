@@ -20,6 +20,7 @@ edu\eci\cvds\samples\Services\client\Main.class
 edu\eci\cvds\samples\persistence\ComentarioDAO.class
 edu\eci\cvds\samples\guice\GuiceContextListener.class
 edu\eci\cvds\samples\persistence\mybatis\mappers\IniciativaMapper.class
+edu\eci\cvds\samples\beans\bean.class
 edu\eci\cvds\samples\persistence\mybatis\MyBatisVotoDAO.class
 edu\eci\cvds\samples\beans\LogueoBean.class
 edu\eci\cvds\samples\persistence\UsuarioDAO.class

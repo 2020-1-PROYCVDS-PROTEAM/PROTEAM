@@ -255,4 +255,14 @@ public class ServicioProteamImpl implements ServicioProteam {
         }
 	}
 
+   @Override
+    public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException{
+    	try{
+            System.out.println("ENTRA EN SERVICIOSPT Agrupe iniciativas");
+            return daoIniciativa.agrupeIniciativas();
+        }catch(PersistenceException ex){
+            throw new ServicesException("No fue posible borrar el voto",ex);
+        }
+    }
+
 }

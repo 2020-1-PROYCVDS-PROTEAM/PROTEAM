@@ -30,4 +30,5 @@ public interface ServicioProteam {
 	public abstract void cambiarComentario(int id, String idUsuario, int idIniciativa, String contenido) throws ServicesException;
 	public abstract void registrarVoto(String idUsuario, int idIniciativa) throws ServicesException;
 	public abstract void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException;
+	public abstract List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException;
 }

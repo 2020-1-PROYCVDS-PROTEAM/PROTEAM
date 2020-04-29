@@ -17,11 +17,15 @@
 		<result property='usuario_i' column='usuario_i'/>
 		<result property='correo_i' column='correo_i'/>
 		<result property='fechar_ini' column='fechar_ini'/>   
-
+    </resultMap>
+    
+    <resultMap type='Iniciativa' id='agrupacionResult'>
+         <id property='area2' column='area' javaType="string"/>
+         <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
     </resultMap>
 	
 	
-		<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
+	<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
 		SELECT
 			* 
 		FROM iniciativas 
@@ -43,6 +47,10 @@
 	
 	<select id='consultarIniciativas' resultMap='IniciativaResult'>
 		SELECT * FROM iniciativas;
+	</select>
+	
+	<select id='agrupeIniciativas' resultMap='agrupacionResult'>
+		SELECT area,count(id) as cantidad  FROM iniciativas GROUP BY area;
 	</select>
 
 	<update id='cambiarEstado' parameterType="map">

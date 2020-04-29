@@ -39,7 +39,7 @@
 		</h:form>
          <h:form id="iniciativasUsuario">
          <p:dataTable var="iniciativa" value="#{UserBean.iniciativas}"
-				paginator="true" rowIndexVar="rowIndexVar" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
+				paginator="true" rowIndexVar="rowIndexVar" rows="5" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
 			
 			<f:facet name="header">
 				Iniciativas.
@@ -91,5 +91,24 @@
              
 		</p:dataTable>
 		</h:form>
+		
+		<h:form id="estadisticas">
+			<style type="text/css">
+				.left {
+					text-align: left;
+				}
+				 
+				.right div {
+					float: right;
+				}
+			</style>
+			 
+			<h:panelGrid columns="1" columnClasses="left,right" style="width:100%">
+				<p:chart type="pie" model="#{bean.getModel()}" />
+
+			</h:panelGrid>
+		</h:form>
+     
+		
     </h:body>
 </html>

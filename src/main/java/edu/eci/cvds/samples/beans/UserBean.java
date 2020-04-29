@@ -159,6 +159,8 @@ public class UserBean extends BasePageBean implements Serializable{
 		}
 		return iniciativas;
 	}
+	
+	
 
 
 	public ServicioProteam getServicioPT() {
