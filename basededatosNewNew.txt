@@ -1,0 +1,10 @@
+Host
+ec2-54-88-130-244.compute-1.amazonaws.com
+Database
+d1532vjb97mdq0
+User
+mibfedlwgkbrxh
+Port
+5432
+password 
+b55b0573c52b3d45dab03dc5e0a6d7182fa54ce5e2ad72156f5f6e8a16faaa55
