@@ -256,7 +256,7 @@ public class ServicioProteamImpl implements ServicioProteam {
 	}
 
    @Override
-    public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException{
+    public List<Iniciativa> agrupeIniciativas() throws ServicesException{
     	try{
             System.out.println("ENTRA EN SERVICIOSPT Agrupe iniciativas");
             return daoIniciativa.agrupeIniciativas();

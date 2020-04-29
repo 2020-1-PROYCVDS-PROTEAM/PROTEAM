@@ -37,50 +37,33 @@ public class bean extends BasePageBean implements Serializable{
     private PieChartModel model;
     @Inject
     private ServicioProteam servicioPT;
-    /**
-    public bean() {
 
-    }
-     * @return 
-    */
+ 
     public PieChartModel getModel() {
                 System.out.println("Esta entrando por acá!");
                 model = new PieChartModel();
-		List<java.util.HashMap<String,java.lang.Long>> iniciativas=null;
+                List<Iniciativa> iniciativas2=null;
 		try{
-			iniciativas = servicioPT.agrupeIniciativas();
+			iniciativas2 = servicioPT.agrupeIniciativas();
+                        
 		}catch(ServicesException e){
 			System.out.println("Capturado en consultarIniciativas bean");
 		}
                 finally{
-		if(iniciativas!=null){
-        
-			for(HashMap<String, Long> iniciativa:iniciativas){
-                            
-                            for (Map.Entry<String, Long> entry : iniciativa.entrySet()) {
-                                String key = entry.getKey();
-                                Object value = entry.getValue();
-                                model.set(key, (Number) value);
-                            }
-                            
+                    if(iniciativas2!=null){
+                        System.out.println("estas son las iniciativas: "+iniciativas2);
+                        for(Iniciativa iniciativa: iniciativas2){
+                            System.out.println("iniciativa getArea: "+iniciativa.getArea2()+" iniciativaCantidad: "+iniciativa.getCantidad());
+                            model.set(iniciativa.getArea2(),iniciativa.getCantidad());
                         }
-                            
-                        System.out.println("estas son las iniciativas: "+iniciativas);
-			//System.out.println(iniciativa.getArea()+" "+iniciativa.getCantidad()+" "+iniciativa);  
-			//}
-			//model.set(iniciativa.area,iniciativa,cantidad);
+                        System.out.println("Iniciativas2: "+model);
 		}
-/*                
-        model.set("Brand 1", 540);
-        model.set("Brand 2", 325);
-        model.set("Brand 3", 702);
-        model.set("Brand 4", 421);
-*/
-        model.setTitle("Custom Pie");
-        model.setLegendPosition("e");
-        model.setFill(false);
-        model.setShowDataLabels(true);
-        model.setDiameter(150);
+
+                model.setTitle("Custom Pie");
+                model.setLegendPosition("e");
+                model.setFill(true);
+                model.setShowDataLabels(true);
+                model.setDiameter(150);
         
         }
                 return model;  
