@@ -99,8 +99,9 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	@Override
 	public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws PersistenceException {
 		 try{
-             iniciativaMapper.insertarPalabraClave(id, idIniciativa, palabraClave);
+                       iniciativaMapper.insertarPalabraClave(id, idIniciativa, palabraClave);
 	        }catch(Exception e){
+                    System.out.println("SE ATRAPO EN MYBATISDAOBROU");
 	            throw new PersistenceException("Error al insertar  la palabra clave:"+e.getLocalizedMessage(), e);   
 	        }	
 		

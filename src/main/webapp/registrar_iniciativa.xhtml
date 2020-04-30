@@ -41,7 +41,7 @@
 	<h:form id="RegistrarIniciativa">              
          
 			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-         	<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
+                            <p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
 				<p:tab id="personal" title="Registro">
 					<p:panel header="Información personal">
 					<p:messages />
@@ -53,8 +53,12 @@
 						<p:outputLabel for="descripcion" value="Descripcion: " />
 						<p:inputText id="descripcion" type="String" binding="#{descripcion}" required="true"/>
 						
-						<p:outputLabel for="palabraClave" value="palabraClave: "/>
-						<p:inputText id="palabraClave" type="String" binding="#{palabraClave}" required="true"/>
+                                                
+                                                <p:outputLabel for="chips" value="Palabras clave: " />
+                                                <p:chips id="chips" binding="#{palabraClave}" required="true"/>
+                                                
+                                                
+                                               
 
 						<p:outputLabel for="area" value="Area: " />
 						<p:inputText id="area" type="String" binding="#{area}" required="true"/>

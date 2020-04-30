@@ -133,7 +133,7 @@ public class ServicioProteamImpl implements ServicioProteam {
             System.out.println("correo_i: "+correo_i);
             System.out.println("ferchar_ini: "+fechar_ini);
 
-            daoIniciativa.insertIniciativa(id, votos,palabraClave ,nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
+            daoIniciativa.insertIniciativa(id, votos, palabraClave,nombre, estado, descripcion, area, usuario_i, correo_i, fechar_ini);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible agregar la nueva iniciativa",ex);
         }
@@ -268,14 +268,15 @@ public class ServicioProteamImpl implements ServicioProteam {
 	@Override
 	public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws ServicesException {
 		try{
-	        System.out.println("insertarPalabraClaveIniciativaServiciosProTeam");
+	        System.out.println("insertarPalabraClaveIniciativaServiciosProTeamPROOOOOOO");
 	        System.out.println("id: "+id);
-	        System.out.println("votos: "+idIniciativa);
+	        System.out.println("IdIniciatva: "+idIniciativa);
 	        System.out.println("palabraClave: "+palabraClave);
 	 
 	
 	        daoIniciativa.insertarPalabraClave(id, idIniciativa, palabraClave);
 	    }catch(PersistenceException ex){
+                System.out.println("Se atrapo en insertarPalabraClaveSPT");
 	        throw new ServicesException("No fue posible agregar la nueva palabra clave",ex);
 	    }
 	}

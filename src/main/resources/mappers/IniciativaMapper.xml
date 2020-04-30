@@ -42,12 +42,13 @@
         FROM iniciativas 
         WHERE id=#{identificador};   
     </select>
-    
+
 	<select  parameterType="map" id='consultarIniciativasRelacionadas' resultMap='IniciativaResult'>
         SELECT
            ini. *
         FROM iniciativas ini INNER JOIN (SELECT id2 FROM filiniciativas WHERE id1 = #{id}) se on ini.id = se.id2; 
     </select>
+
 
     <insert id='insertarIniciativa' parameterType="map">
 	INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});

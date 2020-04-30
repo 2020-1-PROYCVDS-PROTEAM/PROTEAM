@@ -7,6 +7,7 @@
 
     <h:head>
 		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+                <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
 		<link href="administrador.css" rel="stylesheet" type="text/css"/>
         <title>Registro de usuarios prueba</title>
     </h:head>
@@ -61,8 +62,8 @@
 				<h:outputText value="#{iniciativa.getVotos()}"/>
 			</p:column>
              
-			<p:column headerText="PalabraClave" sortBy="#{iniciativa.getPalabraClave()}">
-				<h:outputText value="#{iniciativa.getPalabraClave()}"/>
+			<p:column headerText="PalabraClave" id="x" filterBy="#{iniciativa.palabraClave}" sortBy="#{iniciativa.getPalabraClave()}">
+				<h:outputText value="#{UserBean.consultarIniciativaPalabraCLave(x.value)}"/>
 			</p:column>
 						
 			<p:column headerText="Nombre" sortBy="#{iniciativa.getNombreIniciativa()}">
@@ -100,12 +101,39 @@
 				 
 				.right div {
 					float: right;
+                                        text-align: right;
 				}
+                                .className {
+                                    text-align: right;
+                                }
+                                .ui-paginator {
+                                    text-align: right ! important
+                                }
+                                .ui-datatable table, .ui-datatable-resizable table { 
+    table-layout: auto !important; 
+} 
+
 			</style>
 			 
-			<h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+			<h:panelGrid columns="2" rows="3" columnClasses="left,right" style="width:100%">
 				<p:chart type="pie" model="#{bean.getModel()}" />
+                                
+                                <p:dataTable var="iniciativa" value="#{bean.getIniciativas()}" class="tabla"
+				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rows="4"  id="id" selectionMode="single"  tableStyle="width:auto" styleClass="className"
+				rowKey="#{iniciativa.area2}" >
+			
+                                                           
 
+                                    <p:column headerText="Area" >
+                                            <h:outputText value="#{iniciativa.getArea2()}"/>
+                                    </p:column>
+
+                                    <p:column headerText="Cantidad" >
+                                            <h:outputText value="#{iniciativa.getCantidad()}"/>
+                                    </p:column>
+             
+                                </p:dataTable>	               
 			</h:panelGrid>
 		</h:form>
      
