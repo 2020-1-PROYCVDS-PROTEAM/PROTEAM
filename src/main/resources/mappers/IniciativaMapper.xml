@@ -27,9 +27,9 @@
 	
 	<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
 		SELECT 
-			*
+			ini.*
 		FROM iniciativas ini left join palabrasclave pa on ini.id = pa.idiniciativa 
-		WHERE pa.palabraclave ='#{clave}';
+		WHERE pa.palabraclave =#{clave};
 	</select>
 
 	<insert id='insertarPalabraClave' parameterType="map">

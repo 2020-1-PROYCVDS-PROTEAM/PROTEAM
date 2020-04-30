@@ -8,7 +8,8 @@ public class Main {
     public static void main(String[] args) throws ServicesException{
         //System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuarios());
         //System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarUsuario("cesarg"));
-        System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarIniciativas());
+       // System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().consultarIniciativas());
+    	System.out.println(ServicioProteamFactory.getInstance().getServicioProteam().palabraClaveIniciativa("SO"));
         System.exit(0);
     }
 
