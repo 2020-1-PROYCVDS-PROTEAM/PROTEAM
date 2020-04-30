@@ -114,7 +114,7 @@ public class proteamTest {
 	}
 	
 	
-	@Test
+	/*@Test
 	public void consultaIniciativasPorPalabraClave() {
 		try {
 			Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
@@ -122,7 +122,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-	}
+	}*/
 	
 	
 	@Test
