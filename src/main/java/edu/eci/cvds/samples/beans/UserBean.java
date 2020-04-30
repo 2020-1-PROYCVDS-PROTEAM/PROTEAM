@@ -115,10 +115,10 @@ public class UserBean extends BasePageBean implements Serializable{
         System.out.println("Aparece en pantallaUserBean");
         try{
             int idIni= Integer.parseInt(idIniciativa);
-			int idd = servicioPT.consultarComentariosIniciativa(idIni).size()+1;
-			Date datex = new Date(Calendar.getInstance().getTime().getTime());			
-			System.out.println("FECHA DEL REGISTRO COMENTARIO: "+datex);
-			System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
+            int idd = servicioPT.consultarComentariosIniciativa(idIni).size()+1;
+            Date datex = new Date(Calendar.getInstance().getTime().getTime());			
+            System.out.println("FECHA DEL REGISTRO COMENTARIO: "+datex);
+            System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
             //int voto = Integer.parseInt(votos);
             //Date date=Date.valueOf(fecha);
             servicioPT.insertarComentario(idd,idUsuario,idIni,contenido,datex);

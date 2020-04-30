@@ -14,10 +14,17 @@ body{
     table-layout: auto !important; 
 } 
 
-.ui-datatable-scrollable table { 
-    table-layout: fixed !important; 
-} 
 
 ::-webkit-scrollbar {
   width: 10px;
 }
+
+.myTable td:nth-child(1) { 
+    width: 20px; 
+} 
+
+
+.className {
+    text-align: right;
+}
+

@@ -35,38 +35,46 @@ import java.util.Map;
 @ApplicationScoped
 public class bean extends BasePageBean implements Serializable{
     private PieChartModel model;
+    List<Iniciativa> iniciativas=null;
     @Inject
     private ServicioProteam servicioPT;
+
 
  
     public PieChartModel getModel() {
                 System.out.println("Esta entrando por acá!");
                 model = new PieChartModel();
-                List<Iniciativa> iniciativas2=null;
 		try{
-			iniciativas2 = servicioPT.agrupeIniciativas();
+			iniciativas = servicioPT.agrupeIniciativas();
                         
 		}catch(ServicesException e){
 			System.out.println("Capturado en consultarIniciativas bean");
 		}
                 finally{
-                    if(iniciativas2!=null){
-                        System.out.println("estas son las iniciativas: "+iniciativas2);
-                        for(Iniciativa iniciativa: iniciativas2){
+                    if(iniciativas!=null){
+                        System.out.println("estas son las iniciativas: "+iniciativas);
+                        for(Iniciativa iniciativa: iniciativas){
                             System.out.println("iniciativa getArea: "+iniciativa.getArea2()+" iniciativaCantidad: "+iniciativa.getCantidad());
                             model.set(iniciativa.getArea2(),iniciativa.getCantidad());
                         }
-                        System.out.println("Iniciativas2: "+model);
+                        System.out.println("Iniciativas: "+model);
 		}
 
                 model.setTitle("Custom Pie");
                 model.setLegendPosition("e");
-                model.setFill(true);
                 model.setShowDataLabels(true);
                 model.setDiameter(150);
         
         }
                 return model;  
     }
+    
+    public void setIniciativas(List<Iniciativa> iniciativas){
+        this.iniciativas=iniciativas;
+    }
+    
+    public List<Iniciativa> getIniciativas(){
+        return iniciativas;
+    }    
      
 }

@@ -42,7 +42,7 @@
         FROM iniciativas 
         WHERE id=#{identificador};   
     </select>
-    
+ 
 
     <insert id='insertarIniciativa' parameterType="map">
 	INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});

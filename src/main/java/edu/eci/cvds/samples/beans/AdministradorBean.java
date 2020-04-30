@@ -92,18 +92,33 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		return new java.sql.Date(fechaUtilDate.getTime());
 	}
     
-    public void registrarIniciativa(String votos,String palabraClave, String nombre,String estado,String descripcion, String area, String usuario_i,String correo_i,java.util.Date fecha_ini){//Aqui debe ir un casteo de atributos a Date int ...
+    public void registrarIniciativa(String votos,List<String> palabraClave, String nombre,String estado,String descripcion, String area, String usuario_i,String correo_i,java.util.Date fecha_ini){//Aqui debe ir un casteo de atributos a Date int ...
         System.out.println("Aparece en pantalla");
         try{
-            //int idd = Integer.parseInt(id);
-			int idd = servicioPT.consultarIniciativas().size()+1;
-			System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
+            System.out.println("palabras clave: "+palabraClave);
+            System.out.println("palabras clave.get(0): "+palabraClave.get(0));
+            int idd = servicioPT.consultarIniciativas().size()+1;
+            System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
             int voto = Integer.parseInt(votos);
             Date date=convertir(fecha_ini);
-            servicioPT.insertIniciativa(idd,voto,palabraClave,nombre,estado,descripcion,area,usuario_i,correo_i,date);
+            servicioPT.insertIniciativa(idd,voto,palabraClave.get(0),nombre,estado,descripcion,area,usuario_i,correo_i,date);
+            insertarPalabraClave(idd,palabraClave);
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean registrarIniciativa");
         }
+    }
+    
+    public void insertarPalabraClave(int idIniciativa, List<String> palabraClave){
+        try{
+            System.out.println("InsertaArPalabraCLAVEEEE!: "+palabraClave);
+            for(int i=0;i<palabraClave.size();i++){
+                servicioPT.insertarPalabraClave(i+1,idIniciativa,palabraClave.get(i));
+            }
+        }catch(ServicesException e){
+            System.out.println("Entra en excepcion ADMINBEAN.insertaRPalabra");
+        }
+        
+        
     }
 	
 	public void registrarUsuario(String usuario,String passwd,String passwdC, String nombre,String apellido,String correo){

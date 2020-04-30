@@ -7,7 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import edu.eci.cvds.samples.entities.Iniciativa;
 
 public interface IniciativaMapper {
-	public Iniciativa palabraClaveIniciativa(@Param("clave") String palabraclave);	
+	public Iniciativa palabraClaveIniciativa(@Param("clave") String palabraclave);
+        //public List<Iniciativa>palabrasClaveIniciativa
 	public void insertarPalabraClave(@Param("id") int id,@Param("idIniciativa") int idIniciativa,@Param("palabraClave") String palabraClave);
 	public Iniciativa consultarIniciativa(@Param("identificador") int id);	
 	public List<Iniciativa> consultarIniciativas();
