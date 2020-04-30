@@ -105,6 +105,29 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
 	        }	
 		
 	} 
+	
+	@Override
+	public void relacionarIniciativas(int id1, int id2)throws PersistenceException{
+		try {
+			iniciativaMapper.relacionarIniciativas(id1,id2);
+			iniciativaMapper.relacionarIniciativas(id2,id1);
+			
+		}catch(Exception e) {
+			throw new PersistenceException("Error al relacionar las iniciativas:"+e.getLocalizedMessage(),e);
+		}
+	}
+	
+	@Override
+	public List<Iniciativa> consultarIniciativasRelacionadas(int id)throws PersistenceException{
+		try {
+			System.out.println("Esta entrando aca JOSE23423");
+			return iniciativaMapper.consultarIniciativasRelacionadas(id);
+			
+		}catch(Exception e) {
+			System.out.println("Esta entrando aca JOSE BATISINICIATIVADAO");
+			throw new PersistenceException("Error al relacionar las iniciativas relacionadas:"+e.getLocalizedMessage(),e);
+		}
+	}
  
     
 }

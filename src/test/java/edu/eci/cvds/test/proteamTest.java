@@ -31,7 +31,7 @@ public class proteamTest {
     public proteamTest() {
     	sp = ServicioProteamFactory.getInstance().getServicioProteam();
     }
-    
+
 	@Test
     public void deberiaConsultarUsuario() {
 		try {
@@ -51,7 +51,7 @@ public class proteamTest {
 		}
 		
 	}
-	
+
 	/*
 	@Test
     public void lanzaExcepcionNoExisteUsuario() {
@@ -63,7 +63,7 @@ public class proteamTest {
     	}
     }
 	*/
-	
+
 	@Test
     public void realizaConsultaDeUsuario() {
 		try {
@@ -134,4 +134,14 @@ public class proteamTest {
 			
 		}
 	}*/
+
+
+	@Test
+	public void deberiaConsultarIniciativasRelacionadas() {
+		try {
+			List<Iniciativa> i = sp.consultarIniciativasRelacionadas(1);
+		}catch(ServicesException ex) {
+			fail();
+		}
+	}
 }

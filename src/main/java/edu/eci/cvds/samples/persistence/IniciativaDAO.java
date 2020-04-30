@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.entities.Iniciativa;
 
 public interface IniciativaDAO {
@@ -14,6 +15,8 @@ public interface IniciativaDAO {
 	public List<Iniciativa> consultarIniciativas() throws PersistenceException;
 	public void insertIniciativa(int id,int votos,String palabraClave,String nombre,String estado, String descripcion,String area,String usuario_i, String correo_i, Date fechar_ini) throws PersistenceException;
 	public void cambiarEstado(int id,String estado) throws PersistenceException;
+	public abstract void relacionarIniciativas(int id1, int id2)throws PersistenceException; 
+	public List<Iniciativa> consultarIniciativasRelacionadas(int id)throws PersistenceException;
 	//public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws PersistenceException;
         public List<Iniciativa> agrupeIniciativas() throws PersistenceException;
 }

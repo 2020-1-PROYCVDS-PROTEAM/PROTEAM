@@ -279,5 +279,26 @@ public class ServicioProteamImpl implements ServicioProteam {
 	        throw new ServicesException("No fue posible agregar la nueva palabra clave",ex);
 	    }
 	}
+	
+	@Override
+	public void relacionarIniciativas(int id1, int id2)throws ServicesException{
+		try {
+			daoIniciativa.relacionarIniciativas(id1,id2);
+		}catch(PersistenceException ex) {
+			throw new ServicesException("No fue posible agregar la nueva palabra clave",ex);
+		}
+		
+		
+	}
+	
+	@Override
+	public List<Iniciativa> consultarIniciativasRelacionadas(int id)throws ServicesException{
+		try {
+			return daoIniciativa.consultarIniciativasRelacionadas(id);
+		}catch(PersistenceException ex) {
+			System.out.println("Esta entrando aca JOSE IMPL");
+			throw new ServicesException("No fue posible consultar las iniciativas relacionadas",ex);
+		}
+	}
 
 }
