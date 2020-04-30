@@ -60,7 +60,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
             throw new PersistenceException("Error al consultar la iniciativa:"+e.getLocalizedMessage(), e);   
         }	
 	}
-
 	@Override
 	public void insertIniciativa(int id, int votos,String palabraClave, String nombre, String estado, String descripcion, String area, String usuario_i, String correo_i, Date fechar_ini) throws PersistenceException {
 		 try{
@@ -99,6 +98,15 @@ public class MyBatisIniciativaDAO implements IniciativaDAO{
             throw new PersistenceException("Error al agrupar la iniciativa"+e.getLocalizedMessage(), e);
 
         }
+		
+	}
+	@Override
+	public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws PersistenceException {
+		 try{
+             iniciativaMapper.insertarPalabraClave(id, idIniciativa, palabraClave);
+	        }catch(Exception e){
+	            throw new PersistenceException("Error al insertar  la palabra clave:"+e.getLocalizedMessage(), e);   
+	        }	
 		
 	} 
  

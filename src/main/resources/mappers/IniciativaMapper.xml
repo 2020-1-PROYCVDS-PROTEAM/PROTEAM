@@ -26,13 +26,16 @@
 	
 	
 	<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
-		SELECT
-			* 
-		FROM iniciativas 
-		WHERE palabraclave=#{word};
+		SELECT 
+			*
+		FROM iniciativas ini left join palabrasclave pa on ini.id = pa.idiniciativa 
+		WHERE pa.palabraclave ='#{clave}';
 	</select>
 
-
+	<insert id='insertarPalabraClave' parameterType="map">
+		INSERT INTO palabrasclave VALUES (#{id},#{idIniciativa},#{palabraClave});
+    </insert>
+	
 	<select  parameterType="map" id='consultarIniciativa' resultMap='IniciativaResult'>
         SELECT
             *

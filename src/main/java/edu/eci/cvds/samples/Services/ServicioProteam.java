@@ -7,6 +7,7 @@ import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
+import edu.eci.cvds.samples.persistence.PersistenceException;
 
 public interface ServicioProteam {
 	
@@ -14,6 +15,7 @@ public interface ServicioProteam {
 	public abstract Usuario consultarUsuario(String usuario)throws ServicesException;
 	public abstract List<Usuario> consultarUsuarios()throws ServicesException;
 	public abstract Iniciativa palabraClaveIniciativa(String palabraclave) throws ServicesException;	
+	public abstract void insertarPalabraClave(int id,int idIniciativa,String palabraClave)throws ServicesException;
 	public abstract Iniciativa consultarIniciativa(int id)throws ServicesException;	
 	public abstract List<Iniciativa> consultarIniciativas() throws ServicesException;
 	public abstract Comentario consultarComentario(int id, String idUsuario, int idIniciativa)throws ServicesException;

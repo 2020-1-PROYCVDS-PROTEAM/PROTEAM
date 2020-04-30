@@ -101,6 +101,14 @@ public class UserBean extends BasePageBean implements Serializable{
 		}
 		return null;
 	}
+	public Iniciativa consultarIniciativaPalabraCLave(String palabraClave){
+		try{
+			return servicioPT.palabraClaveIniciativa(palabraClave);
+		}catch(ServicesException e){
+			System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+		}
+		return null;
+	}
 	
 	
 	public void insertarComentario(String idUsuario, String idIniciativa, String contenido){//Aqui debe ir un casteo de atributos a Date int ...

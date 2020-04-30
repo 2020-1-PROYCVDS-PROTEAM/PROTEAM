@@ -265,4 +265,19 @@ public class ServicioProteamImpl implements ServicioProteam {
         }
     }
 
+	@Override
+	public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws ServicesException {
+		try{
+	        System.out.println("insertarPalabraClaveIniciativaServiciosProTeam");
+	        System.out.println("id: "+id);
+	        System.out.println("votos: "+idIniciativa);
+	        System.out.println("palabraClave: "+palabraClave);
+	 
+	
+	        daoIniciativa.insertarPalabraClave(id, idIniciativa, palabraClave);
+	    }catch(PersistenceException ex){
+	        throw new ServicesException("No fue posible agregar la nueva palabra clave",ex);
+	    }
+	}
+
 }
