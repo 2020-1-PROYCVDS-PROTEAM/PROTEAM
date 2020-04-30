@@ -122,7 +122,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-	}*/
+	}
 	
 	
 	@Test
@@ -133,5 +133,5 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			
 		}
-	}
+	}*/
 }
