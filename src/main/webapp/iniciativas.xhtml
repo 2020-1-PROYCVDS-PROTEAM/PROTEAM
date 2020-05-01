@@ -65,10 +65,9 @@
 	 
 	 <p:growl id="msgss" showDetail="true"/>
          
-         <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" class="tabla"
+         <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.iniciativas}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="4"  id="id" selectionMode="single" selection="#{UserBean.selectedi}"
-				rowKey="#{iniciativa.id}" editable="true" >
+				rows="5"  editable="true" >
 			
 			<f:facet name="header">
 				Iniciativas.
@@ -76,6 +75,9 @@
 			
 			<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
+			
+			<p:column selectionMode="multiple"/>
+			
 			
 			<p:column headerText="Comentarios">
 				<p:button outcome="comentarios" value="Comentar">
@@ -85,36 +87,36 @@
 
 
 			
-			<p:column headerText="Id">
+			<p:column headerText="Id" sortBy="#{iniciativa.getId()}">
 				<h:outputText value="#{iniciativa.getId()}"/>
 			</p:column>
 
-			<p:column headerText="Votos">
+			<p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
 				<h:outputText value="#{iniciativa.getVotos()}"/>
 			</p:column>
              
-			<p:column headerText="PalabraClave">
+			<p:column headerText="PalabraClave" sortBy="#{iniciativa.getPalabraClave()}">
 				<h:outputText value="#{iniciativa.getPalabraClave()}"/>
 			</p:column>
 						
-			<p:column headerText="Nombre">
+			<p:column headerText="Nombre" sortBy="#{iniciativa.getNombreIniciativa()}">
 				<h:outputText value="#{iniciativa.getNombreIniciativa()}"/>
 			</p:column>
 			
 			
-			<p:column headerText="Descripcion">
+			<p:column headerText="Descripcion" sortBy="#{iniciativa.getDescripcion()}">
 				<h:outputText value="#{iniciativa.getDescripcion()}"/>
 			</p:column>
-             		<p:column headerText="Area">
+             		<p:column headerText="Area" sortBy="#{iniciativa.getArea()}">
 				<h:outputText value="#{iniciativa.getArea()}"/>
 			</p:column>
-             		<p:column headerText="Usuario">
+             		<p:column headerText="Usuario" sortBy="#{iniciativa.getUsuarioProponente()}">
 				<h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
 			</p:column>
-                    <p:column headerText="CorreoU">
+                    <p:column headerText="CorreoU" sortBy="#{iniciativa.getcorreoProponente()}">
 				<h:outputText value="#{iniciativa.getcorreoProponente()}"/>
 			</p:column>     
-					<p:column headerText="Fecha">
+					<p:column headerText="Fecha" sortBy="#{iniciativa.getFecha()}">
 				<h:outputText value="#{iniciativa.getFecha()}"/>
 			</p:column>     
 
@@ -133,6 +135,9 @@
 			<p:column style="width:35px">
 				<p:rowEditor />
 			</p:column>
+			<f:facet name="footer">
+            	<p:commandButton process="prueba" icon="pi pi-search" value="Relacionar iniciativas"  action="#{AdministradorBean.relacionarIniciativas()}"/>
+        	</f:facet>
 				
              
 		</p:dataTable>	                 

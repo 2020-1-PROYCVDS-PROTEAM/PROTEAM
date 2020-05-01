@@ -31,6 +31,7 @@ public class UserBean extends BasePageBean implements Serializable{
 	private boolean skip;
 	private String idPag;
 	private Iniciativa selectedi;
+	private List<Iniciativa> selectsi;
 	
     @Inject
     private ServicioProteam servicioPT;
@@ -178,6 +179,18 @@ public class UserBean extends BasePageBean implements Serializable{
 	public void setServicioPT(ServicioProteam servicioPT) {
 		this.servicioPT = servicioPT;
 	}
+
+
+	public List<Iniciativa> getSelectsi() {
+		return selectsi;
+	}
+
+
+	public void setSelectsi(List<Iniciativa> selectsi) {
+		this.selectsi = selectsi;
+	}
+	
+	
     
     
 }

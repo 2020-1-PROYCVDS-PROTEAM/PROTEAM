@@ -19,13 +19,16 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import org.primefaces.event.FlowEvent;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 
 @ManagedBean(name="AdministradorBean")
 @ApplicationScoped
 public class AdministradorBean extends BasePageBean implements Serializable{
 	
-	
+	private List<Iniciativa> selectsi;
+	private List<Iniciativa> iniciativas; 
 	private boolean skip;
 	private java.util.Date date6;
 	private final static String[] rolez;
@@ -72,6 +75,28 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		catch(ServicesException e){
 			System.out.println("Entra en excepcion completeText");  
 		}
+        return null;
+    }
+	
+	public void relacionarIniciativas(){
+        try{
+            servicioPT.relacionarIniciativas(selectsi.get(0).getId(), selectsi.get(1).getId());
+        }
+        catch(ServicesException e){
+        	System.out.println("no funciona");
+
+        }
+		
+    }
+	
+	public List<Iniciativa> consultarIniciativasRelacionadas(int id){
+        try{
+            return servicioPT.consultarIniciativasRelacionadas(id);
+        }
+        catch(ServicesException e){
+        	System.out.println("no funciona");
+
+        }
         return null;
     }
 	
@@ -138,18 +163,16 @@ public class AdministradorBean extends BasePageBean implements Serializable{
     }
 	
     
-    public List<Iniciativa> consultarIniciativas(){
-        List<Iniciativa> iniciativas = null;
+    public void consultarIniciativas(){
         try{
             System.out.println("AdministradorBEAN INICIATIVA");
-            iniciativas = servicioPT.consultarIniciativas();
+            this.iniciativas = servicioPT.consultarIniciativas();
         }
         catch(ServicesException e){
             System.out.println("Entra en excepcion bean");
 
         }
         System.out.println("CONSULTAR INICIATIVAS ESPERO QUE NO PASE POR ACA");
-        return iniciativas;
     }
 	
 
@@ -223,5 +246,33 @@ public class AdministradorBean extends BasePageBean implements Serializable{
     public void setDate6(java.util.Date date6) {
         this.date6 = date6;
     }
+
+	public List<Iniciativa> getSelectsi() {
+		return selectsi;
+	}
+
+	public void setSelectsi(List<Iniciativa> selectsi) {
+		this.selectsi = selectsi;
+	}
+
+	public List<Iniciativa> getIniciativas() {
+		if (iniciativas == null) {
+			consultarIniciativas();
+		}
+		return iniciativas;
+	}
+
+	public void setIniciativas(List<Iniciativa> iniciativas) {
+		this.iniciativas = iniciativas;
+	}
 	
+	public void onRowSelect(SelectEvent event) {
+		Iniciativa prueba=(Iniciativa) event.getObject();
+    }
+ /*
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", event.getObject().getId());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+	*/
 }
