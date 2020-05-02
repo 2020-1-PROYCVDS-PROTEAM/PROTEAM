@@ -60,6 +60,30 @@
 	</h:form>
 
 
+	<h:form>
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+	  
+		<p:panel id="custom" header="Iniciativa" style="margin-bottom:20px">
+			<h:panelGrid columns="1" cellpadding="10">
+					<p:graphicImage name="/logo.png" />
+					<p:messages />
+						<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
+						</p>
+					
+					<h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
+						Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+				</h:panelGrid>
+	 
+			<f:facet name="actions">
+				<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-question" /></h:commandLink>
+				<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-star" /></h:commandLink>
+			</f:facet>
+		</p:panel>
+	 
+	</h:form>
+
+
+
 		
 	<h:form id="ConsultaComentarios">
 	 
@@ -67,8 +91,8 @@
          
          <p:dataTable var="comentario" value="#{UserBean.consultarComentariosIniciativa(UserBean.idPag)}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="8" selectionMode="single" id="id"  
-				rowKey="#{comentario.id}" editable="true" >
+				rows="8" selectionMode="single" id="id"  tableStyle="table-layout: left;" style="width:50%"
+				rowKey="#{comentario.id}" editable="false" >
 			
 			<f:facet name="header">
 				Comentarios.
@@ -97,9 +121,7 @@
 			</p:column>
             
 
-			<p:column style="width:35px">
-				<p:rowEditor />
-			</p:column>
+		
 				
              
 		</p:dataTable>	                 
@@ -110,12 +132,11 @@
 	<h:form id="RegistrarComentario">              
          
 			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-         	<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
 				<p:tab id="personal" title="Comentar">
 					<p:panel header="Publica tu comentario">
 					<p:messages />
-									<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
-				</p>
+						<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
+						</p>
 						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
 						<br />
 						<h:outputText id="display" />
@@ -126,8 +147,6 @@
 					</p:panel>
 				</p:tab>
 
-
-		</p:wizard>					           
                  
 				 
 
