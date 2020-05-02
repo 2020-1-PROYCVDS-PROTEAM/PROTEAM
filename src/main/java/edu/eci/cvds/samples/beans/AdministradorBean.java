@@ -28,7 +28,8 @@ import org.primefaces.event.UnselectEvent;
 public class AdministradorBean extends BasePageBean implements Serializable{
 	
 	private List<Iniciativa> selectsi;
-	private List<Iniciativa> iniciativas; 
+	private List<Iniciativa> iniciativas;
+	private int buscar;
 	private boolean skip;
 	private java.util.Date date6;
 	private final static String[] rolez;
@@ -89,15 +90,16 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		
     }
 	
-	public List<Iniciativa> consultarIniciativasRelacionadas(int id){
+	public void consultarIniciativasRelacionadas(int id){
         try{
-            return servicioPT.consultarIniciativasRelacionadas(id);
+        	System.out.println(id);
+            this.iniciativas=servicioPT.consultarIniciativasRelacionadas(id);
+            System.out.println(iniciativas);
         }
         catch(ServicesException e){
         	System.out.println("no funciona");
 
         }
-        return null;
     }
 	
 	
@@ -269,10 +271,18 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	public void onRowSelect(SelectEvent event) {
 		Iniciativa prueba=(Iniciativa) event.getObject();
     }
- /*
-    public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Unselected", event.getObject().getId());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-	*/
+
+	public int getBuscar() {
+		return buscar;
+	}
+
+	public void setBuscar(int buscar) {
+		this.buscar = buscar;
+	}
+
+	
+	
+	
+	
+
 }
