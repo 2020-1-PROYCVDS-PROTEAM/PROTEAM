@@ -33,9 +33,13 @@ public class MyBatisVotoDAO implements VotoDAO{
     @Override
     public Voto consultarVoto(String idUsuario, int idIniciativa) throws PersistenceException  {
          try{
+			 System.out.println("ConsultarVotoMyBatisDAO");
         	 Voto v = votoMapper.consultarVoto(idUsuario,idIniciativa);
+			 System.out.println("Despues de consultar voto en mybatisDAO");
             if(v == null) {
-            	throw new PersistenceException("No existe el idUsuario,idIniciativa voto");
+				System.out.println("VOTO NULO ENTONCES ARROJA EXCEPTION");
+				return null;
+            	//throw new PersistenceException("No existe el idUsuario,idIniciativa voto");
             }
             return v;
         }catch(Exception e){

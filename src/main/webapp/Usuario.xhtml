@@ -17,6 +17,7 @@
 	{
 		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
         	if (opcion == true) {
+					logeoBean.cerrarSesion();
             		return true;
     		} else {
     	    		return false;
@@ -34,7 +35,7 @@
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-				<p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />				
+				<p:commandButton value="Salir"  onclick="confirmDelete()" icon="pi pi-sign-out" />				
 			</f:facet>
 		
 		</p:toolbar>
@@ -75,8 +76,9 @@
 				<h:outputText value="#{iniciativa.getVotos()}"/>
 			</p:column>
              
-			<p:column headerText="PalabraClave" id="x" filterBy="#{UserBean.consultarIniciativaPalabraCLave(x.value)}" sortBy="#{iniciativa.getPalabraClave()}">
-				<h:outputText value="#{iniciativa.palabraClave}"/>
+			<p:column headerText="PalabraClave" id="x" filterBy="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}">
+				<h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa('7')}"/>
+                                <h:outputText value="#{UserBean.selectedi.id}"/>
 			</p:column>
 						
 			<p:column headerText="Nombre" sortBy="#{iniciativa.getNombreIniciativa()}">

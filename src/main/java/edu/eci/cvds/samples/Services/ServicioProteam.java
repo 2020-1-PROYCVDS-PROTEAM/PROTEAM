@@ -7,6 +7,7 @@ import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
+import edu.eci.cvds.samples.entities.PalabraClave;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 
 public interface ServicioProteam {
@@ -36,4 +37,5 @@ public interface ServicioProteam {
 	public List<Iniciativa> consultarIniciativasRelacionadas(int id)throws ServicesException;
 	//public abstract List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException;
         public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
+        public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
 }

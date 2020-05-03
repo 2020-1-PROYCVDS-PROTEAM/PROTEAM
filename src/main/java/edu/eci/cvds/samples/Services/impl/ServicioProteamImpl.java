@@ -13,9 +13,11 @@ import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
+import edu.eci.cvds.samples.entities.PalabraClave;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.VotoDAO;
+import edu.eci.cvds.samples.persistence.PalabraClaveDAO; 
 import edu.eci.cvds.samples.persistence.PersistenceException;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
 import edu.eci.cvds.samples.Services.ServicesException;
@@ -25,14 +27,16 @@ import edu.eci.cvds.samples.Services.ServicioProteam;
 public class ServicioProteamImpl implements ServicioProteam {
 	
 	
-	@Inject
+    @Inject
     private UsuarioDAO daoUsuario;
     @Inject
     private IniciativaDAO daoIniciativa;
-	@Inject
-	private ComentarioDAO daoComentario;
-	@Inject
-	private VotoDAO daoVoto;
+    @Inject
+    private ComentarioDAO daoComentario;
+    @Inject
+    private VotoDAO daoVoto;
+    @Inject
+    private PalabraClaveDAO daoPalabraClave;
     
     @Override
     public Usuario consultarUsuario(String usuario)throws ServicesException{
@@ -68,54 +72,54 @@ public class ServicioProteamImpl implements ServicioProteam {
 	}
 	
     @Override
-	public Iniciativa consultarIniciativa(int id)throws ServicesException{
+    public Iniciativa consultarIniciativa(int id)throws ServicesException{
     	try{
             return daoIniciativa.consultarIniciativa(id);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar la iniciativa",ex);
         }
-	}
+    }
     
     @Override
-	public List<Iniciativa> consultarIniciativas() throws ServicesException{
+    public List<Iniciativa> consultarIniciativas() throws ServicesException{
     	try{
             System.out.println("ServicioProTeamIMPL INICIATIVA");
             return daoIniciativa.consultarIniciativas();
         }catch(PersistenceException ex){
             throw new ServicesException("No hay iniciativas",ex);
         }
-	}
+    }
 	
-	@Override
-	public Comentario consultarComentario(int id, String idUsuario, int idIniciativa)throws ServicesException{
+    @Override
+    public Comentario consultarComentario(int id, String idUsuario, int idIniciativa)throws ServicesException{
     	try{
             System.out.println("ServicioProTeamIMPL COMENTARIO");
             return daoComentario.consultarComentario(id,idUsuario,idIniciativa);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar el comentario.",ex);
         }
-	}
+    }
 	
-	@Override
-	public List<Comentario> consultarComentarios()throws ServicesException{
+    @Override
+    public List<Comentario> consultarComentarios()throws ServicesException{
     	try{
             System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOS");
             return daoComentario.consultarComentarios();
         }catch(PersistenceException ex){
             throw new ServicesException("No hay comentarios",ex);
         }
-	}
+    }
         
 	
-	@Override
-	public List<Comentario> consultarComentariosIniciativa(int idIniciativa)throws ServicesException{
+    @Override
+    public List<Comentario> consultarComentariosIniciativa(int idIniciativa)throws ServicesException{
     	try{
             System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOSIniciativa");
             return daoComentario.consultarComentariosIniciativa(idIniciativa);
         }catch(PersistenceException ex){
             throw new ServicesException("No hay comentarios",ex);//en la iniciativa
         }
-	}
+    }
         	
     
     @Override
@@ -301,5 +305,17 @@ public class ServicioProteamImpl implements ServicioProteam {
 			throw new ServicesException("No fue posible consultar las iniciativas relacionadas",ex);
 		}
 	}
+        
+        @Override
+        public List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException{
+            try{
+                System.out.println("Avanza por SERVICIOSPROTEAM consultarPalabrasclave");
+                return daoPalabraClave.consultarPalabrasClaveIniciativa(idIniciativa);
+            }catch(PersistenceException e){
+                System.out.println("Esta entrando ServicioIMPL ConsultarPalabraClave");
+		throw new ServicesException("No fue posible consultar las palabras claves de la iniciativa",e);                
+            }
+            
+        }
 
 }

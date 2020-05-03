@@ -7,10 +7,12 @@ import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
 import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.VotoDAO;
+import edu.eci.cvds.samples.persistence.PalabraClaveDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisIniciativaDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisUsuarioDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisComentarioDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisVotoDAO;
+import edu.eci.cvds.samples.persistence.mybatis.MyBatisPalabraClaveDAO;
 
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -31,11 +33,12 @@ public class ServicioProteamFactory {
            protected void initialize() {
                setEnvironmentId(env);
                setClassPathResource(pathResource);
-				bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
-				bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-				bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
-				bind(VotoDAO.class).to(MyBatisVotoDAO.class);
-				bind(ServicioProteam.class).to(ServicioProteamImpl.class);
+               bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
+               bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+               bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
+               bind(VotoDAO.class).to(MyBatisVotoDAO.class);
+               bind(PalabraClaveDAO.class).to(MyBatisPalabraClaveDAO.class);
+               bind(ServicioProteam.class).to(ServicioProteamImpl.class);
            }
        });
    }

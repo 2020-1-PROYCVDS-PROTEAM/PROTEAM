@@ -27,6 +27,7 @@ public class Iniciativa implements Serializable {
     private java.lang.Long cantidad;
     private String area2;
     
+    
     public Iniciativa (int id,int votos,String palabraclave,String nombre, String estado, String area,String descripcion,String usuarioProponente,String correoProponente,Date fecha){
         this.id=id;
         this.votos=votos;
@@ -40,12 +41,12 @@ public class Iniciativa implements Serializable {
         this.fechar_ini=fecha;
             
     }
+    
 	
-	public Iniciativa(String area2, java.lang.Long cantidad){
-            
-		this.area2=area2;
-		this.cantidad=cantidad;
-	}
+    public Iniciativa(String area2, java.lang.Long cantidad){
+        this.area2=area2;
+	this.cantidad=cantidad;
+    }
 
     public int getId() {
         return id;
@@ -143,7 +144,8 @@ public class Iniciativa implements Serializable {
     public String toString() {
         return "Iniciativa{" + "id=" + id + ", votos=" + votos + ", palabraClave=" + palabraClave + ", nombre=" + nombre + ", estado=" + estado + ", descripcion=" + descripcion + ", area=" + area + ", usuario_i=" + usuario_i + ", correo_i=" + correo_i + ", fechar_ini=" + fechar_ini + ", cantidad=" + cantidad + ", area2=" + area2 + '}';
     }
-
+    
+  
 
     
     

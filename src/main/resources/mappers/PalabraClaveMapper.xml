@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.PalabraClaveMapper">
+
+	<resultMap type='PalabraClave' id='PalabraClaveResult'>
+        <id property='id' column='id'/>
+        <id property='idiniciativa' column='idiniciativa'/>
+        <result property='palabraclave' column='palabraclave'/>    		
+	</resultMap>
+
+
+
+	<select parameterType="map" id='consultarPalabrasClave' resultMap='PalabraClaveResult'>
+		SELECT * FROM palabrasclave;
+	</select>
+	
+	<select parameterType="map" id='consultarPalabrasClaveIniciativa' resultMap='PalabraClaveResult'>
+		SELECT pc.id, pc.idiniciativa, pc.palabraclave
+		FROM palabrasclave as pc WHERE pc.idiniciativa=#{idiniciativa};
+	</select>
+	
+	
+
+</mapper>

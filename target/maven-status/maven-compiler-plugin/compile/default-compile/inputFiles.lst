@@ -11,16 +11,19 @@ C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\myb
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Rol.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\NavigationController.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\PalabraClaveMapper.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\UsuarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\ComentarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\impl\ServicioProteamImpl.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\JDBCExample.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\ToolbarView.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\PalabraClave.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisUsuarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\IniciativaDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\VotoDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\UserBean.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\AdministradorBean.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisPalabraClaveDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisVotoDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\MyBatisComentarioDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicioProteam.java
@@ -28,5 +31,6 @@ C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\entities\Inicia
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\guice\GuiceContextListener.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\client\Main.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\mybatis\mappers\VotoMapper.java
+C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\persistence\PalabraClaveDAO.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\Services\ServicesException.java
 C:\Users\Z470\Desktop\PROTEAM\src\main\java\edu\eci\cvds\samples\beans\BasePageBean.java

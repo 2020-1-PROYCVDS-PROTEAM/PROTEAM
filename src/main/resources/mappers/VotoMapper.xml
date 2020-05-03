@@ -37,7 +37,7 @@
 	
 
 		<delete id='borrarVoto' parameterType="map">
-			DELETE FROM comentarios WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+			DELETE FROM votos WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
 		</delete>
 
   	

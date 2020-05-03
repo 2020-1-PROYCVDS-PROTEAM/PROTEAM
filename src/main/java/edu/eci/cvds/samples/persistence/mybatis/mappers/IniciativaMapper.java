@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.samples.entities.Iniciativa;
-import edu.eci.cvds.samples.persistence.PersistenceException;
 
 public interface IniciativaMapper {
 	public Iniciativa palabraClaveIniciativa(@Param("clave") String palabraclave);
@@ -17,7 +16,7 @@ public interface IniciativaMapper {
 	public void cambiarEstado(@Param("id") int id,@Param("estado") String estado);
 	public void agregueVoto( @Param("idIniciativa")int idIniciativa);
 	//public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas();
-    public List<Iniciativa>agrupeIniciativas();
-    public List<Iniciativa> consultarIniciativasRelacionadas(@Param("id")int id);
+        public List<Iniciativa>agrupeIniciativas();
+        public List<Iniciativa> consultarIniciativasRelacionadas(@Param("id")int id);
 	public void relacionarIniciativas(@Param("id1")int id1, @Param("id2")int id2);
 }

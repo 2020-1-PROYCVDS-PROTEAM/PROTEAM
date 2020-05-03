@@ -4,6 +4,7 @@ import edu.eci.cvds.samples.entities.Rol;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
+import edu.eci.cvds.samples.entities.PalabraClave;
 
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.Services.ServicioProteam;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.io.Serializable;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -30,14 +32,16 @@ public class UserBean extends BasePageBean implements Serializable{
 	
 	private boolean skip;
 	private String idPag;
+	private Date date;
 	private Iniciativa selectedi;
 	private List<Iniciativa> selectsi;
 	
     @Inject
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
-	private List<Comentario> comentarios;
-	private List<Voto> votos;
+    private List<Comentario> comentarios;
+    private List<PalabraClave> palabraClave;
+    private List<Voto> votos;
     
     private void setErrorMessage(Exception e){
         String message = e.getMessage();
@@ -129,12 +133,18 @@ public class UserBean extends BasePageBean implements Serializable{
     }
 	
 	
+	
+	
 	public void registrarVoto(String idUsuario, String idIniciativa){
                 int idd = Integer.parseInt(idIniciativa);
 				try{
                     System.out.println("Al bean User llega esto: "+idUsuario+" ini: "+idIniciativa);
-                    //Voto voto = servicioPT.consultarVoto(idUsuario,idd);
-                    servicioPT.registrarVoto(idUsuario, idd);	
+                    Voto voto = servicioPT.consultarVoto(idUsuario,idd);
+					if(voto==null)
+						servicioPT.registrarVoto(idUsuario, idd);		
+					else
+						servicioPT.borrarVoto(idUsuario,idd);
+					
 			
             //servicioPT.registrarVoto(idUsuario, idd);
 				}catch(ServicesException e){
@@ -149,7 +159,7 @@ public class UserBean extends BasePageBean implements Serializable{
 		}
 	}
 	
-	public void setselectedi(Iniciativa selectIniciativa){
+	public void setSelectedi(Iniciativa selectIniciativa){
 		selectedi=selectIniciativa;
 	}
 	
@@ -168,6 +178,22 @@ public class UserBean extends BasePageBean implements Serializable{
 		}
 		return iniciativas;
 	}
+        
+        public List<String> consultarPalabrasClaveIniciativa(int idIniciaitva){
+            try{
+                System.out.println("Entrando con consultar palabras clave");
+                List<PalabraClave> palabrasclave = servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
+                List<String> palabra=new ArrayList<String>();
+                for(PalabraClave p:palabrasclave){
+                    palabra.add(p.getPalabraClave());
+                }
+                return palabra;
+                //return servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
+            }catch(ServicesException e){
+                System.out.println("Entra en excepcion userBean GETPALABRASCLAVE");
+            }
+                return null;
+        }
 	
 	
 
@@ -188,6 +214,15 @@ public class UserBean extends BasePageBean implements Serializable{
 
 	public void setSelectsi(List<Iniciativa> selectsi) {
 		this.selectsi = selectsi;
+	}
+	
+	public Date getDate(){
+		Date date = new Date(Calendar.getInstance().getTime().getTime());
+		return date;
+	}
+	
+	public void setDate(Date date){
+		this.date=date;
 	}
 	
 	

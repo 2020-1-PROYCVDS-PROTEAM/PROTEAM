@@ -55,11 +55,9 @@
 						<p:inputText id="descripcion" type="String" binding="#{descripcion}" required="true"/>
 						
                                                 
-                                                <p:outputLabel for="chips" value="Palabras clave: " />
-                                                <p:chips id="chips" binding="#{palabraClave}" required="true"/>
-                                                
-                                                
-                                               
+                        <p:outputLabel for="chips" value="Palabras clave: " />
+                        <p:chips id="chips" binding="#{palabraClave}" required="true"/>
+                                                                         
 
 						<p:outputLabel for="area" value="Area: " />
 						<p:inputText id="area" type="String" binding="#{area}" required="true"/>
@@ -72,7 +70,7 @@
 
 						
 						<p:outputLabel for="fecha_ini" value="Fecha inicio:" />
-						<p:calendar id="fecha_ini" value="#{AdministradorBean.date6}" pattern="yyyy-MM-dd" mindate="2019-12-10" maxdate="2020-04-28" binding="#{fecha_ini}"/>
+						<h:outputText id="fecha_ini" value="#{UserBean.date}" binding="#{fecha_ini}"/>
 						
 					</h:panelGrid>
 					</p:panel>
@@ -85,9 +83,5 @@
 
         </div> 
      </h:form>
-	 
-	
-
-    
 </h:body>
 </html>

@@ -21,7 +21,7 @@
 	{
 		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
         	if (opcion == true) {
-            		return true;
+            		logeoBean.cerrarSesion();;
     		} else {
     	    		return false;
     		}	
@@ -42,8 +42,8 @@
 			<f:facet name="left">
 	 			<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
 				<p:menuButton value="Opciones">
-					<p:menuitem value="Consultar usuarios" action="/Usuario.xhtml"/>
-					<p:menuitem value="Registrar iniciativa" action="/registrar_iniciativa.xhtml"/>
+					<p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+					<p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
 				</p:menuButton>
 				
 
@@ -52,7 +52,7 @@
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-				<p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
+				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
 				
 			</f:facet>
 	 
@@ -64,14 +64,44 @@
 		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 	  
 		<p:panel id="custom" header="Iniciativa" style="margin-bottom:20px">
-			<h:panelGrid columns="1" cellpadding="10">
-					<p:graphicImage name="/logo.png" />
-					<p:messages />
-						<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
-						</p>
-					
-					<h:outputText value="After a break of more than 15 years, director Francis Ford Coppola and writer Mario Puzo returned to the well for this third and final story of the fictional Corleone crime family. 
-						Two decades have passed, and crime kingpin Michael Corleone, now divorced from his wife Kay has nearly succeeded in keeping his promise that his family would one day be completely legitimate." />
+			<h:panelGrid columns="3" cellpadding="10">
+					<style type="text/css">
+						.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+							text-align: center;
+						}
+					 
+						.customPanelGrid .ui-panelgrid-content {
+							align-items: center;
+						}
+					</style>
+						<p:panelGrid id="informacion" columns="2">
+							<f:facet name="header">
+								<p:graphicImage library="img" name="/Solucionado.png" />
+							</f:facet>
+							 
+							<h:outputText value="Proponente:" />
+							<h:outputText value="#{UserBean.selectedi.getUsuarioProponente()}" />
+							 
+							<h:outputText value="Contacto:" />
+							<h:outputText value="#{UserBean.selectedi.getcorreoProponente()}" />
+							 
+							<h:outputText value="Fecha de inicio:" />
+							<h:outputText value="#{UserBean.selectedi.getFecha()}" /> 
+							 
+							<h:outputText value="Votos:" />
+							<h:outputText value="#{UserBean.selectedi.getVotos()}" />
+							 
+						</p:panelGrid>
+				
+						<p><h2><strong>"#{UserBean.selectedi.getNombreIniciativa()}"</strong></h2></p>
+                        <p><strong>"#{UserBean.consultarPalabrasClaveIniciativa(7)}"</strong></p>
+						<p><h3>Descripción: </h3></p>
+						<p>"#{UserBean.selectedi.getDescripcion()}"</p>
+						
+						<p:selectBooleanButton value="Agregar a favoritos" id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
+							<p:ajax update="custom" click="#{UserBean.setSelectedi(UserBean.selectedi)}" listener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" />
+						</p:selectBooleanButton>
+						
 				</h:panelGrid>
 	 
 			<f:facet name="actions">
@@ -135,8 +165,7 @@
 				<p:tab id="personal" title="Comentar">
 					<p:panel header="Publica tu comentario">
 					<p:messages />
-						<p>En este momento se va a hacer un comentario a la iniciativa:  <strong>"#{UserBean.selectedi}"also "#{UserBean.selectedi.id}"</strong>
-						</p>
+						<p>"#{UserBean.selectedi.id}"</p>
 						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
 						<br />
 						<h:outputText id="display" />

@@ -14,6 +14,7 @@
         <typeAlias type="edu.eci.cvds.samples.entities.Iniciativa" alias="Iniciativa"/>
 		<typeAlias type="edu.eci.cvds.samples.entities.Comentario" alias="Comentario"/>
 		<typeAlias type="edu.eci.cvds.samples.entities.Voto" alias="Voto"/>
+		<typeAlias type="edu.eci.cvds.samples.entities.PalabraClave" alias="PalabraClave"/>
 		
     </typeAliases>	
 
@@ -22,9 +23,9 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver" />
-                <property name="url" value="jdbc:postgresql://ec2-52-202-22-140.compute-1.amazonaws.com:5432/de7k6j2e193kjm?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
-                <property name="username" value="hvgityevldhjmk" />
-                <property name="password" value="9dba358ad5f3c0e95522223ded704c3eab02f5e413652082e954d9d62a3819de" />
+                <property name="url" value="jdbc:postgresql://ec2-34-204-22-76.compute-1.amazonaws.com:5432/d12ppcftoh8t13?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+                <property name="username" value="oxggktjyjjaotw" />
+                <property name="password" value="fcc65c852a2d83c8d7a41bc7efa0ab64372c3d2045addfa612efaa14ee9dd006" />
 
             </dataSource>
         </environment>
@@ -35,6 +36,7 @@
         <mapper resource="mappers/IniciativaMapper.xml"></mapper>
 		<mapper resource="mappers/ComentarioMapper.xml"></mapper>
 		<mapper resource="mappers/VotoMapper.xml"></mapper>
+		<mapper resource="mappers/PalabraClaveMapper.xml"></mapper>
     </mappers> 
 			
         

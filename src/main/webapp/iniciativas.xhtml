@@ -10,7 +10,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
  <h:head>
- <h:outputStylesheet name="/star.css" /> 
  <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
  <link rel="stylesheet" href="https://www.primefaces.org/primeng/showcase/#/icons"/>
@@ -22,7 +21,7 @@
 	{
 		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
         	if (opcion == true) {
-            		return true;
+            		logeoBean.cerrarSesion();
     		} else {
     	    		return false;
     		}	
@@ -52,7 +51,7 @@
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol})"/>
-				<p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
+				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
 				
 			</f:facet>
 	 
@@ -65,7 +64,7 @@
 	 
 	 <p:growl id="msgss" showDetail="true"/>
          
-         <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.iniciativas}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
+         <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rows="5"  editable="true" >
 			
