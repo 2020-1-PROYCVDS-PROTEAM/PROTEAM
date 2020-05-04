@@ -7,23 +7,13 @@
 
     <h:head>
 		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-                <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+		<h:outputScript library="js" name="cierreSesion.js"/>
 		<link href="administrador.css" rel="stylesheet" type="text/css"/>
                 <link rel="icon" href="/resources/user.ico"/>
         <title>Registro de usuarios prueba</title>
     </h:head>
-	<script type = "text/javascript">
-	function confirmDelete()
-	{
-		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
-        	if (opcion == true) {
-					logeoBean.cerrarSesion();
-            		return true;
-    		} else {
-    	    		return false;
-    		}	
-	}
-</script>
+
 
 
     <h:body>
@@ -133,6 +123,7 @@
 			</h:panelGrid>
 		</h:form>
      
+		<p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
 		
     </h:body>
 </html>

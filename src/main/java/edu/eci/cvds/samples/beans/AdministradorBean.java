@@ -57,12 +57,12 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	
 		
 	public List<String> getRolez(){
-		System.out.println("ADMINISTRADOR GETROLEZ");
+		//System.out.println("ADMINISTRADOR GETROLEZ");
 		return Arrays.asList(rolez);
 	}
 	
 	public List<String> getIdeas(){
-		System.out.println("Administrador getIdeas");
+		//System.out.println("Administrador getIdeas");
 		return Arrays.asList(ideas);
 	}
 	
@@ -115,7 +115,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
     }
 	
 	public java.sql.Date convertir(java.util.Date fechaUtilDate){
-		System.out.println("SI ESTA SIENDO LLAMADO");
+		//System.out.println("SI ESTA SIENDO LLAMADO");
 		return new java.sql.Date(fechaUtilDate.getTime());
 	}
     
@@ -165,16 +165,18 @@ public class AdministradorBean extends BasePageBean implements Serializable{
     }
 	
     
-    public void consultarIniciativas(){
+    public List<Iniciativa> consultarIniciativas(){
         try{
             System.out.println("AdministradorBEAN INICIATIVA");
             this.iniciativas = servicioPT.consultarIniciativas();
+			return iniciativas;
         }
         catch(ServicesException e){
             System.out.println("Entra en excepcion bean");
 
         }
         System.out.println("CONSULTAR INICIATIVAS ESPERO QUE NO PASE POR ACA");
+		return null;
     }
 	
 
@@ -182,7 +184,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
         List<Usuario> usuarios = null;
         try{
             usuarios=servicioPT.consultarUsuarios();
-            System.out.println("Entra correctamente en ConsultarUsuarioBean");
+            //System.out.println("Entra correctamente en ConsultarUsuarioBean");
             
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean");
@@ -194,7 +196,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		public void cambiarRol(String usuario,String rol){ //Mirar si toca usar los enum de ROL 
 		try{
 			System.out.println("ENTRA EN MODIFICAR ROL|| usuario: "+usuario+" rol: "+rol);
-			System.out.println("Usuario val: "+this.usuario);
+			//System.out.println("Usuario val: "+this.usuario);
 			servicioPT.cambiarRol(usuario,rol);
 		}
 		catch(ServicesException e){

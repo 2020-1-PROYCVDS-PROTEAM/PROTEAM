@@ -10,23 +10,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
  <h:head>
- <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
- <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
+	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+	<h:outputStylesheet name="iniciativas.css" library="css"/>
+	<h:outputScript library="js" name="cierreSesion.js"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+	<link href="iniciativas.css" rel="stylesheet" type="text/css"/>
  
- <title>Comentarios</title>
+	<title>Comentarios</title>
  </h:head>
- <script type = "text/javascript">
-	function confirmDelete()
-	{
-		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
-        	if (opcion == true) {
-            		logeoBean.cerrarSesion();;
-    		} else {
-    	    		return false;
-    		}	
-	}
-</script>
+
  <h:body>
  	
 		 <style type="text/css">
@@ -53,7 +45,6 @@
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
 				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
-				
 			</f:facet>
 	 
 		</p:toolbar>
@@ -76,9 +67,9 @@
 					</style>
 						<p:panelGrid id="informacion" columns="2">
 							<f:facet name="header">
-								<p:graphicImage library="img" name="/Solucionado.png" />
+								<p:graphicImage name="#{UserBean.estadoIniciativa()}"  library="img"  />
 							</f:facet>
-							 
+							
 							<h:outputText value="Proponente:" />
 							<h:outputText value="#{UserBean.selectedi.getUsuarioProponente()}" />
 							 
@@ -101,7 +92,7 @@
 						<p:selectBooleanButton value="Agregar a favoritos" id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
 							<p:ajax update="custom" click="#{UserBean.setSelectedi(UserBean.selectedi)}" listener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" />
 						</p:selectBooleanButton>
-						
+												
 				</h:panelGrid>
 	 
 			<f:facet name="actions">
@@ -170,9 +161,9 @@
 						<br />
 						<h:outputText id="display" />
 								<div class="divButton">
-									<p:commandButton  class="Button" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
+									<p:commandButton id="combtn" class="Button" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
 	
-								</div> 
+								</div>
 					</p:panel>
 				</p:tab>
 
@@ -181,6 +172,7 @@
 
      </h:form>
 	 
+	<p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
      
     
 </h:body>

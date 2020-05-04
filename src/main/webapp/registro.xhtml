@@ -17,7 +17,7 @@
  
      <h:form id="registro">
 	 
-	     <p:growl id="growl" sticky="true" showDetail="true"/>
+	    <p:growl id="growl" sticky="true" skipDetailIfEqualsSummary="true" showDetail="true"/>
  
 		<p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
 			<p:tab id="personal" title="Registro">
@@ -25,7 +25,7 @@
 					<p:messages />
 					<h:panelGrid columns="2" columnClasses="label, value">
 					
-						<h:outputText value="Nombre usuario: *" />
+						<h:outputText for="usuario" value="Nombre usuario: *" />
 						<p:inputText id="usuario" type="String"   value="#{usuario}" required="true"/>
 	 
 						<h:outputLabel for="password" value="Contraseña: *" />
@@ -35,14 +35,14 @@
 						<p:password id="passwordC" label="Password 2" value="#{passwordC}" required="true" />
 
 	 
-						<h:outputText value="Nombre: *" />
+						<h:outputText for="nombre" value="Nombre: *" />
 						<p:inputText id="nombre" type="String" value="#{nombre}" required="true"/>
 						
 						
-						<h:outputText value="Apellido: *" />
+						<h:outputText for="apellido" value="Apellido: *" />
 						<p:inputText id="apellido" type="String" value="#{apellido}" required="true"/>
 	 
-						<h:outputText value="Correo: *" />
+						<h:outputText for="correo" value="Correo: *" />
 						<p:inputText id="correo" type="String" value="#{correo}" required="true"/>
 	 
 

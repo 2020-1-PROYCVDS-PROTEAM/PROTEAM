@@ -39,7 +39,7 @@ public class LogueoBean implements Serializable{
 	
         
         public void doLogin() {
-        System.out.println("Si esta entrando acaaaaaaaaa");
+        //System.out.println("Si esta entrando acaaaaaaaaa");
         System.out.println("DoLOGIN() === name: "+name+" pass: "+pass);
         Subject currentUser  = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getName(), getPass());
@@ -81,7 +81,7 @@ public class LogueoBean implements Serializable{
     }
 
     public String getName() {
-        System.out.println("ME PIDIERON EL NOMBRE EN LOGEOBEAN: "+name);
+        //System.out.println("ME PIDIERON EL NOMBRE EN LOGEOBEAN: "+name);
         return name;
     }
 
@@ -90,7 +90,7 @@ public class LogueoBean implements Serializable{
     }
 
     public String getPass() {
-        System.out.println("ME PIDIERON LA CONTRA EN LOGUEOBEAN: "+pass);
+        //System.out.println("ME PIDIERON LA CONTRA EN LOGUEOBEAN: "+pass);
         return pass;
     }
 
@@ -113,10 +113,11 @@ public class LogueoBean implements Serializable{
     }
     
     public void cerrarSesion() {
-
+		System.out.println("Entra en cerrarSesion");
         SecurityUtils.getSubject().logout();
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/login.xhtml");
+			System.out.println("Hizo el cierre de sesion");
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(LogueoBean.class.getName()).log(Level.SEVERE, null, ex);
         }
