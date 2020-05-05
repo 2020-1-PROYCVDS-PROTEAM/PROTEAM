@@ -27,6 +27,12 @@
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
 				<p:commandButton value="Salir"  onclick="confirmDelete()" icon="pi pi-sign-out" />				
 			</f:facet>
+			
+			<f:facet name="left">
+				<p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
+				<p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+			</f:facet>
+			
 		
 		</p:toolbar>
 		</h:form>

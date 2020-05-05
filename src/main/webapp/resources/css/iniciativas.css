@@ -1,3 +1,5 @@
+@charset "uft-8";
+
 .container{
 	background-color:black;
 	border-radius:10px;
@@ -10,26 +12,79 @@ body{
 	background-color:#941E1E;
 }
 
-.ui-datatable table, .ui-datatable-resizable table { 
-    table-layout: auto !important; 
-} 
-
-
-::-webkit-scrollbar {
-  width: 10px;
+.panelCenter{
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+	
 }
+
 
 .myTable td:nth-child(1) { 
     width: 20px; 
+	background-color:#009966;
 } 
 
+.ui-button{
+	background-color:#009966;
+}
 
 .className {
     text-align: right;
 }
 
 #combtn{
-	border:none;
-	background: #009966;
+	background: #FF33FF;
 	color: #FFFFFF;
+}
+
+.mystyle.ui-datatable .ui-datatable-header{
+background: #003946 !important;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-header{
+background: #003946 !important;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-even{
+background: white ;
+
+
+}
+
+.mystyle.ui-datatable .ui-datatable-odd.ui-state-hover{
+background: #F4E7C1 ;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-even.ui-state-hover{
+background: #F4E7C1 ;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-even.ui-state-highlight{
+background: #fff9e5 ;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-odd.ui-state-highlight{
+background: #fff9e5 ;
+
+}
+
+.mystyle.ui-datatable .ui-datatable-data-empty td {
+color:red;
+font-weight:bold;
+}
+.ui-datatable.mystyle th {
+background: EAAB00;
+font-family: verdana;
+font-size: 1em;
+}
+
+
+.mystyle.ui-datatable .ui-expanded-row-content{
+background:white;
 }

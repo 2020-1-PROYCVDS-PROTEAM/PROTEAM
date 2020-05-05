@@ -11,25 +11,43 @@
       xmlns:p="http://primefaces.org/ui">
  <h:head>
 	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-	<h:outputStylesheet name="iniciativas.css" library="css"/>
+	<h:outputStylesheet library="css" name="iniciativas.css" />
 	<h:outputScript library="js" name="cierreSesion.js"/>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-	<link href="iniciativas.css" rel="stylesheet" type="text/css"/>
- 
+	<style type="text/css">
+        .boton {
+            border-radius: 5px;
+			background-color:#FF33FF;
+			color:white;
+        }
+		#combtn{
+		background: #FF33FF;
+		color: #FFFFFF;
+		}
+    </style>
 	<title>Comentarios</title>
+	
  </h:head>
 
  <h:body>
  	
 		 <style type="text/css">
-    .ui-row-editor .ui-row-editor-pencil {
-        margin-left:8px;
-    }
-</style>
+			.ui-row-editor .ui-row-editor-pencil {
+			margin-left:8px;
+			}
+			.boton {
+            border-radius: 5px;
+			background-color:#FF33FF;
+			color:white;
+			}
+			#combtn{
+			background: #FF33FF;
+			color: #FFFFFF;
+			}
+		</style>
 
 	<h:form>     
 		<p:growl id="messages" showDetail="true" />
-	 
+		
 		<p:toolbar>
 			<f:facet name="left">
 	 			<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
@@ -64,6 +82,12 @@
 						.customPanelGrid .ui-panelgrid-content {
 							align-items: center;
 						}
+						.ui-datatable{
+							background-color:#009966;
+						}
+						.ui-button{
+							background-color:#009966;
+						}
 					</style>
 						<p:panelGrid id="informacion" columns="2">
 							<f:facet name="header">
@@ -89,9 +113,9 @@
 						<p><h3>Descripción: </h3></p>
 						<p>"#{UserBean.selectedi.getDescripcion()}"</p>
 						
-						<p:selectBooleanButton value="Agregar a favoritos" id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
-							<p:ajax update="custom" click="#{UserBean.setSelectedi(UserBean.selectedi)}" listener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" />
-						</p:selectBooleanButton>
+						
+						<p:commandButton value="Me gusta" update="informacion" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+						
 												
 				</h:panelGrid>
 	 
@@ -112,15 +136,13 @@
          
          <p:dataTable var="comentario" value="#{UserBean.consultarComentariosIniciativa(UserBean.idPag)}" class="tabla"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="8" selectionMode="single" id="id"  tableStyle="table-layout: left;" style="width:50%"
+				rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
 				rowKey="#{comentario.id}" editable="false" >
 			
 			<f:facet name="header">
 				Comentarios.
 			</f:facet>
 			
-			
-
 
 
 			<p:column headerText="Id">
@@ -131,7 +153,6 @@
 				<h:outputText value="#{comentario.getIdUsuario()}"/>
 			</p:column>
              
-						
 			<p:column headerText="Comentario">
 				<h:outputText value="#{comentario.getContenido()}"/>
 			</p:column>
@@ -140,17 +161,14 @@
 			<p:column headerText="Fecha">
 				<h:outputText value="#{comentario.getFecha()}"/>
 			</p:column>
-            
-
-		
-				
              
 		</p:dataTable>	                 
          
      </h:form>
 	 
 	 
-	<h:form id="RegistrarComentario">              
+	<h:form id="RegistrarComentario">    
+	       
          
 			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 				<p:tab id="personal" title="Comentar">
@@ -161,8 +179,18 @@
 						<br />
 						<h:outputText id="display" />
 								<div class="divButton">
-									<p:commandButton id="combtn" class="Button" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
-	
+								<style type="text/css">
+        .boton {
+            border-radius: 5px;
+			background-color:#FF33FF;
+			color:white;
+        }
+		#combtn{
+		background: #FF33FF;
+		color: #FFFFFF;
+		}
+    </style>   
+									<p:commandButton id="combtn" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
 								</div>
 					</p:panel>
 				</p:tab>

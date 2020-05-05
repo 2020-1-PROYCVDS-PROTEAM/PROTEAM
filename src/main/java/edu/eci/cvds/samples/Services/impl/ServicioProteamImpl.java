@@ -83,7 +83,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public List<Iniciativa> consultarIniciativas() throws ServicesException{
     	try{
-            System.out.println("ServicioProTeamIMPL INICIATIVA");
+            //System.out.println("ServicioProTeamIMPL INICIATIVA");
             return daoIniciativa.consultarIniciativas();
         }catch(PersistenceException ex){
             throw new ServicesException("No hay iniciativas",ex);
@@ -93,7 +93,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public Comentario consultarComentario(int id, String idUsuario, int idIniciativa)throws ServicesException{
     	try{
-            System.out.println("ServicioProTeamIMPL COMENTARIO");
+            //System.out.println("ServicioProTeamIMPL COMENTARIO");
             return daoComentario.consultarComentario(id,idUsuario,idIniciativa);
         }catch(PersistenceException ex){
             throw new ServicesException("No fue posible consultar el comentario.",ex);
@@ -103,7 +103,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public List<Comentario> consultarComentarios()throws ServicesException{
     	try{
-            System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOS");
+            //System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOS");
             return daoComentario.consultarComentarios();
         }catch(PersistenceException ex){
             throw new ServicesException("No hay comentarios",ex);
@@ -114,7 +114,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public List<Comentario> consultarComentariosIniciativa(int idIniciativa)throws ServicesException{
     	try{
-            System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOSIniciativa");
+            //System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOSIniciativa");
             return daoComentario.consultarComentariosIniciativa(idIniciativa);
         }catch(PersistenceException ex){
             throw new ServicesException("No hay comentarios",ex);//en la iniciativa

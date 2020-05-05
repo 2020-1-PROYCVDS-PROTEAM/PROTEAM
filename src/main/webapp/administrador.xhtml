@@ -29,10 +29,9 @@
     <p:toolbar>
         <f:facet name="left">
  
-			<p:menuButton value="Iniciativas">
-                <p:menuitem value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-                <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
-            </p:menuButton>
+			
+             <p:commandButton value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+             <p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
 			
 
         </f:facet>

@@ -25,28 +25,42 @@
     }
 	</style>
 
-	<h:form>     
+	<h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol == 'Proponente'}">     
 		<p:growl id="messages" showDetail="true" />
-	 
 		<p:toolbar>
 			<f:facet name="left">
-				<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-				<p:menuButton value="Opciones">
-					<p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-				</p:menuButton>
+				<p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
 				
-
+				<p:menuButton value="Iniciativas">
+					<p:menuitem value="registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+				</p:menuButton>
 			</f:facet>
-	 
+			
 			<f:facet name="right">
 				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
 				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol})"/>
 				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
-				
 			</f:facet>
-	 
 		</p:toolbar>
 	</h:form>
+	
+		<h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol != 'Proponente'}">     
+		<p:growl id="messages" showDetail="true" />
+		<p:toolbar>
+			<f:facet name="left">
+				<p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
+				<p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+				<p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+			</f:facet>
+			
+			<f:facet name="right">
+				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol})"/>
+				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
+			</f:facet>
+		</p:toolbar>
+	</h:form>
+	
 
 
 		
