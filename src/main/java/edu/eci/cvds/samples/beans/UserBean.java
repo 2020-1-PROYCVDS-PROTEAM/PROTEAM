@@ -34,12 +34,13 @@ public class UserBean extends BasePageBean implements Serializable {
     private Date date;
     private Iniciativa selectedi;
     private List<Iniciativa> selectsi;
+    private String palabra;
 
     @Inject
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
     private List<Comentario> comentarios;
-    private List<PalabraClave> palabraClave;
+    private List<PalabraClave> palabraclave;
     private List<Voto> votos;
 
     private void setErrorMessage(Exception e) {
@@ -58,6 +59,16 @@ public class UserBean extends BasePageBean implements Serializable {
         return this.iniciativas;
 
     }
+
+    public String getPalabra() {
+        return palabra;
+    }
+
+    public void setPalabra(String palabra) {
+        this.palabra = palabra;
+    }
+    
+    
 
     public void setIdPag(String iniciativaId) {
         System.out.println("Entra en setIdPag User Bean: " + iniciativaId);
@@ -88,6 +99,7 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return this.comentarios;
     }
+    
 
     public Iniciativa consultarIniciativa(String id) {
         try {
@@ -95,6 +107,16 @@ public class UserBean extends BasePageBean implements Serializable {
             return servicioPT.consultarIniciativa(idd);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+        }
+        return null;
+    }
+    
+    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraClave){
+        try{
+            return servicioPT.consultarIniciativasPalabraClave(palabraClave);
+        }catch(ServicesException e){
+            System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+
         }
         return null;
     }
@@ -187,13 +209,18 @@ public class UserBean extends BasePageBean implements Serializable {
     }
 
     public List<String> consultarPalabrasClaveIniciativa(int idIniciaitva) {
-        try {
-            System.out.println("Entrando con consultar palabras clave");
+        try {			
+            System.out.println("------------------------------------------------------");
+            System.out.println("CONSULTAR PALABRA CLAVE: (idIniciativa)"+idIniciaitva);
+			System.out.println("------------------------------------------------------");
             List<PalabraClave> palabrasclave = servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
             List<String> palabra = new ArrayList<String>();
             for (PalabraClave p : palabrasclave) {
                 palabra.add(p.getPalabraClave());
             }
+			System.out.println("********************************************************");
+			System.out.println("PALABRAS CLAVE: "+palabra);
+			System.out.println("********************************************************");
             return palabra;
             //return servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
         } catch (ServicesException e) {

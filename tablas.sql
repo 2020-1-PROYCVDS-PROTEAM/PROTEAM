@@ -70,3 +70,11 @@ submenu int,
 estado int
 );
 
+
+create table filiniciativas(
+id1 varchar(50) not null,
+id2 varchar(50) not null
+);
+
+alter table filiniciativas add constraint PK_fili primary key(id1,id2);
+

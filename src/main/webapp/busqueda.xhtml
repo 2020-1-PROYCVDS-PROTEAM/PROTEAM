@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputStylesheet library="css" name="iniciativas.css" />
+        <h:outputScript library="js" name="cierreSesion.js"/>
+        <title>Busqueda avanzada</title>
+
+    </h:head>
+
+    <h:body>
+
+        <h:form>     
+            <p:growl id="messages" showDetail="true" />
+
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
+                    <p:menuButton value="Opciones">
+                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                    </p:menuButton>
+
+
+                </f:facet>
+
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+                    <p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
+                </f:facet>
+
+            </p:toolbar>
+        </h:form>
+
+        <h:form id="PalabrasClave">
+
+            <p:growl id="msgss" showDetail="true"/>
+            
+            <h2 id="titulo"><strong>"#{UserBean.palabra}"</strong></h2>
+            
+            <p:dataTable var="palabras" value="#{UserBean.consultarIniciativasPalabraClave(UserBean.getPalabra())}" class="tabla"
+                         paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
+                         rowKey="#{palabras.id}" editable="false" >
+
+                <f:facet name="header">
+                    Iniciativas.
+                </f:facet>
+
+                <p:column headerText="Id" sortBy="#{palabras.getId()}">
+                    <h:outputText value="#{palabras.getId()}"/>
+                </p:column>
+
+                <p:column headerText="Votos" sortBy="#{palabras.getVotos()}">
+                    <h:outputText value="#{palabras.getVotos()}"/>
+                </p:column>
+
+                <p:column headerText="PalabraClave" id="x" >
+                    <h:outputText value="#{palabras.getPalabraClave()}"/>
+                </p:column>
+
+                <p:column headerText="Nombre" sortBy="#{palabras.getNombreIniciativa()}">
+                    <h:outputText value="#{palabras.getNombreIniciativa()}"/>
+                </p:column>
+
+                <p:column headerText="Estado" sortBy="#{palabras.getEstado()}">
+                    <h:outputText value="#{palabras.getEstado()}"/>
+                </p:column>
+
+                <p:column headerText="Descripcion" sortBy="#{palabras.getDescripcion()}">
+                    <h:outputText value="#{palabras.getDescripcion()}"/>
+                </p:column>
+                <p:column headerText="Area" sortBy="#{palabras.getArea()}">
+                    <h:outputText value="#{palabras.getArea()}"/>
+                </p:column>
+                <p:column headerText="Usuario" sortBy="#{palabras.getUsuarioProponente()}">
+                    <h:outputText value="#{palabras.getUsuarioProponente()}"/>
+                </p:column>
+                <p:column headerText="CorreoU" sortBy="#{palabras.getcorreoProponente()}">
+                    <h:outputText value="#{palabras.getcorreoProponente()}"/>
+                </p:column> 
+                <p:column headerText="Fecha" sortBy="#{palabras.getFecha()}">
+                    <h:outputText value="#{palabras.getFecha()}"/>
+                </p:column>      
+           
+            </p:dataTable>	                 
+
+        </h:form>
+
+        <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
+
+
+    </h:body>
+</html>

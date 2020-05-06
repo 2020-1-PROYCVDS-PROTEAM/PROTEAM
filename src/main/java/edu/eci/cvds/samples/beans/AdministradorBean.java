@@ -30,6 +30,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	private List<Iniciativa> selectsi;
 	private List<Iniciativa> iniciativas;
 	private int buscar;
+	private String nombre;
 	private boolean skip;
 	private java.util.Date date6;
 	private final static String[] rolez;
@@ -81,7 +82,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 	
 	public void relacionarIniciativas(){
         try{
-            servicioPT.relacionarIniciativas(selectsi.get(0).getId(), selectsi.get(1).getId());
+            servicioPT.relacionarIniciativas(selectsi.get(0).getNombreIniciativa(), selectsi.get(1).getNombreIniciativa());
         }
         catch(ServicesException e){
         	System.out.println("no funciona");
@@ -90,7 +91,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 		
     }
 	
-	public void consultarIniciativasRelacionadas(int id){
+	public void consultarIniciativasRelacionadas(String id){
         try{
         	System.out.println(id);
             this.iniciativas=servicioPT.consultarIniciativasRelacionadas(id);
@@ -101,6 +102,14 @@ public class AdministradorBean extends BasePageBean implements Serializable{
 
         }
     }
+	
+	public void setNombre(String nombre){
+		this.nombre=nombre;
+	}
+	
+	public String getNombre(){
+		return nombre;
+	}
 	
 	
         

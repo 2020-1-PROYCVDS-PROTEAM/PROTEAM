@@ -16,6 +16,7 @@ public interface ServicioProteam {
 	public abstract Usuario consultarUsuario(String usuario)throws ServicesException;
 	public abstract List<Usuario> consultarUsuarios()throws ServicesException;
 	public abstract Iniciativa palabraClaveIniciativa(String palabraclave) throws ServicesException;	
+    public abstract List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws ServicesException;
 	public abstract void insertarPalabraClave(int id,int idIniciativa,String palabraClave)throws ServicesException;
 	public abstract Iniciativa consultarIniciativa(int id)throws ServicesException;	
 	public abstract List<Iniciativa> consultarIniciativas() throws ServicesException;
@@ -33,9 +34,9 @@ public interface ServicioProteam {
 	public abstract void cambiarComentario(int id, String idUsuario, int idIniciativa, String contenido) throws ServicesException;
 	public abstract void registrarVoto(String idUsuario, int idIniciativa) throws ServicesException;
 	public abstract void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException; 
-	public abstract void relacionarIniciativas(int id1, int id2)throws ServicesException; 
-	public List<Iniciativa> consultarIniciativasRelacionadas(int id)throws ServicesException;
+	public abstract void relacionarIniciativas(String id1, String id2)throws ServicesException; 
+	public List<Iniciativa> consultarIniciativasRelacionadas(String id)throws ServicesException;
 	//public abstract List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException;
-        public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
-        public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
+    public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
+    public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
 }

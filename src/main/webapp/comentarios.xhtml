@@ -1,207 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!--
-        To change this license header, choose License Headers in Project Properties.
-        To change this template file, choose Tools | Templates
-        and open the template in the editor.
-        -->
-        <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
- <h:head>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-	<h:outputStylesheet library="css" name="iniciativas.css" />
-	<h:outputScript library="js" name="cierreSesion.js"/>
-	<style type="text/css">
-        .boton {
-            border-radius: 5px;
-			background-color:#FF33FF;
-			color:white;
-        }
-		#combtn{
-		background: #FF33FF;
-		color: #FFFFFF;
-		}
-    </style>
-	<title>Comentarios</title>
-	
- </h:head>
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputStylesheet library="css" name="iniciativas.css" />
+        <h:outputScript library="js" name="cierreSesion.js"/>
+        <title>Comentarios</title>
 
- <h:body>
- 	
-		 <style type="text/css">
-			.ui-row-editor .ui-row-editor-pencil {
-			margin-left:8px;
-			}
-			.boton {
-            border-radius: 5px;
-			background-color:#FF33FF;
-			color:white;
-			}
-			#combtn{
-			background: #FF33FF;
-			color: #FFFFFF;
-			}
-		</style>
+    </h:head>
 
-	<h:form>     
-		<p:growl id="messages" showDetail="true" />
-		
-		<p:toolbar>
-			<f:facet name="left">
-	 			<p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-				<p:menuButton value="Opciones">
-					<p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-					<p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
-				</p:menuButton>
-				
+    <h:body>
 
-			</f:facet>
-	 
-			<f:facet name="right">
-				<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
-				<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-				<p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
-			</f:facet>
-	 
-		</p:toolbar>
-	</h:form>
+        <h:form>     
+            <p:growl id="messages" showDetail="true" />
+
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
+                    <p:menuButton value="Opciones">
+                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                    </p:menuButton>
 
 
-	<h:form>
-		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-	  
-		<p:panel id="custom" header="Iniciativa" style="margin-bottom:20px">
-			<h:panelGrid columns="3" cellpadding="10">
-					<style type="text/css">
-						.ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
-							text-align: center;
-						}
-					 
-						.customPanelGrid .ui-panelgrid-content {
-							align-items: center;
-						}
-						.ui-datatable{
-							background-color:#009966;
-						}
-						.ui-button{
-							background-color:#009966;
-						}
-					</style>
-						<p:panelGrid id="informacion" columns="2">
-							<f:facet name="header">
-								<p:graphicImage name="#{UserBean.estadoIniciativa()}"  library="img"  />
-							</f:facet>
-							
-							<h:outputText value="Proponente:" />
-							<h:outputText value="#{UserBean.selectedi.getUsuarioProponente()}" />
-							 
-							<h:outputText value="Contacto:" />
-							<h:outputText value="#{UserBean.selectedi.getcorreoProponente()}" />
-							 
-							<h:outputText value="Fecha de inicio:" />
-							<h:outputText value="#{UserBean.selectedi.getFecha()}" /> 
-							 
-							<h:outputText value="Votos:" />
-							<h:outputText value="#{UserBean.selectedi.getVotos()}" />
-							 
-						</p:panelGrid>
-				
-						<p><h2><strong>"#{UserBean.selectedi.getNombreIniciativa()}"</strong></h2></p>
-                        <p><strong>"#{UserBean.consultarPalabrasClaveIniciativa(7)}"</strong></p>
-						<p><h3>Descripción: </h3></p>
-						<p>"#{UserBean.selectedi.getDescripcion()}"</p>
-						
-						
-						<p:commandButton value="Me gusta" update="informacion" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
-						
-												
-				</h:panelGrid>
-	 
-			<f:facet name="actions">
-				<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-question" /></h:commandLink>
-				<h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-star" /></h:commandLink>
-			</f:facet>
-		</p:panel>
-	 
-	</h:form>
+                </f:facet>
+
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+                    <p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
+                </f:facet>
+
+            </p:toolbar>
+        </h:form>
+
+
+        <h:form>
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+            <p:panel id="custom" header="Iniciativa" style="margin-bottom:20px; margin-top:20px">
+                <style type="text/css">
+                    .ui-panelgrid.showcase-text-align-center.ui-grid-responsive.ui-panelgrid-cell {
+                        text-align: center;
+                    }
+                    .customPanelGrid.ui-panelgrid-content {
+                        align-items: center;
+                    }
+
+                    .ui-datatable{
+                        background-color:#009966;
+                        color:#009966;
+                        border-style: none !important;
+
+                    }
+
+                    .ui-button{
+                        background-color:#009966;
+                        color:#009966;
+                    }
+                    .buttons.apply {
+                        background: #009966;
+                    } 
+                    #titulo{
+                        text-align: center;
+
+                    }
+                    #descripcion{
+                        width:auto;
+                        padding-left: 10%;
+
+                    }
+                    .companyHeaderGrid.ui-panelgrid>*>tr,
+                    .companyHeaderGrid.ui-panelgrid>*>tr>td {
+                        border: none;
+                    }
+
+
+                </style>
+                <h:panelGrid columns="2" cellpadding="2" style = "display:block;">					
+
+
+                    <p:panelGrid id="informacion" columns="2">
+                        <f:facet name="header">
+                            <p:graphicImage name="#{UserBean.estadoIniciativa()}"  library="img"  />
+                        </f:facet>
+
+                        <h:outputText value="Proponente:" />
+                        <h:outputText value="#{UserBean.selectedi.getUsuarioProponente()}" />
+
+                        <h:outputText value="Contacto:" />
+                        <h:outputText value="#{UserBean.selectedi.getcorreoProponente()}" />
+
+                        <h:outputText value="Fecha de inicio:" />
+                        <h:outputText value="#{UserBean.selectedi.getFecha()}" /> 
+
+                        <h:outputText value="Votos:" />
+                        <h:outputText value="#{UserBean.selectedi.getVotos()}" />
+
+                    </p:panelGrid>
+
+                    <h2 id="titulo"><strong>"#{UserBean.selectedi.getNombreIniciativa()}"</strong></h2>
+
+                    <p><h3 id="descripcion">Descripción: </h3></p>
+                    <p><h4 id="descripcion">"#{UserBean.selectedi.getDescripcion()}"</h4></p>
+
+                    <p:commandButton value="Me gusta" styleClass="apply" update="informacion" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+
+                    <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"
+                                 rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:50%; margin-left: 10%;">
+
+                        <br/>
+
+						<p:ajax event="rowSelect" listener="#{UserBean.setPalabra(UserBean.getPalabra())}" />
+
+                        <p:column headerText="Palabras clave">
+                            <p:button id="palabraescogida" binding="#{res}" outcome="busqueda" value="#{palabras}">
+                                <f:param id="resultado" binding="#{resultado}" name="idPagi" value="#{palabras}" />
+                            </p:button>
+
+                        </p:column>
+
+
+                    </p:dataTable>						
+
+                </h:panelGrid>
+
+                <f:facet name="actions">
+                    <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-question" /></h:commandLink>
+                    <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-star" /></h:commandLink>
+                </f:facet>
+            </p:panel>
+
+        </h:form>
+
+        <h:form id="ConsultaComentarios">
+
+            <p:growl id="msgss" showDetail="true"/>
+
+            <p:dataTable var="comentario" value="#{UserBean.consultarComentariosIniciativa(UserBean.idPag)}" class="tabla"
+                         paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
+                         rowKey="#{comentario.id}" editable="false" >
+
+                <f:facet name="header">
+                    Comentarios.
+                </f:facet>
 
 
 
-		
-	<h:form id="ConsultaComentarios">
-	 
-	 <p:growl id="msgss" showDetail="true"/>
-         
-         <p:dataTable var="comentario" value="#{UserBean.consultarComentariosIniciativa(UserBean.idPag)}" class="tabla"
-				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
-				rowKey="#{comentario.id}" editable="false" >
-			
-			<f:facet name="header">
-				Comentarios.
-			</f:facet>
-			
+                <p:column headerText="Id">
+                    <h:outputText value="#{comentario.getId()}"/>
+                </p:column>
+
+                <p:column headerText="Usuario">
+                    <h:outputText value="#{comentario.getIdUsuario()}"/>
+                </p:column>
+
+                <p:column headerText="Comentario">
+                    <h:outputText value="#{comentario.getContenido()}"/>
+                </p:column>
 
 
-			<p:column headerText="Id">
-				<h:outputText value="#{comentario.getId()}"/>
-			</p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{comentario.getFecha()}"/>
+                </p:column>
 
-			<p:column headerText="Usuario">
-				<h:outputText value="#{comentario.getIdUsuario()}"/>
-			</p:column>
-             
-			<p:column headerText="Comentario">
-				<h:outputText value="#{comentario.getContenido()}"/>
-			</p:column>
-			
-			
-			<p:column headerText="Fecha">
-				<h:outputText value="#{comentario.getFecha()}"/>
-			</p:column>
-             
-		</p:dataTable>	                 
-         
-     </h:form>
-	 
-	 
-	<h:form id="RegistrarComentario">    
-	       
-         
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-				<p:tab id="personal" title="Comentar">
-					<p:panel header="Publica tu comentario">
-					<p:messages />
-						<p>"#{UserBean.selectedi.id}"</p>
-						<p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
-						<br />
-						<h:outputText id="display" />
-								<div class="divButton">
-								<style type="text/css">
-        .boton {
-            border-radius: 5px;
-			background-color:#FF33FF;
-			color:white;
-        }
-		#combtn{
-		background: #FF33FF;
-		color: #FFFFFF;
-		}
-    </style>   
-									<p:commandButton id="combtn" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
-								</div>
-					</p:panel>
-				</p:tab>
+            </p:dataTable>	                 
 
-                 
-				 
+        </h:form>
 
-     </h:form>
-	 
-	<p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
-     
-    
-</h:body>
+
+        <h:form id="RegistrarComentario">    
+
+
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+            <p:tab id="personal" title="Comentar">
+                <p:panel header="Publica tu comentario">
+                    <p:messages />
+                    <p>"#{UserBean.selectedi.id}"</p>
+                    <p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
+                    <br />
+                    <h:outputText id="display" />
+                    <style type="text/css">
+                        .boton {
+                            border-radius: 5px;
+                            background-color:#FF33FF;
+                            color:white;
+                        }
+                        #combtn{
+                            background: #FF33FF;
+                            color: #FFFFFF;
+                        }#myButton.ui-button{
+                            background-color: #FF33FF;
+                            color: #FFFFFF;
+                        }
+
+                    </style>
+                    <p:commandButton id="combtn"  styleClass = "myButton" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
+                    <div class="divButton"> 
+                        <p:commandButton styleClass = "myButton" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
+                    </div>
+                </p:panel>
+            </p:tab>
+
+
+
+
+        </h:form>
+
+        <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
+
+
+    </h:body>
 </html>

@@ -6,74 +6,98 @@
 <mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.IniciativaMapper">
 
 
-	<resultMap type='Iniciativa' id='IniciativaResult'>
+    <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='id' column='id'/>        
-		<result property='votos' column='votos'/>
-		<result property='palabraClave' column='palabraclave'/>
+        <result property='votos' column='votos'/>
+        <result property='palabraClave' column='palabraclave'/>
         <result property='nombre' column='nombre'/>
-		<result property='estado' column='estado'/>
+        <result property='estado' column='estado'/>
         <result property='descripcion' column='descripcion'/>
-		<result property='area' column='area'/>
-		<result property='usuario_i' column='usuario_i'/>
-		<result property='correo_i' column='correo_i'/>
-		<result property='fechar_ini' column='fechar_ini'/>  
+        <result property='area' column='area'/>
+        <result property='usuario_i' column='usuario_i'/>
+        <result property='correo_i' column='correo_i'/>
+        <result property='fechar_ini' column='fechar_ini'/>  
 		
     </resultMap>
     
     <resultMap type='Iniciativa' id='agrupacionResult'>
-         <id property='area2' column='area' javaType="string"/>
-         <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
+        <id property='area2' column='area' javaType="string"/>
+        <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
     </resultMap>
 	
 	
-	<select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
-		SELECT 
-			ini.*
-		FROM iniciativas ini left join palabrasclave pa on ini.id = pa.idiniciativa 
-		WHERE pa.palabraclave =#{clave};
-	</select>
+    <select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
+        select iniciativas.id ,
+        iniciativas.votos,
+        palabrasclave.palabraclave,
+        iniciativas.nombre,
+        iniciativas.estado,
+        iniciativas.descripcion,
+        iniciativas.area,
+        iniciativas.usuario_i,
+        iniciativas.correo_i,
+        iniciativas.fechar_ini
+        from iniciativas left join palabrasclave on (iniciativas.id =palabrasclave.idiniciativa) where palabrasclave.palabraclave =#{clave};
+            
+	
+    </select>
+    
+    <select parameterType="map" id='consultarIniciativasPalabraClave' resultMap='IniciativaResult'>
+        select iniciativas.id ,
+        iniciativas.votos,
+        iniciativas.palabraclave,
+        iniciativas.nombre,
+        iniciativas.estado,
+        iniciativas.descripcion,
+        iniciativas.area,
+        iniciativas.usuario_i,
+        iniciativas.correo_i,
+        iniciativas.fechar_ini
+        from iniciativas left join palabrasclave on (iniciativas.id =palabrasclave.idiniciativa) where palabrasclave.palabraclave LIKE #{clave};
+        
+    </select>
 
-	<insert id='insertarPalabraClave' parameterType="map">
-		INSERT INTO palabrasclave VALUES (#{id},#{idIniciativa},#{palabraClave});
+    <insert id='insertarPalabraClave' parameterType="map">
+        INSERT INTO palabrasclave VALUES (#{id},#{idIniciativa},#{palabraClave});
     </insert>
 	
-	<select  parameterType="map" id='consultarIniciativa' resultMap='IniciativaResult'>
+    <select  parameterType="map" id='consultarIniciativa' resultMap='IniciativaResult'>
         SELECT
-            *
+        *
         FROM iniciativas 
         WHERE id=#{identificador};   
     </select>
 
-	<select  parameterType="map" id='consultarIniciativasRelacionadas' resultMap='IniciativaResult'>
-        SELECT
-           ini. *
-        FROM iniciativas ini INNER JOIN (SELECT id2 FROM filiniciativas WHERE id1 = #{id}) se on ini.id = se.id2; 
+    <select  parameterType="map" id='consultarIniciativasRelacionadas' resultMap='IniciativaResult'>
+		SELECT
+			ini. *
+        FROM iniciativas ini INNER JOIN (SELECT id2 FROM filiniciativas WHERE id1 LIKE #{id}) se on ini.nombre = se.id2; 
     </select>
 
 
     <insert id='insertarIniciativa' parameterType="map">
-	INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
+        INSERT INTO iniciativas VALUES (#{id},#{votos},#{palabraClave},#{nombre},#{estado},#{descripcion},#{area},#{usuario_i},#{correo_i},#{fechar_ini});
     </insert>
 	
-	<insert id='relacionarIniciativas' parameterType="map">
-	INSERT INTO filiniciativas VALUES (#{id1},#{id2});
+    <insert id='relacionarIniciativas' parameterType="map">
+        INSERT INTO filiniciativas VALUES (#{id1},#{id2});
     </insert>
 	
-	<select id='consultarIniciativas' resultMap='IniciativaResult'>
-            select * from iniciativas;
+    <select id='consultarIniciativas' resultMap='IniciativaResult'>
+        select * from iniciativas;
             	
-	</select>
+    </select>
 	
-	<select id='agrupeIniciativas' resultMap='agrupacionResult'>
-		SELECT area,count(id) as cantidad  FROM iniciativas GROUP BY area;
-	</select>
+    <select id='agrupeIniciativas' resultMap='agrupacionResult'>
+        SELECT area,count(id) as cantidad  FROM iniciativas GROUP BY area;
+    </select>
 
-	<update id='cambiarEstado' parameterType="map">
-		UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};
-	</update>
+    <update id='cambiarEstado' parameterType="map">
+        UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};
+    </update>
 
-	<update id='agregueVoto' parameterType="map">
-		UPDATE iniciativas SET votos= votos+1 WHERE id=#{idIniciativa};
-	</update>
+    <update id='agregueVoto' parameterType="map">
+        UPDATE iniciativas SET votos= votos+1 WHERE id=#{idIniciativa};
+    </update>
   	
 </mapper>

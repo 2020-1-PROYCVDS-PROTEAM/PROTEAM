@@ -34,6 +34,7 @@
 				<p:menuButton value="Iniciativas">
 					<p:menuitem value="registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
 				</p:menuButton>
+                                <p:commandButton value="Consultar usuario" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-home" />
 			</f:facet>
 			
 			<f:facet name="right">
@@ -68,15 +69,15 @@
 	 
 	 <p:growl id="msgss" showDetail="true"/>
          
-         <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.consultarIniciativas()}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
+         <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.iniciativas}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
 				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="5"  editable="true" >
+				rows="5"  rowIndexVar="rowIndexVar" editable="true" >
 			
 			<f:facet name="header">
 				Iniciativas.
 			</f:facet>
 			
-			<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
+			<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
 			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
 			
 			<p:column selectionMode="multiple"/>
@@ -84,10 +85,11 @@
 			
 			<p:column headerText="Comentarios">
 				<p:button outcome="comentarios" value="Comentar">
-					<f:param id="x" name="idPag" value="#{UserBean.selectedi.id}" />
+					<f:param id="x" name="idPag" value="#{UserBean.setSelectedi(UserBean.consultarIniciativa(rowIndexVar+1))}" />
 				</p:button>
 			</p:column>
 
+			
 
 			
 			<p:column headerText="Id" sortBy="#{iniciativa.getId()}">
@@ -143,9 +145,9 @@
         	</f:facet>
         	
 		</p:dataTable>
-		<p:inputText id="Arelacionar" value="#{AdministradorBean.buscar}"  ></p:inputText>
-    	<p:commandButton icon="pi pi-search" update=":ConsultaIniciativa" value="Buscar iniciativas relacionadas"  action="#{AdministradorBean.consultarIniciativasRelacionadas(AdministradorBean.buscar)}"/>
-    	<p:commandButton icon="pi pi-search" update=":ConsultaIniciativa" value="Reiniciar iniciativas"  action="#{AdministradorBean.consultarIniciativas()}"/>
+		<p:inputText id="Arelacionar" value="#{AdministradorBean.nombre}"  ></p:inputText>
+    	<p:commandButton icon="pi pi-search" update="ConsultaIniciativa" value="Buscar iniciativas relacionadas"  action="#{AdministradorBean.consultarIniciativasRelacionadas(AdministradorBean.nombre)}"/>
+    	<p:commandButton icon="pi pi-search" update="ConsultaIniciativa" value="Reiniciar iniciativas" action="#{AdministradorBean.consultarIniciativas()}"/>
      </h:form>
 	 
     <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 

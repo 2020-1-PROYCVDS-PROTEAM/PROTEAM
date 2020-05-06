@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!--
-        To change this license header, choose License Headers in Project Properties.
-        To change this template file, choose Tools | Templates
-        and open the template in the editor.
-        -->
-        <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
- <h:head>
-	 <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-	 <h:outputScript library="js" name="cierreSesion.js"/>
-	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-	 <link rel="icon" href="/resources/formulario.ico"/>
-	 <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
-	 <title>Registro iniciativa</title>
- </h:head>
- <h:body>
- 
-  <style type="text/css">
-    .ui-datalist .ui-datalist-content {
-        border:0 none
-    }
- 
-    .ui-datalist ul {
-        padding: 0px 10px 0 20px;
-        margin: 5px 0;
-    }
- 
-    .value {
-        font-weight: bold;
-    }
- 
-    .ui-autocomplete-itemtip {
-        -moz-box-sizing: content-box;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-    }
-</style>
-		
-	<h:form id="RegistrarIniciativa">              
-         
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-                            <p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
-				<p:tab id="personal" title="Registro">
-					<p:panel header="Información personal">
-					<p:messages />
-					<h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputScript library="js" name="cierreSesion.js"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+        <link rel="icon" href="/resources/formulario.ico"/>
+        <link href="iniciativas.css" rel="stylesheet" type="text/css"/>
+        <title>Registro iniciativa</title>
+    </h:head>
+    <h:body>
 
-						<p:outputLabel for="nombre" value="Nombre: "/>
-						<p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
+        <style type="text/css">
+            .ui-datalist .ui-datalist-content {
+                border:0 none
+            }
 
-						<p:outputLabel for="descripcion" value="Descripcion: " />
-						<p:inputText id="descripcion" type="String" binding="#{descripcion}" required="true"/>
-						
-                                                
-                        <p:outputLabel for="chips" value="Palabras clave: " />
-                        <p:chips id="chips" binding="#{palabraClave}" required="true"/>
-                                                                         
+            .ui-datalist ul {
+                padding: 0px 10px 0 20px;
+                margin: 5px 0;
+            }
 
-						<p:outputLabel for="area" value="Area: " />
-						<p:inputText id="area" type="String" binding="#{area}" required="true"/>
-						
-						<p:outputLabel for="usuario_i" value="Usuario: " />
-						<h:outputText id="usuario_i" type="String" value="#{logeoBean.name}" binding="#{usuario_i}" required="true"/>
-						
-						<p:outputLabel value="Correo: " for="correou" />
-						<h:outputText id="correou" type="String" value="#{AdministradorBean.consultarUsuario(logeoBean.name).getCorreo()}" binding="#{correou}" required="true"/>
+            .value {
+                font-weight: bold;
+            }
 
-						
-						<p:outputLabel for="fecha_ini" value="Fecha inicio:" />
-						<h:outputText id="fecha_ini" value="#{UserBean.date}" binding="#{fecha_ini}"/>
-						
-					</h:panelGrid>
-					</p:panel>
-			</p:tab>
+            .ui-autocomplete-itemtip {
+                -moz-box-sizing: content-box;
+                -webkit-box-sizing: content-box;
+                box-sizing: content-box;
+            }
+        </style>
 
-		</p:wizard>					           
-                 
-	<div class="divButton">
-            <p:commandButton  class="Button" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" actionListener="#{AdministradorBean.registrarIniciativa('0',palabraClave.value,nombre.value,'En espera de revisión',descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
+        <h:form id="RegistrarIniciativa">              
 
-        </div> 
-     </h:form>
-</h:body>
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+            <p:wizard flowListener="#{AdministradorBean.onFlowProcess}">
+                <p:tab id="personal" title="Registro">
+                    <p:panel header="Información personal">
+                        <p:messages />
+                        <h:panelGrid id="grid" cellpadding="10" columns="2" class="panelCenter" style="margin-bottom:10px">
 
-	<p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
+                            <p:outputLabel for="nombre" value="Nombre: "/>
+                            <p:inputText id="nombre" type="String" binding="#{nombre}" required="true"/>
+
+                            <p:outputLabel for="descripcion" value="Descripcion: " />
+                            <p:inputText id="descripcion" type="String" binding="#{descripcion}" required="true"/>
+
+
+                            <p:outputLabel for="chips" value="Palabras clave: " />
+                            <p:chips id="chips" binding="#{palabraClave}" required="true"/>
+
+
+                            <p:outputLabel for="area" value="Area: " />
+                            <p:inputText id="area" type="String" binding="#{area}" required="true"/>
+
+                            <p:outputLabel for="usuario_i" value="Usuario: " />
+                            <h:outputText id="usuario_i" type="String" value="#{logeoBean.name}" binding="#{usuario_i}" required="true"/>
+
+                            <p:outputLabel value="Correo: " for="correou" />
+                            <h:outputText id="correou" type="String" value="#{AdministradorBean.consultarUsuario(logeoBean.name).getCorreo()}" binding="#{correou}" required="true"/>
+
+
+                            <p:outputLabel for="fecha_ini" value="Fecha inicio:" />
+                            <h:outputText id="fecha_ini" value="#{UserBean.date}" binding="#{fecha_ini}"/>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+            </p:wizard>					           
+
+            <div class="divButton">
+                <p:commandButton  class="Button" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" actionListener="#{AdministradorBean.registrarIniciativa('0',palabraClave.value,nombre.value,'En espera de revisión',descripcion.value,area.value,usuario_i.value,correou.value,fecha_ini.value)}" value="Registrar Iniciativa"/>
+
+            </div> 
+        </h:form>
+    </h:body>
+
+    <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
 
 </html>
