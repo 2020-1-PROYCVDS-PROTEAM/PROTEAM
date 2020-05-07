@@ -152,5 +152,22 @@ public class proteamTest {
 			fail();
 		}
 	}*/
+    
+	@Test
+	public void deberiaConsultarIniciativasPorEstado() {
+		try {
+			List<Iniciativa> i = sp.consultarIniciativaPorEstado("Proyecto");
+		}catch(ServicesException ex) {
+			fail();
+		}
+	}
 	
+	@Test
+	public void noDeberiaConsultarIniciativasPorEstadoNoExiste() {
+		try {
+			List<Iniciativa> i = sp.consultarIniciativaPorEstado("43235234");
+			fail();
+		}catch(ServicesException ex) {
+		}
+	}
 }
