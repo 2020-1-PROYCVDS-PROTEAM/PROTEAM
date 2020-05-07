@@ -39,4 +39,5 @@ public interface ServicioProteam {
 	//public abstract List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException;
     public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
     public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
+    public abstract List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException;
 }

@@ -20,4 +20,5 @@ public interface IniciativaDAO {
 	public List<Iniciativa> consultarIniciativasRelacionadas(String id)throws PersistenceException;
 	//public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws PersistenceException;
     public List<Iniciativa> agrupeIniciativas() throws PersistenceException;
+    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException;
 }

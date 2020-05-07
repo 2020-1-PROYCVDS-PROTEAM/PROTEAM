@@ -73,6 +73,14 @@
 			ini. *
         FROM iniciativas ini INNER JOIN (SELECT id2 FROM filiniciativas WHERE id1 LIKE #{id}) se on ini.nombre = se.id2; 
     </select>
+	
+	
+	<select  parameterType="map" id='consultarIniciativaPorEstado' resultMap='IniciativaResult'>
+        SELECT
+        *
+        FROM iniciativas 
+        WHERE estado LIKE #{estado};   
+    </select>
 
 
     <insert id='insertarIniciativa' parameterType="map">

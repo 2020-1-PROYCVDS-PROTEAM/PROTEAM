@@ -318,5 +318,14 @@ public class ServicioProteamImpl implements ServicioProteam {
         }
 
     }
+    
+    @Override
+    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException{
+    	try {
+    		return daoIniciativa.consultarIniciativaPorEstado(estado);
+    	}catch(PersistenceException ex) {
+    		throw new ServicesException("No fue posible consultar las iniciativas con ese estado", ex);
+    	}
+    }
 
 }

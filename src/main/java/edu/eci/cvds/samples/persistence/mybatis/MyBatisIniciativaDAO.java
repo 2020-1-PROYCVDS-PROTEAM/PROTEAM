@@ -7,6 +7,8 @@
 package edu.eci.cvds.samples.persistence.mybatis;
 
 import com.google.inject.Inject;
+
+import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.PersistenceException;
@@ -145,6 +147,19 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             System.out.println("Esta entrando aca JOSE BATISINICIATIVADAO");
             throw new PersistenceException("Error al relacionar las iniciativas relacionadas:" + e.getLocalizedMessage(), e);
         }
+    }
+    
+    @Override
+    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException{
+    	try {
+    		List<Iniciativa> i = iniciativaMapper.consultarIniciativaPorEstado(estado);
+    		if(i.size() < 1) {
+    			throw new PersistenceException("No existen iniciativas con el estado: "+ estado);
+    		}
+    		return i;
+    	}catch(Exception ex) {
+    		throw new PersistenceException("Error al consultar las iniciativas por el estado :" + ex.getLocalizedMessage(), ex);
+    	}
     }
 
 }

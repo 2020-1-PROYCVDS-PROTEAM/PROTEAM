@@ -42,7 +42,7 @@ public class proteamTest {
 			fail();
 		}
     }*/
-	
+	/*
 	@Test
 	public void deberiaConsultarTodosLosUsuariosRegistrados() {
 		try {
@@ -52,7 +52,7 @@ public class proteamTest {
 			fail();
 		}
 		
-	}
+	}*/
 
 	/*
 	@Test
@@ -76,7 +76,7 @@ public class proteamTest {
 		}
     }*/
 	
-	
+	/*
 	@Test
     public void deberiaRegistrarUsuario() {
 		try {
@@ -97,7 +97,7 @@ public class proteamTest {
 			fail();
 		}
     }
-    
+    */
 	
 	/*
 	@Test
@@ -110,6 +110,7 @@ public class proteamTest {
 	}
 	*/
 	
+    /*
 	@Test
 	public void deberiaDarExcepcionNoExisteIniciativa() {
 		try {
@@ -118,7 +119,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			
 		}
-	}
+	}*/
 	
 	
 	/*@Test
@@ -151,4 +152,5 @@ public class proteamTest {
 			fail();
 		}
 	}*/
+	
 }
