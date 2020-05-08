@@ -61,6 +61,22 @@
         INSERT INTO palabrasclave VALUES (#{id},#{idIniciativa},#{palabraClave});
     </insert>
 	
+	<select parameterType="map" id='consultarIniciativasProponente' resultMap='IniciativaResult'>
+        SELECT iniciativas.id ,
+        votos,
+        palabraclave,
+        nombre,
+        estado,
+        descripcion,
+        area,
+        usuario_i,
+        correo_i,
+        fechar_ini
+        FROM iniciativas
+		WHERE usuario_i LIKE #{usr};
+        
+    </select>
+	
     <select  parameterType="map" id='consultarIniciativa' resultMap='IniciativaResult'>
         SELECT
         *

@@ -187,7 +187,18 @@ public class AdministradorBean extends BasePageBean implements Serializable{
         System.out.println("CONSULTAR INICIATIVAS ESPERO QUE NO PASE POR ACA");
 		return null;
     }
-	
+    public List<Iniciativa> consultarIniciativasProponente(String usuario){
+        try{
+            this.iniciativas = servicioPT.consultarIniciativasProponente(usuario);
+			return iniciativas;
+        }
+        catch(ServicesException e){
+            System.out.println("Entra en excepcion bean");
+
+        }
+        System.out.println("CONSULTAR INICIATIVAS ESPERO QUE NO PASE POR ACA");
+		return null;
+    }
 
     public List<Usuario> consultarUsuarios(){
         List<Usuario> usuarios = null;
@@ -201,6 +212,7 @@ public class AdministradorBean extends BasePageBean implements Serializable{
         //System.out.println("usuarios= "+usuarios);
         return usuarios;
     }
+    
 	
 		public void cambiarRol(String usuario,String rol){ //Mirar si toca usar los enum de ROL 
 		try{

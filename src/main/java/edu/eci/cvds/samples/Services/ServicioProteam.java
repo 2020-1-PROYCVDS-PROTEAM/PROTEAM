@@ -36,9 +36,9 @@ public interface ServicioProteam {
 	public abstract void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException; 
 	public abstract void relacionarIniciativas(String id1, String id2)throws ServicesException; 
 	public List<Iniciativa> consultarIniciativasRelacionadas(String id)throws ServicesException;
-	//public abstract List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws ServicesException;
     public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
     public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
     public abstract List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException;
+    public List<Iniciativa> consultarIniciativasProponente(String usuario)throws ServicesException;
     public abstract void modificarIniciativa(int id, String descripcion, String estado) throws ServicesException;
 }

@@ -14,6 +14,7 @@ public interface IniciativaDAO {
 	public void insertarPalabraClave(int id,int idIniciativa,String palabraClave)throws PersistenceException;
 	public Iniciativa consultarIniciativa(int id)throws PersistenceException;	
 	public List<Iniciativa> consultarIniciativas() throws PersistenceException;
+    public List<Iniciativa> consultarIniciativasProponente(String usuario)throws PersistenceException;
 	public void insertIniciativa(int id,int votos,String palabraClave,String nombre,String estado, String descripcion,String area,String usuario_i, String correo_i, Date fechar_ini) throws PersistenceException;
 	public void cambiarEstado(int id,String estado) throws PersistenceException;
 	public abstract void relacionarIniciativas(String id1, String id2)throws PersistenceException; 

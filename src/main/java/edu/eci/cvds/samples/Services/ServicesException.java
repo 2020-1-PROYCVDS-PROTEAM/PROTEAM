@@ -1,6 +1,6 @@
 package edu.eci.cvds.samples.Services;
 
-import edu.eci.cvds.samples.persistence.PersistenceException;
+
 
 public class ServicesException extends Exception {
 	
@@ -10,8 +10,8 @@ public class ServicesException extends Exception {
 		super(string);
 	}
 	
-	public ServicesException(String string, PersistenceException ex) {
-		super(string, ex);
+	public ServicesException(String string, Throwable cause) {
+		super(string, cause);
 	}
 
 

@@ -52,7 +52,15 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         }
 
     }
-    
+    public List<Iniciativa> consultarIniciativasProponente(String usuario)throws PersistenceException{
+    	try {
+                          
+            return iniciativaMapper.consultarIniciativasPalabraClave(usuario);
+        } catch (Exception e) {
+     
+            throw new PersistenceException("Error al consultar la iniciativa de un proponente:" + e.getLocalizedMessage(), e);
+        }
+    }
     @Override
     public List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws PersistenceException{
         try {

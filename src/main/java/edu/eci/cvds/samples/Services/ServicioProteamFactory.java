@@ -55,13 +55,6 @@ public class ServicioProteamFactory {
    }
 
 
-  /* public ServicioProteam getServiciosAlquilerTesting(){
-       if (!optInjector.isPresent()) {
-           optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
-       }
-
-       return optInjector.get().getInstance(ServicioProteam.class);
-   }*/
 
 
    public static ServicioProteamFactory getInstance(){

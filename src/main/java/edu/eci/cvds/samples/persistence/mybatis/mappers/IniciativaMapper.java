@@ -14,6 +14,7 @@ public interface IniciativaMapper {
 	public Iniciativa consultarIniciativa(@Param("identificador") int id);	
 	public List<Iniciativa> consultarIniciativas();
     public List<Iniciativa> consultarIniciativasPalabraClave(@Param("clave") String palabraclave);
+    public List<Iniciativa> consultarIniciativasProponente(@Param("usr") String usuario);
 	public void insertarIniciativa(@Param("id") int id,@Param("votos") int votos,@Param("palabraClave") String palabraClave,@Param("nombre") String nombre,@Param("estado") String estado,@Param("descripcion") String descripcion,@Param("area") String area,@Param("usuario_i") String usuario_i,@Param("correo_i") String correo_i,@Param("fechar_ini") Date fechar_ini);
 	public void cambiarEstado(@Param("id") int id,@Param("estado") String estado);
 	public void agregueVoto( @Param("idIniciativa")int idIniciativa);
