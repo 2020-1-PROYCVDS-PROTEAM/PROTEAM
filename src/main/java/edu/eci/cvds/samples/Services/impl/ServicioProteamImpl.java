@@ -300,7 +300,7 @@ public class ServicioProteamImpl implements ServicioProteam {
 	@Override
 	public List<Iniciativa> consultarIniciativasProponente(String usuario) throws ServicesException {
 		try {
-            return daoIniciativa.consultarIniciativasRelacionadas(usuario);
+            return daoIniciativa.consultarIniciativasProponente(usuario);
         } catch (Exception ex) {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }

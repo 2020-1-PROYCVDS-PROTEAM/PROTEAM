@@ -62,7 +62,8 @@
     </insert>
 	
 	<select parameterType="map" id='consultarIniciativasProponente' resultMap='IniciativaResult'>
-        SELECT iniciativas.id ,
+        SELECT
+		id ,
         votos,
         palabraclave,
         nombre,
@@ -73,7 +74,7 @@
         correo_i,
         fechar_ini
         FROM iniciativas
-		WHERE usuario_i LIKE #{usr};
+		WHERE usuario_i=#{usr};
         
     </select>
 	
