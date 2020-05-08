@@ -152,14 +152,12 @@ public class proteamTest {
 			fail();
 		}
 	}*/
-    /*
+    
 	@Test
 	public void deberiaConsultarIniciativasPorEstado() {
 		try {
 			List<Iniciativa> i = sp.consultarIniciativaPorEstado("Proyecto");
-			Iniciativa s =  sp.consultarIniciativa(5);
-			System.out.println(s.getEstado());
-			System.out.println(s.getDescripcion());
+			Iniciativa s  = sp.consultarIniciativa(5);
 		}catch(ServicesException ex) {
 			fail();
 		}
@@ -173,15 +171,24 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			
 		}
-	}*/
+	}
+	
+	@Test
+	public void deberiaModificarIniciativaPorSuEstado() {
+		try {
+			sp.modificarIniciativa(5, "Enseñando java", "En espera de revisión");
+		}catch(ServicesException ex) {
+			fail();
+		}
+	}
 	
 	@Test
 	public void noDeberiaModificarIniciativaPorSuEstado() {
 		try {
-			sp.modificarIniciativa(5, "Cambiando descripcion", "En estado de revisión");
+			sp.modificarIniciativa(6, "Enseñando java", "En espera de revisión");
 			fail();
 		}catch(ServicesException ex) {
-			
+
 		}
 	}
 	

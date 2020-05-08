@@ -33,10 +33,12 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             Iniciativa i = iniciativaMapper.consultarIniciativa(id);
             if (i == null) {
+            	System.out.println("nulo");
                 throw new PersistenceException("No existe el Id iniciativa");
             }
             return i;
         } catch (Exception e) {
+        	System.out.println("No?");
             throw new PersistenceException("Error al consultar la iniciativa:" + e.getLocalizedMessage(), e);
         }
     }
@@ -168,14 +170,14 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     public void modificarIniciativa(int id, String descripcion, String estado) throws PersistenceException{
     	try {
     		Iniciativa ini = iniciativaMapper.consultarIniciativa(id);
-    		System.out.println(ini.getEstado());
     		if(! "En espera de revisión".equals(ini.getEstado())) {
-    			System.out.println("Excepcion");
-    			throw new PersistenceException ("El estado actual tiene que estar en espera para poder modificarlo: ");
-    		}else {
-    			iniciativaMapper.modificarIniciativa(id, descripcion, estado);
-    		}
-    		
+    			
+				throw new PersistenceException ("El estado actual tiene que estar en espera para poder modificarlo: ");
+			}else {
+				iniciativaMapper.modificarIniciativa(id, descripcion, estado);
+			}
+    
+
     	}catch(Exception ex) {
     		throw new PersistenceException("Error al modificar la iniciativa :" + ex.getLocalizedMessage(), ex);
     	}
