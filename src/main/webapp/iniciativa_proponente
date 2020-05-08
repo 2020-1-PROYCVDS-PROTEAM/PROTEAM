@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
 	<link rel="stylesheet" href="https://www.primefaces.org/primeng/showcase/#/icons"/>
 	<link href="iniciativas.css" rel="stylesheet" type="text/css"/>
-	<title>Consultar iniciativas proponente</title>
+	<title>Consultar iniciativas</title>
  </h:head>
  <h:body>
  	
@@ -33,6 +33,7 @@
 				
 				<p:menuButton value="Iniciativas">
 					<p:menuitem value="registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+					<p:menuitem value="consultar iniciativas proponente" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}"/>
 				</p:menuButton>
                                 <p:commandButton value="Consultar usuario" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-home" />
 			</f:facet>
@@ -74,7 +75,7 @@
 				rows="5"  rowIndexVar="rowIndexVar" editable="true" >
 			
 			<f:facet name="header">
-				Iniciativas Proponente.
+				Iniciativas.
 			</f:facet>
 			
 			<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
@@ -140,7 +141,9 @@
 			<p:column style="width:35px">
 				<p:rowEditor />
 			</p:column>
-
+			<f:facet name="footer">
+            	<p:commandButton process="prueba" icon="pi pi-search" value="Relacionar iniciativas"  action="#{AdministradorBean.relacionarIniciativas()}"/>
+        	</f:facet>
         	
 		</p:dataTable>
 		<p:inputText id="Arelacionar" value="#{AdministradorBean.nombre}"  ></p:inputText>
