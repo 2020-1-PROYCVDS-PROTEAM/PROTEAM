@@ -17,6 +17,8 @@ import edu.eci.cvds.samples.persistence.mybatis.mappers.IniciativaMapper;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 /**
  *
  * @author
@@ -159,6 +161,21 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     		return i;
     	}catch(Exception ex) {
     		throw new PersistenceException("Error al consultar las iniciativas por el estado :" + ex.getLocalizedMessage(), ex);
+    	}
+    }
+    
+    @Override
+    public void modificarIniciativa(int id, String descripcion, String estado) throws PersistenceException{
+    	try {
+    		Iniciativa ini = iniciativaMapper.consultarIniciativa(id);
+    		if(! "En espera de revisión".equals(ini.getEstado())) {
+    			throw new PersistenceException ("El estado actual tiene que estar en espera para poder modificarlo: ");
+    		}else {
+    			iniciativaMapper.modificarIniciativa(id, descripcion, estado);
+    		}
+    		
+    	}catch(Exception ex) {
+    		throw new PersistenceException("Error al modificar la iniciativa :" + ex.getLocalizedMessage(), ex);
     	}
     }
 

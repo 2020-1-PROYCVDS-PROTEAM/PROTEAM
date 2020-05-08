@@ -327,5 +327,14 @@ public class ServicioProteamImpl implements ServicioProteam {
     		throw new ServicesException("No fue posible consultar las iniciativas con ese estado", ex);
     	}
     }
+    
+    @Override
+    public void modificarIniciativa(int id,String descripcion, String estado) throws ServicesException{
+    	try {
+    		daoIniciativa.modificarIniciativa(id, descripcion, estado);
+    	}catch(PersistenceException ex) {
+    		throw new ServicesException("No fue posible modificar la iniciativa", ex);
+    	}
+    }
 
 }

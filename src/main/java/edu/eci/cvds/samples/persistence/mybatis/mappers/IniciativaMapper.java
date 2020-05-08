@@ -22,4 +22,5 @@ public interface IniciativaMapper {
     public List<Iniciativa> consultarIniciativasRelacionadas(@Param("id")String id);
 	public void relacionarIniciativas(@Param("id1")String id1, @Param("id2")String id2);
 	public List<Iniciativa> consultarIniciativaPorEstado(@Param("estado")String estado);
+	public void modificarIniciativa(@Param("id")int id, @Param("descripcion")String descripcion, @Param("estado")String estado);
 }

@@ -168,6 +168,8 @@ public class proteamTest {
 			List<Iniciativa> i = sp.consultarIniciativaPorEstado("43235234");
 			fail();
 		}catch(ServicesException ex) {
+			
 		}
 	}
+	
 }

@@ -40,4 +40,5 @@ public interface ServicioProteam {
     public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
     public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
     public abstract List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException;
+    public abstract void modificarIniciativa(int id, String descripcion, String estado) throws ServicesException;
 }
