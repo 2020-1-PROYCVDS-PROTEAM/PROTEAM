@@ -60,7 +60,7 @@ public class bean extends BasePageBean implements Serializable{
                         System.out.println("Iniciativas: "+model);
 		}
 
-                model.setTitle("Custom Pie");
+                model.setTitle("Áreas de iniciativas.");
                 model.setLegendPosition("e");
                 model.setShowDataLabels(true);
                 model.setDiameter(150);

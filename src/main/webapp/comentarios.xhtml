@@ -115,7 +115,7 @@ and open the template in the editor.
                     <p:commandButton value="Me gusta" styleClass="apply" update="informacion" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
 
                     <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"
-                                 rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:50%; margin-left: 10%;">
+                                 rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:20%; margin-left: 10%;">
 
                         <br/>
 
@@ -204,7 +204,6 @@ and open the template in the editor.
                         }
 
                     </style>
-                    <p:commandButton id="combtn"  styleClass = "myButton" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
                     <div class="divButton"> 
                         <p:commandButton styleClass = "myButton" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
                     </div>

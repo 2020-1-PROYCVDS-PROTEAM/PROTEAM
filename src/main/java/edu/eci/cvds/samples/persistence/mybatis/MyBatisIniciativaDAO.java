@@ -175,13 +175,13 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
     
     @Override
-    public void modificarIniciativa(int id,String area, String descripcion) throws PersistenceException{
+    public void modificarIniciativa(int id, String descripcion) throws PersistenceException{
     	try {
     		Iniciativa ini = iniciativaMapper.consultarIniciativa(id);
     		if(! "En espera de revisión".equals(ini.getEstado())) {
                     throw new PersistenceException ("El estado actual tiene que estar en espera para poder modificarlo: ");
 		}else {
-                    iniciativaMapper.modificarIniciativa(id,area, descripcion);
+                    iniciativaMapper.modificarIniciativa(id, descripcion);
 		}
     
 

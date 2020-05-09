@@ -176,7 +176,7 @@ public class proteamTest {
 	@Test
 	public void deberiaModificarIniciativaPorSuEstado() {
 		try {
-			sp.modificarIniciativa(5, "Enseñando java", "En espera de revisión");
+			sp.modificarIniciativa(5, "Enseñando java");
 		}catch(ServicesException ex) {
 			fail();
 		}
@@ -185,7 +185,7 @@ public class proteamTest {
 	@Test
 	public void noDeberiaModificarIniciativaPorSuEstado() {
 		try {
-			sp.modificarIniciativa(6, "Enseñando java", "En espera de revisión");
+			sp.modificarIniciativa(6, "Enseñando java");
 			fail();
 		}catch(ServicesException ex) {
 

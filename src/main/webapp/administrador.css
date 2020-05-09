@@ -8,13 +8,13 @@ body{
 form{
 	
 	margin: 0 auto;
-	width: 1000px;
+	width: 100px;
 	top:100px;
 }
 
 .panelCenter{
 	margin: auto;
-	width: 50%;
+	width: 75%;
 	padding: 10px;
 	
 }
@@ -32,9 +32,4 @@ form{
 	text-decoration: none;
 	cursor: pointer;
 	text-align: center;
-}
-
-.labelCenter{
-	
-	margin-left: 0%;
 }

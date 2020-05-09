@@ -37,5 +37,5 @@ public interface IniciativaMapper {
 
     public List<Iniciativa> consultarIniciativaPorEstado(@Param("estado") String estado);
 
-    public void modificarIniciativa(@Param("id") int id, @Param("area") String area, @Param("descripcion") String descripcion);
+    public void modificarIniciativa(@Param("id") int id, @Param("descripcion") String descripcion);
 }

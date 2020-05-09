@@ -289,9 +289,9 @@ public class ServicioProteamImpl implements ServicioProteam {
     }
     
     @Override
-    public void modificarIniciativa(int id, String area, String descripcion) throws ServicesException{
+    public void modificarIniciativa(int id,String descripcion) throws ServicesException{
     	try {
-    		daoIniciativa.modificarIniciativa(id,area,descripcion);
+    		daoIniciativa.modificarIniciativa(id,descripcion);
     	}catch (Exception ex) {
     		throw new ServicesException("No fue posible modificar la iniciativa", ex);
     	}

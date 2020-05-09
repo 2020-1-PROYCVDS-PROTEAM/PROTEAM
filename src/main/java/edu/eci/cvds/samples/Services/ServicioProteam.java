@@ -66,6 +66,6 @@ public interface ServicioProteam {
 
     public List<Iniciativa> consultarIniciativasProponente(String usuario) throws ServicesException;
 
-    public abstract void modificarIniciativa(int id, String area, String descripcion) throws ServicesException;
+    public abstract void modificarIniciativa(int id, String descripcion) throws ServicesException;
     
 }

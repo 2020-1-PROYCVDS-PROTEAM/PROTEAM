@@ -55,7 +55,7 @@
                 </f:facet>
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
-                <p:ajax event="rowEdit" listener="#{AdministradorBean.modificarIniciativa(iniciativa.getId(),iniciativa.area,iniciativa.descripcion)}" oncomplete="updateTable()" update="ConsultaIniciativa"/>
+                <p:ajax event="rowEdit" listener="#{AdministradorBean.modificarIniciativa(iniciativa.getId(),nuevaDescripcion.value)}" oncomplete="updateTable()" />
 
                 <p:column selectionMode="multiple"/>
 
@@ -75,25 +75,19 @@
 
 
                 <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{iniciativa.getNombre()}" /></f:facet>
-                        <f:facet name="input"><p:inputText binding="#{valor}" id="modelInput" style="width:100%"/></f:facet>
-                    </p:cellEditor>
+                	<h:outputText value="#{iniciativa.getNombre()}"/>
                 </p:column>
 
                 
                  <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{iniciativa.getDescripcion()}" /></f:facet>
-                        <f:facet name="input"><p:inputText id="iniDescripcion" value="#{iniciativa.descripcion}" style="width:100%"/></f:facet>
+                        <f:facet name="input"><p:inputText id="iniDescripcion" binding="#{nuevaDescripcion}" style="width:100%"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
                 <p:column headerText="Área" sortBy="#{iniciativa.getArea()}">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{iniciativa.getArea()}" /></f:facet>
-                        <f:facet name="input"><p:inputText id="iniArea" value="#{iniciativa.area}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
+					<h:outputText value="#{iniciativa.getArea()}"/>
                 </p:column>
                 
                 
