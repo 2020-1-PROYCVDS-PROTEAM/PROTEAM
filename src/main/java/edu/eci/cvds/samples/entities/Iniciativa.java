@@ -69,9 +69,7 @@ public class Iniciativa implements Serializable {
     public void setPalabraClave(String palabraclave) {
         this.palabraClave = palabraclave;
     }
-    public String getNombreIniciativa() {
-        return nombre;
-    }
+
 
     public java.lang.Long getCantidad() {
         return cantidad;
@@ -89,9 +87,18 @@ public class Iniciativa implements Serializable {
         this.area2 = area2;
     }
 
-    public void setNombreIniciativa(String nombre) {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Este es el nombre que me pasan de iniciativa: "+nombre);
+        System.out.println("---------------------------------------------------------");
         this.nombre = nombre;
     }
+
+
     public String getEstado() {
         return estado;
     }
@@ -104,6 +111,9 @@ public class Iniciativa implements Serializable {
     }
 
     public void setDescripcion(String descripcion) {
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Este es la descripcion que me pasan de iniciativa: "+descripcion);
+        System.out.println("---------------------------------------------------------");
         this.descripcion = descripcion;
     }
 

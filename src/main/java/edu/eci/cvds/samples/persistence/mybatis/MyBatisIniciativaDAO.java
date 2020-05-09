@@ -54,7 +54,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
     public List<Iniciativa> consultarIniciativasProponente(String usuario)throws PersistenceException{
     	try {
-                          
+            System.out.println("Llega hasta consultarIniciativaP DAO");             
             return iniciativaMapper.consultarIniciativasProponente(usuario);
         } catch (Exception e) {
      
