@@ -21,13 +21,14 @@
     }
 	</style>
 
-	<h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol != 'Proponente'}">     
+	<h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol == 'Proponente'}">     
 		<p:growl id="messages" showDetail="true" />
 		<p:toolbar>
 			<f:facet name="left">
-				<p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-				<p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-				<p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+				<p:menuButton value="Opciones">
+                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                </p:menuButton>
 			</f:facet>
 			
 			<f:facet name="right">
@@ -103,7 +104,7 @@
                 </f:facet>
             </p:cellEditor>
 			</p:column>
-
+		
 			<p:column style="width:35px">
 				<p:rowEditor />
 			</p:column>
