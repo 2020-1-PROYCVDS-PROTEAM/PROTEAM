@@ -63,17 +63,19 @@
 	
 	<select parameterType="map" id='consultarIniciativasProponente' resultMap='IniciativaResult'>
         SELECT
-		ini.id ,
-        ini.votos,
-        ini.palabraclave,
-        ini.nombre,
-        ini.estado,
-        ini.descripcion,
-        ini.area,
-        ini.usuario_i,
-        ini.correo_i,
-        ini.fechar_ini
-        from iniciativas as ini left join usuarios as u on (ini.usuario_i =u.usuario) where u.nombre=#{usr};
+		iniciativas.id ,
+        votos,
+        palabraclave,
+        nombre,
+        estado,
+        descripcion,
+        area,
+        usuario_i,
+        correo_i,
+        fechar_ini
+        FROM iniciativas
+		WHERE usuario_i LIKE #{usr};
+
         
     </select>
 	
