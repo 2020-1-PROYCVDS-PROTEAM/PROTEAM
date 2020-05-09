@@ -61,9 +61,9 @@
         INSERT INTO palabrasclave VALUES (#{id},#{idIniciativa},#{palabraClave});
     </insert>
 	
-	<select parameterType="map" id='consultarIniciativasProponente' resultMap='IniciativaResult'>
+    <select parameterType="map" id='consultarIniciativasProponente' resultMap='IniciativaResult'>
         SELECT
-		iniciativas.id ,
+        iniciativas.id ,
         votos,
         palabraclave,
         nombre,
@@ -74,7 +74,7 @@
         correo_i,
         fechar_ini
         FROM iniciativas
-		WHERE usuario_i LIKE #{usr};
+        WHERE usuario_i LIKE #{usr};
 
         
     </select>
@@ -87,13 +87,13 @@
     </select>
 
     <select  parameterType="map" id='consultarIniciativasRelacionadas' resultMap='IniciativaResult'>
-		SELECT
-			ini. *
+        SELECT
+        ini. *
         FROM iniciativas ini INNER JOIN (SELECT id2 FROM filiniciativas WHERE id1 LIKE #{id}) se on ini.nombre = se.id2; 
     </select>
 	
 	
-	<select  parameterType="map" id='consultarIniciativaPorEstado' resultMap='IniciativaResult'>
+    <select  parameterType="map" id='consultarIniciativaPorEstado' resultMap='IniciativaResult'>
         SELECT
         *
         FROM iniciativas 
@@ -126,9 +126,9 @@
         UPDATE iniciativas SET votos= votos+1 WHERE id=#{idIniciativa};
     </update>
 	
-	<update id='modificarIniciativa' parameterType="map">
+    <update id='modificarIniciativa' parameterType="map">
         UPDATE iniciativas SET descripcion= #{descripcion} WHERE id=#{id};
-		UPDATE iniciativas SET estado= #{estado} WHERE id=#{id};
+   
     </update>
   	
 </mapper>

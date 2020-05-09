@@ -172,7 +172,7 @@ public class proteamTest {
 			
 		}
 	}
-	
+	/*
 	@Test
 	public void deberiaModificarIniciativaPorSuEstado() {
 		try {
@@ -180,7 +180,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-	}
+	}*/
 	
 	@Test
 	public void noDeberiaModificarIniciativaPorSuEstado() {

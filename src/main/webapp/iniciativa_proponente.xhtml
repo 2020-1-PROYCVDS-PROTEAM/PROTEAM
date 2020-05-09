@@ -55,7 +55,7 @@
                 </f:facet>
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
-                <p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
+                <p:ajax event="rowEdit" listener="#{AdministradorBean.modificarIniciativa(iniciativa.getId(),iniciativa.area,iniciativa.descripcion)}" oncomplete="updateTable()" update="ConsultaIniciativa"/>
 
                 <p:column selectionMode="multiple"/>
 
@@ -82,14 +82,14 @@
                 </p:column>
 
                 
-                 <p:column headerText="Descripcion" sortBy="#{iniciativa.getDescripcion()}">
+                 <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{iniciativa.getDescripcion()}" /></f:facet>
                         <f:facet name="input"><p:inputText id="iniDescripcion" value="#{iniciativa.descripcion}" style="width:100%"/></f:facet>
                     </p:cellEditor>
                 </p:column>
 
-                <p:column headerText="Area" sortBy="#{iniciativa.getArea()}">
+                <p:column headerText="Área" sortBy="#{iniciativa.getArea()}">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{iniciativa.getArea()}" /></f:facet>
                         <f:facet name="input"><p:inputText id="iniArea" value="#{iniciativa.area}" style="width:100%"/></f:facet>
@@ -110,14 +110,7 @@
 
 
                 <p:column headerText="Estado"> 
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText id="resultado"  var="x" value="#{iniciativa.estado}" /></f:facet>
-                        <f:facet name="input" >
-                            <h:selectOneMenu binding="#{are}" id="are" value="xa" style="width:100%">
-                                <f:selectItems id="xa" value="#{AdministradorBean.ideas}" var="ide" itemLabel="#{ide}"  itemValue="#{ide}" />			
-                            </h:selectOneMenu>
-                        </f:facet>
-                    </p:cellEditor>
+                    <h:outputText value="#{iniciativa.getEstado()}"/>
                 </p:column>
 
                 <p:column style="width:35px" rendered="#{iniciativa.getEstado()=='En espera de revisión'}" >

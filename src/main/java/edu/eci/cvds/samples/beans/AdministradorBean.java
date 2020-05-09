@@ -176,9 +176,9 @@ public class AdministradorBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarIniciativasProponente(String usuario) {
         try {
-            System.out.println("Consultando iniciativas del proponente: " + usuario);
+            //System.out.println("Consultando iniciativas del proponente: " + usuario);
             this.iniciativas = servicioPT.consultarIniciativasProponente(usuario);
-            System.out.println("Esto es el retorno: " + iniciativas);
+            //System.out.println("Esto es el retorno: " + iniciativas);
             return iniciativas;
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean");
@@ -219,6 +219,17 @@ public class AdministradorBean extends BasePageBean implements Serializable {
             System.out.println("Excepcion CAMBIANDO iniciativa administradorBean");
         }
     }
+    
+    public void modificarIniciativa(int id,String area, String descripcion){
+        try {
+            System.out.println("ENTRA EN canmbiar INICIATIVA || id: " + id + " nombre: "+nombre+ "estado: " + descripcion);
+            servicioPT.modificarIniciativa(id,area,descripcion);
+        } catch (ServicesException e) {
+            System.out.println("Excepcion CAMBIANDO iniciativa administradorBean");
+        }    
+    }
+    
+    
 
     public String onFlowProcess(FlowEvent event) {
         if (skip) {

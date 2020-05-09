@@ -92,9 +92,9 @@ public class Iniciativa implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        System.out.println("---------------------------------------------------------");
-        System.out.println("Este es el nombre que me pasan de iniciativa: "+nombre);
-        System.out.println("---------------------------------------------------------");
+        //System.out.println("---------------------------------------------------------");
+        //System.out.println("Este es el nombre que me pasan de iniciativa: "+nombre);
+        //System.out.println("---------------------------------------------------------");
         this.nombre = nombre;
     }
 
@@ -111,9 +111,9 @@ public class Iniciativa implements Serializable {
     }
 
     public void setDescripcion(String descripcion) {
-        System.out.println("---------------------------------------------------------");
-        System.out.println("Este es la descripcion que me pasan de iniciativa: "+descripcion);
-        System.out.println("---------------------------------------------------------");
+//        System.out.println("---------------------------------------------------------");
+//        System.out.println("Este es la descripcion que me pasan de iniciativa: "+descripcion);
+//        System.out.println("---------------------------------------------------------");
         this.descripcion = descripcion;
     }
 
