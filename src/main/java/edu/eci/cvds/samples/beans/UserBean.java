@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import org.primefaces.component.datatable.DataTable;
+import org.primefaces.component.export.Exporter;
 
 
 @ManagedBean(name = "UserBean")
@@ -35,7 +37,8 @@ public class UserBean extends BasePageBean implements Serializable {
     private Iniciativa selectedi;
     private List<Iniciativa> selectsi;
     private String palabra;
-
+    //private Exporter<DataTable> textExporter;
+    
     @Inject
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
@@ -265,5 +268,15 @@ public class UserBean extends BasePageBean implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+
+//    public Exporter<DataTable> getTextExporter() {
+//        return textExporter;
+//    }
+//
+//    public void setTextExporter(Exporter<DataTable> textExporter) {
+//        this.textExporter = textExporter;
+//    }
+//    
+    
 
 }

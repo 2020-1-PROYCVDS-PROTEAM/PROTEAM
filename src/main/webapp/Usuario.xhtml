@@ -10,6 +10,8 @@
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputScript library="js" name="cierreSesion.js"/>
         <link rel="icon" href="/resources/user.ico"/>
+        <link href="administrador.css" rel="stylesheet" type="text/css"/>
+
         <title>Iniciativas | Usuarios</title>
     </h:head>
 
@@ -37,7 +39,7 @@
         </h:form>
 
         <h:form id="iniciativasUsuario">
-            <p:dataTable var="iniciativa" value="#{UserBean.iniciativas}"
+            <p:dataTable id="info" var="iniciativa" value="#{UserBean.iniciativas}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                          rowKey="#{iniciativa.id}" style="text-align:center;" selectionMode="single">
 
@@ -100,6 +102,9 @@
 
             </p:dataTable>
 
+
+
+
             <p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
                 <p:outputPanel id="carDetail" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
@@ -119,6 +124,20 @@
                     </p:panelGrid>
                 </p:outputPanel>
             </p:overlayPanel>
+
+
+            <h3>Descargar información.</h3>
+            <h:commandLink>
+
+                <p:graphicImage name="/excel.png" library="img"/>
+                <p:dataExporter type="xls" target="info" fileName="iniciativas" pageOnly="true"/>
+            </h:commandLink>
+
+            <h:commandLink>
+
+                <p:graphicImage library="img" name="/pdf.png" />
+                <p:dataExporter type="pdf" target="info" fileName="iniciativas" pageOnly="true" />
+            </h:commandLink>
 
 
 
@@ -153,7 +172,7 @@
 
                 <p:chart type="bar" model="#{bean.getBarModel()}" style="height:300px"/>
                 <p:dataTable var="iniciativasEstados" value="#{bean.getIniciativasEstado()}" class="tabla"
-                             
+
                              rows="4"  id="id" selectionMode="single"   tableStyle="table-layout: right;" 
                              rowKey="#{iniciativasEstados.estados}" >                                           
                     <br/>
