@@ -11,7 +11,6 @@ public interface IniciativaMapper {
 
     public Iniciativa palabraClaveIniciativa(@Param("clave") String palabraclave);
 
-    //public List<Iniciativa>palabrasClaveIniciativa
     public void insertarPalabraClave(@Param("id") int id, @Param("idIniciativa") int idIniciativa, @Param("palabraClave") String palabraClave);
 
     public Iniciativa consultarIniciativa(@Param("identificador") int id);
@@ -30,6 +29,8 @@ public interface IniciativaMapper {
     //public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas();
 
     public List<Iniciativa> agrupeIniciativas();
+
+    public List<Iniciativa> agrupeEstados();
 
     public List<Iniciativa> consultarIniciativasRelacionadas(@Param("id") String id);
 

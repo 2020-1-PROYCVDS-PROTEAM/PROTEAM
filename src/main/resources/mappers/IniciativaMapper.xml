@@ -25,6 +25,11 @@
         <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
     </resultMap>
 	
+    <resultMap type='Iniciativa' id='agrupacionEstadosResult'>
+        <id property='estados' column='estado' javaType="string"/>
+        <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
+    </resultMap>
+	
 	
     <select parameterType="map" id='palabraClaveIniciativa' resultMap='IniciativaResult'>
         select iniciativas.id ,
@@ -117,6 +122,11 @@
     <select id='agrupeIniciativas' resultMap='agrupacionResult'>
         SELECT area,count(id) as cantidad  FROM iniciativas GROUP BY area;
     </select>
+	
+    <select id='agrupeEstados' resultMap='agrupacionResult'>
+        SELECT estado, count(id) as cantidad FROM iniciativas GROUP BY estado;
+    </select>	
+	
 
     <update id='cambiarEstado' parameterType="map">
         UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};

@@ -60,12 +60,12 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No existen usuarios", ex);
         }
     }
-    
+
     @Override
-    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws ServicesException{
-        try{
+    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws ServicesException {
+        try {
             return daoIniciativa.consultarIniciativasPalabraClave(palabraclave);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new ServicesException("No fue posible consultar las palabras clave", ex);
         }
     }
@@ -142,8 +142,8 @@ public class ServicioProteamImpl implements ServicioProteam {
         try {
 
             daoUsuario.registrarUsuario(usuario, passwd, nombre, apellido, correo, rol);
-        } catch (Exception ex){
-        	throw new ServicesException("No fue posible registrar el usuario", ex);
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible registrar el usuario", ex);
         }
     }
 
@@ -180,7 +180,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     public void cambiarComentario(int id, String idUsuario, int idIniciativa, String contenido) throws ServicesException {
         try {
             daoComentario.cambiarComentario(id, idUsuario, idIniciativa, contenido);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             throw new ServicesException("No fue posible cambiar el comentario", ex);
         }
     }
@@ -237,7 +237,16 @@ public class ServicioProteamImpl implements ServicioProteam {
         try {
             return daoIniciativa.agrupeIniciativas();
         } catch (Exception ex) {
-            throw new ServicesException("No fue posible borrar el voto", ex);
+            throw new ServicesException("No fue posible agrupar las iniciativas", ex);
+        }
+    }
+
+    @Override
+    public List<Iniciativa> agrupeEstados() throws ServicesException {
+        try {
+            return daoIniciativa.agrupeEstados();
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible agrupar las iniciativas por estado", ex);
         }
     }
 
@@ -245,7 +254,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws ServicesException {
         try {
             daoIniciativa.insertarPalabraClave(id, idIniciativa, palabraClave);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             throw new ServicesException("No fue posible agregar la nueva palabra clave", ex);
         }
     }
@@ -264,7 +273,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     public List<Iniciativa> consultarIniciativasRelacionadas(String id) throws ServicesException {
         try {
             return daoIniciativa.consultarIniciativasRelacionadas(id);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             throw new ServicesException("No fue posible consultar las iniciativas relacionadas", ex);
         }
     }
@@ -273,37 +282,37 @@ public class ServicioProteamImpl implements ServicioProteam {
     public List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException {
         try {
             return daoPalabraClave.consultarPalabrasClaveIniciativa(idIniciativa);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             throw new ServicesException("No fue posible consultar las palabras claves de la iniciativa", ex);
         }
 
     }
-    
+
     @Override
-    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException{
-    	try {
-    		return daoIniciativa.consultarIniciativaPorEstado(estado);
-    	}catch (Exception ex){
-    		throw new ServicesException("No fue posible consultar las iniciativas con ese estado", ex);
-    	}
-    }
-    
-    @Override
-    public void modificarIniciativa(int id,String descripcion) throws ServicesException{
-    	try {
-    		daoIniciativa.modificarIniciativa(id,descripcion);
-    	}catch (Exception ex) {
-    		throw new ServicesException("No fue posible modificar la iniciativa", ex);
-    	}
+    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws ServicesException {
+        try {
+            return daoIniciativa.consultarIniciativaPorEstado(estado);
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible consultar las iniciativas con ese estado", ex);
+        }
     }
 
-	@Override
-	public List<Iniciativa> consultarIniciativasProponente(String usuario) throws ServicesException {
-		try {
+    @Override
+    public void modificarIniciativa(int id, String descripcion) throws ServicesException {
+        try {
+            daoIniciativa.modificarIniciativa(id, descripcion);
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible modificar la iniciativa", ex);
+        }
+    }
+
+    @Override
+    public List<Iniciativa> consultarIniciativasProponente(String usuario) throws ServicesException {
+        try {
             return daoIniciativa.consultarIniciativasProponente(usuario);
         } catch (Exception ex) {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }
-	}
+    }
 
 }

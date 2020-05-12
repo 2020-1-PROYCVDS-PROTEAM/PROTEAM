@@ -23,17 +23,16 @@ import edu.eci.cvds.samples.persistence.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 
 public class proteamTest {
-    
-	@Inject
+
+    @Inject
     private SqlSession sqlSession;
     ServicioProteam sp;
-    
-    
+
     public proteamTest() {
-    	sp = ServicioProteamFactory.getInstance().getServicioProteam();
+        sp = ServicioProteamFactory.getInstance().getServicioProteam();
     }
 
-	/*
+    /*
 	@Test
     public void deberiaConsultarUsuario() {
 		try {
@@ -42,7 +41,7 @@ public class proteamTest {
 			fail();
 		}
     }*/
-	/*
+ /*
 	@Test
 	public void deberiaConsultarTodosLosUsuariosRegistrados() {
 		try {
@@ -54,7 +53,7 @@ public class proteamTest {
 		
 	}*/
 
-	/*
+ /*
 	@Test
     public void lanzaExcepcionNoExisteUsuario() {
     	try {
@@ -64,9 +63,9 @@ public class proteamTest {
     		assertTrue(true);
     	}
     }
-	*/
+     */
 
-	/*
+ /*
 	@Test
     public void realizaConsultaDeUsuario() {
 		try {
@@ -75,8 +74,7 @@ public class proteamTest {
 			fail();
 		}
     }*/
-	
-	/*
+ /*
 	@Test
     public void deberiaRegistrarUsuario() {
 		try {
@@ -97,9 +95,8 @@ public class proteamTest {
 			fail();
 		}
     }
-    */
-	
-	/*
+     */
+ /*
 	@Test
 	public void consultarIniciativaPorIdentificador() {
 		try {
@@ -108,9 +105,8 @@ public class proteamTest {
 			fail();
 		}
 	}
-	*/
-	
-    /*
+     */
+ /*
 	@Test
 	public void deberiaDarExcepcionNoExisteIniciativa() {
 		try {
@@ -120,9 +116,7 @@ public class proteamTest {
 			
 		}
 	}*/
-	
-	
-	/*@Test
+ /*@Test
 	public void consultaIniciativasPorPalabraClave() {
 		try {
 			Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
@@ -143,7 +137,7 @@ public class proteamTest {
 		}
 	}*/
 
-	/*
+ /*
 	@Test
 	public void deberiaConsultarIniciativasRelacionadas() {
 		try {
@@ -152,27 +146,27 @@ public class proteamTest {
 			fail();
 		}
 	}*/
-    
-	@Test
-	public void deberiaConsultarIniciativasPorEstado() {
-		try {
-			List<Iniciativa> i = sp.consultarIniciativaPorEstado("Proyecto");
-			Iniciativa s  = sp.consultarIniciativa(5);
-		}catch(ServicesException ex) {
-			fail();
-		}
-	}
-	
-	@Test
-	public void noDeberiaConsultarIniciativasPorEstadoNoExiste() {
-		try {
-			List<Iniciativa> i = sp.consultarIniciativaPorEstado("43235234");
-			fail();
-		}catch(ServicesException ex) {
-			
-		}
-	}
-	/*
+    @Test
+    public void deberiaConsultarIniciativasPorEstado() {
+        try {
+            List<Iniciativa> i = sp.consultarIniciativaPorEstado("Proyecto");
+            Iniciativa s = sp.consultarIniciativa(5);
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+    @Test
+    public void noDeberiaConsultarIniciativasPorEstadoNoExiste() {
+        try {
+            List<Iniciativa> i = sp.consultarIniciativaPorEstado("43235234");
+            fail();
+        } catch (ServicesException ex) {
+
+        }
+    }
+
+    /*
 	@Test
 	public void deberiaModificarIniciativaPorSuEstado() {
 		try {
@@ -181,16 +175,15 @@ public class proteamTest {
 			fail();
 		}
 	}*/
-	
-	@Test
-	public void noDeberiaModificarIniciativaPorSuEstado() {
-		try {
-			sp.modificarIniciativa(6, "Enseñando java");
-			fail();
-		}catch(ServicesException ex) {
 
-		}
-	}
-	
-	
+    @Test
+    public void noDeberiaModificarIniciativaPorSuEstado() {
+        try {
+            sp.modificarIniciativa(6, "Enseñando java");
+            fail();
+        } catch (ServicesException ex) {
+
+        }
+    }
+
 }

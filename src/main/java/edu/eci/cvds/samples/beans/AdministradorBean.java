@@ -219,17 +219,15 @@ public class AdministradorBean extends BasePageBean implements Serializable {
             System.out.println("Excepcion CAMBIANDO iniciativa administradorBean");
         }
     }
-    
-    public void modificarIniciativa(int id, String descripcion){
+
+    public void modificarIniciativa(int id, String descripcion) {
         try {
-            System.out.println("ENTRA EN canmbiar INICIATIVA || id: " + id +" descripción: " + descripcion);
-            servicioPT.modificarIniciativa(id,descripcion);
+            System.out.println("ENTRA EN canmbiar INICIATIVA || id: " + id + " descripción: " + descripcion);
+            servicioPT.modificarIniciativa(id, descripcion);
         } catch (ServicesException e) {
             System.out.println("Excepcion CAMBIANDO iniciativa administradorBean");
-        }    
+        }
     }
-    
-    
 
     public String onFlowProcess(FlowEvent event) {
         if (skip) {

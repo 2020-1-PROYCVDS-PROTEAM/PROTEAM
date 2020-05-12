@@ -33,12 +33,12 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         try {
             Iniciativa i = iniciativaMapper.consultarIniciativa(id);
             if (i == null) {
-            	System.out.println("nulo");
+                System.out.println("nulo");
                 throw new PersistenceException("No existe el Id iniciativa");
             }
             return i;
         } catch (Exception e) {
-        	System.out.println("No?");
+            System.out.println("No?");
             throw new PersistenceException("Error al consultar la iniciativa:" + e.getLocalizedMessage(), e);
         }
     }
@@ -52,20 +52,22 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         }
 
     }
-    public List<Iniciativa> consultarIniciativasProponente(String usuario)throws PersistenceException{
-    	try {
-            System.out.println("Llega hasta consultarIniciativaP DAO");             
+
+    public List<Iniciativa> consultarIniciativasProponente(String usuario) throws PersistenceException {
+        try {
+            System.out.println("Llega hasta consultarIniciativaP DAO");
             return iniciativaMapper.consultarIniciativasProponente(usuario);
         } catch (Exception e) {
-     
+
             throw new PersistenceException("Error al consultar la iniciativa de un proponente:" + e.getLocalizedMessage(), e);
         }
     }
+
     @Override
-    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws PersistenceException{
+    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraclave) throws PersistenceException {
         try {
-            System.out.println("Entra en busqueda de palabraSSSS clave por mYbATISDAOIniciaitva: "+palabraclave);    
-            System.out.println("Entra en busqueda de palabraSSSS clave por mYbATISDAOIniciaitva: "+iniciativaMapper.consultarIniciativasPalabraClave(palabraclave));                
+            System.out.println("Entra en busqueda de palabraSSSS clave por mYbATISDAOIniciaitva: " + palabraclave);
+            System.out.println("Entra en busqueda de palabraSSSS clave por mYbATISDAOIniciaitva: " + iniciativaMapper.consultarIniciativasPalabraClave(palabraclave));
             return iniciativaMapper.consultarIniciativasPalabraClave(palabraclave);
         } catch (Exception e) {
             System.out.println("CAPTURAAAAADOO En mybatisIniciativaDAO consultar por palabraS clave");
@@ -73,12 +75,11 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
         }
     }
 
-
     @Override
     public Iniciativa palabraClaveIniciativa(String palabraclave) throws PersistenceException {
         try {
-            System.out.println("Entra en busqueda de palabra clave por mYbATISDAOIniciaitva: "+palabraclave);
-            
+            System.out.println("Entra en busqueda de palabra clave por mYbATISDAOIniciaitva: " + palabraclave);
+
             return iniciativaMapper.palabraClaveIniciativa(palabraclave);
         } catch (Exception e) {
             System.out.println("CAPTURAAAAADOO En mybatisIniciativaDAO consultar por palabra clave");
@@ -128,6 +129,21 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     }
 
     @Override
+    public List<Iniciativa> agrupeEstados() throws PersistenceException {
+        try {
+            System.out.println("MyBatisDAO agrupando  Iniciativa");
+            //System.out.println("Probando el retorno: " + iniciativaMapper.agrupeIniciativas());
+            return iniciativaMapper.agrupeEstados();
+
+        } catch (Exception e) { //org.apache.ibatis.exceptions.PersistenceException
+            System.out.println("Este es el error: " + e);
+            throw new PersistenceException("Error al agrupar la iniciativa por estado" + e.getLocalizedMessage(), e);
+
+        }
+
+    }
+
+    @Override
     public void insertarPalabraClave(int id, int idIniciativa, String palabraClave) throws PersistenceException {
         try {
             iniciativaMapper.insertarPalabraClave(id, idIniciativa, palabraClave);
@@ -160,34 +176,33 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             throw new PersistenceException("Error al relacionar las iniciativas relacionadas:" + e.getLocalizedMessage(), e);
         }
     }
-    
-    @Override
-    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException{
-    	try {
-    		List<Iniciativa> i = iniciativaMapper.consultarIniciativaPorEstado(estado);
-    		if(i.size() < 1) {
-    			throw new PersistenceException("No existen iniciativas con el estado: "+ estado);
-    		}
-    		return i;
-    	}catch(Exception ex) {
-    		throw new PersistenceException("Error al consultar las iniciativas por el estado :" + ex.getLocalizedMessage(), ex);
-    	}
-    }
-    
-    @Override
-    public void modificarIniciativa(int id, String descripcion) throws PersistenceException{
-    	try {
-    		Iniciativa ini = iniciativaMapper.consultarIniciativa(id);
-    		if(! "En espera de revisión".equals(ini.getEstado())) {
-                    throw new PersistenceException ("El estado actual tiene que estar en espera para poder modificarlo: ");
-		}else {
-                    iniciativaMapper.modificarIniciativa(id, descripcion);
-		}
-    
 
-    	}catch(Exception ex) {
-    		throw new PersistenceException("Error al modificar la iniciativa :" + ex.getLocalizedMessage(), ex);
-    	}
+    @Override
+    public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException {
+        try {
+            List<Iniciativa> i = iniciativaMapper.consultarIniciativaPorEstado(estado);
+            if (i.size() < 1) {
+                throw new PersistenceException("No existen iniciativas con el estado: " + estado);
+            }
+            return i;
+        } catch (Exception ex) {
+            throw new PersistenceException("Error al consultar las iniciativas por el estado :" + ex.getLocalizedMessage(), ex);
+        }
+    }
+
+    @Override
+    public void modificarIniciativa(int id, String descripcion) throws PersistenceException {
+        try {
+            Iniciativa ini = iniciativaMapper.consultarIniciativa(id);
+            if (!"En espera de revisión".equals(ini.getEstado())) {
+                throw new PersistenceException("El estado actual tiene que estar en espera para poder modificarlo: ");
+            } else {
+                iniciativaMapper.modificarIniciativa(id, descripcion);
+            }
+
+        } catch (Exception ex) {
+            throw new PersistenceException("Error al modificar la iniciativa :" + ex.getLocalizedMessage(), ex);
+        }
     }
 
 }

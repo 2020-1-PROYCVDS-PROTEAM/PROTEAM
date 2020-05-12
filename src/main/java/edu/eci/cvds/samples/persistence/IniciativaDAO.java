@@ -33,6 +33,8 @@ public interface IniciativaDAO {
 
     public List<Iniciativa> agrupeIniciativas() throws PersistenceException;
 
+    public List<Iniciativa> agrupeEstados() throws PersistenceException;
+
     public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException;
 
     public void modificarIniciativa(int id, String descripcion) throws PersistenceException;

@@ -45,9 +45,9 @@ and open the template in the editor.
         <h:form id="PalabrasClave">
 
             <p:growl id="msgss" showDetail="true"/>
-            
+
             <h2 id="titulo"><strong>"#{UserBean.palabra}"</strong></h2>
-            
+
             <p:dataTable var="palabras" value="#{UserBean.consultarIniciativasPalabraClave(UserBean.getPalabra())}" class="tabla"
                          paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                          rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
@@ -92,7 +92,7 @@ and open the template in the editor.
                 <p:column headerText="Fecha" sortBy="#{palabras.getFecha()}">
                     <h:outputText value="#{palabras.getFecha()}"/>
                 </p:column>      
-           
+
             </p:dataTable>	                 
 
         </h:form>
