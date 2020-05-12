@@ -40,8 +40,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-    }*/
- /*
+    }
 	@Test
 	public void deberiaConsultarTodosLosUsuariosRegistrados() {
 		try {
@@ -51,9 +50,7 @@ public class proteamTest {
 			fail();
 		}
 		
-	}*/
-
- /*
+	}
 	@Test
     public void lanzaExcepcionNoExisteUsuario() {
     	try {
@@ -63,9 +60,7 @@ public class proteamTest {
     		assertTrue(true);
     	}
     }
-     */
 
- /*
 	@Test
     public void realizaConsultaDeUsuario() {
 		try {
@@ -73,8 +68,8 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-    }*/
- /*
+    }
+ 
 	@Test
     public void deberiaRegistrarUsuario() {
 		try {
@@ -95,8 +90,8 @@ public class proteamTest {
 			fail();
 		}
     }
-     */
- /*
+     
+ 
 	@Test
 	public void consultarIniciativaPorIdentificador() {
 		try {
@@ -105,8 +100,8 @@ public class proteamTest {
 			fail();
 		}
 	}
-     */
- /*
+     
+ 
 	@Test
 	public void deberiaDarExcepcionNoExisteIniciativa() {
 		try {
@@ -115,8 +110,8 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			
 		}
-	}*/
- /*@Test
+	}
+   @Test
 	public void consultaIniciativasPorPalabraClave() {
 		try {
 			Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
@@ -135,9 +130,8 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			
 		}
-	}*/
-
- /*
+	}
+ 
 	@Test
 	public void deberiaConsultarIniciativasRelacionadas() {
 		try {
@@ -145,7 +139,7 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-	}*/
+	}
     @Test
     public void deberiaConsultarIniciativasPorEstado() {
         try {
@@ -166,7 +160,7 @@ public class proteamTest {
         }
     }
 
-    /*
+    
 	@Test
 	public void deberiaModificarIniciativaPorSuEstado() {
 		try {
@@ -174,8 +168,8 @@ public class proteamTest {
 		}catch(ServicesException ex) {
 			fail();
 		}
-	}*/
-
+	}
+    
     @Test
     public void noDeberiaModificarIniciativaPorSuEstado() {
         try {
@@ -204,6 +198,15 @@ public class proteamTest {
     		fail();
     	}catch(ServicesException ex) {
     		
+    	}
+    }
+    */
+    @Test
+    public void prueba() {
+    	try {
+    		List<Iniciativa> i = sp.agrupeEstados();
+    	}catch(ServicesException ex) {
+    		fail();
     	}
     }
 
