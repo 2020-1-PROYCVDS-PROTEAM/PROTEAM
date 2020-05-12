@@ -185,5 +185,26 @@ public class proteamTest {
 
         }
     }
+    
+    @Test
+    public void deberiaConsultarIniciativasPorUsuario() {
+    	try {
+    		List<Iniciativa> i = sp.consultarIniciativasProponente("eduardj");
+    		
+    	}catch(ServicesException ex) {
+    		fail();
+    	}
+    }
+    
+    
+    @Test
+    public void noDeberiaConsultarIniciativasPorUsuarioNoExiste() {
+    	try {
+    		List<Iniciativa> i = sp.consultarIniciativasProponente("Usuario que no existe");
+    		fail();
+    	}catch(ServicesException ex) {
+    		
+    	}
+    }
 
 }
