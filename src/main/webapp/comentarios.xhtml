@@ -103,7 +103,10 @@ and open the template in the editor.
                         <h:outputText value="#{UserBean.selectedi.getFecha()}" /> 
 
                         <h:outputText value="Votos:" />
-                        <h:outputText value="#{UserBean.selectedi.getVotos()}" />
+                        <h:outputText value="#{UserBean.consultarVotosIniciativa(UserBean.selectedi.getId())}" />
+						
+						<h:outputText value="selectid:" />
+                        <h:outputText value="#{UserBean.selectedi.getId()}" />
 
                     </p:panelGrid>
 
@@ -112,14 +115,14 @@ and open the template in the editor.
                     <p><h3 id="descripcion">Descripción: </h3></p>
                     <p><h4 id="descripcion">"#{UserBean.selectedi.getDescripcion()}"</h4></p>
 
-                    <p:commandButton value="Me gusta" styleClass="apply" update="informacion" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+                    <p:commandButton value="Me gusta" styleClass="apply" update="informacion" action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
 
                     <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"
                                  rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:20%; margin-left: 10%;">
 
                         <br/>
 
-						<p:ajax event="rowSelect" listener="#{UserBean.setPalabra(UserBean.getPalabra())}" />
+                        <p:ajax event="rowSelect" listener="#{UserBean.setPalabra(UserBean.getPalabra())}" />
 
                         <p:column headerText="Palabras clave">
                             <p:button id="palabraescogida" binding="#{res}" outcome="busqueda" value="#{palabras}">
@@ -132,11 +135,6 @@ and open the template in the editor.
                     </p:dataTable>						
 
                 </h:panelGrid>
-
-                <f:facet name="actions">
-                    <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-question" /></h:commandLink>
-                    <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon pi pi-star" /></h:commandLink>
-                </f:facet>
             </p:panel>
 
         </h:form>
@@ -188,24 +186,9 @@ and open the template in the editor.
                     <p>"#{UserBean.selectedi.id}"</p>
                     <p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
                     <br />
-                    <h:outputText id="display" />
-                    <style type="text/css">
-                        .boton {
-                            border-radius: 5px;
-                            background-color:#FF33FF;
-                            color:white;
-                        }
-                        #combtn{
-                            background: #FF33FF;
-                            color: #FFFFFF;
-                        }#myButton.ui-button{
-                            background-color: #FF33FF;
-                            color: #FFFFFF;
-                        }
-
-                    </style>
+                    <h:outputText id="display" />              
                     <div class="divButton"> 
-                        <p:commandButton styleClass = "myButton" update="ConsultaComentarios" actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
+                        <p:commandButton styleClass = "myButton" update="ConsultaComentarios"  action="#{bean.publicarComentario()}"  actionListener="#{UserBean.insertarComentario(logeoBean.name,UserBean.idPag,contenido.value)}" value="Publicar"/>
                     </div>
                 </p:panel>
             </p:tab>

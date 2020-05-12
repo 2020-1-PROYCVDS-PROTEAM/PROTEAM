@@ -162,5 +162,16 @@ public class bean extends BasePageBean implements Serializable {
     }
     
     
+    public void publicarComentario() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Comentario publicado."));
+    }
+    
+    public void campoEditado() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Campo modificado."));
+    }
+    
+	 public void votoRegistrado() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Su voto ha sido registrado."));
+    }
 
 }

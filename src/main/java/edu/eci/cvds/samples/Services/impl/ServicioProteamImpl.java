@@ -227,6 +227,7 @@ public class ServicioProteamImpl implements ServicioProteam {
     public void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException {
         try {
             daoVoto.borrarVoto(idUsuario, idIniciativa);
+            System.out.println("Borro efectivamente el voto del usuario: "+idUsuario+" de la iniciativa: "+idIniciativa);
         } catch (Exception ex) {
             throw new ServicesException("No fue posible borrar el voto", ex);
         }

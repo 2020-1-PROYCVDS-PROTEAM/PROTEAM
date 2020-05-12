@@ -50,9 +50,9 @@
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 
                 <p:column headerText="Votar">
-                    <p:commandButton  styleClass="apply" update="iniciativasUsuario" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+                    <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
                     <br/>
-                    <h:outputText value="#{iniciativa.getVotos()}" style="text-align:center" />
+                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}" style="text-align:center" />
 
                 </p:column>
 
@@ -70,7 +70,8 @@
                 </p:column>
 
                 <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
-                    <h:outputText value="#{iniciativa.getVotos()}"/>
+				
+                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}"/>
                 </p:column>
 
                 <p:column headerText="Palabras clave" id="x" filterBy="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}" filterMatchMode="contains">

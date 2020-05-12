@@ -1,111 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!--
-        To change this license header, choose License Headers in Project Properties.
-        To change this template file, choose Tools | Templates
-        and open the template in the editor.
-        -->
-        <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
- <h:head>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-	 <h:outputScript library="js" name="cierreSesion.js"/>
-    <link href="administrador.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" href="/resources/administrador.ico"/>
-    <title>Administrador</title>
- </h:head>
-	
- <h:body>
- <style type="text/css">
-    .ui-row-editor .ui-row-editor-pencil {
-        margin-left:8px;
-    }
-</style>
- 	<h:form>     
-    <p:growl id="messages" showDetail="true" />
- 
-    <p:toolbar>
-        <f:facet name="left">
- 
-			
-             <p:commandButton value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-             <p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-			
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputScript library="js" name="cierreSesion.js"/>
+        <link href="administrador.css" rel="stylesheet" type="text/css"/>
+        <link rel="icon" href="/resources/administrador.ico"/>
+        <title>Administrador</title>
+    </h:head>
 
-        </f:facet>
- 
-        <f:facet name="right">
-			<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
-			<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-            <p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
-            
-        </f:facet>
- 
-    </p:toolbar>
-</h:form>
-	 
- 
-	<h:form id="consultaGeneral">
-	<p:growl id="msgs" showDetail="true"/>
-	
-	
-	
- 
-	<p:dataTable var="usuario" value="#{AdministradorBean.consultarUsuarios()}" class="tabla"
-				paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-				rows="10" selectionMode="single" id="usuario" 
-				rowKey="#{usuario.usuario}" editable="true"  >
-			
-			<f:facet name="header" style="width:50%">
-				Usuarios.
-			</f:facet>
-			
-			
-			
-			<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarRol(usuario.getUsuario(),area.value)}" oncomplete="updateTable()" update="result"/>
+    <h:body>
+        <style type="text/css">
+            .ui-row-editor .ui-row-editor-pencil {
+                margin-left:8px;
+            }
+        </style>
+        <h:form>     
+            <p:growl id="messages" showDetail="true" />
+
+            <p:toolbar>
+                <f:facet name="left">
 
 
-
-			<p:column headerText="Usuario" filterBy="#{usuario.getUsuario()}">
-				<h:outputText value="#{usuario.getUsuario()}"/>
-			</p:column>
+                    <p:commandButton value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+                    <p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
 
 
-			<p:column headerText="Correo">
-				<h:outputText value="#{usuario.getCorreo()}"/>
-			</p:column>
-			
-			<p:column headerText="Nombre">
-				<h:outputText value="#{usuario.getNombre()}"/>
-			</p:column>
-			
-			<p:column headerText="Apellido">
-				<h:outputText value="#{usuario.getApellido()}"/>
-			</p:column>
-
-        <p:column headerText="Rol">
-            <p:cellEditor>
-                <f:facet name="output"><h:outputText id="result"  var="x" value="#{usuario.rol}" /></f:facet>
-                <f:facet name="input" >
-                    <h:selectOneMenu binding="#{area}" id="area" value="xo" style="width:100%">
-                        <f:selectItems id ="xo" value="#{AdministradorBean.rolez}" var="role" itemLabel="#{role}"  itemValue="#{role}" />
-						
-                    </h:selectOneMenu>
                 </f:facet>
-            </p:cellEditor>
-			</p:column>
-			
-			<p:column style="width:35px">
-				<p:rowEditor />
-			</p:column>
-			
-		</p:dataTable>	
-            
-	</h:form>
-	
-	<p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
-	
-</h:body>
+
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+                    <p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
+
+                </f:facet>
+
+            </p:toolbar>
+        </h:form>
+
+
+        <h:form id="consultaGeneral">
+            <p:growl id="msgs" showDetail="true"/>
+
+
+
+
+            <p:dataTable var="usuario" value="#{AdministradorBean.consultarUsuarios()}" class="tabla"
+                         paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rows="10" selectionMode="single" id="usuario" 
+                         rowKey="#{usuario.usuario}" editable="true"  >
+
+                <f:facet name="header" style="width:50%">
+                    Usuarios.
+                </f:facet>
+
+
+
+                <p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarRol(usuario.getUsuario(),area.value)}" oncomplete="updateTable()" update="result"/>
+
+
+
+                <p:column headerText="Usuario" filterBy="#{usuario.getUsuario()}">
+                    <h:outputText value="#{usuario.getUsuario()}"/>
+                </p:column>
+
+
+                <p:column headerText="Correo">
+                    <h:outputText value="#{usuario.getCorreo()}"/>
+                </p:column>
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{usuario.getNombre()}"/>
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{usuario.getApellido()}"/>
+                </p:column>
+
+                <p:column headerText="Rol">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText id="result"  var="x" value="#{usuario.rol}" /></f:facet>
+                        <f:facet name="input" >
+                            <h:selectOneMenu binding="#{area}" id="area" value="xo" style="width:100%">
+                                <f:selectItems id ="xo" value="#{AdministradorBean.rolez}" var="role" itemLabel="#{role}"  itemValue="#{role}" />
+
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column style="width:35px">
+                    <p:rowEditor />
+                </p:column>
+
+            </p:dataTable>	
+
+        </h:form>
+
+        <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
+
+    </h:body>
 </html>

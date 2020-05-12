@@ -159,7 +159,6 @@ public class UserBean extends BasePageBean implements Serializable {
                 return true;
             }
         } catch (ServicesException e) {
-            //return false;
             System.out.println("No retorna bien el voto");
         }
         return false;
@@ -168,9 +167,9 @@ public class UserBean extends BasePageBean implements Serializable {
     public void registrarVoto(String idUsuario, String idIniciativa) {
         int idd = Integer.parseInt(idIniciativa);
         try {
-			System.out.println("-----------------------------------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------");
             System.out.println("Al bean User llega esto: " + idUsuario + " ini: " + idIniciativa);
-			System.out.println("-----------------------------------------------------------------------------------------");			
+            System.out.println("-----------------------------------------------------------------------------------------");			
             Voto voto = servicioPT.consultarVoto(idUsuario, idd);
             if (voto == null) {
                 servicioPT.registrarVoto(idUsuario, idd);
@@ -178,16 +177,19 @@ public class UserBean extends BasePageBean implements Serializable {
                 servicioPT.borrarVoto(idUsuario, idd);
             }
 
-            //servicioPT.registrarVoto(idUsuario, idd);
         } catch (ServicesException e) {
-            /*
-                        try{
-                            servicioPT.borrarVoto(idUsuario,idd);
-                        }
-                        catch(ServicesException ex){
-                            System.out.println("Entra en excepcion 2userbean VotarIniciativa");
-                        }*/
             System.out.println("Entra en excepcion userBean VotarIniciativa");
+        }
+    }
+    
+    
+    public int consultarVotosIniciativa(int idIniciativa) throws ServicesException {
+        System.out.println("CONSULTANDO VOTOS DE LA INICIATIVA :"+idIniciativa);
+        try {
+            return servicioPT.consultarVotosIniciativa(idIniciativa).size();
+        } catch (ServicesException ex) {
+            System.out.println("CAPTURANDO EN CONSULTANDO VOTOS DE LA INICIAITVA");
+            throw new ServicesException("No hay votos", ex);//en la iniciativa
         }
     }
 
@@ -268,6 +270,8 @@ public class UserBean extends BasePageBean implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
+    
+
 
 //    public Exporter<DataTable> getTextExporter() {
 //        return textExporter;

@@ -55,7 +55,7 @@
                 </f:facet>
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
-                <p:ajax event="rowEdit" listener="#{AdministradorBean.modificarIniciativa(iniciativa.getId(),nuevaDescripcion.value)}" oncomplete="updateTable()" />
+                <p:ajax event="rowEdit" listener="#{AdministradorBean.modificarIniciativa(iniciativa.getId(),nuevaDescripcion.value)}" action="#{bean.campoEditado()}" oncomplete="updateTable()" />
 
                 <p:column selectionMode="multiple"/>
 
