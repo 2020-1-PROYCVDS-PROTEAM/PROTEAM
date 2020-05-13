@@ -208,5 +208,26 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
             throw new PersistenceException("Error al modificar la iniciativa :" + ex.getLocalizedMessage(), ex);
         }
     }
+	
+	@Override
+    public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws PersistenceException {
+        try {
+            return iniciativaMapper.consultarIniciativasVotadas(usuario);
+        } catch (Exception ex) {
+            throw new PersistenceException("Error al consultar las iniciativas por el estado :" + ex.getLocalizedMessage(), ex);
+        }
+    }
+	
+	@Override
+    public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException {
+        try {
+			System.out.println("Llega correctamente antes de pedir mapper usuario: "+usuario);
+			System.out.println("Inciaitvia retornada: "+iniciativaMapper.consultarComentariosUsuario(usuario));
+            return iniciativaMapper.consultarComentariosUsuario(usuario);
+        } catch (Exception ex) {
+			System.out.println("FALLO Y FUE CAPTURADO EN EL MyBatisDao Comentarios");
+            throw new PersistenceException("Error al consultar los comentarios del  usuario :" + ex.getLocalizedMessage(), ex);
+        }
+    }
 
 }

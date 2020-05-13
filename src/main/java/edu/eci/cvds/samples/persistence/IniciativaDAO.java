@@ -38,4 +38,9 @@ public interface IniciativaDAO {
     public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException;
 
     public void modificarIniciativa(int id, String descripcion) throws PersistenceException;
+	
+	public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws PersistenceException;
+	
+	public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException;
+
 }

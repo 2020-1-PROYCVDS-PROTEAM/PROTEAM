@@ -7,6 +7,7 @@ package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +28,7 @@ public class Iniciativa implements Serializable {
     private java.lang.Long cantidad; //Esto de aca puede afectar en las dos graficas
     private String area2;
     private String estados;
+    private ArrayList<Comentario> comentarios;  //esta se borra por si algo
 
     public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha) {
         this.id = id;
@@ -41,6 +43,22 @@ public class Iniciativa implements Serializable {
         this.fechar_ini = fecha;
 
     }
+	
+	public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha, ArrayList<Comentario> comentarios) {
+		System.out.println("HA ENTRADO EN CONSTRUCTOR INICIATIVA CON COMENTARIOS: "+comentarios+" PERO ESTE ES EL ID: "+id);
+        this.id = id;
+        this.votos = votos;
+        this.palabraClave = palabraclave;
+        this.nombre = nombre;
+        this.estado = estado;
+        this.area = area;
+        this.descripcion = descripcion;
+        this.usuario_i = usuarioProponente;
+        this.correo_i = correoProponente;
+        this.fechar_ini = fecha;
+        this.comentarios=comentarios;
+
+    }
 
     public Iniciativa(String area2, java.lang.Long cantidad) {
         if (area2.equals("Solucionado") || area2.equals("Proyecto") || area2.equals("En revisión") || area2.equals("En espera de revisión")) {
@@ -51,10 +69,7 @@ public class Iniciativa implements Serializable {
         this.cantidad = cantidad;
     }
 
-//    public Iniciativa(String estados, java.lang.Long cantidad) { //Mejorar este constructor con el de arriba hacen lo mismo pero hay diferenias sutiles
-//        
-//        this.cantidad = cantidad;
-//    }
+
     public int getId() {
         return id;
     }
@@ -163,6 +178,14 @@ public class Iniciativa implements Serializable {
 
     public void setEstados(String estados) {
         this.estados = estados;
+    }
+	
+    public ArrayList<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setRentados(ArrayList<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     @Override

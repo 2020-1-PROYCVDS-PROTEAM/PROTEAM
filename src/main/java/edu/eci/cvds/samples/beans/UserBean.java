@@ -192,6 +192,25 @@ public class UserBean extends BasePageBean implements Serializable {
             throw new ServicesException("No hay votos", ex);//en la iniciativa
         }
     }
+	
+	public List<Iniciativa> consultarIniciativasVotadas(String usuario){
+        try{
+            return servicioPT.consultarIniciativasVotadas(usuario);
+        }catch(ServicesException e){
+            System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+        }
+        return null;
+    }
+	
+	public List<Iniciativa> consultarComentariosUsuario(String usuario){
+        try{
+			System.out.println("Este es el usuario Comentarios: "+usuario);
+            return servicioPT.consultarComentariosUsuario(usuario);
+        }catch(ServicesException e){
+            System.out.println("CAPTURADO EN USERBEAN consultarComentarios de usuario");
+        }
+        return null;
+    }
 
     public void setSelectedi(Iniciativa selectIniciativa) {
         selectedi = selectIniciativa;
@@ -233,8 +252,10 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return null;
     }
+	
+	
 
-    public String estadoIniciativa() {
+    public String estadoIniciativa() {  //Esto deberia ir en un bean de iniciativas
         if (selectedi.getEstado().equals("Solucionado")) {
             return "/Solucionado.png";
         } else if (selectedi.getEstado().equals("En revisión")) {
@@ -245,6 +266,8 @@ public class UserBean extends BasePageBean implements Serializable {
             return "/Proyecto.png";
         }
     }
+	
+	
 
     public ServicioProteam getServicioPT() {
         return servicioPT;
@@ -263,24 +286,13 @@ public class UserBean extends BasePageBean implements Serializable {
     }
 
     public Date getDate() {
-        Date date = new Date(Calendar.getInstance().getTime().getTime());
-        return date;
+        return new Date(Calendar.getInstance().getTime().getTime());
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
-    
-
-
-//    public Exporter<DataTable> getTextExporter() {
-//        return textExporter;
-//    }
-//
-//    public void setTextExporter(Exporter<DataTable> textExporter) {
-//        this.textExporter = textExporter;
-//    }
-//    
+	
     
 
 }

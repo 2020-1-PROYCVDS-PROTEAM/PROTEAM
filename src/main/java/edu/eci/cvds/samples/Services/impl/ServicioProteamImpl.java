@@ -315,5 +315,23 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }
     }
+	
+	@Override
+    public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws ServicesException {
+        try {
+            return daoIniciativa.consultarIniciativasVotadas(usuario);
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
+        }
+    }
+	
+	@Override
+    public List<Iniciativa> consultarComentariosUsuario(String usuario) throws ServicesException {
+        try {
+            return daoIniciativa.consultarComentariosUsuario(usuario);
+        } catch (Exception ex) {
+            throw new ServicesException("No fue posible consultar los comentarios del usuario", ex);
+        }
+    }
 
 }
