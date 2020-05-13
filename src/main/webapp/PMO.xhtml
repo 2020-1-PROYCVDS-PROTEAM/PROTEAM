@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputScript library="js" name="cierreSesion.js"/>
+        <link rel="icon" href="/resources/user.ico"/>
+        <link href="administrador.css" rel="stylesheet" type="text/css"/>
+
+        <title>Iniciativas | Usuarios</title>
+    </h:head>
+
+
+
+    <h:body>
+        <p>CONSULTA DEL CLIENTE</p>
+        <h:form>     
+            <p:growl id="messages" showDetail="true" />
+            <p:toolbar>
+
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+                    <p:commandButton value="Salir"  onclick="confirmDelete()" icon="pi pi-sign-out" />				
+                </f:facet>
+
+                <f:facet name="left">
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+					<p:commandButton  value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/PMOProponente.xhtml')}"/>
+                </f:facet>
+
+
+            </p:toolbar>
+        </h:form>
+
+        <h:form id="iniciativasUsuario">
+            <p:dataTable id="info" var="iniciativa" value="#{UserBean.iniciativas}"
+                         paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rowKey="#{iniciativa.id}" style="text-align:center;" selectionMode="single">
+
+                <f:facet name="header">
+                    Iniciativas.
+                </f:facet>
+	
+				<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
+
+                <p:column headerText="Votar">
+                    <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+                    <br/>
+                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}" style="text-align:center" />
+
+                </p:column>
+
+
+                <p:column headerText="Comentarios">
+                    <p:button outcome="comentarios" value="Comentar">
+                        <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
+                    </p:button>
+                </p:column>
+
+
+
+                <p:column headerText="Id" sortBy="#{iniciativa.getId()}">
+                    <h:outputText value="#{iniciativa.getId()}"/>
+                </p:column>
+
+                <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
+				
+                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}"/>
+                </p:column>
+
+                <p:column headerText="Palabras clave" id="x" filterBy="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}" filterMatchMode="contains">
+                    <h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}"/>
+                </p:column>
+
+			
+
+                <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
+                    <h:outputText value="#{iniciativa.getNombre()}"/>
+                </p:column>
+
+				<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
+                    <h:outputText value="#{iniciativa.getEstado()}"/>
+                </p:column>
+				
+                <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
+                    <h:outputText value="#{iniciativa.getDescripcion()}"/>
+                </p:column>
+                <p:column headerText="Área" sortBy="#{iniciativa.getArea()}">
+                    <h:outputText value="#{iniciativa.getArea()}"/>
+                </p:column>                     
+
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton update=":iniciativasUsuario:carDetail" oncomplete="PF('carOP').show('#{UserBean.selectedi}')" icon="pi pi-search" title="Ver más">
+                        <f:setPropertyActionListener value="#{iniciativa}" target="#{UserBean.selectedi}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+
+
+
+
+            <p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <f:facet name="header">
+                            <h:outputText value="#{UserBean.selectedi.getNombre()}" />
+                        </f:facet>
+
+                        <h:outputText value="Proponente:" />
+                        <h:outputText value="#{UserBean.selectedi.getUsuarioProponente()}" />
+
+                        <h:outputText value="Correo" />
+                        <h:outputText value="#{UserBean.selectedi.getcorreoProponente()}" />
+
+                        <h:outputText value="Fecha de inicio:" />
+                        <h:outputText value="#{UserBean.selectedi.getFecha()}"/>
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:overlayPanel>
+
+
+            <h3>Descargar información.</h3>
+            <h:commandLink>
+
+                <p:graphicImage name="/excel.png" library="img"/>
+                <p:dataExporter type="xls" target="info" fileName="iniciativas" pageOnly="true"/>
+            </h:commandLink>
+
+            <h:commandLink>
+
+                <p:graphicImage library="img" name="/pdf.png" />
+                <p:dataExporter type="pdf" target="info" fileName="iniciativas" pageOnly="true" />
+            </h:commandLink>
+
+
+
+        </h:form>
+
+        <h:form id="estadisticas">
+
+            <h:panelGrid columns="1"  columnClasses="left,right" style="width:auto">
+                <p:chart type="pie" model="#{bean.getModel()}" /> 
+                <p:dataTable var="iniciativa" value="#{bean.getIniciativas()}" class="tabla"
+                             paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rows="4"  id="id" selectionMode="single"   tableStyle="table-layout: right;" 
+
+                             rowKey="#{iniciativa.area2}" >                                           
+                    <br/>
+                    <p:column headerText="Area" >
+                        <h:outputText value="#{iniciativa.getArea2()}"/>
+                    </p:column>
+
+                    <p:column headerText="Cantidad" >
+                        <h:outputText value="#{iniciativa.getCantidad()}"/>
+                    </p:column>
+
+                </p:dataTable>	               
+            </h:panelGrid>
+        </h:form>
+
+
+        <h:form id="estadisticasEstados">
+
+            <h:panelGrid columns="1"  columnClasses="left,right" style="width:auto">
+
+                <p:chart type="bar" model="#{bean.getBarModel()}" style="height:300px"/>
+                <p:dataTable var="iniciativasEstados" value="#{bean.getIniciativasEstado()}" class="tabla"
+
+                             rows="4"  id="id" selectionMode="single"   tableStyle="table-layout: right;" 
+                             rowKey="#{iniciativasEstados.estados}" >                                           
+                    <br/>
+                    <p:column headerText="Area" >
+                        <h:outputText value="#{iniciativasEstados.getEstados()}"/>
+                    </p:column>
+
+                    <p:column headerText="Cantidad" >
+                        <h:outputText value="#{iniciativasEstados.getCantidad()}"/>
+                    </p:column>
+
+                </p:dataTable>	               
+            </h:panelGrid>
+        </h:form> 
+
+
+
+
+        <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
+
+    </h:body>
+</html>

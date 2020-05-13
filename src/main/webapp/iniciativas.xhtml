@@ -45,7 +45,6 @@ and open the template in the editor.
                 </f:facet>
             </p:toolbar>
         </h:form>
-
         <h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol != 'Proponente'}">     
             <p:growl id="messages" showDetail="true" />
             <p:toolbar>
