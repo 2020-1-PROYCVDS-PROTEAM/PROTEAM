@@ -30,6 +30,7 @@ public class Iniciativa implements Serializable {
     private String estados;
     private ArrayList<Comentario> comentarios;  //esta se borra por si algo
 
+
     public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha) {
         this.id = id;
         this.votos = votos;
@@ -42,6 +43,15 @@ public class Iniciativa implements Serializable {
         this.correo_i = correoProponente;
         this.fechar_ini = fecha;
 
+    }
+	
+	public Iniciativa(String area2, java.lang.Long cantidad) {
+        if (area2.equals("Solucionado") || area2.equals("Proyecto") || area2.equals("En revisión") || area2.equals("En espera de revisión")) {
+            estados = area2;
+        } else {
+            this.area2 = area2;
+        }
+        this.cantidad = cantidad;
     }
 	
 	public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha, ArrayList<Comentario> comentarios) {
@@ -60,14 +70,6 @@ public class Iniciativa implements Serializable {
 
     }
 
-    public Iniciativa(String area2, java.lang.Long cantidad) {
-        if (area2.equals("Solucionado") || area2.equals("Proyecto") || area2.equals("En revisión") || area2.equals("En espera de revisión")) {
-            estados = area2;
-        } else {
-            this.area2 = area2;
-        }
-        this.cantidad = cantidad;
-    }
 
 
     public int getId() {

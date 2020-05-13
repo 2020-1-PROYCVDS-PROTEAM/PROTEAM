@@ -42,6 +42,8 @@ public interface IniciativaMapper {
 	
 	public List<Iniciativa> consultarIniciativasVotadas(@Param("usuario") String usuario);
 	
+	public List<Iniciativa> consultarInteresesIniciativas(@Param("usuario") String usuario);
+	
 	public List<Iniciativa> consultarComentariosUsuario(@Param("usuario") String usuario);
 	
 }

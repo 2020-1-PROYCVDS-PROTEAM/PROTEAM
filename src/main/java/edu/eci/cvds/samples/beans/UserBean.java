@@ -4,6 +4,7 @@ import edu.eci.cvds.samples.entities.Rol;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
+import edu.eci.cvds.samples.entities.Interes;
 import edu.eci.cvds.samples.entities.PalabraClave;
 
 import edu.eci.cvds.samples.Services.ServicesException;
@@ -26,7 +27,6 @@ import java.util.Calendar;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.export.Exporter;
 
-
 @ManagedBean(name = "UserBean")
 @ApplicationScoped
 public class UserBean extends BasePageBean implements Serializable {
@@ -38,7 +38,7 @@ public class UserBean extends BasePageBean implements Serializable {
     private List<Iniciativa> selectsi;
     private String palabra;
     //private Exporter<DataTable> textExporter;
-    
+
     @Inject
     private ServicioProteam servicioPT;
     private List<Iniciativa> iniciativas;
@@ -70,8 +70,6 @@ public class UserBean extends BasePageBean implements Serializable {
     public void setPalabra(String palabra) {
         this.palabra = palabra;
     }
-    
-    
 
     public void setIdPag(String iniciativaId) {
         System.out.println("Entra en setIdPag User Bean: " + iniciativaId);
@@ -102,7 +100,6 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return this.comentarios;
     }
-    
 
     public Iniciativa consultarIniciativa(String id) {
         try {
@@ -113,11 +110,11 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return null;
     }
-    
-    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraClave){
-        try{
+
+    public List<Iniciativa> consultarIniciativasPalabraClave(String palabraClave) {
+        try {
             return servicioPT.consultarIniciativasPalabraClave(palabraClave);
-        }catch(ServicesException e){
+        } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
 
         }
@@ -169,7 +166,7 @@ public class UserBean extends BasePageBean implements Serializable {
         try {
             System.out.println("-----------------------------------------------------------------------------------------");
             System.out.println("Al bean User llega esto: " + idUsuario + " ini: " + idIniciativa);
-            System.out.println("-----------------------------------------------------------------------------------------");			
+            System.out.println("-----------------------------------------------------------------------------------------");
             Voto voto = servicioPT.consultarVoto(idUsuario, idd);
             if (voto == null) {
                 servicioPT.registrarVoto(idUsuario, idd);
@@ -181,10 +178,9 @@ public class UserBean extends BasePageBean implements Serializable {
             System.out.println("Entra en excepcion userBean VotarIniciativa");
         }
     }
-    
-    
+
     public int consultarVotosIniciativa(int idIniciativa) throws ServicesException {
-        System.out.println("CONSULTANDO VOTOS DE LA INICIATIVA :"+idIniciativa);
+        System.out.println("CONSULTANDO VOTOS DE LA INICIATIVA :" + idIniciativa);
         try {
             return servicioPT.consultarVotosIniciativa(idIniciativa).size();
         } catch (ServicesException ex) {
@@ -192,21 +188,30 @@ public class UserBean extends BasePageBean implements Serializable {
             throw new ServicesException("No hay votos", ex);//en la iniciativa
         }
     }
-	
-	public List<Iniciativa> consultarIniciativasVotadas(String usuario){
-        try{
+
+    public List<Iniciativa> consultarIniciativasVotadas(String usuario) {
+        try {
             return servicioPT.consultarIniciativasVotadas(usuario);
-        }catch(ServicesException e){
+        } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
         }
         return null;
     }
-	
-	public List<Iniciativa> consultarComentariosUsuario(String usuario){
-        try{
-			System.out.println("Este es el usuario Comentarios: "+usuario);
+
+    public List<Iniciativa> consultarInteresesIniciativas(String usuario) {
+        try {
+            return servicioPT.consultarInteresesIniciativas(usuario);
+        } catch (ServicesException e) {
+            System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
+        }
+        return null;
+    }
+
+    public List<Iniciativa> consultarComentariosUsuario(String usuario) {
+        try {
+            System.out.println("Este es el usuario Comentarios: " + usuario);
             return servicioPT.consultarComentariosUsuario(usuario);
-        }catch(ServicesException e){
+        } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarComentarios de usuario");
         }
         return null;
@@ -233,18 +238,18 @@ public class UserBean extends BasePageBean implements Serializable {
     }
 
     public List<String> consultarPalabrasClaveIniciativa(int idIniciaitva) {
-        try {			
+        try {
             System.out.println("------------------------------------------------------");
-            System.out.println("CONSULTAR PALABRA CLAVE: (idIniciativa)"+idIniciaitva);
-			System.out.println("------------------------------------------------------");
+            System.out.println("CONSULTAR PALABRA CLAVE: (idIniciativa)" + idIniciaitva);
+            System.out.println("------------------------------------------------------");
             List<PalabraClave> palabrasclave = servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
             List<String> palabra = new ArrayList<String>();
             for (PalabraClave p : palabrasclave) {
                 palabra.add(p.getPalabraClave());
             }
-			System.out.println("********************************************************");
-			System.out.println("PALABRAS CLAVE: "+palabra);
-			System.out.println("********************************************************");
+            System.out.println("********************************************************");
+            System.out.println("PALABRAS CLAVE: " + palabra);
+            System.out.println("********************************************************");
             return palabra;
             //return servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
         } catch (ServicesException e) {
@@ -252,8 +257,25 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return null;
     }
-	
-	
+
+    public void registrarInteres(String idUsuario, String idIniciativa) {
+        int idd = Integer.parseInt(idIniciativa);
+        try {
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.out.println("Al bean User llega esto REGISTRANDO INTERES: " + idUsuario + " ini: " + idIniciativa);
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-");
+            Interes interes = servicioPT.consultarInteres(idUsuario, idd);
+            System.out.println("ESTE ES EL INTERES: "+interes);
+            if (interes == null) {
+                servicioPT.registrarInteres(idUsuario, idd);
+            } else {
+                servicioPT.borrarInteres(idUsuario, idd);
+            }
+
+        } catch (ServicesException e) {
+            System.out.println("Entra en excepcion userBean Interes iniciativa");
+        }
+    }
 
     public String estadoIniciativa() {  //Esto deberia ir en un bean de iniciativas
         if (selectedi.getEstado().equals("Solucionado")) {
@@ -266,8 +288,6 @@ public class UserBean extends BasePageBean implements Serializable {
             return "/Proyecto.png";
         }
     }
-	
-	
 
     public ServicioProteam getServicioPT() {
         return servicioPT;
@@ -292,7 +312,5 @@ public class UserBean extends BasePageBean implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-	
-    
 
 }

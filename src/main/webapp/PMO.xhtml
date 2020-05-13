@@ -147,13 +147,47 @@
 
         <h:form id="estadisticas">
 
+	
             <h:panelGrid columns="1"  columnClasses="left,right" style="width:auto">
-                <p:chart type="pie" model="#{bean.getModel()}" /> 
-                <p:dataTable var="iniciativa" value="#{bean.getIniciativas()}" class="tabla"
-                             paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                             rows="4"  id="id" selectionMode="single"   tableStyle="table-layout: right;" 
 
-                             rowKey="#{iniciativa.area2}" >                                           
+			<script type="text/javascript">
+					//<![CDATA[
+					function exportChart() {
+					//export image
+					$('#output').empty().append(PF('chart').exportAsImage());		 
+					//show the dialog
+					PF('dlg').show();
+					//]]>
+				</script>
+
+                <p:chart type="pie" model="#{bean.getModel()}" style="width:500px;height:300px" widgetVar="chart"/> 
+
+				<p:commandButton type="button" value="Descargar gráfica" icon="pi pi-home" onclick="exportChart()"/>
+ 
+				<p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Descargar gráfica" resizable="false">
+					<p:outputPanel id="output" layout="block" style="width:500px;height:300px"/>
+				</p:dialog>
+				
+				
+                <p:dataTable id="estadisticasArea" var="iniciativa" value="#{bean.getIniciativas()}"
+                             paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {Exporters}"
+                             rows="4"  selectionMode="single"   tableStyle="table-layout: right;" 
+                             rowKey="#{iniciativa.area2}" >                                       
+
+						<f:facet name="{Exporters}">
+							<div style="padding-top: 5px;">
+								<h:commandLink>
+									<p:graphicImage name="/excel.png" library="img" width="24"/>
+									<p:dataExporter type="xls" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true"/>
+								</h:commandLink>
+
+								<h:commandLink>
+									<p:graphicImage library="img" name="/pdf.png" width="24"/>
+									<p:dataExporter type="pdf" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true" />
+								</h:commandLink>                        
+							</div>
+						</f:facet>
+							 
                     <br/>
                     <p:column headerText="Area" >
                         <h:outputText value="#{iniciativa.getArea2()}"/>
@@ -165,7 +199,10 @@
 
                 </p:dataTable>	               
             </h:panelGrid>
+		
         </h:form>
+		
+
 
 
         <h:form id="estadisticasEstados">
@@ -173,10 +210,26 @@
             <h:panelGrid columns="1"  columnClasses="left,right" style="width:auto">
 
                 <p:chart type="bar" model="#{bean.getBarModel()}" style="height:300px"/>
-                <p:dataTable var="iniciativasEstados" value="#{bean.getIniciativasEstado()}" class="tabla"
+                <p:dataTable id="estadisticasEstado" var="iniciativasEstados" value="#{bean.getIniciativasEstado()}" 
+							paginator="true" paginatorTemplate="{Exporters}"
+                             rows="4"  selectionMode="single"   tableStyle="table-layout: right;" 
+                             rowKey="#{iniciativasEstados.estados}" >    
 
-                             rows="4"  id="id" selectionMode="single"   tableStyle="table-layout: right;" 
-                             rowKey="#{iniciativasEstados.estados}" >                                           
+						<f:facet name="{Exporters}">
+							<div style="padding-top: 5px;">
+								<h:commandLink>
+									<p:graphicImage name="/excel.png" library="img" width="24"/>
+									<p:dataExporter type="xls" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true"/>
+								</h:commandLink>
+
+								<h:commandLink>
+									<p:graphicImage library="img" name="/pdf.png" width="24"/>
+									<p:dataExporter type="pdf" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true" />
+								</h:commandLink>                        
+							</div>
+						</f:facet>
+
+							 
                     <br/>
                     <p:column headerText="Area" >
                         <h:outputText value="#{iniciativasEstados.getEstados()}"/>

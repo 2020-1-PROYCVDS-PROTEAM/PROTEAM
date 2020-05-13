@@ -41,6 +41,8 @@ public interface IniciativaDAO {
 	
 	public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws PersistenceException;
 	
+	public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws PersistenceException;
+	
 	public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException;
 
 }

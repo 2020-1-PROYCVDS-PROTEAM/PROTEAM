@@ -164,6 +164,9 @@
 		select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join votos on (votos.idiniciativa = i.id) where votos.idusuario like #{usuario};
     </select>	
 	
+    <select id='consultarInteresesIniciativas' resultMap='IniciativaResult'>
+		select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join interesados on (interesados.idiniciativa = i.id) where interesados.idusuario like #{usuario};
+    </select>		
 
     <update id='cambiarEstado' parameterType="map">
         UPDATE iniciativas SET estado=#{estado} WHERE id = #{id};

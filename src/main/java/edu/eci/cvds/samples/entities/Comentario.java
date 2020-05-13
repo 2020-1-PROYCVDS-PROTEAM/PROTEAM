@@ -20,6 +20,9 @@ public class Comentario implements Serializable {
     private String contenido;
     private Date fecha;
 	private Voto voto;
+	
+	public Comentario(){
+	}
     
     public Comentario (int id, String idUsuario, int idIniciativa, String contenido, Date fecha){
         this.id=id;

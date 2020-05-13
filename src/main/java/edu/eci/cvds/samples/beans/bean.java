@@ -173,5 +173,9 @@ public class bean extends BasePageBean implements Serializable {
 	 public void votoRegistrado() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Su voto ha sido registrado."));
     }
+	
+	public void interesRegistrado() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Su interes ha sido registrado."));
+    }
 
 }

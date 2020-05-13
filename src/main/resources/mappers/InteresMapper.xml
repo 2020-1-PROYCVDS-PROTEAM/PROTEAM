@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.InteresMapper">
+
+
+	<resultMap type='Interes' id='InteresResult'>
+		<id property='idUsuario' column='idUsuario'/>
+		<id property='idIniciativa' column='idIniciativa'/>
+    </resultMap>
+	
+	
+		<select parameterType="map" id='consultarIntereses' resultMap='InteresResult'>
+			SELECT
+				* 
+			FROM interesados;
+		</select>
+		
+		<select parameterType="map" id='consultarInteres' resultMap='InteresResult'>
+			SELECT * 
+			FROM interesados
+			WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+		</select>
+		
+		<select parameterType="map" id='consultarInteresIniciativa' resultMap='InteresResult'>
+			SELECT * 
+			FROM interesados
+			WHERE idIniciativa=#{idIniciativa};
+		</select>
+
+
+		<insert id='registrarInteres' parameterType="map">
+			INSERT INTO interesados VALUES (#{idUsuario},#{idIniciativa});
+		</insert>
+	
+
+		<delete id='borrarInteres' parameterType="map">
+			DELETE FROM interesados WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+		</delete>
+
+  	
+</mapper>

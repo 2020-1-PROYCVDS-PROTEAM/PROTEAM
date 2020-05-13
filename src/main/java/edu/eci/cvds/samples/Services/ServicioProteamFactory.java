@@ -7,11 +7,13 @@ import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
 import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.VotoDAO;
+import edu.eci.cvds.samples.persistence.InteresDAO;
 import edu.eci.cvds.samples.persistence.PalabraClaveDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisIniciativaDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisUsuarioDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisComentarioDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisVotoDAO;
+import edu.eci.cvds.samples.persistence.mybatis.MyBatisInteresDAO;
 import edu.eci.cvds.samples.persistence.mybatis.MyBatisPalabraClaveDAO;
 
 import org.mybatis.guice.XMLMyBatisModule;
@@ -38,6 +40,7 @@ public class ServicioProteamFactory {
                bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
                bind(VotoDAO.class).to(MyBatisVotoDAO.class);
                bind(PalabraClaveDAO.class).to(MyBatisPalabraClaveDAO.class);
+			   bind(InteresDAO.class).to(MyBatisInteresDAO.class);
                bind(ServicioProteam.class).to(ServicioProteamImpl.class);
            }
        });

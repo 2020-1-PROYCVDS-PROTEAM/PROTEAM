@@ -105,7 +105,7 @@ and open the template in the editor.
                         <h:outputText value="Votos:" />
                         <h:outputText value="#{UserBean.consultarVotosIniciativa(UserBean.selectedi.getId())}" />
 						
-						<h:outputText value="selectid:" />
+						<h:outputText value="Interes:" />
                         <h:outputText value="#{UserBean.selectedi.getId()}" />
 
                     </p:panelGrid>
@@ -116,6 +116,8 @@ and open the template in the editor.
                     <p><h4 id="descripcion">"#{UserBean.selectedi.getDescripcion()}"</h4></p>
 
                     <p:commandButton value="Me gusta" styleClass="apply" update="informacion" action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+					
+                    <p:commandButton value="Me interesa" styleClass="apply" update="informacion" action="#{bean.interesRegistrado()}" actionListener="#{UserBean.registrarInteres(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon='pi pi-heart'/>
 
                     <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"
                                  rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:20%; margin-left: 10%;">
