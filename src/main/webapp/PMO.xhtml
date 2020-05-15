@@ -9,7 +9,7 @@
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputScript library="js" name="cierreSesion.js"/>
-        <link rel="icon" href="/resources/user.ico"/>
+        <link rel="icon" href="/resources/img/favicon.ico"/>
         <link href="administrador.css" rel="stylesheet" type="text/css"/>
 
         <title>Iniciativas | Usuarios</title>
@@ -52,9 +52,6 @@
 
                 <p:column headerText="Votar">
                     <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
-                    <br/>
-                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}" style="text-align:center" />
-
                 </p:column>
 
 
@@ -71,7 +68,6 @@
                 </p:column>
 
                 <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
-				
                     <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}"/>
                 </p:column>
 
@@ -231,7 +227,7 @@
 
 							 
                     <br/>
-                    <p:column headerText="Area" >
+                    <p:column headerText="Estado" >
                         <h:outputText value="#{iniciativasEstados.getEstados()}"/>
                     </p:column>
 

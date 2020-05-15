@@ -27,10 +27,8 @@ public class MyBatisPalabraClaveDAO implements PalabraClaveDAO{
     @Override
     public List<PalabraClave> consultarPalabrasClave() throws PersistenceException {
          try{
-             System.out.println("Entra en DAOMybatisPalabrasclave CONSULTARPALABRAS CLAVE");
             return palabraClaveMapper.consultarPalabrasClave();
         }catch(Exception e){
-            System.out.println("CAPTURADO EN EXCEPCION consultarPalabras");
             throw new PersistenceException("Error al consultar las palabras clave:"+e.getLocalizedMessage(), e);   
         }
       
@@ -39,25 +37,10 @@ public class MyBatisPalabraClaveDAO implements PalabraClaveDAO{
 	@Override
 	public List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws PersistenceException {
             try{   
-                System.out.println("Entra en DAOMybatisPalabrasclave Iniciativas palabrasCLAVE");
                 return palabraClaveMapper.consultarPalabrasClaveIniciativa(idIniciativa);
            }catch(Exception e){
-               System.out.println("CAPTURADO EN EXCEPCION consultas Paabras inciativa");
                throw new PersistenceException("Error al consultar la palabra clave:"+e.getLocalizedMessage(), e);   
            }	
 	}
-	
-//	@Override
-//	public void insertarPalabraClave(int id, int idIniciativa,String palabraClave) throws PersistenceException {
-//		 try{
-//                System.out.println("ENTRANDO EN INSERTARPALABRACLAVE MYBATISDAOpalabraClave");
-//                palabraClaveMapper.insertarPalabraClave(id, idIniciativa,palabraClave);
-//	        }catch(Exception e){
-//                    System.out.println("ATRAPADO EN MYBATISDAOpalabraClave");
-//	            throw new PersistenceException("Error al insertar  la palabraClave:"+e.getLocalizedMessage(), e);   
-//	        }	
-//		
-//	}
-
     
 }

@@ -13,6 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet library="css" name="iniciativas.css" />
         <h:outputScript library="js" name="cierreSesion.js"/>
+		<link rel="icon" href="/resources/img/favicon.ico"/>
         <title>Comentarios</title>
 
     </h:head>
@@ -110,10 +111,10 @@ and open the template in the editor.
 
                     </p:panelGrid>
 
-                    <h2 id="titulo"><strong>"#{UserBean.selectedi.getNombre()}"</strong></h2>
+                    <h2 id="titulo"><strong>#{UserBean.selectedi.getNombre()}</strong></h2>
 
                     <p><h3 id="descripcion">Descripción: </h3></p>
-                    <p><h4 id="descripcion">"#{UserBean.selectedi.getDescripcion()}"</h4></p>
+                    <p><h4 id="descripcion">#{UserBean.selectedi.getDescripcion()}</h4></p>
 
                     <p:commandButton value="Me gusta" styleClass="apply" update="informacion" action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
 					

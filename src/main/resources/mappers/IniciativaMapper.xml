@@ -26,8 +26,8 @@
     </resultMap>
 	
 	
-	<resultMap type='Iniciativa' id='IniciativaComentarioResult'>
-		<id property='id' column='id'/>        
+    <resultMap type='Iniciativa' id='IniciativaComentarioResult'>
+        <id property='id' column='id'/>        
         <result property='votos' column='votos'/>
         <result property='palabraClave' column='palabraclave'/>
         <result property='nombre' column='nombre'/>
@@ -37,29 +37,30 @@
         <result property='usuario_i' column='usuario_i'/>
         <result property='correo_i' column='correo_i'/>
         <result property='fechar_ini' column='fechar_ini'/>  
-		<collection property='comentarios' ofType='Comentario'
-					resultMap="edu.eci.cvds.samples.persistence.mybatis.mappers.ComentarioMapper.ComentarioResult" columnPrefix="c_"></collection>
-	</resultMap>
+        <collection property='comentarios' ofType='Comentario'
+                            resultMap="edu.eci.cvds.samples.persistence.mybatis.mappers.ComentarioMapper.ComentarioResult" columnPrefix="c_">
+        </collection>
+    </resultMap>
 	
 	
 
     <select parameterType="map" id='consultarComentariosUsuario' resultMap='IniciativaComentarioResult'>
-       select i.id, 
-	   i.votos, 
-	   i.palabraclave, 
-	   i.nombre, 
-	   i.estado, 
-	   i.descripcion, 
-	   i.area, 
-	   i.usuario_i, 
-	   i.correo_i, 
-	   i.fechar_ini, 
-	   c.id as c_id, 
-	   c.idUsuario as c_idusuario, 
-	   c.idIniciativa as c_idiniciativa, 
-	   c.contenido as c_contenido, 
-	   c.fecha as c_fecha 
-	   from iniciativas as i join comentarios as c on (c.idiniciativa=i.id) where c.idusuario like #{usuario};
+        select i.id, 
+        i.votos, 
+        i.palabraclave, 
+        i.nombre, 
+        i.estado, 
+        i.descripcion, 
+        i.area, 
+        i.usuario_i, 
+        i.correo_i, 
+        i.fechar_ini, 
+        c.id as c_id, 
+        c.idUsuario as c_idusuario, 
+        c.idIniciativa as c_idiniciativa, 
+        c.contenido as c_contenido, 
+        c.fecha as c_fecha 
+        from iniciativas as i join comentarios as c on (c.idiniciativa=i.id) where c.idusuario like #{usuario};
 	
     </select>	
 	
@@ -149,7 +150,6 @@
 	
     <select id='consultarIniciativas' resultMap='IniciativaResult'>
         select * from iniciativas;
-            	
     </select>
 	
     <select id='agrupeIniciativas' resultMap='agrupacionResult'>
@@ -161,11 +161,11 @@
     </select>	
 	
     <select id='consultarIniciativasVotadas' resultMap='IniciativaResult'>
-		select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join votos on (votos.idiniciativa = i.id) where votos.idusuario like #{usuario};
+        select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join votos on (votos.idiniciativa = i.id) where votos.idusuario like #{usuario};
     </select>	
 	
     <select id='consultarInteresesIniciativas' resultMap='IniciativaResult'>
-		select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join interesados on (interesados.idiniciativa = i.id) where interesados.idusuario like #{usuario};
+        select i.id, i.votos, i.palabraclave, i.nombre, i.estado, i.descripcion, i.area, i.usuario_i, i.correo_i, i.fechar_ini from iniciativas as i join interesados on (interesados.idiniciativa = i.id) where interesados.idusuario like #{usuario};
     </select>		
 
     <update id='cambiarEstado' parameterType="map">

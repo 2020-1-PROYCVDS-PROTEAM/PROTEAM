@@ -1,32 +1,32 @@
 @charset "uft-8";
 
 .container{
-	background-color:black;
-	border-radius:10px;
-	padding:25px;
-	margin-top:205px;
-	margin-left:100px;
+    background-color:black;
+    border-radius:10px;
+    padding:25px;
+    margin-top:205px;
+    margin-left:100px;
 }
 
 body{
-	background-color:#941E1E;
+    background-color:#941E1E;
 }
 
 .panelCenter{
-	margin: auto;
-	width: 50%;
-	padding: 10px;
-	
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+
 }
 
 
 .myTable td:nth-child(1) { 
     width: 20px; 
-	background-color:#009966;
+    background-color:#009966;
 } 
 
 .ui-button{
-	background-color:#009966;
+    background-color:#009966;
 }
 
 .className {
@@ -34,57 +34,57 @@ body{
 }
 
 #combtn{
-	background: #FF33FF;
-	color: #FFFFFF;
+    background: #FF33FF;
+    color: #FFFFFF;
 }
 
 .mystyle.ui-datatable .ui-datatable-header{
-background: #003946 !important;
+    background: #003946 !important;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-header{
-background: #003946 !important;
+    background: #003946 !important;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-even{
-background: white ;
+    background: white ;
 
 
 }
 
 .mystyle.ui-datatable .ui-datatable-odd.ui-state-hover{
-background: #F4E7C1 ;
+    background: #F4E7C1 ;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-even.ui-state-hover{
-background: #F4E7C1 ;
+    background: #F4E7C1 ;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-even.ui-state-highlight{
-background: #fff9e5 ;
+    background: #fff9e5 ;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-odd.ui-state-highlight{
-background: #fff9e5 ;
+    background: #fff9e5 ;
 
 }
 
 .mystyle.ui-datatable .ui-datatable-data-empty td {
-color:red;
-font-weight:bold;
+    color:red;
+    font-weight:bold;
 }
 .ui-datatable.mystyle th {
-background: EAAB00;
-font-family: verdana;
-font-size: 1em;
+    background: EAAB00;
+    font-family: verdana;
+    font-size: 1em;
 }
 
 
 .mystyle.ui-datatable .ui-expanded-row-content{
-background:white;
+    background:white;
 }

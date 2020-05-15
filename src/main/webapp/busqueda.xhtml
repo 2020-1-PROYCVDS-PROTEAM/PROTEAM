@@ -13,6 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet library="css" name="iniciativas.css" />
         <h:outputScript library="js" name="cierreSesion.js"/>
+		<link rel="icon" href="/resources/img/favicon.ico"/>
         <title>Busqueda avanzada</title>
 
     </h:head>
@@ -46,7 +47,7 @@ and open the template in the editor.
 
             <p:growl id="msgss" showDetail="true"/>
 
-            <h2 id="titulo"><strong>"#{UserBean.palabra}"</strong></h2>
+            <h2 id="titulo"><strong>Iniciativas relacionadas con la palabra clave: #{UserBean.palabra}</strong></h2>
 
             <p:dataTable var="palabras" value="#{UserBean.consultarIniciativasPalabraClave(UserBean.getPalabra())}" class="tabla"
                          paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -56,21 +57,17 @@ and open the template in the editor.
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
-
-                <p:column headerText="Id" sortBy="#{palabras.getId()}">
-                    <h:outputText value="#{palabras.getId()}"/>
+				
+                <p:column headerText="Nombre" sortBy="#{palabras.getNombre()}">
+                    <h:outputText value="#{palabras.getNombre()}"/>
+                </p:column>
+				
+				<p:column headerText="PalabraClave" id="x" >
+                    <h:outputText value="#{palabras.getPalabraClave()}"/>
                 </p:column>
 
                 <p:column headerText="Votos" sortBy="#{palabras.getVotos()}">
                     <h:outputText value="#{palabras.getVotos()}"/>
-                </p:column>
-
-                <p:column headerText="PalabraClave" id="x" >
-                    <h:outputText value="#{palabras.getPalabraClave()}"/>
-                </p:column>
-
-                <p:column headerText="Nombre" sortBy="#{palabras.getNombre()}">
-                    <h:outputText value="#{palabras.getNombre()}"/>
                 </p:column>
 
                 <p:column headerText="Estado" sortBy="#{palabras.getEstado()}">
@@ -80,6 +77,7 @@ and open the template in the editor.
                 <p:column headerText="Descripción" sortBy="#{palabras.getDescripcion()}">
                     <h:outputText value="#{palaras.getDescripcion()}"/>
                 </p:column>
+				
                 <p:column headerText="Área" sortBy="#{palabras.getArea()}">
                     <h:outputText value="#{palabras.getArea()}"/>
                 </p:column>
@@ -88,10 +86,18 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="CorreoU" sortBy="#{palabras.getcorreoProponente()}">
                     <h:outputText value="#{palabras.getcorreoProponente()}"/>
-                </p:column> 
+                </p:column>
+				
                 <p:column headerText="Fecha" sortBy="#{palabras.getFecha()}">
                     <h:outputText value="#{palabras.getFecha()}"/>
                 </p:column>      
+				
+				<p:column headerText="Comentarios">
+                    <p:button outcome="comentarios" value="Comentar">
+                        <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
+                    </p:button>
+                </p:column>
+
 
             </p:dataTable>	                 
 

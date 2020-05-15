@@ -1,13 +1,13 @@
 .container{
-	background-color:black;
-	border-radius:10px;
-	padding:25px;
-	margin-top:205px;
-	margin-left:100px;
+    background-color:black;
+    border-radius:10px;
+    padding:25px;
+    margin-top:205px;
+    margin-left:100px;
 }
 
 body{
-	background-color:#941E1E;
+    background-color:#941E1E;
 }
 
 .ui-datatable table, .ui-datatable-resizable table { 
@@ -16,7 +16,7 @@ body{
 
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 .myTable td:nth-child(1) { 
@@ -29,7 +29,7 @@ body{
 }
 
 #combtn{
-	border:none;
-	background: #009966;
-	color: #FFFFFF;
+    border:none;
+    background: #009966;
+    color: #FFFFFF;
 }

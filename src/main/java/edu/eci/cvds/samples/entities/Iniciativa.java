@@ -25,11 +25,10 @@ public class Iniciativa implements Serializable {
     private String usuario_i;
     private String correo_i;
     private Date fechar_ini;
-    private java.lang.Long cantidad; //Esto de aca puede afectar en las dos graficas
+    private java.lang.Long cantidad;
     private String area2;
     private String estados;
-    private ArrayList<Comentario> comentarios;  //esta se borra por si algo
-
+    private ArrayList<Comentario> comentarios; 
 
     public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha) {
         this.id = id;
@@ -44,8 +43,8 @@ public class Iniciativa implements Serializable {
         this.fechar_ini = fecha;
 
     }
-	
-	public Iniciativa(String area2, java.lang.Long cantidad) {
+
+    public Iniciativa(String area2, java.lang.Long cantidad) {
         if (area2.equals("Solucionado") || area2.equals("Proyecto") || area2.equals("En revisión") || area2.equals("En espera de revisión")) {
             estados = area2;
         } else {
@@ -53,9 +52,8 @@ public class Iniciativa implements Serializable {
         }
         this.cantidad = cantidad;
     }
-	
-	public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha, ArrayList<Comentario> comentarios) {
-		System.out.println("HA ENTRADO EN CONSTRUCTOR INICIATIVA CON COMENTARIOS: "+comentarios+" PERO ESTE ES EL ID: "+id);
+
+    public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha, ArrayList<Comentario> comentarios) {
         this.id = id;
         this.votos = votos;
         this.palabraClave = palabraclave;
@@ -66,11 +64,9 @@ public class Iniciativa implements Serializable {
         this.usuario_i = usuarioProponente;
         this.correo_i = correoProponente;
         this.fechar_ini = fecha;
-        this.comentarios=comentarios;
+        this.comentarios = comentarios;
 
     }
-
-
 
     public int getId() {
         return id;
@@ -117,9 +113,6 @@ public class Iniciativa implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        //System.out.println("---------------------------------------------------------");
-        //System.out.println("Este es el nombre que me pasan de iniciativa: "+nombre);
-        //System.out.println("---------------------------------------------------------");
         this.nombre = nombre;
     }
 
@@ -136,9 +129,6 @@ public class Iniciativa implements Serializable {
     }
 
     public void setDescripcion(String descripcion) {
-//        System.out.println("---------------------------------------------------------");
-//        System.out.println("Este es la descripcion que me pasan de iniciativa: "+descripcion);
-//        System.out.println("---------------------------------------------------------");
         this.descripcion = descripcion;
     }
 
@@ -181,7 +171,7 @@ public class Iniciativa implements Serializable {
     public void setEstados(String estados) {
         this.estados = estados;
     }
-	
+
     public ArrayList<Comentario> getComentarios() {
         return comentarios;
     }
