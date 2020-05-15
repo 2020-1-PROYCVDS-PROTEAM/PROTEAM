@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.EstadisticaMapper">
+	
+	
+    <resultMap type='Estadistica' id='estadisticaResult'>
+        <id property='nombre' column='nombre'/>        
+        <result property='cantidad' column='cantidad' javaType="java.lang.Long"/>
+    </resultMap>
+	
+    <select id='agrupeIniciativas' resultMap='estadisticaResult'>
+        SELECT area as nombre,count(id) as cantidad  FROM iniciativas GROUP BY area;
+    </select>
+	
+    <select id='agrupeEstados' resultMap='estadisticaResult'>
+        SELECT estado as nombre, count(id) as cantidad FROM iniciativas GROUP BY estado;
+    </select>	
+  	
+</mapper>

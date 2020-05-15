@@ -8,8 +8,6 @@ package edu.eci.cvds.samples.persistence.mybatis;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.samples.entities.Voto;
-import edu.eci.cvds.samples.entities.Iniciativa;
-import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.VotoDAO;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 import edu.eci.cvds.samples.persistence.mybatis.mappers.VotoMapper;

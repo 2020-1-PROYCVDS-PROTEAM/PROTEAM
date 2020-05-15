@@ -9,7 +9,7 @@ package edu.eci.cvds.samples.entities;
  *
  * @author Gonzalez-Gutierrez-Jimenez-Pulido
  */
-public class Estatisticas {
+public class Estadistica {
     private String nombre;
     private java.lang.Long cantidad;
 

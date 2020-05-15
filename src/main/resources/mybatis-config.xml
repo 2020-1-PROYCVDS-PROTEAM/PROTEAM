@@ -16,6 +16,7 @@
 		<typeAlias type="edu.eci.cvds.samples.entities.Voto" alias="Voto"/>
 		<typeAlias type="edu.eci.cvds.samples.entities.PalabraClave" alias="PalabraClave"/>
 		<typeAlias type="edu.eci.cvds.samples.entities.Interes" alias="Interes"/>
+		<typeAlias type="edu.eci.cvds.samples.entities.Estadistica" alias="Estadistica"/>
     </typeAliases>	
 
     <environments default="development">
@@ -38,6 +39,7 @@
 		<mapper resource="mappers/VotoMapper.xml"></mapper>
 		<mapper resource="mappers/PalabraClaveMapper.xml"></mapper>
 		<mapper resource="mappers/InteresMapper.xml"></mapper>
+		<mapper resource="mappers/EstadisticaMapper.xml"></mapper>
     </mappers> 
 			
         

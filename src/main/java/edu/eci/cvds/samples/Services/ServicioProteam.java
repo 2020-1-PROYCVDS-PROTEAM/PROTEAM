@@ -8,6 +8,7 @@ import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.entities.Interes;
+import edu.eci.cvds.samples.entities.Estadistica;
 import edu.eci.cvds.samples.entities.PalabraClave;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 
@@ -59,9 +60,9 @@ public interface ServicioProteam {
 
     public List<Iniciativa> consultarIniciativasRelacionadas(String id) throws ServicesException;
 
-    public abstract List<Iniciativa> agrupeIniciativas() throws ServicesException;
+    public abstract List<Estadistica> agrupeIniciativas() throws ServicesException;
 
-    public abstract List<Iniciativa> agrupeEstados() throws ServicesException;
+    public abstract List<Estadistica> agrupeEstados() throws ServicesException;
 
     public abstract List<PalabraClave> consultarPalabrasClaveIniciativa(int idIniciativa) throws ServicesException;
 
@@ -70,23 +71,21 @@ public interface ServicioProteam {
     public List<Iniciativa> consultarIniciativasProponente(String usuario) throws ServicesException;
 
     public abstract void modificarIniciativa(int id, String descripcion) throws ServicesException;
-	
-	public abstract List<Iniciativa> consultarIniciativasVotadas(String usuario) throws ServicesException;
-	
-	public abstract List<Iniciativa> consultarComentariosUsuario(String usuario) throws ServicesException;
-	
-	public abstract Interes consultarInteres(String idUsuario, int idIniciativa) throws ServicesException;
-	
-	public abstract List<Interes> consultarIntereses() throws ServicesException;
-	
-	public abstract List<Interes> consultarInteresIniciativa(int idIniciativa) throws ServicesException;
-	
-	public abstract void registrarInteres(String idUsuario, int idIniciativa) throws ServicesException;
-		
-	public abstract void borrarInteres(String idUsuario, int idIniciativa) throws ServicesException;
-	
-        public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws ServicesException;
-	
-	
+
+    public abstract List<Iniciativa> consultarIniciativasVotadas(String usuario) throws ServicesException;
+
+    public abstract List<Iniciativa> consultarComentariosUsuario(String usuario) throws ServicesException;
+
+    public abstract Interes consultarInteres(String idUsuario, int idIniciativa) throws ServicesException;
+
+    public abstract List<Interes> consultarIntereses() throws ServicesException;
+
+    public abstract List<Interes> consultarInteresIniciativa(int idIniciativa) throws ServicesException;
+
+    public abstract void registrarInteres(String idUsuario, int idIniciativa) throws ServicesException;
+
+    public abstract void borrarInteres(String idUsuario, int idIniciativa) throws ServicesException;
+
+    public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws ServicesException;
 
 }

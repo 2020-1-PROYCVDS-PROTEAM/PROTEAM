@@ -3,9 +3,6 @@ package edu.eci.cvds.samples.persistence;
 import java.sql.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
-import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.entities.Iniciativa;
 
 public interface IniciativaDAO {
@@ -29,7 +26,6 @@ public interface IniciativaDAO {
     public abstract void relacionarIniciativas(String id1, String id2) throws PersistenceException;
 
     public List<Iniciativa> consultarIniciativasRelacionadas(String id) throws PersistenceException;
-    //public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas() throws PersistenceException;
 
     public List<Iniciativa> agrupeIniciativas() throws PersistenceException;
 
@@ -38,11 +34,11 @@ public interface IniciativaDAO {
     public List<Iniciativa> consultarIniciativaPorEstado(String estado) throws PersistenceException;
 
     public void modificarIniciativa(int id, String descripcion) throws PersistenceException;
-	
-	public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws PersistenceException;
-	
-	public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws PersistenceException;
-	
-	public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException;
+
+    public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws PersistenceException;
+
+    public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws PersistenceException;
+
+    public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException;
 
 }

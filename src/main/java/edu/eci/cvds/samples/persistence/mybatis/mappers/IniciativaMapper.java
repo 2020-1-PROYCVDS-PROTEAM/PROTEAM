@@ -26,7 +26,6 @@ public interface IniciativaMapper {
     public void cambiarEstado(@Param("id") int id, @Param("estado") String estado);
 
     public void agregueVoto(@Param("idIniciativa") int idIniciativa);
-    //public List<java.util.HashMap<String,java.lang.Long>> agrupeIniciativas();
 
     public List<Iniciativa> agrupeIniciativas();
 
@@ -39,11 +38,11 @@ public interface IniciativaMapper {
     public List<Iniciativa> consultarIniciativaPorEstado(@Param("estado") String estado);
 
     public void modificarIniciativa(@Param("id") int id, @Param("descripcion") String descripcion);
-	
-	public List<Iniciativa> consultarIniciativasVotadas(@Param("usuario") String usuario);
-	
-	public List<Iniciativa> consultarInteresesIniciativas(@Param("usuario") String usuario);
-	
-	public List<Iniciativa> consultarComentariosUsuario(@Param("usuario") String usuario);
-	
+
+    public List<Iniciativa> consultarIniciativasVotadas(@Param("usuario") String usuario);
+
+    public List<Iniciativa> consultarInteresesIniciativas(@Param("usuario") String usuario);
+
+    public List<Iniciativa> consultarComentariosUsuario(@Param("usuario") String usuario);
+
 }

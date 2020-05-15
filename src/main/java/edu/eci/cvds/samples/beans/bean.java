@@ -7,6 +7,7 @@ package edu.eci.cvds.samples.beans;
 
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.entities.Iniciativa;
+import edu.eci.cvds.samples.entities.Estadistica;
 import edu.eci.cvds.samples.Services.ServicioProteam;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -39,8 +40,8 @@ public class bean extends BasePageBean implements Serializable {
 
     private PieChartModel model;
     private BarChartModel barModel;
-    List<Iniciativa> iniciativas = null;
-    List<Iniciativa> iniciativasEstado = null;
+    List<Estadistica> iniciativas = null;
+    List<Estadistica> iniciativasEstado = null;
     
     @Inject
     private ServicioProteam servicioPT;
@@ -56,9 +57,9 @@ public class bean extends BasePageBean implements Serializable {
         } finally {
             if (iniciativas != null) {
                 System.out.println("estas son las iniciativas: " + iniciativas);
-                for (Iniciativa iniciativa : iniciativas) {
-                    System.out.println("iniciativa getArea: " + iniciativa.getArea2() + " iniciativaCantidad: " + iniciativa.getCantidad());
-                    model.set(iniciativa.getArea2(), iniciativa.getCantidad());
+                for (Estadistica iniciativa : iniciativas) {
+                    System.out.println("iniciativa getArea: " + iniciativa.getNombre() + " iniciativaCantidad: " + iniciativa.getCantidad());
+                    model.set(iniciativa.getNombre(), iniciativa.getCantidad());
                 }
                 System.out.println("Iniciativas: " + model);
             }
@@ -90,15 +91,15 @@ public class bean extends BasePageBean implements Serializable {
         } finally {
             if (iniciativasEstado != null) {
                 System.out.println("Iniciativas por estado: " + iniciativasEstado);
-                for (Iniciativa iniciativa : iniciativasEstado) {
-                    if(iniciativa.getEstados().equals("Proyecto"))
-                        proyecto.set(iniciativa.getEstados(), iniciativa.getCantidad());
-                    else if(iniciativa.getEstados().equals("Solucionado"))
-                        solucionado.set(iniciativa.getEstados(), iniciativa.getCantidad());
-                    else if(iniciativa.getEstados().equals("En espera de revisión"))
-                        enRevision.set(iniciativa.getEstados(), iniciativa.getCantidad());
+                for (Estadistica iniciativa : iniciativasEstado) {
+                    if(iniciativa.getNombre().equals("Proyecto"))
+                        proyecto.set(iniciativa.getNombre(), iniciativa.getCantidad());
+                    else if(iniciativa.getNombre().equals("Solucionado"))
+                        solucionado.set(iniciativa.getNombre(), iniciativa.getCantidad());
+                    else if(iniciativa.getNombre().equals("En espera de revisión"))
+                        enRevision.set(iniciativa.getNombre(), iniciativa.getCantidad());
                     else
-                        enEstado.set(iniciativa.getEstados(), iniciativa.getCantidad());
+                        enEstado.set(iniciativa.getNombre(), iniciativa.getCantidad());
                 }
                 barModel.addSeries(enEstado);
                 barModel.addSeries(enRevision);
@@ -117,47 +118,19 @@ public class bean extends BasePageBean implements Serializable {
         return barModel;
     }
 
-//    public Bean() {
-//        barModel = new BarChartModel();
-//        ChartSeries boys = new ChartSeries();
-//        boys.setLabel("Boys");
-//        boys.set("2004", 120);
-//        boys.set("2005", 100);
-//        boys.set("2006", 44);
-//        boys.set("2007", 150);
-//        boys.set("2008", 25);
-//        ChartSeries girls = new ChartSeries();
-//        girls.setLabel("Girls");
-//        girls.set("2004", 52);
-//        girls.set("2005", 60);
-//        girls.set("2006", 110);
-//        girls.set("2007", 135);
-//        girls.set("2008", 120);
-//        model.addSeries(boys);
-//        model.addSeries(girls);
-//        model.setTitle("Bar Chart");
-//        model.setLegendPosition("ne");
-//        Axis xAxis = barModel.getAxis(AxisType.X);
-//        xAxis.setLabel("Gender");
-//        Axis yAxis = model.getAxis(AxisType.Y);
-//        yAxis.setLabel("Births");
-//        yAxis.setMin(0);
-//        yAxis.setMax(200);
-//    }
-
-    public void setIniciativas(List<Iniciativa> iniciativas) {
+    public void setIniciativas(List<Estadistica> iniciativas) {
         this.iniciativas = iniciativas;
     }
 
-    public List<Iniciativa> getIniciativas() {
+    public List<Estadistica> getIniciativas() {
         return iniciativas;
     }
 
-    public List<Iniciativa> getIniciativasEstado() {
+    public List<Estadistica> getIniciativasEstado() {
         return iniciativasEstado;
     }
 
-    public void setIniciativasEstado(List<Iniciativa> iniciativasEstado) {
+    public void setIniciativasEstado(List<Estadistica> iniciativasEstado) {
         this.iniciativasEstado = iniciativasEstado;
     }
     

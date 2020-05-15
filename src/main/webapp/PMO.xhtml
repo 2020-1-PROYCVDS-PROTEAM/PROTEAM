@@ -32,7 +32,7 @@
                 <f:facet name="left">
                     <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}" icon="pi pi-home" />
                     <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-					<p:commandButton  value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/PMOProponente.xhtml')}"/>
+                    <p:commandButton  value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/PMOProponente.xhtml')}"/>
                 </f:facet>
 
 
@@ -47,8 +47,8 @@
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
-	
-				<p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
+
+                <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 
                 <p:column headerText="Votar">
                     <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
@@ -75,16 +75,16 @@
                     <h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}"/>
                 </p:column>
 
-			
+
 
                 <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
                     <h:outputText value="#{iniciativa.getNombre()}"/>
                 </p:column>
 
-				<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
+                <p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
                     <h:outputText value="#{iniciativa.getEstado()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <h:outputText value="#{iniciativa.getDescripcion()}"/>
                 </p:column>
@@ -143,50 +143,50 @@
 
         <h:form id="estadisticas">
 
-	
+
             <h:panelGrid columns="1"  columnClasses="left,right" style="width:auto">
 
-			<script type="text/javascript">
-					//<![CDATA[
-					function exportChart() {
-					//export image
-					$('#output').empty().append(PF('chart').exportAsImage());		 
-					//show the dialog
-					PF('dlg').show();
-					//]]>
-				</script>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    function exportChart() {
+                    //export image
+                    $('#output').empty().append(PF('chart').exportAsImage());		 
+                    //show the dialog
+                    PF('dlg').show();
+                    //]]>
+                </script>
 
                 <p:chart type="pie" model="#{bean.getModel()}" style="width:500px;height:300px" widgetVar="chart"/> 
 
-				<p:commandButton type="button" value="Descargar gráfica" icon="pi pi-home" onclick="exportChart()"/>
- 
-				<p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Descargar gráfica" resizable="false">
-					<p:outputPanel id="output" layout="block" style="width:500px;height:300px"/>
-				</p:dialog>
-				
-				
+                <p:commandButton type="button" value="Descargar gráfica" icon="pi pi-home" onclick="exportChart()"/>
+
+                <p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Descargar gráfica" resizable="false">
+                    <p:outputPanel id="output" layout="block" style="width:500px;height:300px"/>
+                </p:dialog>
+
+
                 <p:dataTable id="estadisticasArea" var="iniciativa" value="#{bean.getIniciativas()}"
                              paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink} {Exporters}"
                              rows="4"  selectionMode="single"   tableStyle="table-layout: right;" 
-                             rowKey="#{iniciativa.area2}" >                                       
+                             rowKey="#{iniciativa.nombre}" >                                       
 
-						<f:facet name="{Exporters}">
-							<div style="padding-top: 5px;">
-								<h:commandLink>
-									<p:graphicImage name="/excel.png" library="img" width="24"/>
-									<p:dataExporter type="xls" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true"/>
-								</h:commandLink>
+                    <f:facet name="{Exporters}">
+                        <div style="padding-top: 5px;">
+                            <h:commandLink>
+                                <p:graphicImage name="/excel.png" library="img" width="24"/>
+                                <p:dataExporter type="xls" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true"/>
+                            </h:commandLink>
 
-								<h:commandLink>
-									<p:graphicImage library="img" name="/pdf.png" width="24"/>
-									<p:dataExporter type="pdf" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true" />
-								</h:commandLink>                        
-							</div>
-						</f:facet>
-							 
+                            <h:commandLink>
+                                <p:graphicImage library="img" name="/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="estadisticasArea" fileName="estadisticas_areas" pageOnly="true" />
+                            </h:commandLink>                        
+                        </div>
+                    </f:facet>
+
                     <br/>
                     <p:column headerText="Area" >
-                        <h:outputText value="#{iniciativa.getArea2()}"/>
+                        <h:outputText value="#{iniciativa.getNombre()}"/>
                     </p:column>
 
                     <p:column headerText="Cantidad" >
@@ -195,9 +195,9 @@
 
                 </p:dataTable>	               
             </h:panelGrid>
-		
+
         </h:form>
-		
+
 
 
 
@@ -207,28 +207,28 @@
 
                 <p:chart type="bar" model="#{bean.getBarModel()}" style="height:300px"/>
                 <p:dataTable id="estadisticasEstado" var="iniciativasEstados" value="#{bean.getIniciativasEstado()}" 
-							paginator="true" paginatorTemplate="{Exporters}"
+                             paginator="true" paginatorTemplate="{Exporters}"
                              rows="4"  selectionMode="single"   tableStyle="table-layout: right;" 
-                             rowKey="#{iniciativasEstados.estados}" >    
+                             rowKey="#{iniciativasEstados.nombre}" >    
 
-						<f:facet name="{Exporters}">
-							<div style="padding-top: 5px;">
-								<h:commandLink>
-									<p:graphicImage name="/excel.png" library="img" width="24"/>
-									<p:dataExporter type="xls" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true"/>
-								</h:commandLink>
+                    <f:facet name="{Exporters}">
+                        <div style="padding-top: 5px;">
+                            <h:commandLink>
+                                <p:graphicImage name="/excel.png" library="img" width="24"/>
+                                <p:dataExporter type="xls" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true"/>
+                            </h:commandLink>
 
-								<h:commandLink>
-									<p:graphicImage library="img" name="/pdf.png" width="24"/>
-									<p:dataExporter type="pdf" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true" />
-								</h:commandLink>                        
-							</div>
-						</f:facet>
+                            <h:commandLink>
+                                <p:graphicImage library="img" name="/pdf.png" width="24"/>
+                                <p:dataExporter type="pdf" target="estadisticasEstado" fileName="estadisticas_estado" pageOnly="true" />
+                            </h:commandLink>                        
+                        </div>
+                    </f:facet>
 
-							 
+
                     <br/>
                     <p:column headerText="Estado" >
-                        <h:outputText value="#{iniciativasEstados.getEstados()}"/>
+                        <h:outputText value="#{iniciativasEstados.getNombre()}"/>
                     </p:column>
 
                     <p:column headerText="Cantidad" >

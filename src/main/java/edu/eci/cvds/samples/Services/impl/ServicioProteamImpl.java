@@ -14,11 +14,13 @@ import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.entities.Interes;
+import edu.eci.cvds.samples.entities.Estadistica;
 import edu.eci.cvds.samples.entities.PalabraClave;
 import edu.eci.cvds.samples.persistence.IniciativaDAO;
 import edu.eci.cvds.samples.persistence.ComentarioDAO;
 import edu.eci.cvds.samples.persistence.VotoDAO;
 import edu.eci.cvds.samples.persistence.InteresDAO;
+import edu.eci.cvds.samples.persistence.EstadisticaDAO;
 import edu.eci.cvds.samples.persistence.PalabraClaveDAO;
 import edu.eci.cvds.samples.persistence.PersistenceException;
 import edu.eci.cvds.samples.persistence.UsuarioDAO;
@@ -38,8 +40,10 @@ public class ServicioProteamImpl implements ServicioProteam {
     private VotoDAO daoVoto;
     @Inject
     private PalabraClaveDAO daoPalabraClave;
-	@Inject 
-	private InteresDAO daoInteres;
+    @Inject
+    private InteresDAO daoInteres;
+    @Inject
+    private EstadisticaDAO daoEstadistica;
 
     @Override
     public Usuario consultarUsuario(String usuario) throws ServicesException {
@@ -95,7 +99,6 @@ public class ServicioProteamImpl implements ServicioProteam {
     @Override
     public List<Iniciativa> consultarIniciativas() throws ServicesException {
         try {
-            //System.out.println("ServicioProTeamIMPL INICIATIVA");
             return daoIniciativa.consultarIniciativas();
         } catch (Exception ex) {
             throw new ServicesException("No hay iniciativas", ex);
@@ -231,25 +234,25 @@ public class ServicioProteamImpl implements ServicioProteam {
     public void borrarVoto(String idUsuario, int idIniciativa) throws ServicesException {
         try {
             daoVoto.borrarVoto(idUsuario, idIniciativa);
-            System.out.println("Borro efectivamente el voto del usuario: "+idUsuario+" de la iniciativa: "+idIniciativa);
+            System.out.println("Borro efectivamente el voto del usuario: " + idUsuario + " de la iniciativa: " + idIniciativa);
         } catch (Exception ex) {
             throw new ServicesException("No fue posible borrar el voto", ex);
         }
     }
 
     @Override
-    public List<Iniciativa> agrupeIniciativas() throws ServicesException {
+    public List<Estadistica> agrupeIniciativas() throws ServicesException {
         try {
-            return daoIniciativa.agrupeIniciativas();
+            return daoEstadistica.agrupeIniciativas();
         } catch (Exception ex) {
             throw new ServicesException("No fue posible agrupar las iniciativas", ex);
         }
     }
 
     @Override
-    public List<Iniciativa> agrupeEstados() throws ServicesException {
+    public List<Estadistica> agrupeEstados() throws ServicesException {
         try {
-            return daoIniciativa.agrupeEstados();
+            return daoEstadistica.agrupeEstados();
         } catch (Exception ex) {
             throw new ServicesException("No fue posible agrupar las iniciativas por estado", ex);
         }
@@ -319,8 +322,8 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }
     }
-	
-	@Override
+
+    @Override
     public List<Iniciativa> consultarIniciativasVotadas(String usuario) throws ServicesException {
         try {
             return daoIniciativa.consultarIniciativasVotadas(usuario);
@@ -328,8 +331,8 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }
     }
-	
-	@Override
+
+    @Override
     public List<Iniciativa> consultarComentariosUsuario(String usuario) throws ServicesException {
         try {
             return daoIniciativa.consultarComentariosUsuario(usuario);
@@ -337,7 +340,7 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible consultar los comentarios del usuario", ex);
         }
     }
-	
+
     @Override
     public List<Iniciativa> consultarInteresesIniciativas(String usuario) throws ServicesException {
         try {
@@ -346,9 +349,8 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No fue posible consultar las iniciativas del proponente", ex);
         }
     }
-	
-	
-   @Override
+
+    @Override
     public Interes consultarInteres(String idUsuario, int idIniciativa) throws ServicesException {
         try {
             return daoInteres.consultarInteres(idUsuario, idIniciativa);
@@ -390,11 +392,11 @@ public class ServicioProteamImpl implements ServicioProteam {
     public void borrarInteres(String idUsuario, int idIniciativa) throws ServicesException {
         try {
             daoInteres.borrarInteres(idUsuario, idIniciativa);
-            System.out.println("Elimino el interes del usuario: "+idUsuario+" de la iniciativa: "+idIniciativa);
+            System.out.println("Elimino el interes del usuario: " + idUsuario + " de la iniciativa: " + idIniciativa);
         } catch (Exception ex) {
             System.out.println("ENTRO EN NO PUDE BORRAR EL INTERES");
             throw new ServicesException("No fue posible eliminar el interes", ex);
         }
-    }	
+    }
 
 }

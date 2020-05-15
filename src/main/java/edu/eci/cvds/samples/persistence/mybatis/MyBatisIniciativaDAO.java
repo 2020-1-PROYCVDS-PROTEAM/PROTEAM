@@ -17,7 +17,6 @@ import edu.eci.cvds.samples.persistence.mybatis.mappers.IniciativaMapper;
 import java.sql.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 /**
  *

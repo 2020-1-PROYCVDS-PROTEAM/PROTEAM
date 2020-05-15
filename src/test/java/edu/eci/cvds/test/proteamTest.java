@@ -16,6 +16,7 @@ import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 import edu.eci.cvds.samples.entities.Iniciativa;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.entities.Comentario;
+import edu.eci.cvds.samples.entities.Estadistica;
 import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.entities.PalabraClave;
 import edu.eci.cvds.samples.persistence.PersistenceException;
@@ -204,7 +205,7 @@ public class proteamTest {
     @Test
     public void prueba() {
     	try {
-    		List<Iniciativa> i = sp.agrupeEstados();
+    		List<Estadistica> i = sp.agrupeEstados();
     	}catch(ServicesException ex) {
     		fail();
     	}
