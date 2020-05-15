@@ -23,7 +23,7 @@
             <p:toolbar>
 
                 <f:facet name="right">
-                    
+
                     <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
                     <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
                     <p:commandButton value="Salir"  onclick="confirmDelete()" icon="pi pi-sign-out" />				
@@ -39,7 +39,7 @@
             </p:toolbar>
         </h:form>
 
-		<h2>Perfil de usuario</h2>
+        <h2>Perfil de usuario</h2>
         <h:form id="iniciativasVotadas">
             <p:dataTable id="info" var="iniciativa" value="#{UserBean.consultarIniciativasVotadas(logeoBean.name)}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -53,7 +53,7 @@
 
                 <p:column headerText="Votar">
                     <p:commandButton  styleClass="apply" update="iniciativasVotadas"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
-                    
+
                 </p:column>
 
 
@@ -77,10 +77,10 @@
                 </p:column>
 
 
-				<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
+                <p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
                     <h:outputText value="#{iniciativa.getEstado()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <h:outputText value="#{iniciativa.getDescripcion()}"/>
                 </p:column>
@@ -92,7 +92,7 @@
 
         </h:form>
 
-		<h3>Tus intereses</h3>
+        <h3>Tus intereses</h3>
         <h:form id="interesIniciativas">
             <p:dataTable id="info" var="iniciativa" value="#{UserBean.consultarInteresesIniciativas(logeoBean.name)}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -114,8 +114,8 @@
                         <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
                     </p:button>
                 </p:column>
-				
-				<p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
+
+                <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
                     <h:outputText value="#{iniciativa.getNombre()}"/>
                 </p:column>
 
@@ -127,10 +127,10 @@
                     <h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}"/>
                 </p:column>
 
-				<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
+                <p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
                     <h:outputText value="#{iniciativa.getEstado()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <h:outputText value="#{iniciativa.getDescripcion()}"/>
                 </p:column>
@@ -141,9 +141,9 @@
             </p:dataTable>
 
         </h:form>		
-		
-		
-		<h3>Las iniciativas que has comentado</h3>
+
+
+        <h3>Las iniciativas que has comentado</h3>
         <h:form id="iniciativasComentadas">
             <p:dataTable id="info" var="iniciativa" value="#{UserBean.consultarComentariosUsuario(logeoBean.name)}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -152,7 +152,7 @@
                 <f:facet name="header">
                     Iniciativas comentadas.
                 </f:facet>
-				
+
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 
@@ -166,11 +166,11 @@
                         <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
                     </p:button>
                 </p:column>
-				
-				<p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
+
+                <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
                     <h:outputText value="#{iniciativa.getNombre()}"/>
                 </p:column>
-				
+
 
                 <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
                     <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}"/>
@@ -180,34 +180,41 @@
                     <h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}"/>
                 </p:column>
 
-				<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
+                <p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}" filterBy="#{iniciativa.getEstado()}" filterMatchMode="contains">
                     <h:outputText value="#{iniciativa.getEstado()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
                     <h:outputText value="#{iniciativa.getDescripcion()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Área" sortBy="#{iniciativa.getArea()}">
                     <h:outputText value="#{iniciativa.getArea()}"/>
                 </p:column> 
-				
-				<p:column headerText="Comentario">
-                    <h:outputText value="#{iniciativa.getComentarios().get(iniciativa.getId()).contenido}"/>
-                </p:column> 
-				
-				<p:column headerText="Fecha comentario">
-                    <h:outputText value="#{iniciativa.getComentarios().get(iniciativa.getId()).fecha}"/>
-                </p:column> 
-				
+
+                <p:column headerText="Ver comentario" style="text-align: center">
+                    <p:commandButton update=":iniciativasComentadas:carDetail" oncomplete="PF('carOP').show('#{UserBean.selectedi}')" icon="pi pi-search" title="Ver más">
+                        <f:setPropertyActionListener value="#{iniciativa}" target="#{UserBean.selectedi}" />
+                    </p:commandButton>
+                </p:column>
 
             </p:dataTable>
 
+            <p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+                <p:outputPanel id="carDetail" style="text-align:center;">
+                <p:dataTable var="comentarios" value="#{UserBean.consultarComentariosIniciativaUsuario(logeoBean.name,UserBean.selectedi.getId())}" rows="5" paginator="true">
+                    <p:column headerText="Comentario">
+                        <h:outputText value="#{comentarios.getContenido()}" />
+                    </p:column>
+
+                    <p:column headerText="Fecha">
+                        <h:outputText value="#{comentarios.getFecha()}" />
+                    </p:column>
+                </p:dataTable>
+                </p:outputPanel>
+            </p:overlayPanel>
 
         </h:form>
-
-
-
 
 
         <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 

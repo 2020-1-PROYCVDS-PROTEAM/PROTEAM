@@ -100,6 +100,19 @@ public class UserBean extends BasePageBean implements Serializable {
         }
         return this.comentarios;
     }
+    
+    public List<Comentario> consultarComentariosIniciativaUsuario(String idUsuario, String idIniciativa) {
+        try {
+            int id = Integer.parseInt(idIniciativa);
+            this.comentarios = servicioPT.consultarComentariosIniciativaUsuario(idUsuario,id);
+        } catch (ServicesException e) {
+            System.out.println("no consulta comentario iniciativa ");
+
+        }
+        return this.comentarios;
+    }
+    
+    
 
     public Iniciativa consultarIniciativa(String id) {
         try {
@@ -136,10 +149,6 @@ public class UserBean extends BasePageBean implements Serializable {
             int idIni = Integer.parseInt(idIniciativa);
             int idd = servicioPT.consultarComentariosIniciativa(idIni).size() + 1;
             Date datex = new Date(Calendar.getInstance().getTime().getTime());
-            //System.out.println("FECHA DEL REGISTRO COMENTARIO: "+datex);
-            //System.out.println("CHOTO MATEEEEEEE id iniciativa: "+idd);
-            //int voto = Integer.parseInt(votos);
-            //Date date=Date.valueOf(fecha);
             servicioPT.insertarComentario(idd, idUsuario, idIni, contenido, datex);
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean registrarIniciativa");
@@ -164,9 +173,6 @@ public class UserBean extends BasePageBean implements Serializable {
     public void registrarVoto(String idUsuario, String idIniciativa) {
         int idd = Integer.parseInt(idIniciativa);
         try {
-            System.out.println("-----------------------------------------------------------------------------------------");
-            System.out.println("Al bean User llega esto: " + idUsuario + " ini: " + idIniciativa);
-            System.out.println("-----------------------------------------------------------------------------------------");
             Voto voto = servicioPT.consultarVoto(idUsuario, idd);
             if (voto == null) {
                 servicioPT.registrarVoto(idUsuario, idd);
@@ -180,7 +186,6 @@ public class UserBean extends BasePageBean implements Serializable {
     }
 
     public int consultarVotosIniciativa(int idIniciativa) throws ServicesException {
-        System.out.println("CONSULTANDO VOTOS DE LA INICIATIVA :" + idIniciativa);
         try {
             return servicioPT.consultarVotosIniciativa(idIniciativa).size();
         } catch (ServicesException ex) {
@@ -209,7 +214,6 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarComentariosUsuario(String usuario) {
         try {
-            System.out.println("Este es el usuario Comentarios: " + usuario);
             return servicioPT.consultarComentariosUsuario(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarComentarios de usuario");
@@ -239,17 +243,13 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<String> consultarPalabrasClaveIniciativa(int idIniciaitva) {
         try {
-            System.out.println("------------------------------------------------------");
-            System.out.println("CONSULTAR PALABRA CLAVE: (idIniciativa)" + idIniciaitva);
-            System.out.println("------------------------------------------------------");
+            
             List<PalabraClave> palabrasclave = servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
             List<String> palabra = new ArrayList<String>();
             for (PalabraClave p : palabrasclave) {
                 palabra.add(p.getPalabraClave());
             }
-            System.out.println("********************************************************");
-            System.out.println("PALABRAS CLAVE: " + palabra);
-            System.out.println("********************************************************");
+           
             return palabra;
             //return servicioPT.consultarPalabrasClaveIniciativa(idIniciaitva);
         } catch (ServicesException e) {
@@ -261,11 +261,8 @@ public class UserBean extends BasePageBean implements Serializable {
     public void registrarInteres(String idUsuario, String idIniciativa) {
         int idd = Integer.parseInt(idIniciativa);
         try {
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            System.out.println("Al bean User llega esto REGISTRANDO INTERES: " + idUsuario + " ini: " + idIniciativa);
-            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-");
+           
             Interes interes = servicioPT.consultarInteres(idUsuario, idd);
-            System.out.println("ESTE ES EL INTERES: "+interes);
             if (interes == null) {
                 servicioPT.registrarInteres(idUsuario, idd);
             } else {

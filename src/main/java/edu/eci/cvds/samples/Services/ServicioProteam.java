@@ -33,6 +33,8 @@ public interface ServicioProteam {
     public List<Comentario> consultarComentarios() throws ServicesException;
 
     public List<Comentario> consultarComentariosIniciativa(int idIniciativa) throws ServicesException;
+    
+    public List<Comentario> consultarComentariosIniciativaUsuario(String idUsuario, int idIniciativa) throws ServicesException;
 
     public abstract Voto consultarVoto(String idUsuario, int idIniciativa) throws ServicesException;
 

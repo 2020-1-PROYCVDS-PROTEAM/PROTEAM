@@ -45,7 +45,7 @@ public class GuiceContextListener implements ServletContextListener {
                 install(JdbcHelper.PostgreSQL);
                 setEnvironmentId("development");
                 setClassPathResource("mybatis-config.xml");
-                System.out.println("GuiceConextENTRA");
+                //System.out.println("GuiceConextENTRA");
                 bind(IniciativaDAO.class).to(MyBatisIniciativaDAO.class);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
@@ -54,7 +54,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(InteresDAO.class).to(MyBatisInteresDAO.class);
                 bind(EstadisticaDAO.class).to(MyBatisEstadisticaDAO.class);
                 bind(ServicioProteam.class).to(ServicioProteamImpl.class);
-                System.out.println("SUPERO TODOS LOS BEANS EN EL GUICE");
+                //System.out.println("SUPERO TODOS LOS BEANS EN EL GUICE");
             }
         });
 

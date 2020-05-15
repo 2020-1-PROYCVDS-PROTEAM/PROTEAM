@@ -48,6 +48,18 @@ public class MyBatisComentarioDAO implements ComentarioDAO{
         }
       
     }
+    
+    @Override
+    public List<Comentario> consultarComentariosIniciativaUsuario(String idUsuario, int idIniciativa) throws PersistenceException {
+         try{
+
+            return comentarioMapper.consultarComentariosIniciativaUsuario(idUsuario, idIniciativa);
+        }catch(Exception e){
+            throw new PersistenceException("Error al consultar los comentarios:"+e.getLocalizedMessage(), e);   
+        }
+      
+    }
+    
 	
 	@Override
     public List<Comentario> consultarComentariosIniciativa(int idIniciativa) throws PersistenceException {

@@ -105,8 +105,8 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> agrupeIniciativas() throws PersistenceException {
         try {
-            System.out.println("MyBatisDAO agrupando  Iniciativa");
-            System.out.println("Probando el retorno: " + iniciativaMapper.agrupeIniciativas());
+            //System.out.println("MyBatisDAO agrupando  Iniciativa");
+            //System.out.println("Probando el retorno: " + iniciativaMapper.agrupeIniciativas());
             return iniciativaMapper.agrupeIniciativas();
 
         } catch (Exception e) {
@@ -214,8 +214,8 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException {
         try {
-            System.out.println("Llega correctamente antes de pedir mapper usuario: " + usuario);
-            System.out.println("Inciaitvia retornada: " + iniciativaMapper.consultarComentariosUsuario(usuario));
+            //System.out.println("Llega correctamente antes de pedir mapper usuario: " + usuario);
+            //System.out.println("Inciaitvia retornada: " + iniciativaMapper.consultarComentariosUsuario(usuario));
             return iniciativaMapper.consultarComentariosUsuario(usuario);
         } catch (Exception ex) {
             System.out.println("FALLO Y FUE CAPTURADO EN EL MyBatisDao Comentarios");

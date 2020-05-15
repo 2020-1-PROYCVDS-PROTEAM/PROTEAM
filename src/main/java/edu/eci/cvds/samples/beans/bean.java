@@ -47,7 +47,7 @@ public class bean extends BasePageBean implements Serializable {
     private ServicioProteam servicioPT;
 
     public PieChartModel getModel() {
-        System.out.println("Esta entrando por acá!");
+        //System.out.println("Esta entrando por acá!");
         model = new PieChartModel();
         try {
             iniciativas = servicioPT.agrupeIniciativas();
@@ -56,12 +56,12 @@ public class bean extends BasePageBean implements Serializable {
             System.out.println("Capturado en consultarIniciativas bean");
         } finally {
             if (iniciativas != null) {
-                System.out.println("estas son las iniciativas: " + iniciativas);
+                //System.out.println("estas son las iniciativas: " + iniciativas);
                 for (Estadistica iniciativa : iniciativas) {
                     System.out.println("iniciativa getArea: " + iniciativa.getNombre() + " iniciativaCantidad: " + iniciativa.getCantidad());
                     model.set(iniciativa.getNombre(), iniciativa.getCantidad());
                 }
-                System.out.println("Iniciativas: " + model);
+                //System.out.println("Iniciativas: " + model);
             }
 
             model.setTitle("Áreas de iniciativas.");
@@ -90,7 +90,7 @@ public class bean extends BasePageBean implements Serializable {
             System.out.println("Capturado en consultarIniciativas bean"); //lanzar la excepcion
         } finally {
             if (iniciativasEstado != null) {
-                System.out.println("Iniciativas por estado: " + iniciativasEstado);
+                //System.out.println("Iniciativas por estado: " + iniciativasEstado);
                 for (Estadistica iniciativa : iniciativasEstado) {
                     if(iniciativa.getNombre().equals("Proyecto"))
                         proyecto.set(iniciativa.getNombre(), iniciativa.getCantidad());

@@ -6,42 +6,48 @@
 <mapper namespace="edu.eci.cvds.samples.persistence.mybatis.mappers.ComentarioMapper">
 
 
-	<resultMap type='Comentario' id='ComentarioResult'>
+    <resultMap type='Comentario' id='ComentarioResult'>
         <id property='id' column='id'/>
-		<id property='idUsuario' column='idUsuario'/>
-		<id property='idIniciativa' column='idIniciativa'/>
-		<result property='contenido' column='contenido'/>
-		<result property='fecha' column='fecha'/>
+        <id property='idUsuario' column='idUsuario'/>
+        <id property='idIniciativa' column='idIniciativa'/>
+        <result property='contenido' column='contenido'/>
+        <result property='fecha' column='fecha'/>
     </resultMap>
 	
 	
-		<select parameterType="map" id='consultarComentarios' resultMap='ComentarioResult'>
-			SELECT
-				* 
-			FROM comentarios;
-		</select>
+    <select parameterType="map" id='consultarComentarios' resultMap='ComentarioResult'>
+        SELECT
+        * 
+        FROM comentarios;
+    </select>
 		
-		<select parameterType="map" id='consultarComentario' resultMap='ComentarioResult'>
-			SELECT * 
-			FROM comentarios
-			WHERE id=#{id} AND idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
-		</select>
+    <select parameterType="map" id='consultarComentario' resultMap='ComentarioResult'>
+        SELECT * 
+        FROM comentarios
+        WHERE id=#{id} AND idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+    </select>
+                
+    <select parameterType="map" id='consultarComentariosIniciativaUsuario' resultMap='ComentarioResult'>
+        SELECT * 
+        FROM comentarios
+        WHERE idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+    </select>
 		
-		<select parameterType="map" id='consultarComentariosIniciativa' resultMap='ComentarioResult'>
-			SELECT * 
-			FROM comentarios
-			WHERE idIniciativa=#{idIniciativa};
-		</select>
+    <select parameterType="map" id='consultarComentariosIniciativa' resultMap='ComentarioResult'>
+        SELECT * 
+        FROM comentarios
+        WHERE idIniciativa=#{idIniciativa};
+    </select>
 
 
-		<insert id='insertarComentario' parameterType="map">
-			INSERT INTO comentarios VALUES (#{id},#{idUsuario},#{idIniciativa},#{contenido},#{fecha});
-		</insert>
+    <insert id='insertarComentario' parameterType="map">
+        INSERT INTO comentarios VALUES (#{id},#{idUsuario},#{idIniciativa},#{contenido},#{fecha});
+    </insert>
 	
 
-		<update id='cambiarComentario' parameterType="map">
-			UPDATE comentarios SET contenido=#{contenido} WHERE id = #{id} AND idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
-		</update>
+    <update id='cambiarComentario' parameterType="map">
+        UPDATE comentarios SET contenido=#{contenido} WHERE id = #{id} AND idUsuario=#{idUsuario} AND idIniciativa=#{idIniciativa};
+    </update>
 
   	
 </mapper>

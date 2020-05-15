@@ -30,6 +30,10 @@ public class Iniciativa implements Serializable {
     private String estados;
     private ArrayList<Comentario> comentarios; 
 
+    public Iniciativa(){
+    
+    }
+    
     public Iniciativa(int id, int votos, String palabraclave, String nombre, String estado, String area, String descripcion, String usuarioProponente, String correoProponente, Date fecha) {
         this.id = id;
         this.votos = votos;

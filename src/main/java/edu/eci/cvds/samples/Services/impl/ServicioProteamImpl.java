@@ -134,6 +134,17 @@ public class ServicioProteamImpl implements ServicioProteam {
             throw new ServicesException("No hay comentarios", ex);//en la iniciativa
         }
     }
+    
+    @Override
+    public List<Comentario> consultarComentariosIniciativaUsuario(String idUsuario, int idIniciativa) throws ServicesException {
+        try {
+            //System.out.println("ServicioProTeamIMPLCONSULTAR COMENTARIOOSIniciativa");
+            return daoComentario.consultarComentariosIniciativaUsuario(idUsuario, idIniciativa);
+        } catch (Exception ex) {
+            throw new ServicesException("No hay comentarios", ex);//en la iniciativa
+        }
+    }
+
 
     @Override
     public void insertIniciativa(int id, int votos, String palabraClave, String nombre, String estado, String descripcion, String area, String usuario_i, String correo_i, Date fechar_ini) throws ServicesException {
