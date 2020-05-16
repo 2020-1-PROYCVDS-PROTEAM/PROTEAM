@@ -44,20 +44,16 @@ _En la pestaña **Buscar Iniciativas relacionadas ** al agregar el nombre de cua
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/BuscarR.png)
 
-_**Registar Iniciativa** con el rol de proponente el usuario puede cliclear en la pestaña iniciativa y luego registar iniciativa._
+_**Registar Iniciativa** con el rol de proponente el usuario puede cliclear en la pestaña iniciativa y luego registar iniciativa
+Será dirigido a la pagina correspondiente y podrá registar cualquier iniciativa a la fecha de hoy, rellenando los campos mostrados a continuacion._
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/RegistrarIni1.png)
-
-_Será dirigido a la pagina correspondiente y podrá registar cualquier iniciativa a la fecha de hoy, rellenando los campos mostrados a continuacion._
-
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/RegistrarIni2.png)
 
-_**Mostrar interes por una iniciativa** al seleccionar la iniciativa puede votar y comentar por cualquier iniciativa dado click en la pestaña comentar _
+_**Mostrar interes por una iniciativa** al seleccionar la iniciativa puede votar y comentar por cualquier iniciativa dado click en la pestaña comentar luego
+Será dirigido a la pagina correspondiente donde además de observar información adicional sobre la iniciativa y el proponente podrá mostrar su interes de diferentes formas._
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Voto.png)
-
-_Será dirigido a la pagina correspondiente donde además de observar información adicional sobre la iniciativa y el proponente podrá mostrar su interes de diferentes formas._
-
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Comentar.png)
 
 _**Perfil Usuario** Cada usuario contara con una pagina de perfil.Donde se veran sus iniciativas, por las cuales ha votado y comentado ._
@@ -124,14 +120,14 @@ _Descripción del proceso que se llevo a cabó._
 
 _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
-_* **César González**  *Team Developer*  [csarssj](https://github.com/csarssj)_
-_* **Eduard Jimenez**  *Team Developer*  [EdKillah](https://github.com/EdKillah)_
-_* **Jose Gutierrez**  *Team Developer*  [kirilka97](https://github.com/kirilka97)_
-_* **Jonathan Pulido**  *Team Developer*  [Arlais](https://github.com/Arlais)_
+* **César González**  *Team Developer*  [csarssj](https://github.com/csarssj)
+* **Eduard Jimenez**  *Team Developer*  [EdKillah](https://github.com/EdKillah)
+* **Jose Gutierrez**  *Team Developer*  [kirilka97](https://github.com/kirilka97)
+* **Jonathan Pulido**  *Team Developer*  [Arlais](https://github.com/Arlais)
 
 _Presentado a:_
-_* **Oscar Ospina** *Product Owner*_
-_* **Julián Velasco** *Product Owner*_
+* **Oscar Ospina** *Product Owner*
+* **Julián Velasco** *Product Owner*
 
 _También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto._
 
