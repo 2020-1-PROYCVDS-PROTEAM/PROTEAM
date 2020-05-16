@@ -135,18 +135,16 @@ _Descripción del proceso que se llevo a cabó._
 
 _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
->- _**César González:**  Team Developer_
->- [csarssj](https://github.com/csarssj)
->- _**Eduard Jimenez:**  Team Developer_
->- [EdKillah](https://github.com/EdKillah)
->- _**Jose Gutierrez:**  Team Developer_ 
->- [kirilka97](https://github.com/kirilka97)
->- _**Jonathan Pulido:**  Team Developer_
->- [Arlais](https://github.com/Arlais)
 
-_Presentado a:_
->- _**Oscar Ospina:** Product Owner_
->- _**Julián Velasco:** Product Owner_
+| Nombre | Rol |
+| - | - |
+| [César González](https://github.com/csarssj) | `'Team Developer'` |
+| [Eduard Jimenez](https://github.com/EdKillah) | `'Team Developer'` |
+| [Jose Gutierrez](https://github.com/kirilka97) | `'Team Developer'` |
+| [Jonathan Pulido](https://github.com/Arlais) | `'Team Developer'` |
+| Oscar Ospina | `'Product Owner'` |
+| Julián Velasco| `'Product Owner'` |
+
 
 _También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto._
 
