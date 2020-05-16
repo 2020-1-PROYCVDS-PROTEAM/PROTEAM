@@ -11,7 +11,7 @@ _El sistema, mas alla de facilitar el registro de las iniciativas e ideas de pro
 
 ### Manual de usuario
 
-_El presente manual lo ayudará a gestionar de manera ágil y sencilla nuestro Sistema UBITrack®. 
+_El presente manual lo ayudará a gestionar de manera ágil y sencilla nuestro proyecto. 
 Sígalo paso a paso para lograr una utilización correcta y eficiente de nuestro servicio._
 
 _**Página de inicio:** Al ingresar al proyecto [ECI-BANK-PRO](https://eci-bank-pro.herokuapp.com/faces/login.xhtml) ._
@@ -52,7 +52,7 @@ _Será dirigido a la pagina correspondiente y podrá registar cualquier iniciati
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/RegistrarIni2.png)
 
-_**Mostrar interes por una iniciativa ** al seleccionar la iniciativa puede votar y comentar por cualquier iniciativa dado click en la pestaña comentar _
+_**Mostrar interes por una iniciativa** al seleccionar la iniciativa puede votar y comentar por cualquier iniciativa dado click en la pestaña comentar _
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Voto.png)
 
@@ -60,11 +60,11 @@ _Será dirigido a la pagina correspondiente donde además de observar informaci�
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Comentar.png)
 
-_**Perfil Usuario **Cada usuario contara con una pagina de perfil.Donde se veran sus iniciativas, por las cuales ha votado y comentado ._
+_**Perfil Usuario** Cada usuario contara con una pagina de perfil.Donde se veran sus iniciativas, por las cuales ha votado y comentado ._
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Perfil.png)
 
-_**Cambiar rol usuario **Como administrador podra asignarle y cambiar roles a los usuarios, además de modificar los estados de las iniciativas._
+_**Cambiar rol usuario** Como administrador podra asignarle y cambiar roles a los usuarios, además de modificar los estados de las iniciativas._
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Rol.png)	
 
