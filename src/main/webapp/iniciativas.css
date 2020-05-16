@@ -1,35 +1,15 @@
-.container{
-    background-color:black;
-    border-radius:10px;
-    padding:25px;
-    margin-top:205px;
-    margin-left:100px;
+.container {
+	background-color: black;
+	border-radius: 10px;
+	padding: 25px;
+	margin-top: 205px;
+	margin-left: 100px;
 }
 
-body{
-    background-color:#941E1E;
+body {
+	background-color: #941E1E;
 }
-
-.ui-datatable table, .ui-datatable-resizable table { 
-    table-layout: auto !important; 
-} 
-
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-.myTable td:nth-child(1) { 
-    width: 20px; 
-} 
-
 
 .className {
-    text-align: right;
-}
-
-#combtn{
-    border:none;
-    background: #009966;
-    color: #FFFFFF;
+	text-align: right;
 }

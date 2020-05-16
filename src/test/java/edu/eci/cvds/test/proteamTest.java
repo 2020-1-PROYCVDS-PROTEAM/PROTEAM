@@ -4,21 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import com.google.inject.Inject;
 
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.Services.ServicioProteamFactory;
-import edu.eci.cvds.samples.entities.Iniciativa;
-import edu.eci.cvds.samples.entities.Usuario;
-import edu.eci.cvds.samples.entities.Comentario;
-import edu.eci.cvds.samples.entities.Estadistica;
-import edu.eci.cvds.samples.entities.Voto;
-import edu.eci.cvds.samples.entities.PalabraClave;
 //import edu.eci.cvds.samples.persistence.PersistenceException;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,7 +29,7 @@ public class proteamTest {
     @Test
     public void deberiaConsultarUsuario() {
         try {
-            Usuario u = sp.consultarUsuario("JoseTest");
+            sp.consultarUsuario("JoseTest");
         } catch (ServicesException ex) {
             fail();
         }
@@ -67,7 +58,7 @@ public class proteamTest {
     @Test
     public void realizaConsultaDeUsuario() {
         try {
-            Usuario u = sp.consultarUsuario("eduardj");
+            sp.consultarUsuario("eduardj");
         } catch (ServicesException ex) {
             fail();
         }
@@ -79,7 +70,7 @@ public class proteamTest {
     @Test
     public void realizaConsultaDeIniciativas() {
         try {
-            List<Iniciativa> i = sp.consultarIniciativas();
+            sp.consultarIniciativas();
         } catch (ServicesException ex) {
             fail();
         }
@@ -88,7 +79,7 @@ public class proteamTest {
     @Test
     public void consultarIniciativaPorIdentificador() {
         try {
-            Iniciativa i = sp.consultarIniciativa(1);
+            sp.consultarIniciativa(1);
         } catch (ServicesException ex) {
             fail();
         }
@@ -97,7 +88,7 @@ public class proteamTest {
     @Test
     public void deberiaDarExcepcionNoExisteIniciativa() {
         try {
-            Iniciativa i = sp.consultarIniciativa(2130184);
+            sp.consultarIniciativa(2130184);
             fail();
         } catch (ServicesException ex) {
 
@@ -107,8 +98,7 @@ public class proteamTest {
     @Test
     public void consultaIniciativasPorPalabraClave() {
         try {
-            Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
-
+            sp.palabraClaveIniciativa("Seguridad");
         } catch (ServicesException ex) {
             fail();
         }
@@ -160,7 +150,7 @@ public class proteamTest {
     @Test
     public void deberiaConsultarIniciativasPorUsuario() {
         try {
-            List<Iniciativa> i = sp.consultarIniciativasProponente("eduardj");
+            sp.consultarIniciativasProponente("eduardj");
 
         } catch (ServicesException ex) {
             fail();
@@ -180,7 +170,7 @@ public class proteamTest {
     @Test
     public void prueba() {
         try {
-            List<Estadistica> i = sp.agrupeEstados();
+            sp.agrupeEstados();
         } catch (ServicesException ex) {
             fail();
         }
