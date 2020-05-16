@@ -1,23 +1,18 @@
 package edu.eci.cvds.test;
 
-//import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 
 import com.google.inject.Inject;
 
 import edu.eci.cvds.samples.Services.ServicesException;
 import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.Services.ServicioProteamFactory;
-//import edu.eci.cvds.samples.persistence.PersistenceException;
 
-//import org.apache.ibatis.session.SqlSession;
 
 public class ProTeamTest {
 
     @Inject
-    //private SqlSession sqlSession;
     ServicioProteam sp;
 
     public ProTeamTest() {
@@ -105,7 +100,7 @@ public class ProTeamTest {
     }
 
     @Test
-    public void deberíaLanzarExcepcionPalabraClave() {
+    public void deberiaLanzarExcepcionPalabraClave() {
         try {
             sp.palabraClaveIniciativa("Esta palabra no existe");
             
