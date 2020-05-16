@@ -81,30 +81,27 @@ _**Páginas control errores** Se manejaron los errores típicos de HTTP tipo "40
 
 ## Aquitectura y Diseño detallado
 
-_**Modelo ER**_
+### Modelo ER
 
 _A continuación se presenta el diagrama:_
 
 ![Modelo ET](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/ModeloER.png)
 
-_**Diagrama de clases**_
+### Diagrama de clases
 
 _A continuación se presenta el diagrama:_
 
-![Diagrama de clases ](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/DiagramaClass.png)
+![Diagrama de clases](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/DiagramaClass.png)
 
-_**Descripción de la arquitectura**_
+### Descripción de la arquitectura
 
-
-
-
-_**Enlace a la aplicación en Heroku.**_
+### Enlace a la aplicación en Heroku.
 
 _A continuación se presenta el link:_
 
 [ECI-BANK-PRO](https://eci-bank-pro.herokuapp.com/faces/login.xhtml)
 
-_**Enlace al sistema de integración continua**_
+### Enlace al sistema de integración continua
 
 _A continuación se presenta el link:_
 
@@ -120,10 +117,14 @@ _Descripción del proceso que se llevo a cabó._
 
 _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
-* **César González**  *Team Developer*  [csarssj](https://github.com/csarssj)
-* **Eduard Jimenez**  *Team Developer*  [EdKillah](https://github.com/EdKillah)
-* **Jose Gutierrez**  *Team Developer*  [kirilka97](https://github.com/kirilka97)
-* **Jonathan Pulido**  *Team Developer*  [Arlais](https://github.com/Arlais)
+_**César González**  *Team Developer*_
+[csarssj](https://github.com/csarssj)
+_**Eduard Jimenez**  *Team Developer*_
+[EdKillah](https://github.com/EdKillah)
+_**Jose Gutierrez**  *Team Developer*_ 
+[kirilka97](https://github.com/kirilka97)
+_**Jonathan Pulido**  *Team Developer*_
+[Arlais](https://github.com/Arlais)
 
 _Presentado a:_
 * **Oscar Ospina** *Product Owner*
