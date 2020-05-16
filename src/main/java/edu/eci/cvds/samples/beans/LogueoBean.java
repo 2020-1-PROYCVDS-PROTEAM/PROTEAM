@@ -101,6 +101,7 @@ public class LogueoBean implements Serializable {
     }
 
     public boolean isLogueado() {
+		System.out.println("ENTRA ADEMAS ESTA LOGUEADO?: "+logueado);
 		if(!logueado){
 			return false;
 		}

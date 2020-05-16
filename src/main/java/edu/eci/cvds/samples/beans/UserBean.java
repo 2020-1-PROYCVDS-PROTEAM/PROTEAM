@@ -46,10 +46,10 @@ public class UserBean extends BasePageBean implements Serializable {
     private List<Voto> votos;
 	
 	
-	public void test(){
-		System.out.println("POR ACA APARECE");
-		selectedi = consultarIniciativa("1");
-	}
+	//public void test(){
+	//	System.out.println("POR ACA APARECE");
+	//	selectedi = consultarIniciativa("1");
+	//}
 	
 
     private void setErrorMessage(Exception e) {
@@ -203,11 +203,7 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarIniciativasVotadas(String usuario) {
         try {
-			List<Iniciativa> i=servicioPT.consultarIniciativasVotadas(usuario);
-			if(i!=null)
-				selectedi=i.get(0);
-			return i;
-            //return servicioPT.consultarIniciativasVotadas(usuario);
+            return servicioPT.consultarIniciativasVotadas(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
         }
@@ -216,11 +212,7 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarInteresesIniciativas(String usuario) {
         try {
-			List<Iniciativa> i=servicioPT.consultarInteresesIniciativas(usuario);
-			if(i!=null)
-				selectedi=i.get(0);
-			return i;
-            //return servicioPT.consultarInteresesIniciativas(usuario);
+            return servicioPT.consultarInteresesIniciativas(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
         }
@@ -229,11 +221,15 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarComentariosUsuario(String usuario) {
         try {
-			List<Iniciativa> i=servicioPT.consultarComentariosUsuario(usuario);
-			if(i!=null)
-				selectedi=i.get(0);
-			return i;
-            //return servicioPT.consultarComentariosUsuario(usuario);
+			//List<Iniciativa> i=servicioPT.consultarComentariosUsuario(usuario);
+			//if(i!=null){
+			//	System.out.println("Entra en iniciativas nullas: "+i);
+			//	selectedi=i.get(0);
+			//	System.out.println("Este es el valor del SELECTEDI: "+selectedi);
+			//}
+			//System.out.println("NO ENTRO EN ELSE? :"+i);
+			//return i;
+            return servicioPT.consultarComentariosUsuario(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarComentarios de usuario");
         }

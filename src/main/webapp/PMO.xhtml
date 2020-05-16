@@ -157,9 +157,8 @@
                     //]]>
                 </script>
 
-                <p:chart type="pie" model="#{bean.getModel()}" style="width:500px;height:300px" widgetVar="chart"/> 
+                <p:chart type="pie" model="#{bean.getModel()}"  widgetVar="chart"/> 
 
-                <p:commandButton type="button" value="Descargar gráfica" icon="pi pi-home" onclick="exportChart()"/>
 
                 <p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Descargar gráfica" resizable="false">
                     <p:outputPanel id="output" layout="block" style="width:500px;height:300px"/>

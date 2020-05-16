@@ -16,12 +16,14 @@ and open the template in the editor.
         <link rel="icon" href="/resources/img/favicon.ico"/>
         <link href="administrador.css" rel="stylesheet" type="text/css"/>
 
-        <title>Iniciativas | Usuarios</title>
+        <title>Error | 404</title>
     </h:head>
 
 
     <h:body>
-    <h:form rendered="#{logeoBean.isLogueado() == true}">  
+	
+	<h:panelGroup layout="block" rendered="#{logeoBean.isLogueado() == true}">
+    <h:form >  
         <div class="page-container page-container-responsive">
             <div class="row space-top-8 space-8 row-table">
                 <div class="col-5 col-middle">
@@ -38,8 +40,10 @@ and open the template in the editor.
             </div>
         </div>
     </h:form>
-        
-   <h:form rendered="#{logeoBean.isLogueado() == false}">  
+	</h:panelGroup>
+
+    <h:panelGroup layout="block" rendered="#{logeoBean.isLogueado() == false}">    
+   <h:form>  
         <div class="page-container page-container-responsive">
             <div class="row space-top-8 space-8 row-table">
                 <div class="col-5 col-middle">
@@ -55,7 +59,8 @@ and open the template in the editor.
 
             </div>
         </div>
-    </h:form>        
+    </h:form>
+	</h:panelGroup>	
 
     </h:body>
 </html>
