@@ -39,7 +39,7 @@ public class LogueoBean implements Serializable {
         //System.out.println("Si esta entrando acaaaaaaaaa");
         System.out.println("DoLOGIN() === name: " + name + " pass: " + pass);
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(getName(), getPass());
+        UsernamePasswordToken token = new UsernamePasswordToken(getName(), new Sha256Hash(getPass()).toHex());
         try {
             currentUser.login(token);
             currentUser.getSession().setAttribute("correo", name);
@@ -55,21 +55,30 @@ public class LogueoBean implements Serializable {
 
         } catch (UnknownAccountException ex) {
             System.out.println("Unknown account");
+            error("Unknown account");
             log.error(ex.getMessage(), ex);
         } catch (IncorrectCredentialsException ex) {
             System.out.println("Wrong password");
+            error("Wrong password");
             log.error(ex.getMessage(), ex);
         } catch (LockedAccountException ex) {
+            error("Locked account");
             System.out.println("Locked account");
             log.error(ex.getMessage(), ex);
         } catch (AuthenticationException ex) {
+            error("Unknown error: "+ex.getMessage());
             System.out.println("Unknown error: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
         } catch (IOException ex) {
+            error("Unknown error: " + ex.getMessage());
             System.out.println("Unknown error: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
 
         }
+    }
+    
+     private void error(String message) {
+        FacesContext.getCurrentInstance().addMessage("Shiro", new FacesMessage(FacesMessage.SEVERITY_ERROR, message, "error"));
     }
 
     public String getName() {

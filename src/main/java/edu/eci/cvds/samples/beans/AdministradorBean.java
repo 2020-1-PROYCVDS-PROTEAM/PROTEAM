@@ -11,10 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import edu.eci.cvds.samples.entities.*;
 import edu.eci.cvds.samples.Services.*;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.primefaces.event.FlowEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
@@ -151,12 +153,12 @@ public class AdministradorBean extends BasePageBean implements Serializable {
             if (!passwd.equals(passwdC)) {
                 System.out.println("son iguales las claves, validar que lo sean");
             }
-            servicioPT.registrarUsuario(usuario, passwd, nombre, apellido, correo, "Publico");
+            servicioPT.registrarUsuario(usuario, new Sha256Hash(passwd).toHex(), nombre, apellido, correo, "Publico");
             System.out.println("Registro de usuario ok, pero falta redireccionar");
             FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
         } catch (ServicesException e) {
             System.out.println("Entra en excepcion bean registrarIniciativa");
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
