@@ -54,9 +54,10 @@ _**Cambiar rol usuario **Como administrador podra asignarle y cambiar roles a lo
 _**Graficas y datos de iniciativas ** Se proporcionaran los datos de cada iniciativa, separadas por area y estado._
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Grafica1.png)
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Grafica2.png)
-_**Tablas y busquedas ** Se proporcionaran los datos de las respectivas tablas, además de poder ordenar las columnas y realizar busqueda por cada dato que el usuario desee consultar_
+_**Tablas y busquedas** Se proporcionaran los datos de las respectivas tablas, además de poder ordenar las columnas y realizar busqueda por cada dato que el usuario desee consultar_
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/TablasB.png)
-
+_**Páginas control errores** Se manejaron los errores típicos de HTTP tipo "401","404" y "500"._
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Error1.png)
 
 
 ## Aquitectura y Diseño detallado
