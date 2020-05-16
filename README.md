@@ -18,9 +18,9 @@ _**Página de inicio:** Al ingresar al proyecto [ECI-BANK-PRO](https://eci-bank-
 _Se encontrara con la pagina inicial, la cual le permite dos opciones:_
 *Loguearse
 *Registrarse
-![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png)
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png)
 _Para registarse lo único que tiene que hacer es rellenar los campos que se le piden._
-![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png)
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png)
 _Una vez registrado, puede iniciar sesion y dependiendo el rol que haya escogido entre los cuales estan:_
 
 * Administrador
@@ -107,7 +107,7 @@ _Scrum es una metodología ágil y flexible para gestionar el desarrollo de soft
 
 ### Enlace Taiga
 
-[TAIGA PROTEAM] (https://tree.taiga.io/project/csarssj-plataforma-banco-de-iniciativas-de-proyectos/backlog)
+[TAIGA PROTEAM](https://tree.taiga.io/project/csarssj-plataforma-banco-de-iniciativas-de-proyectos/backlog)
 
 ### Sprint 1
 
@@ -125,7 +125,7 @@ Además tampoco manejamos la actualización de tareas de taiga como era debido._
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint2.png)
 
-## Sprint 3
+### Sprint 3
 
 _Finalmente para este ultimo Sprint logramos ponernos a la "par" de nuestros compañeros con una serie de correcciones pendientes pero por fin nos sentiamos en igualdad de condiciones
 (siendo desde un comienzo nuestra culpa) logramos completar todas las funcionalidades pedidas y arreglar los errores visuales y requerimientos para cada rol. En el taiga se ve reflejado
