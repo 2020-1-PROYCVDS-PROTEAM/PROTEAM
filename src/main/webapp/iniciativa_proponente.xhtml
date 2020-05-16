@@ -26,10 +26,7 @@
             <p:growl id="messages" showDetail="true" />
             <p:toolbar>
                 <f:facet name="left">
-                    <p:menuButton value="Opciones">
-                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
-                    </p:menuButton>
+					<p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
                 </f:facet>
 
                 <f:facet name="right">

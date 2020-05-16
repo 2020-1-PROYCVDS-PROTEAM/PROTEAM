@@ -30,9 +30,9 @@
                 </f:facet>
 
                 <f:facet name="left">
-                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario2.xhtml')}" icon="pi pi-home" />
                     <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" icon="pi pi-search"/>
-                    <p:commandButton  value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/PMOProponente.xhtml')}"/>
+					<p:commandButton value="Iniciativas Proponente" action="#{logeoBean.redirect('/faces/PMOProponente.xhtml')}" icon="pi pi-search"/>
                 </f:facet>
 
 
@@ -42,14 +42,14 @@
         <h:form id="iniciativasUsuario">
             <p:dataTable id="info" var="iniciativa" value="#{UserBean.iniciativas}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                         rowKey="#{iniciativa.id}" style="text-align:center;" selectionMode="single">
+                         rowKey="#{iniciativa.id}" style="text-align:center;"  selectionMode="single">
 
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
-
+				
                 <p:column headerText="Votar">
                     <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
                 </p:column>
@@ -60,8 +60,10 @@
                         <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
                     </p:button>
                 </p:column>
-
-
+		
+				<p:column headerText="Usuario" sortBy="#{iniciativa.getUsuarioProponente()}">
+                    <h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
+                </p:column>
 
                 <p:column headerText="Id" sortBy="#{iniciativa.getId()}">
                     <h:outputText value="#{iniciativa.getId()}"/>
@@ -97,7 +99,6 @@
                         <f:setPropertyActionListener value="#{iniciativa}" target="#{UserBean.selectedi}" />
                     </p:commandButton>
                 </p:column>
-
             </p:dataTable>
 
 

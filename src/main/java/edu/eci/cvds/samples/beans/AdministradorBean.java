@@ -88,7 +88,7 @@ public class AdministradorBean extends BasePageBean implements Serializable {
 
     public void consultarIniciativasRelacionadas(String id) {
         try {
-            System.out.println(id);
+
             this.iniciativas = servicioPT.consultarIniciativasRelacionadas(id);
             System.out.println(iniciativas);
         } catch (ServicesException e) {
