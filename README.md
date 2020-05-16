@@ -18,18 +18,19 @@ _**Página de inicio:** Al ingresar al proyecto [ECI-BANK-PRO](https://eci-bank-
 _Se encontrara con la pagina inicial, la cual le permite dos opciones:_
 *Loguearse
 *Registrarse
-![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png))
+![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png)
 _Para registarse lo único que tiene que hacer es rellenar los campos que se le piden._
-![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png))
+![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png)
 _Una vez registrado, puede iniciar sesion y dependiendo el rol que haya escogido entre los cuales estan:_
-*Administrador
-*PMO
-*Proponente
-*Publico
+
+* Administrador
+* PMO
+* Proponente
+* Publico
 
 _Sera dirigido a la pagina correspondiente a su rol._
 
-![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/PaginaRol.png))
+![image](![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/PaginaRol.png)
 
 _Las principales funcionalidades que manejamos dependiendo del rol se encuentran las siguientes:_
 
@@ -97,36 +98,48 @@ _Presentado a:_
 * **Oscar Ospina** - *Product Owner* 
 * **Julián Velasco** - *Product Owner* 
 
-_También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto. _
+_También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto._
 
 ### Metodología
 
 _Scrum es una metodología ágil y flexible para gestionar el desarrollo de software, cuyo principal objetivo es maximizar el retorno de la inversión para su empresa (ROI). Se basa en construir primero la funcionalidad de mayor valor para el cliente y en los principios de inspección continua, adaptación, auto-gestión e innovación._
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/baf8244e49784d8799ab8bccba65d7b5)](https://www.codacy.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-1-PROYCVDS-PROTEAM/PROTEAM&amp;utm_campaign=Badge_Grade)
 
+### Enlace Taiga
 
-### Analice las pruebas end-to-end 🔩
+[TAIGA PROTEAM] (https://tree.taiga.io/project/csarssj-plataforma-banco-de-iniciativas-de-proyectos/backlog)
 
-_Explica que verifican estas pruebas y por qué_
+### Sprint 1
 
+_Iniciamos demasiado mal, primero heroku nos generó problemas en la creación de la base de datos y su acceso. Nos demoramos mucho tiempo en SQuirrel
+más del que debíamos y lo mejor fue cambiar a dbeaver. Nuestra falta de orden y no dividirnos las tareas y asignarnos los roles como debíamos desde un comienzo
+fue el detonante de este desastre._
 
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint1.png)
 
-### Y las pruebas de estilo de codificación ⌨️
+### Sprint 2
 
-_Explica que verifican estas pruebas y por qué_
+_El mayor problema de este Sprint fue el tiempo debido a que como tuvimos retraso con el Sprint 1 nuestro deber era estar al día, otra cosa que vale mencionar es 
+que heroku hizo "mantenimiento" y actualización de datos en dos bases de datos que creamos para el proyecto, negandonos el acceso y por lo tanto haciendonos crear una tercera.
+Además tampoco manejamos la actualización de tareas de taiga como era debido._
 
-```
-Da un ejemplo
-```
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint2.png)
 
-## Despliegue 📦
+## Sprint 3
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Finalmente para este ultimo Sprint logramos ponernos a la "par" de nuestros compañeros con una serie de correcciones pendientes pero por fin nos sentiamos en igualdad de condiciones
+(siendo desde un comienzo nuestra culpa) logramos completar todas las funcionalidades pedidas y arreglar los errores visuales y requerimientos para cada rol. En el taiga se ve reflejado
+por fin que lo manejamos como tenía que ser desde el primer Sprint. lo único que no nos quedo completo fue la implementación de buenas pruebas y la documentación del código._
 
-## Construido con 🛠️
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint3.png)
+
+### Reporte de pruebas y de cubrimiento de las mismas (sólo la foto del reporte principal). Para la cobertura, pueden usar los plugins disponibles (EclEmma, Jacoco, etc.)
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
+
+### Reporte de análisis estático de código.
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/baf8244e49784d8799ab8bccba65d7b5)](https://www.codacy.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-1-PROYCVDS-PROTEAM/PROTEAM&amp;utm_campaign=Badge_Grade)
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
