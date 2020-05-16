@@ -62,7 +62,7 @@
         <h2>CONSULTA DEL CLIENTE</h2>
         
         <h:form id="iniciativasUsuario">
-            <p:dataTable id="info" var="iniciativa" value="#{UserBean.iniciativas}"
+            <p:dataTable id="info" var="iniciativa" value="#{UserBean.getIniciativas()}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                          rowKey="#{iniciativa.id}" style="text-align:center;" selectionMode="single">
 

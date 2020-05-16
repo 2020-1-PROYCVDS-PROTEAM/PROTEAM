@@ -204,7 +204,8 @@ public class UserBean extends BasePageBean implements Serializable {
     public List<Iniciativa> consultarIniciativasVotadas(String usuario) {
         try {
 			List<Iniciativa> i=servicioPT.consultarIniciativasVotadas(usuario);
-			selectedi=i.get(0);
+			if(i!=null)
+				selectedi=i.get(0);
 			return i;
             //return servicioPT.consultarIniciativasVotadas(usuario);
         } catch (ServicesException e) {
@@ -215,7 +216,11 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarInteresesIniciativas(String usuario) {
         try {
-            return servicioPT.consultarInteresesIniciativas(usuario);
+			List<Iniciativa> i=servicioPT.consultarInteresesIniciativas(usuario);
+			if(i!=null)
+				selectedi=i.get(0);
+			return i;
+            //return servicioPT.consultarInteresesIniciativas(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
         }
@@ -224,7 +229,11 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarComentariosUsuario(String usuario) {
         try {
-            return servicioPT.consultarComentariosUsuario(usuario);
+			List<Iniciativa> i=servicioPT.consultarComentariosUsuario(usuario);
+			if(i!=null)
+				selectedi=i.get(0);
+			return i;
+            //return servicioPT.consultarComentariosUsuario(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarComentarios de usuario");
         }
@@ -247,6 +256,7 @@ public class UserBean extends BasePageBean implements Serializable {
         if (iniciativas == null) {
             System.out.println("esnull");
             consultarIniciativas();
+			selectedi=iniciativas.get(0);
         }
         return iniciativas;
     }

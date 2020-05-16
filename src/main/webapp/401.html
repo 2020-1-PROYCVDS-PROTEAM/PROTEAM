@@ -1,6 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
-<html>
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
@@ -15,21 +23,22 @@
     <h:body>
 
 
-	  <div class="page-container page-container-responsive">
-		<div class="row space-top-8 space-8 row-table">
-			<div class="col-5 col-middle">
-			  <center>
-				  <h1 class="text-jumbo text-ginormous">401 No autorizado</h1>
-				  <h2>Ha ocurrido un error si deseas puedes regresar a la pagina principal.</h2>
-				  <a href="/faces/iniciativas.xhtml">Iniciativas</a>
-			 </center>
-			</div>
-			<div class="col-5 col-middle text-center">
-				<img src="/resources/error.gif" width="500" height="550" alt="Funny image" align="center">
-			</div>
-		  </div>
-		</div>
-	  </div>
+        <div class="page-container page-container-responsive">
+            <div class="row space-top-8 space-8 row-table">
+                <div class="col-5 col-middle">
+                    <center>
+                        <h1 class="text-jumbo text-ginormous">401 No autorizado</h1>
+                        <h2>Ha ocurrido un error si deseas puedes regresar a la pagina principal.</h2>
+                        <a style="color:white;" href="/faces/iniciativas.xhtml">Iniciativas</a>
+                        <div >
+                            <img src="/resources/error.gif" style="margin-left: auto; margin-right: auto;" width="300" height="350" alt="Funny image"/>
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+
 
     </h:body>
 </html>

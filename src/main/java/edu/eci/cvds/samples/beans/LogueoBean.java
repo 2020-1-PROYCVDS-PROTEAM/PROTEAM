@@ -33,7 +33,7 @@ public class LogueoBean implements Serializable {
 
     private String name;
     private String pass;
-    public boolean logueado;
+    public boolean logueado=false;
 
     public void doLogin() {
         //System.out.println("Si esta entrando acaaaaaaaaa");
@@ -52,6 +52,7 @@ public class LogueoBean implements Serializable {
             } else {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/perfil_usuario2.xhtml");
             }
+			setLogueado(true);
 
         } catch (UnknownAccountException ex) {
             System.out.println("Unknown account");
@@ -100,7 +101,12 @@ public class LogueoBean implements Serializable {
     }
 
     public boolean isLogueado() {
-        return logueado;
+		if(!logueado){
+			return false;
+		}
+		else{
+			return logueado;
+		}
     }
 
     public void setLogueado(boolean logueado) {
