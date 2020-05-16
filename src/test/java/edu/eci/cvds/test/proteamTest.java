@@ -19,7 +19,7 @@ import edu.eci.cvds.samples.entities.Comentario;
 import edu.eci.cvds.samples.entities.Estadistica;
 import edu.eci.cvds.samples.entities.Voto;
 import edu.eci.cvds.samples.entities.PalabraClave;
-import edu.eci.cvds.samples.persistence.PersistenceException;
+//import edu.eci.cvds.samples.persistence.PersistenceException;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -33,144 +33,120 @@ public class proteamTest {
         sp = ServicioProteamFactory.getInstance().getServicioProteam();
     }
 
-    /*
-	@Test
-    public void deberiaConsultarUsuario() {
-		try {
-			Usuario u = sp.consultarUsuario("cesarg");
-		}catch(ServicesException ex) {
-			fail();
-		}
-    }
-	@Test
-	public void deberiaConsultarTodosLosUsuariosRegistrados() {
-		try {
-			List<Usuario> us = sp.consultarUsuarios();
-			
-		}catch(ServicesException ex) {
-			fail();
-		}
-		
-	}
-	@Test
-    public void lanzaExcepcionNoExisteUsuario() {
-    	try {
-    		Usuario u = sp.consultarUsuario("noConocido");
-    		fail();
-    	}catch(ServicesException ex) {
-    		assertTrue(true);
-    	}
-    }
+ 
 
-	@Test
-    public void realizaConsultaDeUsuario() {
-		try {
-			Usuario u = sp.consultarUsuario("eduardj");
-		}catch(ServicesException ex) {
-			fail();
-		}
-    }
- 
-	@Test
-    public void deberiaRegistrarUsuario() {
-		try {
-			sp.registrarUsuario("JoseTest","GM123","Jose","Gutierrez","test@gmail.com","Publico");
-			sp.consultarUsuario("JoseTest");
-			
-		}catch(ServicesException ex) {
-			fail();
-		}
-    }
-	
-	
     @Test
-    public void realizaConsultaDeIniciativas() {
-		try {
-			List<Iniciativa> i = sp.consultarIniciativas();
-		}catch(ServicesException ex) {
-			fail();
-		}
-    }
-     
- 
-	@Test
-	public void consultarIniciativaPorIdentificador() {
-		try {
-			Iniciativa i = sp.consultarIniciativa(1);
-		}catch(ServicesException ex) {
-			fail();
-		}
-	}
-     
- 
-	@Test
-	public void deberiaDarExcepcionNoExisteIniciativa() {
-		try {
-			Iniciativa i = sp.consultarIniciativa(2130184);
-			fail();
-		}catch(ServicesException ex) {
-			
-		}
-	}
-   @Test
-	public void consultaIniciativasPorPalabraClave() {
-		try {
-			Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
-			
-		}catch(ServicesException ex) {
-			fail();
-		}
-	}
-	
-	
-	@Test
-	public void deberíaLanzarExcepcionPalabraClave() {
-		try {
-			Iniciativa i = sp.palabraClaveIniciativa("Esta palabra no existe");
-			fail();
-		}catch(ServicesException ex) {
-			
-		}
-	}
- 
-	@Test
-	public void deberiaConsultarIniciativasRelacionadas() {
-		try {
-			List<Iniciativa> i = sp.consultarIniciativasRelacionadas(1);
-		}catch(ServicesException ex) {
-			fail();
-		}
-	}
-    @Test
-    public void deberiaConsultarIniciativasPorEstado() {
+    public void deberiaConsultarUsuario() {
         try {
-            List<Iniciativa> i = sp.consultarIniciativaPorEstado("Proyecto");
-            Iniciativa s = sp.consultarIniciativa(5);
+            Usuario u = sp.consultarUsuario("JoseTest");
         } catch (ServicesException ex) {
             fail();
         }
     }
+
+    @Test
+    public void deberiaConsultarTodosLosUsuariosRegistrados() {
+        try {
+            sp.consultarUsuarios();
+        } catch (ServicesException ex) {
+            fail();
+        }
+
+    }
+
+    @Test
+    public void lanzaExcepcionNoExisteUsuario() {
+        try {
+            sp.consultarUsuario("noConocido");
+            fail();
+        } catch (ServicesException ex) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void realizaConsultaDeUsuario() {
+        try {
+            Usuario u = sp.consultarUsuario("eduardj");
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+    
+
+
+    @Test
+    public void realizaConsultaDeIniciativas() {
+        try {
+            List<Iniciativa> i = sp.consultarIniciativas();
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+    @Test
+    public void consultarIniciativaPorIdentificador() {
+        try {
+            Iniciativa i = sp.consultarIniciativa(1);
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+    @Test
+    public void deberiaDarExcepcionNoExisteIniciativa() {
+        try {
+            Iniciativa i = sp.consultarIniciativa(2130184);
+            fail();
+        } catch (ServicesException ex) {
+
+        }
+    }
+
+    @Test
+    public void consultaIniciativasPorPalabraClave() {
+        try {
+            Iniciativa i = sp.palabraClaveIniciativa("Seguridad");
+
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+    @Test
+    public void deberíaLanzarExcepcionPalabraClave() {
+        try {
+            sp.palabraClaveIniciativa("Esta palabra no existe");
+            
+        } catch (ServicesException ex) {
+
+        }
+    }
+
+    @Test
+    public void deberiaConsultarIniciativasRelacionadas() {
+        try {
+            sp.consultarIniciativasRelacionadas("SEGIPRO");
+        } catch (ServicesException ex) {
+            fail();
+        }
+    }
+
+ 
 
     @Test
     public void noDeberiaConsultarIniciativasPorEstadoNoExiste() {
         try {
-            List<Iniciativa> i = sp.consultarIniciativaPorEstado("43235234");
+            sp.consultarIniciativaPorEstado("43235234");
             fail();
         } catch (ServicesException ex) {
 
         }
     }
 
-    
-	@Test
-	public void deberiaModificarIniciativaPorSuEstado() {
-		try {
-			sp.modificarIniciativa(5, "Enseñando java");
-		}catch(ServicesException ex) {
-			fail();
-		}
-	}
-    
+
+
     @Test
     public void noDeberiaModificarIniciativaPorSuEstado() {
         try {
@@ -180,35 +156,34 @@ public class proteamTest {
 
         }
     }
-    
+
     @Test
     public void deberiaConsultarIniciativasPorUsuario() {
-    	try {
-    		List<Iniciativa> i = sp.consultarIniciativasProponente("eduardj");
-    		
-    	}catch(ServicesException ex) {
-    		fail();
-    	}
+        try {
+            List<Iniciativa> i = sp.consultarIniciativasProponente("eduardj");
+
+        } catch (ServicesException ex) {
+            fail();
+        }
     }
-    
-    
+
     @Test
     public void noDeberiaConsultarIniciativasPorUsuarioNoExiste() {
-    	try {
-    		List<Iniciativa> i = sp.consultarIniciativasProponente("Usuario que no existe");
-    		fail();
-    	}catch(ServicesException ex) {
-    		
-    	}
+        try {
+            sp.consultarIniciativasProponente("Usuario que no existe");
+            fail();
+        } catch (ServicesException ex) {
+
+        }
     }
-    */
+
     @Test
     public void prueba() {
-    	try {
-    		List<Estadistica> i = sp.agrupeEstados();
-    	}catch(ServicesException ex) {
-    		fail();
-    	}
+        try {
+            List<Estadistica> i = sp.agrupeEstados();
+        } catch (ServicesException ex) {
+            fail();
+        }
     }
 
 }

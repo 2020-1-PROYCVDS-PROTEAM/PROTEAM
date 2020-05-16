@@ -18,7 +18,7 @@
 
 
     <h:body>
-        <p>CONSULTA DEL CLIENTE</p>
+        
         <h:form>     
             <p:growl id="messages" showDetail="true" />
             <p:toolbar>
@@ -30,14 +30,16 @@
                 </f:facet>
 
                 <f:facet name="left">
-                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" icon="pi pi-home" />
-                    <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" icon="pi pi-search"/>
                 </f:facet>
 
 
             </p:toolbar>
         </h:form>
-
+        
+        <h2>CONSULTA DEL CLIENTE</h2>
+        
         <h:form id="iniciativasUsuario">
             <p:dataTable id="info" var="iniciativa" value="#{UserBean.iniciativas}"
                          paginator="true"  selection="#{UserBean.selectedi}" rowIndexVar="rowIndexVar" rows="5"  paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -52,7 +54,6 @@
                 <p:column headerText="Votar">
                     <p:commandButton  styleClass="apply" update="iniciativasUsuario"  action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
                     <br/>
-
                 </p:column>
 
 
@@ -61,8 +62,6 @@
                         <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
                     </p:button>
                 </p:column>
-
-
 
                 <p:column headerText="Id" sortBy="#{iniciativa.getId()}">
                     <h:outputText value="#{iniciativa.getId()}"/>
@@ -75,8 +74,6 @@
                 <p:column headerText="Palabras clave" id="x" filterBy="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}" filterMatchMode="contains">
                     <h:outputText value="#{UserBean.consultarPalabrasClaveIniciativa(rowIndexVar+1)}"/>
                 </p:column>
-
-
 
                 <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
                     <h:outputText value="#{iniciativa.getNombre()}"/>
@@ -125,7 +122,6 @@
 
             <h3>Descargar información.</h3>
             <h:commandLink>
-
                 <p:graphicImage name="/excel.png" library="img"/>
                 <p:dataExporter type="xls" target="info" fileName="iniciativas" pageOnly="true"/>
             </h:commandLink>

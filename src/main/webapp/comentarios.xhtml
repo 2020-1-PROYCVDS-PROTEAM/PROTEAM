@@ -13,7 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet library="css" name="iniciativas.css" />
         <h:outputScript library="js" name="cierreSesion.js"/>
-		<link rel="icon" href="/resources/img/favicon.ico"/>
+        <link rel="icon" href="/resources/img/favicon.ico"/>
         <title>Comentarios</title>
 
     </h:head>
@@ -25,10 +25,10 @@ and open the template in the editor.
 
             <p:toolbar>
                 <f:facet name="left">
-                    <p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
                     <p:menuButton value="Opciones">
-                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-search"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"  icon="pi pi-pencil"/>
                     </p:menuButton>
 
 
@@ -47,49 +47,14 @@ and open the template in the editor.
         <h:form>
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
-            <p:panel id="custom" header="Iniciativa" style="margin-bottom:20px; margin-top:20px">
-                <style type="text/css">
-                    .ui-panelgrid.showcase-text-align-center.ui-grid-responsive.ui-panelgrid-cell {
-                        text-align: center;
-                    }
-                    .customPanelGrid.ui-panelgrid-content {
-                        align-items: center;
-                    }
+            <p:panel id="custom" header="Iniciativa" >
+                    <h2 id="titulo"><strong>#{UserBean.selectedi.getNombre()}</strong></h2>
 
-                    .ui-datatable{
-                        background-color:#009966;
-                        color:#009966;
-                        border-style: none !important;
-
-                    }
-
-                    .ui-button{
-                        background-color:#009966;
-                        color:#009966;
-                    }
-                    .buttons.apply {
-                        background: #009966;
-                    } 
-                    #titulo{
-                        text-align: center;
-
-                    }
-                    #descripcion{
-                        width:auto;
-                        padding-left: 10%;
-
-                    }
-                    .companyHeaderGrid.ui-panelgrid>*>tr,
-                    .companyHeaderGrid.ui-panelgrid>*>tr>td {
-                        border: none;
-                    }
-
-
-                </style>
-                <h:panelGrid columns="2" cellpadding="2" style = "display:block;">					
-
-
-                    <p:panelGrid id="informacion" columns="2">
+                    <h3 id="descripcion">Descripción: </h3>
+                    <h5 id="descripcion">#{UserBean.selectedi.getDescripcion()}</h5>               
+                <h:panelGrid columns="2"  layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">					
+                    
+                    <p:panelGrid id="informacion" columns="2"  cellpadding="2">
                         <f:facet name="header">
                             <p:graphicImage name="#{UserBean.estadoIniciativa()}"  library="img"  />
                         </f:facet>
@@ -105,25 +70,14 @@ and open the template in the editor.
 
                         <h:outputText value="Votos:" />
                         <h:outputText value="#{UserBean.consultarVotosIniciativa(UserBean.selectedi.getId())}" />
-						
-						<h:outputText value="Interes:" />
+
+                        <h:outputText value="Interes:" />
                         <h:outputText value="#{UserBean.selectedi.getId()}" />
 
                     </p:panelGrid>
 
-                    <h2 id="titulo"><strong>#{UserBean.selectedi.getNombre()}</strong></h2>
-
-                    <p><h3 id="descripcion">Descripción: </h3></p>
-                    <p><h4 id="descripcion">#{UserBean.selectedi.getDescripcion()}</h4></p>
-
-                    <p:commandButton value="Me gusta" styleClass="apply" update="informacion" action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
-					
-                    <p:commandButton value="Me interesa" styleClass="apply" update="informacion" action="#{bean.interesRegistrado()}" actionListener="#{UserBean.registrarInteres(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon='pi pi-heart'/>
-
                     <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"
-                                 rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:20%; margin-left: 10%;">
-
-                        <br/>
+                                 rows="4" rowKey="#{palabras}" selectionMode="single" selection="#{UserBean.palabra}" rowIndexVar="rowIndexVar" id="esto" style="width:40%;  margin-left: 40%; text-align:center;">
 
                         <p:ajax event="rowSelect" listener="#{UserBean.setPalabra(UserBean.getPalabra())}" />
 
@@ -133,11 +87,12 @@ and open the template in the editor.
                             </p:button>
 
                         </p:column>
-
-
-                    </p:dataTable>						
-
+                    </p:dataTable>
+                    
                 </h:panelGrid>
+                <br/>    
+                <p:commandButton value="Me gusta" styleClass="apply" update="informacion" action="#{bean.votoRegistrado()}" actionListener="#{UserBean.registrarVoto(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="#{UserBean.existeVoto(logeoBean.name,UserBean.selectedi.id)==false? 'pi pi-star-o' : 'pi pi-star'}" />
+                <p:commandButton value="Me interesa" styleClass="apply" update="informacion" action="#{bean.interesRegistrado()}" actionListener="#{UserBean.registrarInteres(logeoBean.name,UserBean.selectedi.id)}" onclick="#{UserBean.consultarIniciativas()}" icon="pi pi-check-circle"/> 
             </p:panel>
 
         </h:form>
@@ -181,12 +136,10 @@ and open the template in the editor.
 
         <h:form id="RegistrarComentario">    
 
-
             <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
             <p:tab id="personal" title="Comentar">
                 <p:panel header="Publica tu comentario">
                     <p:messages />
-                    <p>"#{UserBean.selectedi.id}"</p>
                     <p:inputTextarea rows="5" cols="40" counter="display" maxlength="140" counterTemplate="Quedan {0} caracteres restantes." autoResize="false" binding="#{contenido}" required="true"/>
                     <br />
                     <h:outputText id="display" />              

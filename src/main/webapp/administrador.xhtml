@@ -28,10 +28,9 @@ and open the template in the editor.
 
             <p:toolbar>
                 <f:facet name="left">
-
-
-                    <p:commandButton value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-                    <p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" icon="pi pi-search"/>
+                    <p:commandButton value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-search"/>
 
 
                 </f:facet>
@@ -104,6 +103,85 @@ and open the template in the editor.
             </p:dataTable>	
 
         </h:form>
+        
+       <h:form id="ConsultaIniciativa">
+
+            <p:growl id="msgss" showDetail="true"/>
+
+            <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.iniciativas}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
+                         paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rows="5"  rowIndexVar="rowIndexVar" editable="true" >
+
+                <f:facet name="header">
+                    Iniciativas.
+                </f:facet>
+
+                <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
+                <p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="resultado"/>
+
+                <p:column selectionMode="multiple"/>
+
+
+                <p:column headerText="Comentarios">
+                    <p:button outcome="comentarios" value="Comentar">
+                        <f:param id="x" name="idPag" value="#{UserBean.setSelectedi(UserBean.consultarIniciativa(rowIndexVar+1))}" />
+                    </p:button>
+                </p:column>
+                
+                
+                <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
+                    <h:outputText value="#{iniciativa.getNombre()}"/>
+                </p:column>
+                
+                <p:column headerText="Descripción" sortBy="#{iniciativa.getDescripcion()}">
+                    <h:outputText value="#{iniciativa.getDescripcion()}"/>
+                </p:column>
+                
+                <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
+                    <h:outputText value="#{iniciativa.getVotos()}"/>
+                </p:column>
+
+                <p:column headerText="Palabras clave" sortBy="#{iniciativa.getPalabraClave()}">
+                    <h:outputText value="#{iniciativa.getPalabraClave()}"/>
+                </p:column>
+               
+                <p:column headerText="Área" sortBy="#{iniciativa.getArea()}">
+                    <h:outputText value="#{iniciativa.getArea()}"/>
+                </p:column>
+                <p:column headerText="Usuario" sortBy="#{iniciativa.getUsuarioProponente()}">
+                    <h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
+                </p:column>
+                <p:column headerText="CorreoU" sortBy="#{iniciativa.getcorreoProponente()}">
+                    <h:outputText value="#{iniciativa.getcorreoProponente()}"/>
+                </p:column>     
+                <p:column headerText="Fecha" sortBy="#{iniciativa.getFecha()}">
+                    <h:outputText value="#{iniciativa.getFecha()}"/>
+                </p:column>     
+
+
+                <p:column headerText="Estado">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText id="resultado"  var="x" value="#{iniciativa.estado}" /></f:facet>
+                        <f:facet name="input" >
+                            <h:selectOneMenu binding="#{are}" id="are" value="xa" style="width:100%">
+                                <f:selectItems id="xa" value="#{AdministradorBean.ideas}" var="ide" itemLabel="#{ide}"  itemValue="#{ide}" />			
+                            </h:selectOneMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column style="width:35px">
+                    <p:rowEditor />
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton process="prueba" icon="pi pi-search" value="Relacionar iniciativas"  action="#{AdministradorBean.relacionarIniciativas()}"/>
+                </f:facet>
+
+            </p:dataTable>
+            <p:inputText id="Arelacionar" value="#{AdministradorBean.nombre}"  ></p:inputText>
+            <p:commandButton icon="pi pi-search" update="ConsultaIniciativa" value="Buscar iniciativas relacionadas"  action="#{AdministradorBean.consultarIniciativasRelacionadas(AdministradorBean.nombre)}"/>
+            <p:commandButton icon="pi pi-search" update="ConsultaIniciativa" value="Reiniciar iniciativas" action="#{AdministradorBean.consultarIniciativas()}"/>
+        </h:form>        
 
         <p:remoteCommand name="cierreSesion" actionListener="#{logeoBean.cerrarSesion()}"/>	 
 

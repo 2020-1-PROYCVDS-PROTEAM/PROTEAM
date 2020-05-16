@@ -13,7 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputStylesheet library="css" name="iniciativas.css" />
         <h:outputScript library="js" name="cierreSesion.js"/>
-		<link rel="icon" href="/resources/img/favicon.ico"/>
+        <link rel="icon" href="/resources/img/favicon.ico"/>
         <title>Busqueda avanzada</title>
 
     </h:head>
@@ -25,10 +25,11 @@ and open the template in the editor.
 
             <p:toolbar>
                 <f:facet name="left">
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
                     <p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
                     <p:menuButton value="Opciones">
-                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}"/>
-                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-search"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}" icon="pi pi-pencil"/>
                     </p:menuButton>
 
 
@@ -51,18 +52,21 @@ and open the template in the editor.
 
             <p:dataTable var="palabras" value="#{UserBean.consultarIniciativasPalabraClave(UserBean.getPalabra())}" class="tabla"
                          paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                         rows="5" selectionMode="single" id="id"  tableStyle="table-layout: right;" style="width:auto"
+                         rows="5" selectionMode="single" id="id" style="text-align:center;" tableStyle="table-layout: right;"
                          rowKey="#{palabras.id}" editable="false" >
 
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
-				
+                
+                <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
+
+
                 <p:column headerText="Nombre" sortBy="#{palabras.getNombre()}">
                     <h:outputText value="#{palabras.getNombre()}"/>
                 </p:column>
-				
-				<p:column headerText="PalabraClave" id="x" >
+
+                <p:column headerText="PalabraClave" id="x" >
                     <h:outputText value="#{palabras.getPalabraClave()}"/>
                 </p:column>
 
@@ -74,10 +78,6 @@ and open the template in the editor.
                     <h:outputText value="#{palabras.getEstado()}"/>
                 </p:column>
 
-                <p:column headerText="Descripción" sortBy="#{palabras.getDescripcion()}">
-                    <h:outputText value="#{palaras.getDescripcion()}"/>
-                </p:column>
-				
                 <p:column headerText="Área" sortBy="#{palabras.getArea()}">
                     <h:outputText value="#{palabras.getArea()}"/>
                 </p:column>
@@ -87,12 +87,12 @@ and open the template in the editor.
                 <p:column headerText="CorreoU" sortBy="#{palabras.getcorreoProponente()}">
                     <h:outputText value="#{palabras.getcorreoProponente()}"/>
                 </p:column>
-				
+
                 <p:column headerText="Fecha" sortBy="#{palabras.getFecha()}">
                     <h:outputText value="#{palabras.getFecha()}"/>
                 </p:column>      
-				
-				<p:column headerText="Comentarios">
+
+                <p:column headerText="Comentarios">
                     <p:button outcome="comentarios" value="Comentar">
                         <f:param id="y" name="idPag" value="#{UserBean.selectedi.id}" />
                     </p:button>

@@ -53,7 +53,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
 
     public List<Iniciativa> consultarIniciativasProponente(String usuario) throws PersistenceException {
         try {
-            System.out.println("Llega hasta consultarIniciativaP DAO");
             List<Iniciativa> i = iniciativaMapper.consultarIniciativasProponente(usuario);
             if (i.size() == 0) {
                 throw new PersistenceException("El proponente no ha propuesto iniciativas");
@@ -105,8 +104,6 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> agrupeIniciativas() throws PersistenceException {
         try {
-            //System.out.println("MyBatisDAO agrupando  Iniciativa");
-            //System.out.println("Probando el retorno: " + iniciativaMapper.agrupeIniciativas());
             return iniciativaMapper.agrupeIniciativas();
 
         } catch (Exception e) {
@@ -156,7 +153,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> consultarIniciativasRelacionadas(String id) throws PersistenceException {
         try {
-            System.out.println("Esta entrando aca JOSE23423");
+            //System.out.println("Esta entrando aca JOSE23423");
             return iniciativaMapper.consultarIniciativasRelacionadas(id);
 
         } catch (Exception e) {
@@ -214,8 +211,7 @@ public class MyBatisIniciativaDAO implements IniciativaDAO {
     @Override
     public List<Iniciativa> consultarComentariosUsuario(String usuario) throws PersistenceException {
         try {
-            //System.out.println("Llega correctamente antes de pedir mapper usuario: " + usuario);
-            //System.out.println("Inciaitvia retornada: " + iniciativaMapper.consultarComentariosUsuario(usuario));
+            
             return iniciativaMapper.consultarComentariosUsuario(usuario);
         } catch (Exception ex) {
             System.out.println("FALLO Y FUE CAPTURADO EN EL MyBatisDao Comentarios");

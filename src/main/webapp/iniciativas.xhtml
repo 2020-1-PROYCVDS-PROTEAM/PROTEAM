@@ -33,10 +33,10 @@ and open the template in the editor.
                     <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
 
                     <p:menuButton value="Iniciativas">
-                        <p:menuitem value="Registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
-                        <p:menuitem value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}"/>
+                        <p:menuitem value="Registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}" icon="pi pi-pencil"/>
+                        <p:menuitem value="Iniciativas proponente" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}" icon="pi pi-search"/>
                     </p:menuButton>
-                    <p:commandButton value="Consultar usuario" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-home" />
+                    <p:commandButton value="Consultar usuario" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-search" />
                 </f:facet>
 
                 <f:facet name="right">
@@ -46,6 +46,8 @@ and open the template in the editor.
                 </f:facet>
             </p:toolbar>
         </h:form>
+        
+        
         <h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol != 'Proponente'}">     
             <p:growl id="messages" showDetail="true" />
             <p:toolbar>
@@ -88,13 +90,6 @@ and open the template in the editor.
                     <p:button outcome="comentarios" value="Comentar">
                         <f:param id="x" name="idPag" value="#{UserBean.setSelectedi(UserBean.consultarIniciativa(rowIndexVar+1))}" />
                     </p:button>
-                </p:column>
-
-
-
-
-                <p:column headerText="Id" sortBy="#{iniciativa.getId()}">
-                    <h:outputText value="#{iniciativa.getId()}"/>
                 </p:column>
 
                 <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
