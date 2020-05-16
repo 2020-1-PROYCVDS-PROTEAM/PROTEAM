@@ -50,7 +50,7 @@ public class LogueoBean implements Serializable {
             } else if (currentUser.hasRole("PMO")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/PMO.xhtml");
             } else {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/perfil_usuario2.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/iniciativa.xhtml");
             }
 			setLogueado(true);
 
@@ -78,9 +78,10 @@ public class LogueoBean implements Serializable {
         }
     }
     
-     private void error(String message) {
+     public void error(String message) {
         FacesContext.getCurrentInstance().addMessage("Shiro", new FacesMessage(FacesMessage.SEVERITY_ERROR, message, "error"));
     }
+	
 
     public String getName() {
         //System.out.println("ME PIDIERON EL NOMBRE EN LOGEOBEAN: "+name);
