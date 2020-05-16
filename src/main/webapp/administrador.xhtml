@@ -137,9 +137,10 @@ and open the template in the editor.
                 </p:column>
                 
                 <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
-                    <h:outputText value="#{iniciativa.getVotos()}"/>
+                    <h:outputText value="#{UserBean.consultarVotosIniciativa(iniciativa.getId())}"/>
                 </p:column>
-
+				
+				
                 <p:column headerText="Palabras clave" sortBy="#{iniciativa.getPalabraClave()}">
                     <h:outputText value="#{iniciativa.getPalabraClave()}"/>
                 </p:column>
