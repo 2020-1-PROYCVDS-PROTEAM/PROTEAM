@@ -1,6 +1,6 @@
 package edu.eci.cvds.test;
 
-import org.junit.Before;
+//import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,15 +12,15 @@ import edu.eci.cvds.samples.Services.ServicioProteam;
 import edu.eci.cvds.samples.Services.ServicioProteamFactory;
 //import edu.eci.cvds.samples.persistence.PersistenceException;
 
-import org.apache.ibatis.session.SqlSession;
+//import org.apache.ibatis.session.SqlSession;
 
-public class proteamTest {
+public class ProTeamTest {
 
     @Inject
-    private SqlSession sqlSession;
+    //private SqlSession sqlSession;
     ServicioProteam sp;
 
-    public proteamTest() {
+    public ProTeamTest() {
         sp = ServicioProteamFactory.getInstance().getServicioProteam();
     }
 
@@ -51,7 +51,7 @@ public class proteamTest {
             sp.consultarUsuario("noConocido");
             fail();
         } catch (ServicesException ex) {
-            assertTrue(true);
+            //assertTrue(true);
         }
     }
 
