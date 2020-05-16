@@ -16,16 +16,16 @@ Sígalo paso a paso para lograr una utilización correcta y eficiente de nuestro
 
 _**Página de inicio:** Al ingresar al proyecto [ECI-BANK-PRO](https://eci-bank-pro.herokuapp.com/faces/login.xhtml) ._
 _Se encontrara con la pagina inicial, la cual le permite dos opciones:_
-	* Loguearse
-	* Registrarse
+   * Loguearse
+   * Registrarse
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png)
 _Para registarse lo único que tiene que hacer es rellenar los campos que se le piden._
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png)
 _Una vez registrado, puede iniciar sesion y dependiendo el rol que haya escogido entre los cuales estan y sera dirigido a la pagina correspondiente a su rol:_
-	* Administrador
-	* PMO
-	* Proponente	
-	* Publico.
+   * Administrador
+   * PMO
+   * Proponente	
+   * Publico.
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/PaginaRol.png)
 
 _Las principales funcionalidades que manejamos dependiendo del rol se encuentran las siguientes:_
@@ -94,13 +94,13 @@ _A continuación se presenta el diagrama:_
 _La arquitectura de divide en tres capas:_
 
 #### Capa presentación
-	* JSF (Java Server Faces)
-	* Primefaces
+   * JSF (Java Server Faces)
+   * Primefaces
 #### Capa Aplicación
-	*Java
-	* Google Guice (Un framework para inyección de dependencias)
-	* Maven (Herramienta para gestión de dependencias)
-	* Apache Shiro (Framework para autentiticación)
+   *Java
+   * Google Guice (Un framework para inyección de dependencias)
+   * Maven (Herramienta para gestión de dependencias)
+   * Apache Shiro (Framework para autentiticación)
 #### Capa persistencia
 
 _Se usó un motor de bases de datos PostgreSQL y la herramienta myBatis, la cual se encarga de la persistencia (mappea sentencias SQL y procedimientos almacenados con objetos a partir de ficheros XML o anotaciones)._
@@ -127,9 +127,8 @@ _Descripción del proceso que se llevo a cabó._
 
 _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
-
 |     Nombre    |     Rol         |
-|--------------|------------- |
+|--------------|----------------- |
 |César González|Team Developer    |
 |Eduard Jimenez|Team Developer    |
 |Jose Gutierrez|Team Developer    |
