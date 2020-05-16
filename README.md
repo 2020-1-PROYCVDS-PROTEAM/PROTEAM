@@ -17,18 +17,18 @@ Sígalo paso a paso para lograr una utilización correcta y eficiente de nuestro
 _**Página de inicio:** Al ingresar al proyecto [ECI-BANK-PRO](https://eci-bank-pro.herokuapp.com/faces/login.xhtml) ._
 _Se encontrara con la pagina inicial, la cual le permite dos opciones:_
 
->- Loguearse
->- Registrarse
+*·Loguearse.
+*·Registrarse.
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Inicio.png)
 _Para registarse lo único que tiene que hacer es rellenar los campos que se le piden._
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Registro.png)
 _Una vez registrado, puede iniciar sesion y dependiendo el rol que haya escogido entre los cuales estan y sera dirigido a la pagina correspondiente a su rol:_
 
->- Administrador
->- PMO
->- Proponente
->- Publico
+*·Administrador.
+*·PMO.
+*·Proponente.
+*·Publico.
 
 ![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/PaginaRol.png)
 
@@ -99,15 +99,15 @@ _La arquitectura de divide en tres capas:_
 
 #### Capa presentación
 
->- JSF (Java Server Faces)
->- Primefaces
+*·JSF (Java Server Faces).
+*·Primefaces.
 
 #### Capa Aplicación
 
->- Java
->- Google Guice (Un framework para inyección de dependencias)
->- Maven (Herramienta para gestión de dependencias)
->- Apache Shiro (Framework para autentiticación)
+*·Java.
+*·Google Guice (Un framework para inyección de dependencias).
+*·Maven (Herramienta para gestión de dependencias).
+*·Apache Shiro (Framework para autentiticación).
 
 #### Capa persistencia
 
@@ -138,12 +138,12 @@ _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
 | Nombre | Rol |
 | - | - |
-| [César González](https://github.com/csarssj) | `'Team Developer'` |
-| [Eduard Jimenez](https://github.com/EdKillah) | `'Team Developer'` |
-| [Jose Gutierrez](https://github.com/kirilka97) | `'Team Developer'` |
-| [Jonathan Pulido](https://github.com/Arlais) | `'Team Developer'` |
-| Oscar Ospina | `'Product Owner'` |
-| Julián Velasco| `'Product Owner'` |
+| [César González](https://github.com/csarssj) | 'Team Developer' |
+| [Eduard Jimenez](https://github.com/EdKillah) | 'Team Developer' |
+| [Jose Gutierrez](https://github.com/kirilka97) | 'Team Developer' |
+| [Jonathan Pulido](https://github.com/Arlais) | 'Team Developer' |
+| Oscar Ospina | 'Product Owner' |
+| Julián Velasco| 'Product Owner' |
 
 
 _También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto._
