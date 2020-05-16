@@ -205,6 +205,10 @@
             <p:overlayPanel widgetVar="carOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
                 <p:outputPanel id="carDetail" style="text-align:center;">
                 <p:dataTable var="comentarios" value="#{UserBean.consultarComentariosIniciativaUsuario(logeoBean.name,UserBean.selectedi.getId())}" rows="5" paginator="true">
+				    <f:facet name="header">
+						#{UserBean.selectedi.nombre}
+					</f:facet>
+
                     <p:column headerText="Comentario">
                         <h:outputText value="#{comentarios.getContenido()}" />
                     </p:column>

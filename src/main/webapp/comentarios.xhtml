@@ -91,9 +91,6 @@ and open the template in the editor.
                         <h:outputText value="Votos:" />
                         <h:outputText value="#{UserBean.consultarVotosIniciativa(UserBean.selectedi.getId())}" />
 
-                        <h:outputText value="Interes:" />
-                        <h:outputText value="#{UserBean.selectedi.getId()}" />
-
                     </p:panelGrid>
 
                     <p:dataTable var="palabras" value="#{UserBean.consultarPalabrasClaveIniciativa(UserBean.selectedi.id)}" class="tabla"

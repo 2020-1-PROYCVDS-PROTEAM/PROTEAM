@@ -13,7 +13,7 @@ and open the template in the editor.
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <h:outputScript library="js" name="cierreSesion.js"/>
         <link href="administrador.css" rel="stylesheet" type="text/css"/>
-        <link rel="icon" href="/resources/administrador.ico"/>
+		<link rel="icon" href="/resources/img/favicon.ico"/>
         <title>Administrador</title>
     </h:head>
 
@@ -102,28 +102,28 @@ and open the template in the editor.
             </p:dataTable>	
 
         </h:form>
-        
+        <br/><br/>
        <h:form id="ConsultaIniciativa">
 
             <p:growl id="msgss" showDetail="true"/>
 
-            <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.iniciativas}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.id}"
+            <p:dataTable id="prueba" var="iniciativa" value="#{AdministradorBean.getIniciativas()}" selection="#{AdministradorBean.selectsi}" rowKey="#{iniciativa.nombre}"
                          paginator="true"  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                         rows="5"  rowIndexVar="rowIndexVar" editable="true" >
+                         rows="5"  rowIndexVar="rowIndexVar" editable="true" style="text-align: center">
 
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
 
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(rowIndexVar+1)}" />
-				<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}"  update="prueba"/>
+				<p:ajax event="rowEdit" listener="#{AdministradorBean.cambiarEstado(iniciativa.getId(),are.value)}" oncomplete="updateTable()" update="prueba"/>
 
-                <p:column selectionMode="multiple"/>
+                <p:column selectionMode="multiple" style="width: 10px;" />
 
 
                 <p:column headerText="Comentarios">
-                    <p:button outcome="comentarios" value="Comentar">
-                        <f:param id="x" name="idPag" value="#{UserBean.setSelectedi(UserBean.consultarIniciativa(rowIndexVar+1))}" />
+                    <p:button outcome="comentarios" process="prueba" value="Comentar" oncomplete="#{UserBean.setSelectedi(iniciativa.getId())}">
+                        <f:param id="x" name="idPag" value="#{UserBean.setSelectedi(UserBean.getSelectsi().get(rowIndexVar))}" />
                     </p:button>
                 </p:column>
                 
