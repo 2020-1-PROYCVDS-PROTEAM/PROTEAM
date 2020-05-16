@@ -162,3 +162,37 @@ _Scrum es una metodología ágil y flexible para gestionar el desarrollo de soft
 _A continuación se presenta el link:_
 
 [TAIGA PROTEAM](https://tree.taiga.io/project/csarssj-plataforma-banco-de-iniciativas-de-proyectos/backlog)
+
+### Sprint 1
+
+_Iniciamos demasiado mal, primero heroku nos generó problemas en la creación de la base de datos y su acceso. Nos demoramos mucho tiempo en SQuirrel
+más del que debíamos y lo mejor fue cambiar a dbeaver. Nuestra falta de orden y no dividirnos las tareas y asignarnos los roles como debíamos desde un comienzo
+fue el detonante de este desastre._
+
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint1.png)
+
+### Sprint 2
+
+_El mayor problema de este Sprint fue el tiempo debido a que como tuvimos retraso con el Sprint 1 nuestro deber era estar al día, otra cosa que vale mencionar es 
+que heroku hizo "mantenimiento" y actualización de datos en dos bases de datos que creamos para el proyecto, negandonos el acceso y por lo tanto haciendonos crear una tercera.
+Además tampoco manejamos la actualización de tareas de taiga como era debido._
+
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint2.png)
+
+### Sprint 3
+
+_Finalmente para este ultimo Sprint logramos ponernos a la "par" de nuestros compañeros con una serie de correcciones pendientes pero por fin nos sentiamos en igualdad de condiciones
+(siendo desde un comienzo nuestra culpa) logramos completar todas las funcionalidades pedidas y arreglar los errores visuales y requerimientos para cada rol. En el taiga se ve reflejado
+por fin que lo manejamos como tenía que ser desde el primer Sprint. lo único que no nos quedo completo fue la implementación de buenas pruebas y la documentación del código._
+
+![image](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/master/Imagenes/Sprint3.png)
+
+### Reporte de pruebas y de cubrimiento de las mismas (sólo la foto del reporte principal). Para la cobertura, pueden usar los plugins disponibles (EclEmma, Jacoco, etc.)
+
+_Menciona las herramientas que utilizaste para crear tu proyecto_
+
+### Reporte de análisis estático de código
+
+_A continuación se presenta el link:_
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/baf8244e49784d8799ab8bccba65d7b5)](https://www.codacy.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-1-PROYCVDS-PROTEAM/PROTEAM&amp;utm_campaign=Badge_Grade)
