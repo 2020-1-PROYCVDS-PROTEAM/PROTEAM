@@ -90,9 +90,9 @@ _Presentado a:_
 También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto. 
 ### Modelo ER.
 
-[Modelo ET](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM//blob/master/Imagenes/ModeloER.png)
+[Modelo ET](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/blob/master/Imagenes/ModeloER.png)
 ### Diagrama de clases (hacerlo mediante ingeniería inversa)
-[Diagrama de clases ](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM//blob/master/Imagenes/DiagramaClass.png)
+[Diagrama de clases ](https://raw.githubusercontent.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/blob/master/Imagenes/DiagramaClass.png)
 
 ### Descripción de la arquitectura (capas) y del Stack de tecnologías utilizado (PrimeFaces, Guice, QuickTheories, PostgreSQL).
 [Diagrama de paquetes]()
