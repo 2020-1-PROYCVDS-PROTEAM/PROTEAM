@@ -1,31 +1,18 @@
 # ECI Banco de proyectos
 _ECI Banco de proyectos proyecto final de la materia Ciclos de Vida de Desarrollo del software para el periodo 2020-1. 
-## Autores 
-
-_El equipo PROTEAM fue el encargado de desarrollar este proyecto._
-
-* **César González** - *Team Developer* - [csarssj](https://github.com/csarssj)
-* **Eduard Jimenez** - *Team Developer* - [EdKillah](https://github.com/EdKillah)
-* **Jose Gutierrez** - *Team Developer* - [kirilka97](https://github.com/kirilka97)
-* **Jonathan Pulido** - *Team Developer* - [Arlais](https://github.com/Arlais)
-
-_Presentado a:_
-* **Oscar Ospina** - *Product Owner* 
-* **Julián Velasco** - *Product Owner* 
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto. 
 
 ## Decripción del producto
 
 ### Decripción general
 
-_La Plataforma banco de iniciativas de proyectos, es una herramienta donde la comunidad universitaria de la Escuela Colombiana de Ingeniería Julio Garavito
- pueden registrar sus iniciativas e ideas de proyectos para ser desarrollados o gestionados por la PMO de la Escuela. 
- El sistema, más allá de facilitar el registro de las iniciativas e ideas de proyectos, es una valiosa base de conocimiento
- donde los diferentes actores pueden revisar si hay iniciativas, ideas o intereses similares y aunar esfuerzos para la materialización. 
- Adicional a lo anterior, el personal académico puede integrar a los estudiantes de diferentes asignaturas o proyectos de grado para su realización, materializando las iniciativas para el beneficio de toda la comunidad universitaria.
- La PMO puede priorizar las iniciativas viables, asignar responsables, gestionar la asignación de recursos, llevar métricas e identificar grupos de interés -a través del tiempo- que se van presentando para cada iniciativa. Con esto se espera lograr no solo la realización de los proyectos sino una aplicación práctica de los conocimientos adquiridos por los estudiantes dentro de las asignaturas de la Escuela generando un ambiente de aprendizaje colaborativo._
+_La Plataforma banco de iniciativas de proyectos, es una herramienta donde la comunidad universitaria de la Escuela Colombiana de Ingenieria Julio Garavito pueden registrar sus iniciativas e ideas de proyectos para ser desarrollados o gestionados por la PMO de la Escuela.
 
+El sistema, mas alla de facilitar el registro de las iniciativas e ideas de proyectos, es una valiosa base de conocimiento donde los diferentes actores pueden revisar si hay iniciativas, ideas o intereses similares y aunar esfuerzos para la materializacion._
+
+
+
+
+El objetivo del sistema es permitir el registro y seguimiento de las iniciativas e ideas de proyectos que han sido propuestas por la comunidad universitaria de la Escuela. El banco de iniciativas debe contar con una interfaz de usuario bonita y amigable con los usuarios.
 ### Manual de usuario
 
 _El presente manual lo ayudará a gestionar de manera ágil y sencilla nuestro Sistema UBITrack®. 
@@ -43,12 +30,12 @@ _Una vez registrado, puede iniciar sesion y dependiendo el rol que haya escogido
 *PMO
 *Proponente
 *Publico
-Sera dirigido a la pagina correspondiente a su rol_.
+Sera dirigido a la pagina correspondiente a su rol._
 ![image]()
 
 _Las principales funcionalidades que manejamos dependiendo del rol se encuentran las siguientes:_
 
-_**Relacionar iniciativas y consultar iniciativas relacionadas:** donde al seleccionar cual quier numero de iniciativas se pueden relacionar _
+_**Relacionar iniciativas y consultar iniciativas relacionadas:** donde al seleccionar cual quier numero de iniciativas se pueden relacionar_
 ![image]()
 _En la pestaña **Buscar Iniciativas relacionadas ** al agregar el nombre de cualquier iniciativa se pueden ver las que estan relacionadas con la misma_
 ![image]()
@@ -60,57 +47,64 @@ _**Mostrar interes por una iniciativa ** al seleccionar la iniciativa puede vota
 ![image]()
 _Será dirigido a la pagina correspondiente donde además de observar información adicional sobre la iniciativa y el proponente podrá mostrar su interes de diferentes formas._
 ![image]()
+_**Perfil Usuario **Cada usuario contara con una pagina de perfil.Donde se veran sus iniciativas, por las cuales ha votado y comentado ._
 ![image]()
+_**Cambiar rol usuario **Como administrador podra asignarle y cambiar roles a los usuarios, además de modificar los estados de las iniciativas._
 ![image]()	
 ![image]()
+_**Graficas y datos de iniciativas ** Se proporcionaran los datos de cada iniciativa, separadas por area y estado._
 ![image]()
+_**Tablas y busquedas ** Se proporcionaran los datos de las respectivas tablas, además de poder ordenar las columnas y realizar busqueda por cada dato que el usuario desee consultar_
 
 
 
-## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+## Aquitectura y Diseño detallado
 
+_**Modelo ER**_
+
+_**Diagrama de clases**_
+
+_**Descripción de la arquitectura **_
+
+_**Enlace a la aplicación en Heroku.
+Enlace al sistema de integración continua.
+**_
 Mira **Deployment** para conocer como desplegar el proyecto.
 
 
-### Pre-requisitos 📋
+## Descripción del proceso
+### Autores 
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
-```
-Da un ejemplo
-```
+* **César González** - *Team Developer* - [csarssj](https://github.com/csarssj)
+* **Eduard Jimenez** - *Team Developer* - [EdKillah](https://github.com/EdKillah)
+* **Jose Gutierrez** - *Team Developer* - [kirilka97](https://github.com/kirilka97)
+* **Jonathan Pulido** - *Team Developer* - [Arlais](https://github.com/Arlais)
 
-### Instalación 🔧
+_Presentado a:_
+* **Oscar Ospina** - *Product Owner* 
+* **Julián Velasco** - *Product Owner* 
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/2020-1-PROYCVDS-PROTEAM/PROTEAM/graphs/contributors) quíenes han participado en este proyecto. 
+### Modelo ER.
+[Modelo ET]()
+### Diagrama de clases (hacerlo mediante ingeniería inversa)
+[Diagrama de clases ]()
+### Descripción de la arquitectura (capas) y del Stack de tecnologías utilizado (PrimeFaces, Guice, QuickTheories, PostgreSQL).
+[Diagrama de paquetes]()
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/baf8244e49784d8799ab8bccba65d7b5)](https://www.codacy.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-1-PROYCVDS-PROTEAM/PROTEAM&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM.svg?style=svg)](https://circleci.com/gh/2020-1-PROYCVDS-PROTEAM/PROTEAM)
 
 ### Analice las pruebas end-to-end 🔩
 
 _Explica que verifican estas pruebas y por qué_
 
-```
-Da un ejemplo
-```
+
 
 ### Y las pruebas de estilo de codificación ⌨️
 
@@ -132,27 +126,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 * [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
 
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
 
 ## Versionado 📌
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
