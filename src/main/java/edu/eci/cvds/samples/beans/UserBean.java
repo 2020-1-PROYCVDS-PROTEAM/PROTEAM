@@ -37,7 +37,6 @@ public class UserBean extends BasePageBean implements Serializable {
     private Iniciativa selectedi;
     private List<Iniciativa> selectsi;
     private String palabra;
-    //private Exporter<DataTable> textExporter;
 
     @Inject
     private ServicioProteam servicioPT;
@@ -45,6 +44,13 @@ public class UserBean extends BasePageBean implements Serializable {
     private List<Comentario> comentarios;
     private List<PalabraClave> palabraclave;
     private List<Voto> votos;
+	
+	
+	public void test(){
+		System.out.println("POR ACA APARECE");
+		selectedi = consultarIniciativa("1");
+	}
+	
 
     private void setErrorMessage(Exception e) {
         String message = e.getMessage();
@@ -156,8 +162,9 @@ public class UserBean extends BasePageBean implements Serializable {
     }
 
     public boolean existeVoto(String idUsuario, String idIniciativa) {
-        int idd = Integer.parseInt(idIniciativa);
+      
         try {
+			  int idd = Integer.parseInt(idIniciativa);
             Voto voto = servicioPT.consultarVoto(idUsuario, idd);
             if (voto == null) {
                 return false;
@@ -196,7 +203,10 @@ public class UserBean extends BasePageBean implements Serializable {
 
     public List<Iniciativa> consultarIniciativasVotadas(String usuario) {
         try {
-            return servicioPT.consultarIniciativasVotadas(usuario);
+			List<Iniciativa> i=servicioPT.consultarIniciativasVotadas(usuario);
+			selectedi=i.get(0);
+			return i;
+            //return servicioPT.consultarIniciativasVotadas(usuario);
         } catch (ServicesException e) {
             System.out.println("CAPTURADO EN USERBEAN consultarIniciativa x id");
         }

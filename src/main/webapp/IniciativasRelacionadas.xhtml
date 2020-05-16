@@ -1,108 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core"      
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-                <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-		<link href="administrador.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <link href="administrador.css" rel="stylesheet" type="text/css"/>
         <title>Registro de usuarios prueba</title>
     </h:head>
-	<script type = "text/javascript">
-	function confirmDelete()
-	{
-		var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
-        	if (opcion == true) {
-            		return true;
-    		} else {
-    	    		return false;
-    		}	
-	}
-</script>
+    <script type = "text/javascript">
+        function confirmDelete()
+        {
+        var opcion = confirm("¿Esta seguro que quiere cerrar sesión?");
+        if (opcion == true) {
+        return true;
+        } else {
+        return false;
+        }	
+        }
+    </script>
 
 
     <h:body>
         <p>CONSULTA DEL CLIENTE</p>
-		<h:form>     
-		<p:growl id="messages" showDetail="true" />
-		<p:toolbar>
-        <f:facet name="left">
- 
-			<p:menuButton value="Iniciativas">
-                <p:menuitem value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
-                <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
-            </p:menuButton>
-			
+        <h:form>     
+            <p:growl id="messages" showDetail="true" />
+            <p:toolbar>
+                <f:facet name="left">
 
-        </f:facet>
- 
-        <f:facet name="right">
-			<h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
-			<h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
-            <p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
-            
-        </f:facet>
- 
-    </p:toolbar>
-		</h:form>
-         <h:form id="iniciativasUsuario">
-         <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativasRelacionadas(1)}"
-				paginator="true" rowIndexVar="rowIndexVar" rows="5" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
-			
-			<f:facet name="header">
-				Iniciativas.
-			</f:facet>
-			
-			<p:column headerText="Votar">
-			    <p:selectBooleanButton id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
-					<p:ajax update="iniciativasUsuario" click="#{UserBean.consultarIniciativas()}" listener="#{UserBean.registrarVoto(logeoBean.name,rowIndexVar+1)}" />
-				</p:selectBooleanButton>
-			</p:column>
+                    <p:menuButton value="Iniciativas">
+                        <p:menuitem value="Consultar iniciativa" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}"/>
+                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}"/>
+                    </p:menuButton>
 
 
+                </f:facet>
 
-			<p:column headerText="Id" sortBy="#{iniciativa.getId()}">
-				<h:outputText value="#{iniciativa.getId()}"/>
-			</p:column>
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol}) "/>
+                    <p:commandButton value="Salir" action="#{logeoBean.cerrarSesion()}" onclick="confirmDelete()" icon="pi pi-sign-out" />
 
-			<p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
-				<h:outputText value="#{iniciativa.getVotos()}"/>
-			</p:column>
-             
-			<p:column headerText="PalabraClave" id="x" filterBy="#{iniciativa.palabraClave}" sortBy="#{iniciativa.getPalabraClave()}">
-				<h:outputText value="#{UserBean.consultarIniciativaPalabraCLave(x.value)}"/>
-			</p:column>
-						
-			<p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
-				<h:outputText value="#{iniciativa.getNombre()}"/>
-			</p:column>
-			
-			<p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}">
-				<h:outputText value="#{iniciativa.getEstado()}"/>
-			</p:column>
-			
-			<p:column headerText="Descripcion" sortBy="#{iniciativa.getDescripcion()}">
-				<h:outputText value="#{iniciativa.getDescripcion()}"/>
-			</p:column>
-             <p:column headerText="Area" sortBy="#{iniciativa.getArea()}">
-				<h:outputText value="#{iniciativa.getArea()}"/>
-			</p:column>
-             <p:column headerText="Usuario" sortBy="#{iniciativa.getUsuarioProponente()}">
-				<h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
-			</p:column>
-            <p:column headerText="CorreoU" sortBy="#{iniciativa.getcorreoProponente()}">
-				<h:outputText value="#{iniciativa.getcorreoProponente()}"/>
-			</p:column> 
-			<p:column headerText="Fecha" sortBy="#{iniciativa.getFecha()}">
-				<h:outputText value="#{iniciativa.getFecha()}"/>
-			</p:column>                        
-             
-		</p:dataTable>
-		</h:form>
-     
-		
+                </f:facet>
+
+            </p:toolbar>
+        </h:form>
+        <h:form id="iniciativasUsuario">
+            <p:dataTable var="iniciativa" value="#{AdministradorBean.consultarIniciativasRelacionadas(1)}"
+                         paginator="true" rowIndexVar="rowIndexVar" rows="5" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" >
+
+                <f:facet name="header">
+                    Iniciativas.
+                </f:facet>
+
+                <p:column headerText="Votar">
+                    <p:selectBooleanButton id="value2" binding="#{valor}" onclick="#{UserBean.consultarIniciativas()}" onIcon="pi pi-star-o" offIcon="pi pi-star" style="width:60px">
+                        <p:ajax update="iniciativasUsuario" click="#{UserBean.consultarIniciativas()}" listener="#{UserBean.registrarVoto(logeoBean.name,rowIndexVar+1)}" />
+                    </p:selectBooleanButton>
+                </p:column>
+
+                <p:column headerText="Id" sortBy="#{iniciativa.getId()}">
+                    <h:outputText value="#{iniciativa.getId()}"/>
+                </p:column>
+
+                <p:column headerText="Votos" sortBy="#{iniciativa.getVotos()}">
+                    <h:outputText value="#{iniciativa.getVotos()}"/>
+                </p:column>
+
+                <p:column headerText="PalabraClave" id="x" filterBy="#{iniciativa.palabraClave}" sortBy="#{iniciativa.getPalabraClave()}">
+                    <h:outputText value="#{UserBean.consultarIniciativaPalabraCLave(x.value)}"/>
+                </p:column>
+
+                <p:column headerText="Nombre" sortBy="#{iniciativa.getNombre()}">
+                    <h:outputText value="#{iniciativa.getNombre()}"/>
+                </p:column>
+
+                <p:column headerText="Estado" sortBy="#{iniciativa.getEstado()}">
+                    <h:outputText value="#{iniciativa.getEstado()}"/>
+                </p:column>
+
+                <p:column headerText="Descripcion" sortBy="#{iniciativa.getDescripcion()}">
+                    <h:outputText value="#{iniciativa.getDescripcion()}"/>
+                </p:column>
+                <p:column headerText="Area" sortBy="#{iniciativa.getArea()}">
+                    <h:outputText value="#{iniciativa.getArea()}"/>
+                </p:column>
+                <p:column headerText="Usuario" sortBy="#{iniciativa.getUsuarioProponente()}">
+                    <h:outputText value="#{iniciativa.getUsuarioProponente()}"/>
+                </p:column>
+                <p:column headerText="CorreoU" sortBy="#{iniciativa.getcorreoProponente()}">
+                    <h:outputText value="#{iniciativa.getcorreoProponente()}"/>
+                </p:column> 
+                <p:column headerText="Fecha" sortBy="#{iniciativa.getFecha()}">
+                    <h:outputText value="#{iniciativa.getFecha()}"/>
+                </p:column>                        
+
+            </p:dataTable>
+        </h:form>
+
+
     </h:body>
 </html>

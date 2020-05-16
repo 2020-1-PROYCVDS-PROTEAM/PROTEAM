@@ -20,19 +20,34 @@ and open the template in the editor.
 
     <h:body>
 
-        <h:form>     
+
+        <h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol == 'Proponente'}">     
+            <p:growl id="messages" showDetail="true" />
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
+
+                    <p:menuButton value="Iniciativas">
+                        <p:commandButton value="Mis iniciativas" action="#{logeoBean.redirect('/faces/iniciativa_proponente.xhtml')}" icon="pi pi-search" />
+                        <p:menuitem value="Registrar iniciativas" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}" icon="pi pi-pencil"/>
+                    </p:menuButton>
+                </f:facet>
+
+                <f:facet name="right">
+                    <h:outputText id="out" value="#{AdministradorBean.consultarUsuario(logeoBean.name).nombre}"/>
+                    <h:outputText id="out2" value="(#{AdministradorBean.consultarUsuario(logeoBean.name).rol})"/>
+                    <p:commandButton value="Salir" onclick="confirmDelete()" icon="pi pi-sign-out" />
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+
+        <h:form rendered="#{AdministradorBean.consultarUsuario(logeoBean.name).rol != 'Proponente'}">     
             <p:growl id="messages" showDetail="true" />
 
             <p:toolbar>
                 <f:facet name="left">
                     <p:commandButton value="Homepage" action="#{logeoBean.redirect('/faces/perfil_usuario.xhtml')}" icon="pi pi-home" />
-                    <p:menuitem value="Homepage" action="#{logeoBean.redirect('/faces/administrador.xhtml')}" icon="pi pi-home" />
-                    <p:menuButton value="Opciones">
-                        <p:menuitem value="Consultar usuarios" action="#{logeoBean.redirect('/faces/Usuario.xhtml')}" icon="pi pi-search"/>
-                        <p:menuitem value="Registrar iniciativa" action="#{logeoBean.redirect('/faces/registrar_iniciativa.xhtml')}" icon="pi pi-pencil"/>
-                    </p:menuButton>
-
-
+                    <p:commandButton value="Consultar iniciativas" action="#{logeoBean.redirect('/faces/iniciativas.xhtml')}" icon="pi pi-search"/>
                 </f:facet>
 
                 <f:facet name="right">
@@ -58,7 +73,7 @@ and open the template in the editor.
                 <f:facet name="header">
                     Iniciativas.
                 </f:facet>
-                
+
                 <p:ajax event="rowSelect" listener="#{UserBean.setIdPag(UserBean.selectedi.id)}" />
 
 
