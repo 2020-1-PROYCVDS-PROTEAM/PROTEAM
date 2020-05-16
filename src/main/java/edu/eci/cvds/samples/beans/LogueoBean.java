@@ -50,7 +50,7 @@ public class LogueoBean implements Serializable {
             } else if (currentUser.hasRole("PMO")) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/PMO.xhtml");
             } else {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/iniciativa.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/iniciativas.xhtml");
             }
 			setLogueado(true);
 
