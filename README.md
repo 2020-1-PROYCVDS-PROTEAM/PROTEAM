@@ -124,10 +124,10 @@ _Descripción del proceso que se llevo a cabó._
 
 _El equipo PROTEAM fue el encargado de desarrollar este proyecto._
 
-_**César González** - *Team Developer* - [csarssj](https://github.com/csarssj)_
-_**Eduard Jimenez** - *Team Developer* - [EdKillah](https://github.com/EdKillah)_
-_**Jose Gutierrez** - *Team Developer* - [kirilka97](https://github.com/kirilka97)_
-_**Jonathan Pulido** - *Team Developer* - [Arlais](https://github.com/Arlais)_
+_*  **César González**  *Team Developer*  [csarssj](https://github.com/csarssj)_
+_*  **Eduard Jimenez**  *Team Developer*  [EdKillah](https://github.com/EdKillah)_
+_*  **Jose Gutierrez**  *Team Developer*  [kirilka97](https://github.com/kirilka97)_
+_*  **Jonathan Pulido**  *Team Developer*  [Arlais](https://github.com/Arlais)_
 
 _Presentado a:_
 _**Oscar Ospina** - *Product Owner*_
